@@ -1,9 +1,5 @@
 {
   "framework": "nextjs",
-  "deploymentProtection": {
-    "preview": "none",
-    "production": "none"
-  },
   "crons": [
     {
       "path": "/api/cron/expire-promos",
