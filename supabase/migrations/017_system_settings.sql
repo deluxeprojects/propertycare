@@ -19,13 +19,13 @@ CREATE POLICY "Super admins manage settings" ON system_settings FOR ALL USING (g
 
 -- Seed defaults
 INSERT INTO system_settings (key, value, category, label, description) VALUES
-  ('business.company_name', '"Livio Homes"', 'business', 'Company Name', 'Display name'),
-  ('business.company_tagline', '"Home Services Done Right"', 'business', 'Tagline', 'Company tagline'),
+  ('business.company_name', '"ProKeep"', 'business', 'Company Name', 'Display name'),
+  ('business.company_tagline', '"We Handle It."', 'business', 'Tagline', 'Company tagline'),
   ('business.phone', '"+971-XX-XXX-XXXX"', 'business', 'Phone', 'Contact phone'),
-  ('business.email', '"hello@liviohomes.ae"', 'business', 'Email', 'Contact email'),
+  ('business.email', '"hello@prokeep.ae"', 'business', 'Email', 'Contact email'),
   ('business.vat_pct', '5', 'business', 'VAT %', 'UAE VAT percentage'),
   ('business.currency', '"AED"', 'business', 'Currency', 'Default currency'),
-  ('business.order_prefix', '"LH"', 'business', 'Order Prefix', 'Order number prefix'),
+  ('business.order_prefix', '"PK"', 'business', 'Order Prefix', 'Order number prefix'),
   ('business.invoice_prefix', '"INV"', 'business', 'Invoice Prefix', 'Invoice number prefix'),
   ('business.operating_hours', '{"start":"08:00","end":"22:00"}', 'business', 'Operating Hours', 'Business hours'),
   ('business.time_slots', '["08:00-10:00","10:00-12:00","12:00-14:00","14:00-16:00","16:00-18:00","18:00-20:00","20:00-22:00"]', 'booking', 'Time Slots', 'Available booking slots'),
@@ -34,6 +34,6 @@ INSERT INTO system_settings (key, value, category, label, description) VALUES
   ('business.cancellation_hours', '12', 'booking', 'Cancellation Window', 'Free cancellation hours before service'),
   ('business.cancellation_fee_pct', '25', 'booking', 'Cancellation Fee %', 'Cancellation fee percentage'),
   ('payment.cash_enabled', 'true', 'payment', 'Cash Payments', 'Enable cash payments'),
-  ('notification.email_from', '"noreply@liviohomes.ae"', 'notification', 'From Email', 'Notification sender email'),
+  ('notification.email_from', '"noreply@prokeep.ae"', 'notification', 'From Email', 'Notification sender email'),
   ('seo.default_og_image', '"/og-default.jpg"', 'seo', 'OG Image', 'Default Open Graph image')
 ON CONFLICT (key) DO NOTHING;

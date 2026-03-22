@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     if (!order) return apiError('Order not found', 'NOT_FOUND', 404);
 
     const serviceName = (order.services as unknown as { name_en: string } | null)?.name_en ?? 'Service';
-    const origin = request.headers.get('origin') ?? 'https://liviohomes.ae';
+    const origin = request.headers.get('origin') ?? 'https://prokeep.ae';
 
     const session = await createCheckoutSession({
       orderId: order.id,

@@ -18,7 +18,7 @@ export default function AdminLoginPage() {
           <div className="space-y-4">
             <div>
               <label className="mb-1.5 block text-sm font-medium text-primary-foreground">Email</label>
-              <input type="email" placeholder="admin@liviohomes.ae" className="w-full rounded-lg border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-2 text-sm text-primary-foreground placeholder:text-primary-foreground/40 focus:border-accent focus:outline-none" />
+              <input type="email" placeholder="admin@prokeep.ae" className="w-full rounded-lg border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-2 text-sm text-primary-foreground placeholder:text-primary-foreground/40 focus:border-accent focus:outline-none" />
             </div>
             <div>
               <label className="mb-1.5 block text-sm font-medium text-primary-foreground">Password</label>

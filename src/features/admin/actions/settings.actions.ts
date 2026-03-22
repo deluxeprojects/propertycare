@@ -17,7 +17,7 @@ export async function updateSetting(key: string, value: unknown) {
 export async function seedDefaultSettings() {
   const supabase = createAdminClient();
   const defaults = [
-    { key: 'business.company_name', value: '"Livio Homes"', category: 'business', label: 'Company Name' },
+    { key: 'business.company_name', value: '"ProKeep"', category: 'business', label: 'Company Name' },
     { key: 'business.vat_pct', value: '5', category: 'business', label: 'VAT %' },
     { key: 'business.currency', value: '"AED"', category: 'business', label: 'Currency' },
   ];

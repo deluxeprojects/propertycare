@@ -23,7 +23,7 @@ export default function StaffProfilePage() {
           </div>
           <div className="flex items-center gap-3 text-foreground">
             <Mail className="h-4 w-4 text-muted-foreground" />
-            <span>omar@liviohomes.ae</span>
+            <span>omar@prokeep.ae</span>
           </div>
           <div className="flex items-center gap-3 text-foreground">
             <Star className="h-4 w-4 text-yellow-500" />

@@ -24,7 +24,7 @@ export async function sendEmail(payload: NotificationPayload): Promise<boolean> 
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: process.env.RESEND_FROM_EMAIL ?? 'noreply@liviohomes.ae',
+        from: process.env.RESEND_FROM_EMAIL ?? 'noreply@prokeep.ae',
         to: payload.to,
         subject: payload.variables['subject'] ?? 'Notification',
         html: buildEmailHtml(payload.template, payload.variables),
