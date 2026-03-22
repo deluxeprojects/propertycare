@@ -37,19 +37,40 @@ function StepService() {
   const [categories, setCategories] = useState<Array<{ id: string; slug: string; name_en: string; description_en: string | null }>>([]);
   const [services, setServices] = useState<Array<{ id: string; slug: string; name_en: string; short_desc_en: string | null; base_price_aed: number; category_id: string }>>([]);
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const supabase = createClient();
-    supabase.from('service_categories').select('id, slug, name_en, description_en').eq('is_active', true).order('sort_order').then(({ data }) => setCategories(data ?? []));
-    supabase.from('services').select('id, slug, name_en, short_desc_en, base_price_aed, category_id').eq('is_active', true).eq('is_hidden', false).order('sort_order').then(({ data }) => setServices(data ?? []));
+    Promise.all([
+      supabase.from('service_categories').select('id, slug, name_en, description_en').eq('is_active', true).order('sort_order').then(({ data }) => setCategories(data ?? [])),
+      supabase.from('services').select('id, slug, name_en, short_desc_en, base_price_aed, category_id').eq('is_active', true).eq('is_hidden', false).order('sort_order').then(({ data }) => setServices(data ?? [])),
+    ]).finally(() => setLoaded(true));
   }, []);
 
   const filteredServices = selectedCat ? services.filter(s => s.category_id === selectedCat) : [];
 
+  const isLoading = !loaded;
+
   return (
     <div>
       <h2 className="mb-4 text-xl font-semibold text-foreground">Select a Service</h2>
-      {!selectedCat ? (
+      {isLoading ? (
+        <div className="py-12 text-center">
+          <svg className="mx-auto mb-3 h-6 w-6 animate-spin text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          </svg>
+          <p className="text-sm text-muted-foreground">Loading services...</p>
+        </div>
+      ) : categories.length === 0 ? (
+        <div className="py-12 text-center">
+          <p className="mb-2 text-lg font-medium text-foreground">No services available right now</p>
+          <p className="text-sm text-muted-foreground">Please check back soon or contact us for assistance.</p>
+          <a href="/contact" className="mt-4 inline-flex rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted">
+            Contact Us
+          </a>
+        </div>
+      ) : !selectedCat ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map(cat => (
             <button key={cat.id} onClick={() => setSelectedCat(cat.id)} className="rounded-xl border border-border p-5 text-left transition-colors hover:border-accent hover:bg-accent/5">
@@ -63,16 +84,23 @@ function StepService() {
           <button onClick={() => setSelectedCat(null)} className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
             <ArrowLeft className="h-4 w-4" /> Back to categories
           </button>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {filteredServices.map(s => (
-              <button key={s.id} onClick={() => setService({ categoryId: selectedCat, serviceId: s.id, serviceSlug: s.slug, serviceName: s.name_en })}
-                className="rounded-lg border border-border p-4 text-left transition-colors hover:border-accent hover:bg-accent/5">
-                <h3 className="font-medium text-foreground">{s.name_en}</h3>
-                <p className="text-xs text-muted-foreground">{s.short_desc_en}</p>
-                <p className="mt-2 text-sm font-semibold text-accent">From AED {s.base_price_aed}</p>
-              </button>
-            ))}
-          </div>
+          {filteredServices.length === 0 ? (
+            <div className="py-8 text-center">
+              <p className="text-sm text-muted-foreground">No services found in this category.</p>
+              <button onClick={() => setSelectedCat(null)} className="mt-2 text-sm text-accent hover:underline">Browse other categories</button>
+            </div>
+          ) : (
+            <div className="grid gap-3 sm:grid-cols-2">
+              {filteredServices.map(s => (
+                <button key={s.id} onClick={() => setService({ categoryId: selectedCat, serviceId: s.id, serviceSlug: s.slug, serviceName: s.name_en })}
+                  className="rounded-lg border border-border p-4 text-left transition-colors hover:border-accent hover:bg-accent/5">
+                  <h3 className="font-medium text-foreground">{s.name_en}</h3>
+                  <p className="text-xs text-muted-foreground">{s.short_desc_en}</p>
+                  <p className="mt-2 text-sm font-semibold text-accent">From AED {s.base_price_aed}</p>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

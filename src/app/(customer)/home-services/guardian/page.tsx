@@ -86,6 +86,13 @@ export default function GuardianPage() {
   return (
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
+        {/* Breadcrumbs */}
+        <nav className="mb-6 text-sm text-muted-foreground">
+          <Link href="/" className="hover:text-accent">Home</Link>{' / '}
+          <Link href="/home-services" className="hover:text-accent">Home Services</Link>{' / '}
+          <span className="text-foreground">Property Guardian</span>
+        </nav>
+
         {/* Hero */}
         <div className="mb-16 text-center">
           <div className="mb-4 inline-flex items-center rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">

@@ -25,7 +25,7 @@ export default function ContactPage() {
         </p>
         <div className="mb-8 flex flex-wrap gap-4 text-sm">
           <span className="rounded-full bg-accent/10 px-3 py-1 font-medium text-accent">
-            Open 8 AM – 10 PM, 7 days a week
+            Open 8 AM – 10 PM, 7 days a week (Dubai time, GST+4)
           </span>
           <span className="rounded-full bg-muted px-3 py-1 text-muted-foreground">
             We typically respond within 30 minutes during business hours
@@ -42,7 +42,7 @@ export default function ContactPage() {
               <h3 className="font-semibold text-foreground">Call Us</h3>
               <p className="text-sm text-muted-foreground">{siteConfig.phone}</p>
               <p className="mt-1 text-xs text-muted-foreground">
-                Available 8 AM – 10 PM, 7 days
+                Available 8 AM – 10 PM (Dubai time, GST+4)
               </p>
             </div>
           </a>

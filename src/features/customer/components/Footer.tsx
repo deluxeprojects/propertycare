@@ -26,6 +26,7 @@ const companyLinks = [
   { label: 'Contact', href: '/contact' },
   { label: 'Blog', href: '/blog' },
   { label: 'Care Plans', href: '/care-plans' },
+  { label: 'Book a Service', href: '/book' },
   { label: 'Terms of Service', href: '/terms' },
   { label: 'Privacy Policy', href: '/privacy' },
 ];
