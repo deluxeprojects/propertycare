@@ -41,6 +41,44 @@ export async function GET(request: NextRequest, { params }: Props) {
       filename = `customers-${new Date().toISOString().split('T')[0]}.csv`;
       break;
     }
+    case 'payroll': {
+      const url = new URL(request.url);
+      const period = url.searchParams.get('period') ?? new Date().toISOString().slice(0, 7); // YYYY-MM
+      const startDate = `${period}-01`;
+      const endOfMonth = new Date(parseInt(period.split('-')[0]!), parseInt(period.split('-')[1]!), 0);
+      const endDate = endOfMonth.toISOString().split('T')[0];
+
+      const { data: techs } = await supabase
+        .from('technicians')
+        .select('employee_code, hourly_rate_aed, commission_pct, profiles!technicians_profile_id_fkey(full_name)');
+
+      const { data: orders } = await supabase
+        .from('orders')
+        .select('assigned_technician_id, total_amount_aed, actual_start_at, actual_end_at')
+        .eq('status', 'completed')
+        .gte('scheduled_date', startDate)
+        .lte('scheduled_date', endDate!);
+
+      data = (techs ?? []).map((t) => {
+        const techOrders = (orders ?? []).filter(o => o.assigned_technician_id === (t as unknown as { profile_id: string }).profile_id);
+        const jobs = techOrders.length;
+        const revenue = techOrders.reduce((sum, o) => sum + (o.total_amount_aed ?? 0), 0);
+        const commission = revenue * ((t.commission_pct ?? 0) / 100);
+        const profileName = (t.profiles as unknown as { full_name: string } | null)?.full_name ?? '';
+        return {
+          employee_code: t.employee_code,
+          name: profileName,
+          jobs_completed: jobs,
+          revenue_generated: revenue,
+          hourly_rate: t.hourly_rate_aed ?? 0,
+          commission_pct: t.commission_pct ?? 0,
+          commission_earned: commission,
+          period,
+        };
+      });
+      filename = `payroll-${period}.csv`;
+      break;
+    }
     default:
       return NextResponse.json({ error: 'Unknown entity' }, { status: 400 });
   }
