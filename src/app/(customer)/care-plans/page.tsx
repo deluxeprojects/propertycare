@@ -1,13 +1,129 @@
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
-import { Check, X, ArrowRight } from 'lucide-react';
+import {
+  Check,
+  X,
+  ArrowRight,
+  Wind,
+  SprayCan,
+  Bug,
+  Home,
+  Flower2,
+  Waves,
+  Crown,
+} from 'lucide-react';
 
 export const metadata = {
   title: 'Care Plans',
-  description: `Save up to 40% with ${siteConfig.name} Care Plans. 4 tiers from AED 79/month. Priority service, dedicated support.`,
+  description: `Save up to 40% with ${siteConfig.name} Care Plans. AC, cleaning, pest, garden, pool and total-care contracts from AED 79/month.`,
 };
 
-const plans = [
+/* ------------------------------------------------------------------ */
+/*  New contract-type plans                                           */
+/* ------------------------------------------------------------------ */
+
+const contractPlans = [
+  {
+    name: 'AC Care Plan',
+    icon: Wind,
+    description: 'Annual AC service contract',
+    details: [
+      '2-4 services per year',
+      'Duct cleaning included',
+      'Filter replacement',
+    ],
+    price: 99,
+    color: 'text-sky-500',
+    bgColor: 'bg-sky-500/10',
+  },
+  {
+    name: 'Cleaning Care Plan',
+    icon: SprayCan,
+    description: 'Regular scheduled cleaning',
+    details: [
+      'Weekly, biweekly, or monthly',
+      'Flexible scheduling',
+      'Trained & vetted cleaners',
+    ],
+    price: 149,
+    color: 'text-emerald-500',
+    bgColor: 'bg-emerald-500/10',
+  },
+  {
+    name: 'Pest Care Plan',
+    icon: Bug,
+    description: 'Year-round pest prevention',
+    details: [
+      'Quarterly treatments',
+      'Emergency callouts included',
+      'Safe & certified products',
+    ],
+    price: 79,
+    color: 'text-amber-500',
+    bgColor: 'bg-amber-500/10',
+  },
+  {
+    name: 'Housekeeping Care Plan',
+    icon: Home,
+    description:
+      'Full housekeeping: cleaning + linen change + amenity restock',
+    details: [
+      'Ideal for holiday homes & Airbnb',
+      'Linen & towel change',
+      'Amenity restock',
+    ],
+    price: 299,
+    color: 'text-violet-500',
+    bgColor: 'bg-violet-500/10',
+  },
+  {
+    name: 'Garden Care Plan',
+    icon: Flower2,
+    description: 'Villa garden maintenance',
+    details: [
+      'Weekly or biweekly visits',
+      'Plant care & pruning',
+      'Landscaping support',
+    ],
+    price: 199,
+    color: 'text-green-600',
+    bgColor: 'bg-green-600/10',
+  },
+  {
+    name: 'Pool Care Plan',
+    icon: Waves,
+    description: 'Swimming pool maintenance',
+    details: [
+      'Chemical balancing',
+      'Pool cleaning',
+      'Equipment checks',
+    ],
+    price: 249,
+    color: 'text-blue-500',
+    bgColor: 'bg-blue-500/10',
+  },
+  {
+    name: 'Total Care Plan',
+    icon: Crown,
+    description:
+      'Everything bundled: AC + cleaning + pest + handyman + priority support',
+    details: [
+      'The ultimate plan',
+      'All services included',
+      'Priority support & response',
+    ],
+    price: 449,
+    color: 'text-accent',
+    bgColor: 'bg-accent/10',
+    highlighted: true,
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Legacy bundled tiers (kept as secondary option)                    */
+/* ------------------------------------------------------------------ */
+
+const bundledTiers = [
   {
     tier: 'Essential',
     price: 79,
@@ -78,23 +194,114 @@ const plans = [
   },
 ];
 
+/* ------------------------------------------------------------------ */
+/*  Page component                                                    */
+/* ------------------------------------------------------------------ */
+
 export default function CarePlansPage() {
   return (
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
+        {/* Hero */}
         <div className="mb-12 text-center">
           <h1 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
             Care Plans
           </h1>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            Save up to 40% on your home care with a {siteConfig.name}{' '}
-            Care Plan. Choose a plan that fits your property and enjoy priority
-            service year-round.
+            Pick only the services you need with a {siteConfig.name} Care Plan.
+            Combine multiple plans or go all-in with Total Care — and enjoy
+            priority service year-round.
+          </p>
+        </div>
+
+        {/* ---- Contract-type plans ---- */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {contractPlans.map((plan) => {
+            const Icon = plan.icon;
+            return (
+              <div
+                key={plan.name}
+                className={`relative flex flex-col rounded-xl border bg-card p-6 transition-shadow hover:shadow-md ${
+                  plan.highlighted
+                    ? 'border-accent shadow-lg shadow-accent/10'
+                    : 'border-border'
+                }`}
+              >
+                {plan.highlighted && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
+                    Best Value
+                  </div>
+                )}
+
+                <div className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg ${plan.bgColor}`}>
+                  <Icon className={`h-5 w-5 ${plan.color}`} />
+                </div>
+
+                <h2 className="text-lg font-bold text-foreground">
+                  {plan.name}
+                </h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {plan.description}
+                </p>
+
+                <ul className="mt-4 flex-1 space-y-2">
+                  {plan.details.map((detail) => (
+                    <li
+                      key={detail}
+                      className="flex items-start gap-2 text-sm text-foreground"
+                    >
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6">
+                  <div className="mb-4">
+                    <span className="text-2xl font-bold text-foreground">
+                      AED {plan.price}
+                    </span>
+                    <span className="text-muted-foreground">/mo</span>
+                  </div>
+
+                  <Link
+                    href="/book"
+                    className={`inline-flex w-full items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors ${
+                      plan.highlighted
+                        ? 'bg-accent text-accent-foreground hover:bg-accent/90'
+                        : 'border border-border bg-card text-foreground hover:bg-muted'
+                    }`}
+                  >
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ---- Divider ---- */}
+        <div className="my-16 flex items-center gap-4">
+          <div className="h-px flex-1 bg-border" />
+          <span className="text-sm font-medium text-muted-foreground">or</span>
+          <div className="h-px flex-1 bg-border" />
+        </div>
+
+        {/* ---- Bundled tiers (legacy) ---- */}
+        <div className="mb-8 text-center">
+          <h2 className="mb-2 text-2xl font-bold text-foreground md:text-3xl">
+            Or choose a bundled tier
+          </h2>
+          <p className="mx-auto max-w-2xl text-muted-foreground">
+            Prefer a pre-built package? Our bundled tiers combine multiple
+            services at a discounted rate — perfect if you want comprehensive
+            cover without picking individual plans.
           </p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-4">
-          {plans.map((plan) => (
+          {bundledTiers.map((plan) => (
             <div
               key={plan.tier}
               className={`relative rounded-xl border bg-card p-6 ${
@@ -109,9 +316,9 @@ export default function CarePlansPage() {
                 </div>
               )}
               <div className="mb-6">
-                <h2 className="text-xl font-bold text-foreground">
+                <h3 className="text-xl font-bold text-foreground">
                   {plan.tier}
-                </h2>
+                </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {plan.desc}
                 </p>
@@ -162,12 +369,14 @@ export default function CarePlansPage() {
           ))}
         </div>
 
+        {/* ---- CTA footer ---- */}
         <div className="mt-12 rounded-xl bg-muted p-8 text-center">
           <h3 className="mb-2 text-lg font-semibold text-foreground">
             Not sure which care plan is right for you?
           </h3>
           <p className="mb-4 text-muted-foreground">
-            Our team can help you choose the perfect care plan for your property.
+            Our team can help you choose the perfect care plan for your
+            property.
           </p>
           <a
             href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}`}
