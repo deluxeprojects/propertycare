@@ -25,11 +25,23 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: 'Professional home services in Dubai. 53+ services across 40+ areas.',
+    images: [
+      {
+        url: `https://${siteConfig.domain}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — Professional Home Services in Dubai`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: 'Professional home services in Dubai.',
+    images: [`https://${siteConfig.domain}/og-image.png`],
+  },
+  alternates: {
+    canonical: `https://${siteConfig.domain}`,
   },
   robots: {
     index: true,

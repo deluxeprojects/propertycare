@@ -1,6 +1,7 @@
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { WhatsAppButton } from './WhatsAppButton';
+import { BackToTop } from './BackToTop';
 
 export function CustomerShell({ children }: { children: React.ReactNode }) {
   return (
@@ -8,6 +9,7 @@ export function CustomerShell({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
+      <BackToTop />
       <WhatsAppButton />
     </div>
   );

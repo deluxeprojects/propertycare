@@ -190,8 +190,11 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-primary px-4 py-20 text-primary-foreground md:py-32">
-        <div className="container mx-auto max-w-7xl">
+      <section className="relative px-4 py-20 text-primary-foreground md:py-32 overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 bg-primary" />
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=50')] bg-cover bg-center opacity-10" />
+        <div className="relative container mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <h1 className="mb-6 text-4xl font-bold leading-tight md:text-6xl">
               {siteConfig.tagline}
@@ -376,7 +379,7 @@ export default function HomePage() {
             {testimonials.map((t) => (
               <div
                 key={t.name}
-                className="rounded-xl border border-border bg-card p-6"
+                className="rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
               >
                 <div className="mb-4 flex gap-1">
                   {Array.from({ length: t.rating }).map((_, i) => (

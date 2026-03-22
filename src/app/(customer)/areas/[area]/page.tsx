@@ -18,6 +18,15 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: data.meta_title_en || `Home Services in ${data.name_en}, Dubai`,
     description: data.meta_desc_en || `Professional home services in ${data.name_en}, Dubai. Cleaning, AC, pest control & more by ${siteConfig.name}.`,
+    alternates: {
+      canonical: `https://${siteConfig.domain}/areas/${area}`,
+    },
+    openGraph: {
+      title: data.meta_title_en || `Home Services in ${data.name_en}, Dubai`,
+      description: data.meta_desc_en || `Professional home services in ${data.name_en}, Dubai. Cleaning, AC, pest control & more by ${siteConfig.name}.`,
+      url: `https://${siteConfig.domain}/areas/${area}`,
+      images: [{ url: `https://${siteConfig.domain}/og-image.png`, width: 1200, height: 630 }],
+    },
   };
 }
 

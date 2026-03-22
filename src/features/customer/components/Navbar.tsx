@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { customerNav } from '@/config/navigation';
 import { ProKeepLogo } from '@/components/shared/ProKeepLogo';
 import { SearchBar } from './SearchBar';
+import { MobileNav } from './MobileNav';
 
 export function Navbar() {
   return (
@@ -30,10 +31,11 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/book"
-            className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+            className="hidden rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90 md:inline-flex"
           >
             Book a Service
           </Link>
+          <MobileNav />
         </div>
       </div>
       <div className="border-t border-border px-4 py-2 md:hidden">

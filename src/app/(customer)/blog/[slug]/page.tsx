@@ -46,13 +46,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: pageTitle,
     description: post.meta_description || post.excerpt || post.content.substring(0, 155) + '...',
+    alternates: {
+      canonical: `https://${siteConfig.domain}/blog/${slug}`,
+    },
     openGraph: {
       title: pageTitle,
       description: post.meta_description || post.excerpt || '',
       type: 'article',
       publishedTime: post.published_at,
       authors: [post.author || 'ProKeep Team'],
-      ...(post.featured_image ? { images: [{ url: post.featured_image }] } : {}),
+      url: `https://${siteConfig.domain}/blog/${slug}`,
+      images: post.featured_image
+        ? [{ url: post.featured_image }]
+        : [{ url: `https://${siteConfig.domain}/og-image.png`, width: 1200, height: 630 }],
     },
   };
 }

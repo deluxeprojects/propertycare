@@ -11,23 +11,47 @@ import { ArrowLeft, ArrowRight, Check, MapPin, Clock, Calendar, CreditCard, Zap 
 function StepProgress({ current }: { current: number }) {
   const steps = ['Service', 'Size', 'Add-ons', 'Location', 'Schedule', 'Account', 'Review', 'Done'];
   return (
-    <div className="mb-8 flex overflow-x-auto pb-2">
-      {steps.map((step, i) => (
-        <div key={step} className="flex items-center">
-          <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold transition-colors ${
-            i + 1 < current ? 'bg-green-500 text-white' :
-            i + 1 === current ? 'bg-accent text-accent-foreground' :
-            'bg-muted text-muted-foreground'
-          }`}>
-            {i + 1 < current ? <Check className="h-4 w-4" /> : i + 1}
+    <>
+      {/* Desktop: show all steps */}
+      <div className="mb-8 hidden overflow-x-auto pb-2 md:flex">
+        {steps.map((step, i) => (
+          <div key={step} className="flex items-center">
+            <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold transition-colors ${
+              i + 1 < current ? 'bg-green-500 text-white' :
+              i + 1 === current ? 'bg-accent text-accent-foreground' :
+              'bg-muted text-muted-foreground'
+            }`}>
+              {i + 1 < current ? <Check className="h-4 w-4" /> : i + 1}
+            </div>
+            <span className={`ml-2 whitespace-nowrap text-sm ${
+              i + 1 === current ? 'font-medium text-foreground' : 'text-muted-foreground'
+            }`}>{step}</span>
+            {i < 7 && <div className="mx-3 h-px w-8 bg-border" />}
           </div>
-          <span className={`ml-2 whitespace-nowrap text-sm ${
-            i + 1 === current ? 'font-medium text-foreground' : 'text-muted-foreground'
-          }`}>{step}</span>
-          {i < 7 && <div className="mx-3 h-px w-8 bg-border" />}
+        ))}
+      </div>
+      {/* Mobile: show current step with counter */}
+      <div className="mb-8 flex items-center justify-between md:hidden">
+        <div className="flex items-center gap-3">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-semibold text-accent-foreground">
+            {current}
+          </div>
+          <span className="text-sm font-medium text-foreground">
+            {steps[current - 1] ?? ''}
+          </span>
         </div>
-      ))}
-    </div>
+        <span className="text-xs text-muted-foreground">
+          Step {current} of {steps.length}
+        </span>
+        {/* Progress bar */}
+        <div className="absolute bottom-0 left-0 h-0.5 w-full bg-muted">
+          <div
+            className="h-full bg-accent transition-all"
+            style={{ width: `${(current / steps.length) * 100}%` }}
+          />
+        </div>
+      </div>
+    </>
   );
 }
 

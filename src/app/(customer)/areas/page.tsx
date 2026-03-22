@@ -53,7 +53,7 @@ export default async function AreasPage() {
                   <Link
                     key={area.slug}
                     href={`/areas/${area.slug}`}
-                    className="group rounded-xl border border-border bg-card p-5 transition-all hover:border-accent hover:shadow-md"
+                    className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
                   >
                     <div className="mb-3 flex items-center gap-2">
                       <MapPin className="h-4 w-4 text-accent" />

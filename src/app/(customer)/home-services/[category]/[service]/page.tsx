@@ -20,10 +20,27 @@ export async function generateMetadata({ params }: Props) {
     .single();
 
   if (!data) return { title: 'Service' };
+  const { category } = await params;
   const shortDesc = data.short_desc_en?.endsWith('.') ? data.short_desc_en : `${data.short_desc_en}.`;
   return {
     title: `${data.name_en} in Dubai`,
     description: `${shortDesc} Professional ${data.name_en.toLowerCase()} in Dubai by ${siteConfig.name}. Book online.`,
+    alternates: {
+      canonical: `https://${siteConfig.domain}/home-services/${category}/${service}`,
+    },
+    openGraph: {
+      title: `${data.name_en} in Dubai | ${siteConfig.name}`,
+      description: `${shortDesc} Professional ${data.name_en.toLowerCase()} in Dubai by ${siteConfig.name}. Book online.`,
+      url: `https://${siteConfig.domain}/home-services/${category}/${service}`,
+      images: [
+        {
+          url: `https://${siteConfig.domain}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: `${data.name_en} — ${siteConfig.name}`,
+        },
+      ],
+    },
   };
 }
 
@@ -51,6 +68,17 @@ export default async function ServiceDetailPage({ params }: Props) {
   const activeAddons = (service.service_addons ?? [])
     .filter((a: { is_active: boolean }) => a.is_active)
     .sort((a: { sort_order: number }, b: { sort_order: number }) => a.sort_order - b.sort_order);
+
+  // Fetch related services from the same category
+  const { data: relatedServices } = await supabase
+    .from('services')
+    .select('slug, name_en, short_desc_en, base_price_aed, price_unit, service_categories(slug)')
+    .eq('category_id', service.category_id)
+    .eq('is_active', true)
+    .eq('is_hidden', false)
+    .neq('slug', serviceSlug)
+    .order('sort_order')
+    .limit(4);
 
   return (
     <div className="px-4 py-12 md:py-16">
@@ -186,6 +214,33 @@ export default async function ServiceDetailPage({ params }: Props) {
             </div>
           </div>
         </div>
+
+        {/* Related Services */}
+        {relatedServices && relatedServices.length > 0 && (
+          <div className="mt-16">
+            <h2 className="mb-6 text-2xl font-bold text-foreground">Related Services</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {relatedServices.map((rs: { slug: string; name_en: string; short_desc_en: string | null; base_price_aed: number; price_unit: string; service_categories: { slug: string }[] }) => (
+                <Link
+                  key={rs.slug}
+                  href={`/home-services/${category}/${rs.slug}`}
+                  className="rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
+                >
+                  <h3 className="mb-2 font-semibold text-card-foreground hover:text-accent">
+                    {rs.name_en}
+                  </h3>
+                  <p className="mb-3 text-sm text-muted-foreground line-clamp-2">
+                    {rs.short_desc_en}
+                  </p>
+                  <p className="text-sm font-semibold text-accent">
+                    From AED {rs.base_price_aed}
+                    {rs.price_unit === 'per_hour' ? '/hr' : rs.price_unit === 'per_sqft' ? '/sqft' : ''}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

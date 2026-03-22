@@ -65,7 +65,7 @@ export default async function BlogPage({ searchParams }: Props) {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="block overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-accent hover:shadow-md"
+                className="block overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-accent hover:shadow-lg"
               >
                 <div className="flex flex-col sm:flex-row">
                   {post.featured_image && (
