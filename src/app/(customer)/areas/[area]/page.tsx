@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { MapPin, ArrowLeft, ArrowRight } from 'lucide-react';
+import { AreaMap } from '@/features/customer/components/AreaMap';
 
 interface Props {
   params: Promise<{ area: string }>;
@@ -72,6 +73,15 @@ export default async function AreaPage({ params }: Props) {
               ~{area.approximate_units.toLocaleString()} residential units
             </p>
           )}
+        </div>
+
+        {/* Map */}
+        <div className="mb-12">
+          <AreaMap
+            latitude={area.latitude ?? 0}
+            longitude={area.longitude ?? 0}
+            areaName={area.name_en}
+          />
         </div>
 
         {/* Services available */}

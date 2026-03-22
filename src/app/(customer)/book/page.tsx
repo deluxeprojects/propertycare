@@ -181,6 +181,18 @@ function StepLocation() {
         <ArrowLeft className="h-4 w-4" /> Back
       </button>
       <h2 className="mb-4 text-xl font-semibold text-foreground">Service Location</h2>
+
+      {/* Map placeholder */}
+      <div className="mb-6 relative h-40 w-full overflow-hidden rounded-xl bg-muted">
+        <div className="flex h-full items-center justify-center">
+          <div className="text-center">
+            <MapPin className="mx-auto mb-2 h-8 w-8 text-accent" />
+            <p className="text-sm font-medium text-foreground">Dubai, UAE</p>
+            <p className="text-xs text-muted-foreground">Select your area below</p>
+          </div>
+        </div>
+      </div>
+
       <div className="space-y-4">
         <div>
           <label className="mb-1.5 block text-sm font-medium text-foreground">Area</label>
@@ -323,6 +335,7 @@ function StepReview() {
   const booking = useBooking();
   const [submitting, setSubmitting] = useState(false);
   const [orderError, setOrderError] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState<'card' | 'tabby' | 'cash'>('card');
   const vat = Math.round((booking.basePrice + booking.addonsTotal) * 0.05 * 100) / 100;
   const expressSurcharge = booking.isExpress ? Math.round((booking.basePrice + booking.addonsTotal) * 0.5 * 100) / 100 : 0;
   const total = booking.basePrice + booking.addonsTotal + expressSurcharge + vat;
@@ -370,7 +383,22 @@ function StepReview() {
         return;
       }
 
-      // Order created — advance to confirmation
+      const data = await res.json();
+
+      // After order creation success
+      if (paymentMethod === 'card') {
+        const checkoutRes = await fetch('/api/v1/customer/payments/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderId: data.id }),
+        });
+        const checkoutData = await checkoutRes.json();
+        if (checkoutData.url) {
+          window.location.href = checkoutData.url;
+          return;
+        }
+      }
+      // For cash/other, just go to confirmation
       booking.nextStep();
     } catch {
       setOrderError('Something went wrong. Please try again.');
@@ -419,9 +447,14 @@ function StepReview() {
       <div className="mb-6">
         <h3 className="mb-3 text-sm font-medium text-foreground"><CreditCard className="mr-1 inline h-4 w-4" /> Payment Method</h3>
         <div className="grid gap-2 sm:grid-cols-3">
-          {['Pay Online (Card)', 'Pay Later (Tabby)', 'Cash on Service'].map((method, i) => (
-            <button key={method} className={`rounded-lg border p-3 text-sm ${i === 0 ? 'border-accent bg-accent/5 font-medium text-foreground' : 'border-border text-muted-foreground hover:border-accent/50'}`}>
-              {method}
+          {([
+            { key: 'card' as const, label: 'Pay Online (Card)' },
+            { key: 'tabby' as const, label: 'Pay Later (Tabby)' },
+            { key: 'cash' as const, label: 'Cash on Service' },
+          ]).map((method) => (
+            <button key={method.key} onClick={() => setPaymentMethod(method.key)}
+              className={`rounded-lg border p-3 text-sm ${paymentMethod === method.key ? 'border-accent bg-accent/5 font-medium text-foreground' : 'border-border text-muted-foreground hover:border-accent/50'}`}>
+              {method.label}
             </button>
           ))}
         </div>
