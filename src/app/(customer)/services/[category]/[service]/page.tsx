@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { ArrowLeft, Clock, Star, Shield, Zap, CheckCircle2 } from 'lucide-react';
+import { generateServiceSchema, generateBreadcrumbSchema } from '@/lib/utils/seo';
 
 interface Props {
   params: Promise<{ category: string; service: string }>;
@@ -51,6 +52,28 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <div className="px-4 py-12 md:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateServiceSchema({
+            name: service.name_en,
+            description: service.short_desc_en || service.name_en,
+            price: service.base_price_aed,
+            priceUnit: service.price_unit,
+          })),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Services', url: '/services' },
+            { name: service.service_categories?.name_en ?? 'Category', url: `/services/${category}` },
+            { name: service.name_en, url: `/services/${category}/${serviceSlug}` },
+          ])),
+        }}
+      />
       <div className="container mx-auto max-w-7xl">
         {/* Breadcrumb */}
         <nav className="mb-6 text-sm text-muted-foreground">
