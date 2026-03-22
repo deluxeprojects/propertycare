@@ -12,7 +12,7 @@ export const searchKeywords: Record<string, string[]> = {
   'deep-cleaning': [
     'deep clean', 'spring cleaning', 'thorough cleaning', 'intensive cleaning',
     'full cleaning', 'heavy cleaning', 'detailed cleaning', 'complete cleaning',
-    'move out clean', 'end of tenancy', 'big clean', 'one time cleaning',
+    'big clean', 'one time cleaning',
     'general cleaning', 'top to bottom cleaning', 'whole apartment clean',
   ],
   'move-in-out-cleaning': [
@@ -20,8 +20,9 @@ export const searchKeywords: Record<string, string[]> = {
     'handover cleaning', 'pre move cleaning', 'post move cleaning',
     'tenancy cleaning', 'moving cleaning', 'new apartment cleaning',
     'checkout cleaning', 'vacating cleaning', 'snagging clean',
+    'move out clean', 'end of tenancy',
   ],
-  'sofa-upholstery-cleaning': [
+  'sofa-cleaning': [
     'sofa cleaning', 'couch cleaning', 'upholstery cleaning', 'sofa shampoo',
     'couch shampoo', 'fabric cleaning', 'sofa steam clean', 'chair cleaning',
     'furniture cleaning', 'cushion cleaning', 'ottoman cleaning',
@@ -35,23 +36,39 @@ export const searchKeywords: Record<string, string[]> = {
     'mattress clean', 'bed cleaning', 'mattress sanitize', 'mattress steam',
     'bed bug mattress', 'mattress shampoo', 'bed hygiene', 'mattress wash',
   ],
-  'window-cleaning': [
-    'window wash', 'glass cleaning', 'window cleaner', 'window wipe',
-    'glass polish', 'window shine', 'balcony glass', 'sliding door clean',
-  ],
   'water-tank-cleaning': [
     'tank cleaning', 'water tank', 'tank sanitize', 'water storage clean',
     'overhead tank', 'water tank wash', 'tank disinfection',
   ],
+  'post-construction-cleaning': [
+    'post construction', 'after renovation', 'construction cleanup',
+    'post renovation cleaning', 'builder clean', 'construction dust',
+  ],
+  'kitchen-deep-cleaning': [
+    'kitchen deep clean', 'oven cleaning', 'hood cleaning',
+    'kitchen scrub', 'stove cleaning', 'kitchen grease',
+  ],
+  'bathroom-deep-cleaning': [
+    'bathroom deep clean', 'grout cleaning', 'tile cleaning',
+    'bathroom scrub', 'mold cleaning', 'bathroom sanitize',
+  ],
+  'curtain-cleaning': [
+    'curtain clean', 'drape cleaning', 'blind cleaning',
+    'curtain wash', 'curtain steam', 'window covering clean',
+  ],
+  'disinfection-service': [
+    'disinfect', 'sanitize', 'sterilize', 'covid cleaning',
+    'disinfection', 'sanitization', 'antibacterial cleaning',
+  ],
 
   // AC services
-  'ac-service': [
+  'ac-general-service': [
     'ac cleaning', 'ac service', 'ac maintenance', 'air conditioner service',
     'ac filter', 'ac checkup', 'split ac', 'ac tune up', 'aircon service',
     'air conditioning maintenance', 'ac wash', 'cooling service', 'hvac',
     'ac not cooling', 'ac smell', 'ac noise',
   ],
-  'ac-deep-clean': [
+  'ac-deep-cleaning': [
     'ac deep clean', 'ac chemical wash', 'ac chemical clean', 'coil cleaning',
     'ac thorough clean', 'ac full service', 'ac overhaul', 'ac sanitize',
   ],
@@ -61,12 +78,24 @@ export const searchKeywords: Record<string, string[]> = {
   ],
   'ac-repair': [
     'ac repair', 'ac fix', 'ac not working', 'ac broken', 'ac leak',
-    'ac dripping', 'ac gas refill', 'refrigerant', 'compressor repair',
+    'ac dripping', 'compressor repair',
     'ac emergency', 'ac problem', 'ac issue', 'ac malfunction',
   ],
   'ac-installation': [
     'ac install', 'ac installation', 'new ac', 'ac setup', 'split ac install',
     'ac unit install', 'air conditioner install', 'ac fitting', 'ac mount',
+  ],
+  'ac-gas-refill': [
+    'ac gas', 'freon', 'refrigerant refill', 'gas top up',
+    'ac gas refill', 'refrigerant', 'ac recharge', 'gas charge',
+  ],
+  'ac-thermostat-install': [
+    'thermostat install', 'ac thermostat', 'smart thermostat',
+    'temperature control', 'thermostat replacement',
+  ],
+  'ac-amc': [
+    'ac annual contract', 'ac yearly service', 'ac care plan',
+    'ac maintenance contract', 'ac subscription', 'ac plan',
   ],
 
   // Pest control
@@ -81,7 +110,7 @@ export const searchKeywords: Record<string, string[]> = {
     'bed bug exterminator', 'mattress bugs', 'biting in bed', 'bed insect',
     'bed bug removal', 'bed bug fumigation',
   ],
-  'cockroach-gel-treatment': [
+  'cockroach-treatment': [
     'cockroach', 'roach', 'cockroach gel', 'roach killer', 'cockroach spray',
     'cockroach bait', 'kitchen roach', 'roach problem', 'roach infestation',
     'german cockroach', 'american cockroach',
@@ -94,40 +123,80 @@ export const searchKeywords: Record<string, string[]> = {
     'rat', 'mouse', 'rodent', 'rat control', 'mouse trap', 'rat poison',
     'rodent removal', 'mice', 'rat problem', 'rat infestation',
   ],
+  'mosquito-control': [
+    'mosquito', 'mosquito spray', 'mosquito fogging',
+    'mosquito repellent', 'mosquito treatment', 'mosquito net',
+  ],
+  'snake-scorpion-control': [
+    'snake', 'scorpion', 'reptile control',
+    'snake removal', 'scorpion removal', 'snake catcher',
+  ],
 
   // Plumbing
-  'plumbing-standard': [
+  'plumbing-repair': [
     'plumber', 'plumbing', 'leak repair', 'pipe repair', 'tap repair',
-    'faucet repair', 'drain blocked', 'toilet repair', 'sink repair',
+    'faucet repair', 'sink repair',
     'water leak', 'pipe leak', 'dripping tap', 'plumbing service',
-    'bathroom plumbing', 'kitchen plumbing', 'pipe fitting',
+    'bathroom plumbing', 'pipe fitting',
   ],
-  'plumbing-emergency': [
+  'drain-unblocking': [
     'emergency plumber', 'urgent plumbing', 'burst pipe', 'flooding',
     'water damage', 'pipe burst', 'sewage backup', 'toilet overflow',
     'emergency leak', 'plumbing emergency', 'water everywhere',
+    'drain blocked', 'drain clog', 'blocked drain', 'drain cleaning',
   ],
-  'water-heater-install': [
+  'water-heater-installation': [
     'water heater', 'geyser', 'hot water', 'water heater install',
-    'boiler', 'water heater repair', 'no hot water', 'heater replacement',
+    'boiler', 'no hot water', 'heater replacement',
+    'water heater setup', 'geyser install',
   ],
-  'handyman-general': [
+  'water-heater-repair': [
+    'appliance repair', 'washing machine repair', 'dryer repair',
+    'dishwasher repair', 'oven repair', 'fridge repair', 'freezer repair',
+    'appliance fix', 'appliance not working', 'machine repair',
+    'water heater repair', 'water heater fix', 'geyser repair',
+  ],
+  'toilet-repair': [
+    'toilet fix', 'toilet leak', 'flush repair', 'toilet running',
+    'toilet repair', 'cistern repair', 'toilet problem',
+  ],
+  'kitchen-plumbing': [
+    'kitchen plumbing', 'kitchen sink', 'kitchen drain',
+    'kitchen tap repair', 'garbage disposal', 'kitchen pipe',
+  ],
+  'tap-mixer-install': [
+    'tap install', 'faucet install', 'mixer tap', 'kitchen tap',
+    'tap replacement', 'faucet replacement', 'basin tap',
+  ],
+  'water-pump-repair': [
+    'water pump', 'pump repair', 'booster pump',
+    'pump not working', 'water pressure', 'pump motor',
+  ],
+
+  // Handyman & Mounting
+  'tv-mounting': [
     'handyman', 'odd jobs', 'fix things', 'small repairs', 'general repair',
     'home repair', 'maintenance man', 'fixer', 'handy man', 'mr fix it',
     'furniture assembly', 'shelf mounting', 'curtain hanging', 'tv mounting',
     'picture hanging', 'door repair', 'handle repair', 'ikea assembly',
+    'tv mount', 'tv wall mount', 'tv bracket', 'tv hanging',
   ],
 
   // Electrical
-  'electrical-standard': [
+  'electrical-repair': [
     'electrician', 'electrical', 'wiring', 'socket repair', 'switch repair',
-    'light fixture', 'electrical repair', 'power outlet', 'circuit breaker',
-    'fan install', 'light install', 'chandelier', 'dimmer switch',
-    'electrical fault', 'short circuit', 'tripping breaker',
+    'light fixture', 'electrical repair', 'power outlet',
+    'fan install', 'dimmer switch',
+    'electrical fault', 'short circuit',
   ],
-  'electrical-emergency': [
+  'circuit-breaker-repair': [
     'emergency electrician', 'power out', 'no electricity', 'sparking wire',
     'electrical fire risk', 'urgent electrical', 'power failure',
+    'circuit breaker', 'tripping breaker', 'breaker trip', 'mcb repair',
+  ],
+  'light-installation': [
+    'light install', 'chandelier', 'ceiling light', 'lamp install',
+    'light fixture install', 'led install', 'spotlight install',
   ],
   'smart-home-setup': [
     'smart home', 'smart lock', 'ring doorbell', 'alexa setup', 'google home',
@@ -136,40 +205,67 @@ export const searchKeywords: Record<string, string[]> = {
   ],
   'cctv-installation': [
     'cctv', 'security camera', 'surveillance', 'camera install',
-    'home security', 'cctv setup', 'video doorbell', 'security system',
+    'home security', 'cctv setup', 'security system',
     'ip camera', 'night vision camera',
   ],
-  'appliance-repair': [
-    'appliance repair', 'washing machine repair', 'dryer repair',
-    'dishwasher repair', 'oven repair', 'fridge repair', 'freezer repair',
-    'appliance fix', 'appliance not working', 'machine repair',
+  'doorbell-intercom': [
+    'doorbell install', 'intercom', 'video doorbell',
+    'doorbell replacement', 'door intercom', 'smart doorbell',
+  ],
+  'ev-charger-installation': [
+    'ev charger', 'electric car charger', 'tesla charger',
+    'ev charging station', 'electric vehicle charger', 'home charger',
+  ],
+  'full-rewiring': [
+    'rewire', 'full electrical', 'house wiring',
+    'electrical rewire', 'complete rewiring', 'old wiring',
   ],
 
-  // Painting
-  'painting-studio': [
+  // Painting & Walls
+  'interior-painting': [
     'painting', 'paint apartment', 'wall painting', 'house painting',
     'interior painting', 'room painting', 'repaint', 'paint job',
-    'wall color', 'fresh paint', 'apartment painting', 'villa painting',
+    'wall color', 'fresh paint', 'apartment painting',
     'paint my house', 'painter', 'painting contractor',
   ],
-  'wallpaper-install': [
+  'villa-exterior-painting': [
+    'villa paint', 'exterior paint', 'outside painting',
+    'villa painting', 'exterior house paint', 'outdoor painting',
+  ],
+  'wallpaper-installation': [
     'wallpaper', 'wall paper', 'wallpaper install', 'wallpaper removal',
-    'accent wall', 'feature wall', 'wallpaper hanging', 'wall covering',
+    'wallpaper hanging', 'wall covering',
   ],
-  'kitchen-renovation': [
-    'kitchen renovation', 'kitchen remodel', 'kitchen upgrade',
-    'kitchen cabinet', 'kitchen countertop', 'kitchen design',
-    'new kitchen', 'kitchen makeover', 'kitchen fitting',
+  'accent-wall': [
+    'accent wall', 'feature wall', 'statement wall',
+    'decorative wall', 'wall design', 'wall panel',
   ],
+  'wood-varnishing': [
+    'varnish', 'wood polish', 'wood finish', 'lacquer',
+    'wood stain', 'wood coating', 'furniture varnish',
+  ],
+
+  // Renovation & Flooring
   'bathroom-renovation': [
     'bathroom renovation', 'bathroom remodel', 'bathroom upgrade',
     'shower install', 'bathtub', 'bathroom tile', 'bathroom design',
     'new bathroom', 'bathroom makeover', 'bathroom fitting',
+    'kitchen renovation', 'kitchen remodel', 'kitchen upgrade',
+    'kitchen cabinet', 'kitchen countertop', 'kitchen design',
+    'new kitchen', 'kitchen makeover', 'kitchen fitting',
   ],
-  'flooring-install': [
+  'flooring-installation': [
     'flooring', 'floor install', 'tile install', 'wood floor', 'vinyl floor',
     'laminate', 'marble floor', 'parquet', 'floor replacement', 'new floor',
     'floor tile', 'ceramic tile',
+  ],
+  'false-ceiling': [
+    'false ceiling', 'gypsum ceiling', 'drop ceiling',
+    'suspended ceiling', 'ceiling design', 'ceiling panel',
+  ],
+  'partition-wall': [
+    'partition', 'room divider', 'glass partition', 'office partition',
+    'partition wall', 'drywall partition', 'gypsum partition',
   ],
 };
 
