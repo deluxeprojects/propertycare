@@ -57,9 +57,26 @@ export async function GET(request: NextRequest) {
       .ilike('name_en', `%${query}%`)
       .limit(5);
 
+    // 6. Static page matches
+    const staticPages = [
+      { slug: 'guardian', name: 'Property Guardian — Home Watch', href: '/home-services/guardian' },
+      { slug: 'care-plans', name: 'Care Plans — Annual Service Contracts', href: '/care-plans' },
+    ];
+    const pageMatches = staticPages.filter(p =>
+      p.name.toLowerCase().includes(query.toLowerCase()) ||
+      p.slug.includes(query.toLowerCase()) ||
+      query.toLowerCase().includes('guardian') ||
+      query.toLowerCase().includes('home watch') ||
+      query.toLowerCase().includes('property watch') ||
+      query.toLowerCase().includes('absentee') ||
+      (query.toLowerCase().includes('care plan') && p.slug === 'care-plans') ||
+      (query.toLowerCase().includes('annual') && p.slug === 'care-plans')
+    );
+
     return apiSuccess({
       services: services.slice(0, 10),
       areas: areas ?? [],
+      pages: pageMatches,
       query,
     });
   } catch {

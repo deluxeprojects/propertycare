@@ -11,6 +11,7 @@ export interface NavItem {
 export const customerNav: NavItem[] = [
   { label: 'Services', href: '/home-services' },
   { label: 'Areas', href: '/areas' },
+  { label: 'Guardian', href: '/home-services/guardian' },
   { label: 'Care Plans', href: '/care-plans' },
   { label: 'Blog', href: '/blog' },
 ];

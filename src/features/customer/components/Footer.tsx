@@ -9,6 +9,7 @@ const serviceLinks = [
   { label: 'Plumbing', href: '/home-services/plumbing' },
   { label: 'Electrical', href: '/home-services/electrical' },
   { label: 'Painting', href: '/home-services/painting' },
+  { label: 'Property Guardian', href: '/home-services/guardian' },
 ];
 
 const areaLinks = [

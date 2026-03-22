@@ -18,6 +18,11 @@ interface SearchResult {
     slug: string;
     name_en: string;
   }>;
+  pages?: Array<{
+    slug: string;
+    name: string;
+    href: string;
+  }>;
 }
 
 export function SearchBar() {
@@ -87,7 +92,7 @@ export function SearchBar() {
       {/* Dropdown */}
       {open && results && (
         <div className="absolute top-full z-50 mt-1 w-full rounded-xl border border-border bg-card shadow-lg">
-          {results.services.length === 0 && results.areas.length === 0 ? (
+          {results.services.length === 0 && results.areas.length === 0 && (!results.pages || results.pages.length === 0) ? (
             <div className="p-4 text-center text-sm text-muted-foreground">
               No results for &ldquo;{query}&rdquo;
             </div>
@@ -127,6 +132,23 @@ export function SearchBar() {
                       className="flex items-center justify-between px-4 py-2.5 hover:bg-muted"
                     >
                       <p className="text-sm font-medium text-foreground">{a.name_en}</p>
+                      <ArrowRight className="h-3.5 w-3.5 text-muted-foreground" />
+                    </Link>
+                  ))}
+                </div>
+              )}
+
+              {results.pages && results.pages.length > 0 && (
+                <div className="border-t border-border">
+                  <p className="px-4 pt-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">Pages</p>
+                  {results.pages.map((p) => (
+                    <Link
+                      key={p.slug}
+                      href={p.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center justify-between px-4 py-2.5 hover:bg-muted"
+                    >
+                      <p className="text-sm font-medium text-foreground">{p.name}</p>
                       <ArrowRight className="h-3.5 w-3.5 text-muted-foreground" />
                     </Link>
                   ))}
