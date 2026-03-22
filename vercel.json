@@ -1,0 +1,20 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/expire-promos",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/booking-reminders",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/amc-reminders",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/review-requests",
+      "schedule": "0 * * * *"
+    }
+  ]
+}
