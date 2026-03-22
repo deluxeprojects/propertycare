@@ -17,6 +17,7 @@ import {
   FileText,
   BarChart3,
   Settings,
+  X,
 } from 'lucide-react';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -33,16 +34,28 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Settings,
 };
 
-export function AdminSidebar() {
+interface AdminSidebarProps {
+  onClose?: () => void;
+}
+
+export function AdminSidebar({ onClose }: AdminSidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-64 flex-col border-r border-border bg-primary text-primary-foreground lg:flex">
-      <div className="flex h-16 items-center gap-2 border-b border-primary-foreground/20 px-6">
+    <aside className="flex h-full w-64 flex-col border-r border-border bg-primary text-primary-foreground">
+      <div className="flex h-16 items-center justify-between border-b border-primary-foreground/20 px-6">
         <div>
           <ProKeepLogo size="xs" dark />
           <p className="mt-1 text-xs text-primary-foreground/60">Admin Panel</p>
         </div>
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="rounded-lg p-1 text-primary-foreground/60 hover:bg-primary-foreground/10 hover:text-primary-foreground lg:hidden"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        )}
       </div>
 
       <nav className="flex-1 space-y-1 overflow-y-auto p-3">
@@ -57,6 +70,7 @@ export function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               className={cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                 isActive

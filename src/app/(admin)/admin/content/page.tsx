@@ -130,10 +130,11 @@ export default async function ContentPage() {
 
   const blogPostsTab = (
     <div className="space-y-4">
-      <div className="flex justify-end">
+      <div className="flex items-center justify-between">
+        <p className="text-sm text-muted-foreground">{blogPosts.length} posts</p>
         <Link
           href="/admin/content/blog/new"
-          className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90"
+          className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-sm hover:bg-accent/90"
         >
           + New Post
         </Link>

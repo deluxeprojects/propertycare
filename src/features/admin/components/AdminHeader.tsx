@@ -2,11 +2,15 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Bell, Search, User, LogOut, ChevronDown } from 'lucide-react';
+import { Bell, Search, User, LogOut, ChevronDown, Menu } from 'lucide-react';
 import { DarkModeToggle } from './DarkModeToggle';
 import { createClient } from '@/lib/supabase/client';
 
-export function AdminHeader() {
+interface AdminHeaderProps {
+  onMenuToggle?: () => void;
+}
+
+export function AdminHeader({ onMenuToggle }: AdminHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const router = useRouter();
@@ -19,14 +23,22 @@ export function AdminHeader() {
   };
 
   return (
-    <header className="flex h-16 items-center justify-between border-b border-border bg-card px-6">
-      <div className="flex items-center gap-4">
-        <div className="relative">
+    <header className="flex h-16 items-center justify-between border-b border-border bg-card px-4 md:px-6">
+      <div className="flex items-center gap-3">
+        {onMenuToggle && (
+          <button
+            onClick={onMenuToggle}
+            className="rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground lg:hidden"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+        )}
+        <div className="relative hidden sm:block">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <input
             type="text"
             placeholder="Search orders, customers..."
-            className="h-9 w-72 rounded-lg border border-input bg-background pl-9 pr-4 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+            className="h-9 w-48 rounded-lg border border-input bg-background pl-9 pr-4 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent md:w-72"
           />
         </div>
       </div>
