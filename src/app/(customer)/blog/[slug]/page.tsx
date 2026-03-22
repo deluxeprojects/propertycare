@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { ArrowLeft } from 'lucide-react';
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 export const revalidate = 3600; // Revalidate every hour
 
 async function getBlogPost(slug: string) {
-  const supabase = await createClient();
+  const supabase = createAdminClient();
   const { data: post, error } = await supabase
     .from('blog_posts')
     .select('*')

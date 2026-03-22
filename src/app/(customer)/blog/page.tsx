@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/config/site';
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 
 export const metadata = {
   title: 'Blog',
@@ -11,7 +11,7 @@ export const metadata = {
 export const revalidate = 3600; // Revalidate every hour
 
 async function getBlogPosts() {
-  const supabase = await createClient();
+  const supabase = createAdminClient();
   const { data: posts, error } = await supabase
     .from('blog_posts')
     .select('slug, title, excerpt, category, featured_image, published_at, read_time, author')
