@@ -97,6 +97,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
+  // Blog post pages
+  const { data: blogPosts } = await supabase
+    .from('blog_posts')
+    .select('slug, published_at, updated_at')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false });
+  const blogPages: MetadataRoute.Sitemap = (blogPosts ?? []).map((p) => ({
+    url: `${baseUrl}/blog/${p.slug}`,
+    lastModified: new Date(p.updated_at || p.published_at),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
   return [
     ...staticPages,
     ...categoryPages,
@@ -105,5 +118,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...areaServicePages,
     ...guidePages,
     ...buildingPages,
+    ...blogPages,
   ];
 }
