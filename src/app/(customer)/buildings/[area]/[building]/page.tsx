@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { MapPin, Building2, Calendar, ArrowLeft, ArrowRight, Users } from 'lucide-react';
+import { AreaMap } from '@/features/customer/components/AreaMap';
 
 interface Props {
   params: Promise<{ area: string; building: string }>;
@@ -85,6 +86,11 @@ export default async function BuildingPage({ params }: Props) {
           {building.description_en && (
             <p className="max-w-3xl text-muted-foreground">{building.description_en}</p>
           )}
+        </div>
+
+        {/* Map */}
+        <div className="mb-12">
+          <AreaMap latitude={Number(building.latitude)} longitude={Number(building.longitude)} areaName={building.name_en} />
         </div>
 
         {/* Services */}

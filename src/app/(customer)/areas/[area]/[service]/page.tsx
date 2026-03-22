@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { MapPin, ArrowRight, CheckCircle2, Shield, Star, Clock } from 'lucide-react';
+import { AreaMap } from '@/features/customer/components/AreaMap';
 
 interface Props {
   params: Promise<{ area: string; service: string }>;
@@ -128,6 +129,9 @@ export default async function AreaServicePage({ params }: Props) {
                 </div>
               </div>
             )}
+
+            {/* Map */}
+            <AreaMap latitude={Number(area.latitude)} longitude={Number(area.longitude)} areaName={area.name_en} />
 
             {/* Related services */}
             {relatedServices && relatedServices.length > 0 && (

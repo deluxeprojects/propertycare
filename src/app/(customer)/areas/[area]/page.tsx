@@ -4,6 +4,7 @@ import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { MapPin, ArrowLeft, ArrowRight } from 'lucide-react';
 import { AreaMap } from '@/features/customer/components/AreaMap';
+import { ExpandableText } from '@/features/customer/components/ExpandableText';
 
 interface Props {
   params: Promise<{ area: string }>;
@@ -67,14 +68,22 @@ export default async function AreaPage({ params }: Props) {
           <h1 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
             Home Services in {area.name_en}, Dubai
           </h1>
-          <p className="max-w-3xl text-muted-foreground">{area.description_en}</p>
           {area.image_url && (
-            <div className="mt-6 overflow-hidden rounded-xl">
-              <img src={area.image_url} alt={`Home services in ${area.name_en}, Dubai`} className="h-48 w-full object-cover md:h-64" loading="lazy" />
+            <div className="mt-4 overflow-hidden rounded-xl">
+              <img src={area.image_url} alt={`Home services in ${area.name_en}, Dubai`} className="h-48 w-full object-cover md:h-72" loading="lazy" />
             </div>
           )}
+
+          <div className="mt-6">
+            <ExpandableText text={area.description_en} maxLines={3} />
+          </div>
+
+          <div className="mt-6">
+            <AreaMap latitude={Number(area.latitude)} longitude={Number(area.longitude)} areaName={area.name_en} />
+          </div>
+
           {area.approximate_units && (
-            <p className="mt-2 text-sm text-muted-foreground">
+            <p className="mt-3 text-sm text-muted-foreground">
               ~{area.approximate_units.toLocaleString()} residential units
             </p>
           )}

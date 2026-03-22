@@ -7,12 +7,11 @@ interface AreaMapProps {
 }
 
 export function AreaMap({ latitude, longitude, areaName }: AreaMapProps) {
-  const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const googleKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
 
-  if (!mapboxToken || !latitude || !longitude) {
-    // Static map placeholder
+  if (!googleKey || !latitude || !longitude || latitude === 0) {
     return (
-      <div className="relative h-48 w-full overflow-hidden rounded-xl bg-muted">
+      <div className="relative h-56 w-full overflow-hidden rounded-xl bg-muted">
         <div className="flex h-full items-center justify-center">
           <div className="text-center">
             <div className="mb-2 text-2xl">📍</div>
@@ -24,15 +23,14 @@ export function AreaMap({ latitude, longitude, areaName }: AreaMapProps) {
     );
   }
 
-  // Mapbox static image (no JS SDK needed)
-  const staticMapUrl = `https://api.mapbox.com/styles/v1/mapbox/light-v11/static/pin-s+4ECDC4(${longitude},${latitude})/${longitude},${latitude},13,0/600x300@2x?access_token=${mapboxToken}`;
+  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=14&size=800x400&scale=2&maptype=roadmap&markers=color:0x4ECDC4%7C${latitude},${longitude}&style=feature:poi%7Cvisibility:off&key=${googleKey}`;
 
   return (
     <div className="overflow-hidden rounded-xl">
       <img
         src={staticMapUrl}
         alt={`Map of ${areaName}, Dubai`}
-        className="h-48 w-full object-cover"
+        className="h-56 w-full object-cover"
         loading="lazy"
       />
     </div>
