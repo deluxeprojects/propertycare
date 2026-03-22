@@ -33,3 +33,25 @@
     font-family: var(--font-sans);
   }
 }
+
+.dark {
+  --color-primary: #60C8BF;
+  --color-primary-foreground: #0f172a;
+  --color-accent: #4ECDC4;
+  --color-accent-foreground: #0f172a;
+  --color-background: #0f172a;
+  --color-foreground: #f1f5f9;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+  --color-card: #1e293b;
+  --color-card-foreground: #f1f5f9;
+  --color-border: #334155;
+  --color-input: #334155;
+  --color-ring: #4ECDC4;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #f1f5f9;
+  --color-popover: #1e293b;
+  --color-popover-foreground: #f1f5f9;
+}

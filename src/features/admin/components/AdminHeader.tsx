@@ -1,6 +1,7 @@
 'use client';
 
 import { Bell, Search, User } from 'lucide-react';
+import { DarkModeToggle } from './DarkModeToggle';
 
 export function AdminHeader() {
   return (
@@ -16,6 +17,7 @@ export function AdminHeader() {
         </div>
       </div>
       <div className="flex items-center gap-4">
+        <DarkModeToggle />
         <button className="relative rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground">
           <Bell className="h-5 w-5" />
           <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-destructive" />

@@ -25,7 +25,7 @@ const services = [
     icon: Sparkles,
     name: 'Cleaning',
     slug: 'cleaning',
-    desc: 'Professional cleaning for homes, offices, and move-in/out',
+    desc: 'Apartment deep cleaning, regular maid service, move-in/out cleaning, sofa & carpet shampooing, and window washing across Dubai',
     price: 38,
     unit: '/hr',
     subs: [
@@ -41,7 +41,7 @@ const services = [
     icon: Wind,
     name: 'AC Services',
     slug: 'ac-services',
-    desc: 'Complete AC care from routine servicing to full installation',
+    desc: 'Split AC servicing, coil deep cleaning, duct sanitization, emergency repair, and new unit installation for Dubai homes',
     price: 120,
     unit: '/unit',
     subs: [
@@ -56,7 +56,7 @@ const services = [
     icon: Bug,
     name: 'Pest Control',
     slug: 'pest-control',
-    desc: 'Municipality-approved pest management for all property types',
+    desc: 'Dubai Municipality-approved treatments for cockroaches, bed bugs, termites, rodents, and general pests in apartments & villas',
     price: 220,
     unit: '',
     subs: [
@@ -71,7 +71,7 @@ const services = [
     icon: Droplets,
     name: 'Plumbing',
     slug: 'plumbing',
-    desc: 'Standard and emergency plumbing for any issue',
+    desc: 'Leak repair, drain unblocking, water heater installation, tank cleaning, and 24/7 emergency plumbing across Dubai',
     price: 150,
     unit: '/hr',
     subs: [
@@ -86,7 +86,7 @@ const services = [
     icon: Plug,
     name: 'Electrical',
     slug: 'electrical',
-    desc: 'Electrical repair, installation, and smart home setup',
+    desc: 'Socket repair, wiring fixes, smart home setup, CCTV installation, and emergency electrical services for Dubai properties',
     price: 150,
     unit: '/hr',
     subs: [
@@ -101,7 +101,7 @@ const services = [
     icon: Paintbrush,
     name: 'Painting & Fit-Out',
     slug: 'painting',
-    desc: 'Interior painting, renovation, and custom fit-out',
+    desc: 'Apartment painting, villa exterior coating, wallpaper installation, kitchen renovation, bathroom remodeling, and custom fit-out',
     price: 700,
     unit: '',
     subs: [
@@ -115,11 +115,11 @@ const services = [
 ];
 
 const trustBadges = [
-  { icon: Shield, label: 'Licensed & Insured' },
-  { icon: Clock, label: '72-Hour Guarantee' },
-  { icon: Star, label: '4.8 Average Rating' },
-  { icon: MapPin, label: '40+ Areas Covered' },
-  { icon: Zap, label: 'Same-Day Available' },
+  { icon: Shield, label: 'DM Licensed & Insured' },
+  { icon: Clock, label: '72-Hour Redo Guarantee' },
+  { icon: Star, label: '4.8\u2605 from 2,000+ Reviews' },
+  { icon: MapPin, label: '40+ Dubai Areas' },
+  { icon: Zap, label: 'Same-Day Booking' },
 ];
 
 const steps = [
@@ -177,19 +177,19 @@ const testimonials = [
     name: 'Sarah M.',
     area: 'Dubai Marina',
     rating: 5,
-    text: 'Excellent deep cleaning service. The team was professional, thorough, and left my apartment spotless. Will definitely book again!',
+    text: 'We moved into a new apartment in Marina Gate and needed a full deep clean before unpacking. The team arrived on time, brought all their own supplies, and the place was spotless in 4 hours. Already booked them for monthly cleaning.',
   },
   {
     name: 'Ahmed K.',
     area: 'Downtown Dubai',
     rating: 5,
-    text: 'Best AC service in Dubai. They cleaned all 4 units in my apartment and the difference in cooling is remarkable. Great value too.',
+    text: 'Had 4 AC units serviced in our Burj Vista apartment. The technician was thorough \u2014 cleaned the filters, coils, and checked the drainage. Our electricity bill dropped noticeably the following month.',
   },
   {
     name: 'Marina R.',
     area: 'Palm Jumeirah',
     rating: 5,
-    text: 'The Care Plan has been a lifesaver. One call and everything gets handled. The dedicated coordinator really knows our villa.',
+    text: 'Managing a villa in Palm Jumeirah remotely was a headache until we got the Total Care Plan. Now everything from AC servicing to pool maintenance is handled without me having to coordinate anything.',
   },
 ];
 
@@ -204,8 +204,9 @@ export default function HomePage() {
               {siteConfig.tagline}
             </h1>
             <p className="mb-8 text-lg text-primary-foreground/80 md:text-xl">
-              Professional cleaning, AC, pest control, plumbing, electrical &
-              maintenance services across Dubai. Book online in 60 seconds.
+              Dubai&apos;s trusted home services platform. From deep cleaning to
+              AC maintenance, pest control to plumbing &mdash; book vetted
+              professionals online in 60 seconds.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link
@@ -247,11 +248,12 @@ export default function HomePage() {
         <div className="container mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-              Our Services
+              Home Services in Dubai
             </h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              53+ professional services across 6 categories. All technicians are
-              licensed, vetted, and insured.
+              From routine apartment cleaning to villa maintenance &mdash; 53
+              professional services delivered by licensed technicians across
+              Dubai.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -299,7 +301,7 @@ export default function HomePage() {
         <div className="container mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-              How It Works
+              Book Home Services in 4 Easy Steps
             </h2>
             <p className="text-muted-foreground">
               Book your service in 4 simple steps
@@ -404,8 +406,12 @@ export default function HomePage() {
         <div className="container mx-auto max-w-7xl">
           <div className="mb-8 text-center">
             <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-              Serving 40+ Areas Across Dubai
+              Serving 40+ Neighborhoods Across Dubai
             </h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground">
+              Select your area to see available services, local pricing, and
+              same-day availability.
+            </p>
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             {areas.map((area) => (
@@ -425,11 +431,12 @@ export default function HomePage() {
       <section className="bg-accent px-4 py-16 text-accent-foreground">
         <div className="container mx-auto max-w-7xl text-center">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-            Ready to Get Started?
+            Your Home Deserves Better Care
           </h2>
           <p className="mb-8 text-lg text-accent-foreground/80">
-            Book your first service today and experience the {siteConfig.name}{' '}
-            difference.
+            Join thousands of Dubai residents who trust {siteConfig.name} for
+            their home maintenance. First booking? Use code WELCOME20 for 20%
+            off.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
