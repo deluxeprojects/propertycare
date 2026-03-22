@@ -18,6 +18,8 @@ export const metadata = {
   description: 'Save up to 40% on home maintenance with ProKeep Care Plans. AC, cleaning, pest control, housekeeping & pool maintenance contracts for Dubai homes.',
 };
 
+export const revalidate = 3600; // Revalidate every hour
+
 /* ------------------------------------------------------------------ */
 /*  New contract-type plans                                           */
 /* ------------------------------------------------------------------ */

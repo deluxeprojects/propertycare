@@ -183,7 +183,7 @@ export default async function ServiceEditPage({ params }: Props) {
             <p className="mb-2 text-xs font-medium text-muted-foreground">Hero Image</p>
             <div className="aspect-video overflow-hidden rounded bg-muted">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={service.hero_image_url} alt="Hero" className="h-full w-full object-cover" />
+              <img src={service.hero_image_url} alt="Hero" className="h-full w-full object-cover" loading="lazy" />
             </div>
           </div>
         )}
@@ -192,7 +192,7 @@ export default async function ServiceEditPage({ params }: Props) {
             <p className="mb-2 text-xs font-medium text-muted-foreground">Icon</p>
             <div className="flex h-20 items-center justify-center rounded bg-muted">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={service.icon_url} alt="Icon" className="h-12 w-12 object-contain" />
+              <img src={service.icon_url} alt="Icon" className="h-12 w-12 object-contain" loading="lazy" />
             </div>
           </div>
         )}

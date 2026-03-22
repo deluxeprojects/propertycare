@@ -30,6 +30,8 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
+export const revalidate = 3600; // Revalidate every hour
+
 export default async function AreaPage({ params }: Props) {
   const { area: areaSlug } = await params;
   const supabase = createAdminClient();

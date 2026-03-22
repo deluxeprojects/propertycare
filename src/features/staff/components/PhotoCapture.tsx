@@ -78,7 +78,7 @@ export function PhotoCapture({ orderId, onUploadComplete }: PhotoCaptureProps) {
         <div className="grid grid-cols-3 gap-2">
           {photos.map((photo, i) => (
             <div key={i} className="relative aspect-square overflow-hidden rounded-lg border border-border">
-              <img src={photo.preview} alt={`Photo ${i + 1}`} className="h-full w-full object-cover" />
+              <img src={photo.preview} alt={`Photo ${i + 1}`} className="h-full w-full object-cover" loading="lazy" />
               <button
                 onClick={() => removePhoto(i)}
                 className="absolute right-1 top-1 rounded-full bg-black/50 p-1 text-white"

@@ -24,6 +24,8 @@ export async function generateMetadata({ params }: Props) {
   return { title, description };
 }
 
+export const revalidate = 3600; // Revalidate every hour
+
 export default async function CategoryPage({ params }: Props) {
   const { category } = await params;
   const supabase = createAdminClient();

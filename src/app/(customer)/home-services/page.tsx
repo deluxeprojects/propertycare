@@ -18,20 +18,32 @@ const categoryIcons: Record<string, LucideIcon> = {
   painting: Paintbrush,
 };
 
+export const revalidate = 3600; // Revalidate every hour
+
 export default async function ServicesPage() {
   const supabase = createAdminClient();
-  const { data: categories } = await supabase
-    .from('service_categories')
-    .select('slug, name_en, description_en, image_url')
-    .eq('is_active', true)
-    .order('sort_order');
 
-  // Get service count and min price per category
-  const { data: services } = await supabase
-    .from('services')
-    .select('category_id, base_price_aed, service_categories(slug)')
-    .eq('is_active', true)
-    .eq('is_hidden', false);
+  let categories: { slug: string; name_en: string; description_en: string; image_url: string | null }[] | null = null;
+  let services: { category_id: string; base_price_aed: number; service_categories: unknown }[] | null = null;
+
+  try {
+    const [catResult, svcResult] = await Promise.all([
+      supabase
+        .from('service_categories')
+        .select('slug, name_en, description_en, image_url')
+        .eq('is_active', true)
+        .order('sort_order'),
+      supabase
+        .from('services')
+        .select('category_id, base_price_aed, service_categories(slug)')
+        .eq('is_active', true)
+        .eq('is_hidden', false),
+    ]);
+    categories = catResult.data;
+    services = svcResult.data;
+  } catch (error) {
+    console.error('Error fetching services data:', error);
+  }
 
   const categoryStats: Record<string, { count: number; minPrice: number }> = {};
   for (const s of services ?? []) {

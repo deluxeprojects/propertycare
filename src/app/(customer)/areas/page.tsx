@@ -8,14 +8,24 @@ export const metadata = {
   description: 'ProKeep serves 40+ areas across Dubai. Find professional cleaning, AC, pest control & maintenance services in your neighborhood. Same-day booking available.',
 };
 
+export const revalidate = 3600; // Revalidate every hour
+
 export default async function AreasPage() {
   const supabase = createAdminClient();
-  const { data: areas } = await supabase
-    .from('areas')
-    .select('slug, name_en, zone_group')
-    .eq('is_active', true)
-    .order('zone_group')
-    .order('name_en');
+
+  let areas: { slug: string; name_en: string; zone_group: string }[] | null = null;
+
+  try {
+    const result = await supabase
+      .from('areas')
+      .select('slug, name_en, zone_group')
+      .eq('is_active', true)
+      .order('zone_group')
+      .order('name_en');
+    areas = result.data;
+  } catch (error) {
+    console.error('Error fetching areas:', error);
+  }
 
   // Group areas by zone_group
   const zoneGroups: Record<string, Array<{ slug: string; name_en: string }>> = {};
