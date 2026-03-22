@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 import { Shield, Users, MapPin, Clock, Star, Award } from 'lucide-react';
 
@@ -17,6 +18,10 @@ export default function AboutPage() {
   return (
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-4xl">
+        <nav className="mb-6 text-sm text-muted-foreground">
+          <Link href="/" className="hover:text-accent">Home</Link>{' / '}
+          <span className="text-foreground">About</span>
+        </nav>
         <h1 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">
           About {siteConfig.name}
         </h1>

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { MapPin, ArrowRight, CheckCircle2, Shield, Star, Clock } from 'lucide-react';
+import { ServiceContent } from '@/features/customer/components/ServiceContent';
 
 interface Props {
   params: Promise<{ area: string; building: string; service: string }>;
@@ -59,7 +60,7 @@ export default async function BuildingServicePage({ params }: Props) {
                 {area?.name_en}, Dubai
                 {building.developer && <span>· by {building.developer}</span>}
               </div>
-              <p className="text-muted-foreground">{service.long_desc_en || service.short_desc_en}</p>
+              <ServiceContent content={service.long_desc_en || service.short_desc_en || ''} />
             </div>
 
             <div className="flex flex-wrap gap-4">

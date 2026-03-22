@@ -45,6 +45,10 @@ export default async function ServicesPage() {
   return (
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
+        <nav className="mb-6 text-sm text-muted-foreground">
+          <Link href="/" className="hover:text-accent">Home</Link>{' / '}
+          <span className="text-foreground">Home Services</span>
+        </nav>
         <div className="mb-12">
           <h1 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
             Home Services in Dubai

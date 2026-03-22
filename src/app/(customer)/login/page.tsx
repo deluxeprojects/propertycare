@@ -20,6 +20,7 @@ function LoginForm() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState<'login' | 'signup'>('login');
+  const [resetSent, setResetSent] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get('redirect') ?? '/account';
@@ -58,6 +59,23 @@ function LoginForm() {
       setError('Something went wrong');
       setLoading(false);
     }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      setError('Please enter your email address first');
+      return;
+    }
+    setError('');
+    const supabase = createClient();
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/account/reset-password`,
+    });
+    if (resetError) {
+      setError(resetError.message);
+      return;
+    }
+    setResetSent(true);
   };
 
   const handleGoogleLogin = async () => {
@@ -124,6 +142,17 @@ function LoginForm() {
                 minLength={6}
                 className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
               />
+              {mode === 'login' && (
+                <div className="mt-1.5">
+                  {resetSent ? (
+                    <p className="text-xs text-green-600">Password reset email sent! Check your inbox.</p>
+                  ) : (
+                    <button type="button" onClick={handleForgotPassword} className="text-xs text-accent hover:underline">
+                      Forgot your password?
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
             <button
               type="submit"

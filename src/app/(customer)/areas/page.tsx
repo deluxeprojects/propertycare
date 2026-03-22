@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { MapPin } from 'lucide-react';
 
 export const metadata = {
@@ -7,42 +8,26 @@ export const metadata = {
   description: 'ProKeep serves 40+ areas across Dubai. Find professional cleaning, AC, pest control & maintenance services in your neighborhood. Same-day booking available.',
 };
 
-const zoneGroups = [
-  {
-    name: 'Marina & Coast',
-    areas: [
-      { name: 'Dubai Marina', slug: 'dubai-marina', services: 53 },
-      { name: 'JBR', slug: 'jbr', services: 53 },
-      { name: 'Palm Jumeirah', slug: 'palm-jumeirah', services: 53 },
-    ],
-  },
-  {
-    name: 'Downtown & DIFC',
-    areas: [
-      { name: 'Downtown Dubai', slug: 'downtown-dubai', services: 53 },
-      { name: 'DIFC', slug: 'difc', services: 45 },
-      { name: 'Business Bay', slug: 'business-bay', services: 53 },
-    ],
-  },
-  {
-    name: 'New Dubai',
-    areas: [
-      { name: 'JLT', slug: 'jlt', services: 53 },
-      { name: 'Dubai Hills', slug: 'dubai-hills', services: 53 },
-    ],
-  },
-  {
-    name: 'Villa Communities',
-    areas: [
-      { name: 'Arabian Ranches', slug: 'arabian-ranches', services: 53 },
-      { name: 'Jumeirah', slug: 'jumeirah', services: 53 },
-      { name: 'Al Barsha', slug: 'al-barsha', services: 53 },
-      { name: 'Mirdif', slug: 'mirdif', services: 50 },
-    ],
-  },
-];
+export default async function AreasPage() {
+  const supabase = createAdminClient();
+  const { data: areas } = await supabase
+    .from('areas')
+    .select('slug, name_en, zone_group')
+    .eq('is_active', true)
+    .order('zone_group')
+    .order('name_en');
 
-export default function AreasPage() {
+  // Group areas by zone_group
+  const zoneGroups: Record<string, Array<{ slug: string; name_en: string }>> = {};
+  for (const area of areas ?? []) {
+    const group = area.zone_group ?? 'Other';
+    if (!zoneGroups[group]) zoneGroups[group] = [];
+    zoneGroups[group].push({ slug: area.slug, name_en: area.name_en });
+  }
+
+  const formatGroupName = (key: string) =>
+    key.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+
   return (
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
@@ -58,13 +43,13 @@ export default function AreasPage() {
         </div>
 
         <div className="space-y-12">
-          {zoneGroups.map((zone) => (
-            <div key={zone.name}>
+          {Object.entries(zoneGroups).map(([group, groupAreas]) => (
+            <div key={group}>
               <h2 className="mb-6 text-xl font-semibold text-foreground">
-                {zone.name}
+                {formatGroupName(group)}
               </h2>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {zone.areas.map((area) => (
+                {groupAreas.map((area) => (
                   <Link
                     key={area.slug}
                     href={`/areas/${area.slug}`}
@@ -73,12 +58,9 @@ export default function AreasPage() {
                     <div className="mb-3 flex items-center gap-2">
                       <MapPin className="h-4 w-4 text-accent" />
                       <h3 className="font-semibold text-card-foreground group-hover:text-accent">
-                        {area.name}
+                        {area.name_en}
                       </h3>
                     </div>
-                    <p className="text-xs text-muted-foreground">
-                      {area.services} services available
-                    </p>
                   </Link>
                 ))}
               </div>

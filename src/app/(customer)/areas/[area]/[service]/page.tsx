@@ -4,6 +4,7 @@ import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { MapPin, ArrowRight, CheckCircle2, Shield, Star, Clock } from 'lucide-react';
 import { AreaMap } from '@/features/customer/components/AreaMap';
+import { ServiceContent } from '@/features/customer/components/ServiceContent';
 
 interface Props {
   params: Promise<{ area: string; service: string }>;
@@ -66,10 +67,10 @@ export default async function AreaServicePage({ params }: Props) {
               <h1 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
                 {service.name_en} in {area.name_en}, Dubai
               </h1>
-              <p className="text-muted-foreground">
-                {service.long_desc_en || service.short_desc_en}
-                {' '}We serve all buildings and properties in {area.name_en} with licensed, insured technicians.
-              </p>
+              <ServiceContent
+                content={service.long_desc_en || service.short_desc_en || ''}
+                suffix={` We serve all buildings and properties in ${area.name_en} with licensed, insured technicians.`}
+              />
             </div>
 
             <div className="flex flex-wrap gap-4">

@@ -174,6 +174,21 @@ function StepLocation() {
   const [buildingName, setBuildingName] = useState('');
   const [unitNumber, setUnitNumber] = useState('');
   const [area, setArea] = useState('');
+  const [areas, setAreas] = useState<Array<{ slug: string; name_en: string }>>([]);
+
+  useEffect(() => {
+    fetch('/api/v1/public/areas')
+      .then(res => res.json())
+      .then(data => setAreas(data ?? []))
+      .catch(() => {});
+  }, []);
+
+  const handleContinue = () => {
+    const areaName = areas.find(a => a.slug === area)?.name_en ?? area;
+    const parts = [unitNumber, buildingName, areaName, 'Dubai'].filter(Boolean);
+    const addressString = parts.join(', ');
+    setAddress(addressString, undefined, undefined, area);
+  };
 
   return (
     <div>
@@ -198,14 +213,9 @@ function StepLocation() {
           <label className="mb-1.5 block text-sm font-medium text-foreground">Area</label>
           <select value={area} onChange={e => setArea(e.target.value)} className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none">
             <option value="">Select area</option>
-            <option value="dubai-marina">Dubai Marina</option>
-            <option value="downtown-dubai">Downtown Dubai</option>
-            <option value="jbr">JBR</option>
-            <option value="palm-jumeirah">Palm Jumeirah</option>
-            <option value="business-bay">Business Bay</option>
-            <option value="jlt">JLT</option>
-            <option value="dubai-hills">Dubai Hills</option>
-            <option value="arabian-ranches">Arabian Ranches</option>
+            {areas.map(a => (
+              <option key={a.slug} value={a.slug}>{a.name_en}</option>
+            ))}
           </select>
         </div>
         <div>
@@ -216,7 +226,7 @@ function StepLocation() {
           <label className="mb-1.5 block text-sm font-medium text-foreground">Unit / Apartment Number</label>
           <input type="text" value={unitNumber} onChange={e => setUnitNumber(e.target.value)} placeholder="e.g. 2304" className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
         </div>
-        <button onClick={() => setAddress('temp-address', undefined, undefined, area)} disabled={!area || !buildingName}
+        <button onClick={handleContinue} disabled={!area || !buildingName}
           className="rounded-lg bg-accent px-6 py-2.5 text-sm font-semibold text-accent-foreground hover:bg-accent/90 disabled:opacity-50">
           Continue <ArrowRight className="ml-1 inline h-4 w-4" />
         </button>
@@ -298,7 +308,29 @@ function StepSchedule() {
 
 // Step 6: Account (simplified)
 function StepAccount() {
-  const { nextStep, prevStep } = useBooking();
+  const { nextStep, prevStep, setNotes, notesCustomer } = useBooking();
+  const [fullName, setFullName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [notes, setLocalNotes] = useState(notesCustomer);
+
+  // Pre-fill from Supabase auth if available
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user) {
+        setEmail(user.email ?? '');
+        setFullName(user.user_metadata?.full_name ?? '');
+        setPhone(user.user_metadata?.phone ?? '');
+      }
+    });
+  }, []);
+
+  const handleContinue = () => {
+    setNotes(notes);
+    nextStep();
+  };
+
   return (
     <div>
       <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
@@ -308,21 +340,21 @@ function StepAccount() {
       <div className="space-y-4">
         <div>
           <label className="mb-1.5 block text-sm font-medium text-foreground">Full Name</label>
-          <input type="text" placeholder="Your name" className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
+          <input type="text" value={fullName} onChange={e => setFullName(e.target.value)} placeholder="Your name" className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
         </div>
         <div>
           <label className="mb-1.5 block text-sm font-medium text-foreground">Phone Number</label>
-          <input type="tel" placeholder="+971 50 XXX XXXX" className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
+          <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+971 50 XXX XXXX" className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
         </div>
         <div>
           <label className="mb-1.5 block text-sm font-medium text-foreground">Email</label>
-          <input type="email" placeholder="your@email.com" className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
+          <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com" className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
         </div>
         <div>
           <label className="mb-1.5 block text-sm font-medium text-foreground">Special Instructions (Optional)</label>
-          <textarea placeholder="Gate code, parking info, pet in the house..." rows={3} className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
+          <textarea value={notes} onChange={e => setLocalNotes(e.target.value)} placeholder="Gate code, parking info, pet in the house..." rows={3} className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none" />
         </div>
-        <button onClick={nextStep} className="rounded-lg bg-accent px-6 py-2.5 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
+        <button onClick={handleContinue} disabled={!fullName || !phone || !email} className="rounded-lg bg-accent px-6 py-2.5 text-sm font-semibold text-accent-foreground hover:bg-accent/90 disabled:opacity-50">
           Continue to Review <ArrowRight className="ml-1 inline h-4 w-4" />
         </button>
       </div>
@@ -336,9 +368,39 @@ function StepReview() {
   const [submitting, setSubmitting] = useState(false);
   const [orderError, setOrderError] = useState('');
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'tabby' | 'cash'>('card');
-  const vat = Math.round((booking.basePrice + booking.addonsTotal) * 0.05 * 100) / 100;
-  const expressSurcharge = booking.isExpress ? Math.round((booking.basePrice + booking.addonsTotal) * 0.5 * 100) / 100 : 0;
-  const total = booking.basePrice + booking.addonsTotal + expressSurcharge + vat;
+  const [promoCode, setPromoCode] = useState('');
+  const [promoDiscount, setPromoDiscount] = useState(0);
+  const [promoError, setPromoError] = useState('');
+  const [promoApplied, setPromoApplied] = useState(false);
+
+  const subtotal = booking.basePrice + booking.addonsTotal;
+  const expressSurcharge = booking.isExpress ? Math.round(subtotal * 0.5 * 100) / 100 : 0;
+  const vat = Math.round((subtotal + expressSurcharge - promoDiscount) * 0.05 * 100) / 100;
+  const total = subtotal + expressSurcharge - promoDiscount + vat;
+
+  const handleApplyPromo = async () => {
+    if (!promoCode.trim()) return;
+    setPromoError('');
+    try {
+      const res = await fetch('/api/v1/public/promos/validate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: promoCode.trim(), subtotal }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setPromoError(data.error || 'Invalid promo code');
+        setPromoDiscount(0);
+        setPromoApplied(false);
+        return;
+      }
+      setPromoDiscount(data.discount ?? 0);
+      setPromoApplied(true);
+      booking.setPromoCode(promoCode.trim());
+    } catch {
+      setPromoError('Failed to validate promo code');
+    }
+  };
 
   const handleConfirm = async () => {
     setOrderError('');
@@ -370,7 +432,7 @@ function StepReview() {
           baseAmount: booking.basePrice,
           addonsAmount: booking.addonsTotal,
           expressSurcharge,
-          discount: booking.discount,
+          discount: promoDiscount,
           vat,
           total,
         }),
@@ -425,6 +487,7 @@ function StepReview() {
             <div className="flex justify-between"><span className="text-muted-foreground">Service</span><span className="text-foreground">AED {booking.basePrice.toFixed(2)}</span></div>
             {booking.addonsTotal > 0 && <div className="flex justify-between"><span className="text-muted-foreground">Add-ons</span><span className="text-foreground">AED {booking.addonsTotal.toFixed(2)}</span></div>}
             {expressSurcharge > 0 && <div className="flex justify-between"><span className="text-yellow-600">Express surcharge</span><span className="text-yellow-600">AED {expressSurcharge.toFixed(2)}</span></div>}
+            {promoDiscount > 0 && <div className="flex justify-between"><span className="text-green-600">Promo discount</span><span className="text-green-600">-AED {promoDiscount.toFixed(2)}</span></div>}
             <div className="flex justify-between"><span className="text-muted-foreground">VAT (5%)</span><span className="text-foreground">AED {vat.toFixed(2)}</span></div>
           </div>
 
@@ -438,9 +501,15 @@ function StepReview() {
       <div className="mb-6">
         <label className="mb-1.5 block text-sm font-medium text-foreground">Promo Code</label>
         <div className="flex gap-2">
-          <input type="text" placeholder="Enter code" className="flex-1 rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none" />
-          <button className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted">Apply</button>
+          <input type="text" value={promoCode} onChange={e => setPromoCode(e.target.value)} placeholder="Enter code" disabled={promoApplied} className="flex-1 rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none disabled:opacity-50" />
+          {promoApplied ? (
+            <button onClick={() => { setPromoApplied(false); setPromoDiscount(0); setPromoCode(''); booking.setPromoCode(null); }} className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50">Remove</button>
+          ) : (
+            <button onClick={handleApplyPromo} className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted">Apply</button>
+          )}
         </div>
+        {promoError && <p className="mt-1 text-xs text-red-600">{promoError}</p>}
+        {promoApplied && <p className="mt-1 text-xs text-green-600">Promo applied! You save AED {promoDiscount.toFixed(2)}</p>}
       </div>
 
       {/* Payment */}

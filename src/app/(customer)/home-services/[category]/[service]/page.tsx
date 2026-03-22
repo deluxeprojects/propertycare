@@ -4,6 +4,7 @@ import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { ArrowLeft, Clock, Star, Shield, Zap, CheckCircle2 } from 'lucide-react';
 import { generateServiceSchema, generateBreadcrumbSchema } from '@/lib/utils/seo';
+import { ServiceContent } from '@/features/customer/components/ServiceContent';
 
 interface Props {
   params: Promise<{ category: string; service: string }>;
@@ -104,7 +105,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   <img src={service.image_url} alt={`${service.name_en} in Dubai`} className="h-48 w-full object-cover md:h-64" loading="lazy" />
                 </div>
               )}
-              <p className="text-muted-foreground">{service.long_desc_en || service.short_desc_en}</p>
+              <ServiceContent content={service.long_desc_en || service.short_desc_en || ''} />
             </div>
 
             {/* Trust badges */}

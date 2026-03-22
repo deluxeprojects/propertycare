@@ -30,11 +30,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogPost(slug);
   if (!post) return { title: 'Blog Post' };
 
+  const pageTitle = (post.meta_title || post.title).replace(/\s*\|\s*ProKeep\s*$/i, '');
   return {
-    title: post.meta_title || post.title,
+    title: pageTitle,
     description: post.meta_description || post.excerpt || post.content.substring(0, 155) + '...',
     openGraph: {
-      title: post.meta_title || post.title,
+      title: pageTitle,
       description: post.meta_description || post.excerpt || '',
       type: 'article',
       publishedTime: post.published_at,

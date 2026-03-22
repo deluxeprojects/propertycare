@@ -89,15 +89,6 @@ export default async function AreaPage({ params }: Props) {
           )}
         </div>
 
-        {/* Map */}
-        <div className="mb-12">
-          <AreaMap
-            latitude={area.latitude ?? 0}
-            longitude={area.longitude ?? 0}
-            areaName={area.name_en}
-          />
-        </div>
-
         {/* Services available */}
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-semibold text-foreground">Services Available in {area.name_en}</h2>
