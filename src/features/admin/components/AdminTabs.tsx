@@ -1,44 +1,38 @@
 'use client';
 
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
-interface AdminTabsProps {
-  tabs: string[];
-  paramName?: string;
+interface Tab {
+  label: string;
+  content: React.ReactNode;
 }
 
-export function AdminTabs({ tabs, paramName = 'tab' }: AdminTabsProps) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const activeTab = searchParams.get(paramName) ?? tabs[0]?.toLowerCase().replace(/\s+/g, '-') ?? '';
+interface AdminTabsProps {
+  tabs: Tab[];
+  defaultTab?: number;
+}
 
-  const handleTab = (tab: string) => {
-    const value = tab.toLowerCase().replace(/\s+/g, '-');
-    const params = new URLSearchParams(searchParams.toString());
-    params.set(paramName, value);
-    router.push(`${pathname}?${params.toString()}`);
-  };
+export function AdminTabs({ tabs, defaultTab = 0 }: AdminTabsProps) {
+  const [active, setActive] = useState(defaultTab);
 
   return (
-    <div className="flex gap-1 rounded-lg bg-muted p-1">
-      {tabs.map((tab) => {
-        const value = tab.toLowerCase().replace(/\s+/g, '-');
-        const isActive = activeTab === value || (!searchParams.get(paramName) && tab === tabs[0]);
-        return (
+    <div>
+      <div className="mb-6 flex gap-1 overflow-x-auto rounded-lg bg-muted p-1">
+        {tabs.map((tab, i) => (
           <button
-            key={tab}
-            onClick={() => handleTab(tab)}
-            className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-              isActive
+            key={tab.label}
+            onClick={() => setActive(i)}
+            className={`whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+              active === i
                 ? 'bg-card text-foreground shadow-sm'
                 : 'text-muted-foreground hover:text-foreground'
             }`}
           >
-            {tab}
+            {tab.label}
           </button>
-        );
-      })}
+        ))}
+      </div>
+      <div>{tabs[active]?.content}</div>
     </div>
   );
 }

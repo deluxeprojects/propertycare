@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Download } from 'lucide-react';
+import { Download, Plus } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
 export default async function CustomersPage() {
@@ -56,9 +56,14 @@ export default async function CustomersPage() {
           <h1 className="text-2xl font-bold text-foreground">Customers</h1>
           <p className="text-sm text-muted-foreground">{customerList.length} total customers</p>
         </div>
-        <Link href="/api/v1/admin/export/customers" className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted">
-          <Download className="h-4 w-4" /> Export CSV
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link href="/admin/customers/new" className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
+            <Plus className="h-4 w-4" /> Add Customer
+          </Link>
+          <Link href="/api/v1/admin/export/customers" className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted">
+            <Download className="h-4 w-4" /> Export CSV
+          </Link>
+        </div>
       </div>
 
       <div className="overflow-x-auto rounded-xl border border-border bg-card">
