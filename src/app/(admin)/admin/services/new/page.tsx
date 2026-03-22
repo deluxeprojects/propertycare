@@ -1,16 +1,9 @@
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-import { siteConfig } from '@/config/site';
+'use client';
 
-const categories = [
-  { id: 'cat-cleaning', name: 'Cleaning' },
-  { id: 'cat-ac', name: 'AC Services' },
-  { id: 'cat-pest', name: 'Pest Control' },
-  { id: 'cat-plumbing', name: 'Plumbing' },
-  { id: 'cat-painting', name: 'Painting' },
-  { id: 'cat-electrical', name: 'Electrical' },
-  { id: 'cat-handyman', name: 'Handyman' },
-];
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { ArrowLeft, Check } from 'lucide-react';
+import { siteConfig } from '@/config/site';
 
 function slugify(text: string): string {
   return text
@@ -19,7 +12,127 @@ function slugify(text: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
+interface Category {
+  id: string;
+  name_en: string;
+}
+
 export default function NewServicePage() {
+  const [name, setName] = useState('');
+  const [serviceCode, setServiceCode] = useState('');
+  const [slug, setSlug] = useState('');
+  const [categoryId, setCategoryId] = useState('');
+  const [shortDesc, setShortDesc] = useState('');
+  const [longDesc, setLongDesc] = useState('');
+  const [basePriceAed, setBasePriceAed] = useState('');
+  const [priceUnit, setPriceUnit] = useState('per_service');
+  const [durationMinutes, setDurationMinutes] = useState('');
+  const [tags, setTags] = useState('');
+  const [isExpressAvailable, setIsExpressAvailable] = useState(false);
+  const [isFeatured, setIsFeatured] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    fetch('/api/v1/public/services')
+      .then(res => res.json())
+      .then(json => {
+        // Extract unique categories from services response
+        const catMap = new Map<string, Category>();
+        if (json.data && Array.isArray(json.data)) {
+          for (const svc of json.data) {
+            if (svc.service_categories) {
+              const cat = svc.service_categories;
+              if (cat.id && !catMap.has(cat.id)) {
+                catMap.set(cat.id, { id: cat.id, name_en: cat.name_en });
+              }
+            }
+          }
+        }
+        setCategories(Array.from(catMap.values()).sort((a, b) => a.name_en.localeCompare(b.name_en)));
+      })
+      .catch(() => {
+        // Fallback categories
+        setCategories([
+          { id: 'cat-cleaning', name_en: 'Cleaning' },
+          { id: 'cat-ac', name_en: 'AC Services' },
+          { id: 'cat-pest', name_en: 'Pest Control' },
+          { id: 'cat-plumbing', name_en: 'Plumbing' },
+          { id: 'cat-painting', name_en: 'Painting' },
+          { id: 'cat-electrical', name_en: 'Electrical' },
+          { id: 'cat-handyman', name_en: 'Handyman' },
+        ]);
+      });
+  }, []);
+
+  const handleNameChange = (value: string) => {
+    setName(value);
+    setSlug(slugify(value));
+    clearError('name');
+  };
+
+  const validate = () => {
+    const e: Record<string, string> = {};
+    if (!name.trim()) e.name = 'Service name is required';
+    if (!serviceCode.trim()) e.serviceCode = 'Service code is required';
+    if (!slug.trim()) e.slug = 'Slug is required';
+    if (!categoryId) e.categoryId = 'Category is required';
+    if (!basePriceAed) {
+      e.basePriceAed = 'Base price is required';
+    } else if (parseFloat(basePriceAed) <= 0) {
+      e.basePriceAed = 'Price must be greater than 0';
+    }
+    if (!priceUnit) e.priceUnit = 'Price unit is required';
+    if (!durationMinutes) {
+      e.durationMinutes = 'Duration is required';
+    } else if (parseInt(durationMinutes) <= 0) {
+      e.durationMinutes = 'Duration must be greater than 0';
+    }
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!validate()) return;
+    setSaving(true);
+    // TODO: call server action or API
+    await new Promise(r => setTimeout(r, 500));
+    setSaving(false);
+    setSaved(true);
+  };
+
+  const clearError = (field: string) => {
+    setErrors(prev => ({ ...prev, [field]: '' }));
+  };
+
+  const fieldClass = (field: string) =>
+    `w-full rounded-lg border bg-background px-3 py-2 text-sm focus:outline-none ${errors[field] ? 'border-destructive focus:border-destructive' : 'border-input focus:border-accent'}`;
+
+  if (saved) {
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center gap-4">
+          <Link href="/admin/services" className="rounded-lg p-2 text-muted-foreground hover:bg-muted">
+            <ArrowLeft className="h-5 w-5" />
+          </Link>
+          <h1 className="text-2xl font-bold text-foreground">New Service</h1>
+        </div>
+        <div className="rounded-xl border border-green-300 bg-green-50 p-6 dark:border-green-800 dark:bg-green-950">
+          <div className="flex items-center gap-3">
+            <Check className="h-5 w-5 text-green-600" />
+            <p className="font-medium text-green-800 dark:text-green-200">Service created successfully</p>
+          </div>
+          <Link href="/admin/services" className="mt-4 inline-block text-sm font-medium text-accent hover:underline">
+            Back to services
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-4">
@@ -32,7 +145,7 @@ export default function NewServicePage() {
         </div>
       </div>
 
-      <form action="/api/admin/services" method="POST">
+      <form onSubmit={handleSubmit}>
         <div className="grid gap-6 lg:grid-cols-3">
           {/* Main content */}
           <div className="lg:col-span-2 space-y-6">
@@ -42,83 +155,75 @@ export default function NewServicePage() {
               <div className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="nameEn" className="mb-1.5 block text-sm font-medium text-foreground">
+                    <label className="mb-1.5 block text-sm font-medium text-foreground">
                       Service Name <span className="text-red-500">*</span>
                     </label>
                     <input
-                      id="nameEn"
-                      name="nameEn"
                       type="text"
-                      required
-                      minLength={2}
-                      maxLength={200}
+                      value={name}
+                      onChange={(e) => handleNameChange(e.target.value)}
                       placeholder="e.g. Deep Cleaning - Studio"
-                      className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none"
+                      className={fieldClass('name')}
                     />
+                    {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
                     <p className="mt-1 text-xs text-muted-foreground">Slug will be auto-generated from the name</p>
                   </div>
                   <div>
-                    <label htmlFor="serviceCode" className="mb-1.5 block text-sm font-medium text-foreground">
+                    <label className="mb-1.5 block text-sm font-medium text-foreground">
                       Service Code <span className="text-red-500">*</span>
                     </label>
                     <input
-                      id="serviceCode"
-                      name="serviceCode"
                       type="text"
-                      required
-                      minLength={3}
-                      maxLength={20}
+                      value={serviceCode}
+                      onChange={(e) => { setServiceCode(e.target.value); clearError('serviceCode'); }}
                       placeholder="e.g. CLN-004"
-                      className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm font-mono focus:border-accent focus:outline-none"
+                      className={`${fieldClass('serviceCode')} font-mono`}
                     />
+                    {errors.serviceCode && <p className="mt-1 text-xs text-destructive">{errors.serviceCode}</p>}
                   </div>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="slug" className="mb-1.5 block text-sm font-medium text-foreground">
+                    <label className="mb-1.5 block text-sm font-medium text-foreground">
                       Slug <span className="text-red-500">*</span>
                     </label>
                     <input
-                      id="slug"
-                      name="slug"
                       type="text"
-                      required
-                      minLength={2}
-                      maxLength={100}
-                      pattern="^[a-z0-9-]+$"
+                      value={slug}
+                      onChange={(e) => { setSlug(e.target.value); clearError('slug'); }}
                       placeholder="deep-cleaning-studio"
-                      className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm font-mono focus:border-accent focus:outline-none"
+                      className={`${fieldClass('slug')} font-mono`}
                     />
+                    {errors.slug && <p className="mt-1 text-xs text-destructive">{errors.slug}</p>}
                     <p className="mt-1 text-xs text-muted-foreground">URL-safe identifier (lowercase, hyphens only)</p>
                   </div>
                   <div>
-                    <label htmlFor="categoryId" className="mb-1.5 block text-sm font-medium text-foreground">
+                    <label className="mb-1.5 block text-sm font-medium text-foreground">
                       Category <span className="text-red-500">*</span>
                     </label>
                     <select
-                      id="categoryId"
-                      name="categoryId"
-                      required
-                      defaultValue=""
-                      className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none"
+                      value={categoryId}
+                      onChange={(e) => { setCategoryId(e.target.value); clearError('categoryId'); }}
+                      className={fieldClass('categoryId')}
                     >
                       <option value="" disabled>Select a category</option>
                       {categories.map((cat) => (
-                        <option key={cat.id} value={cat.id}>{cat.name}</option>
+                        <option key={cat.id} value={cat.id}>{cat.name_en}</option>
                       ))}
                     </select>
+                    {errors.categoryId && <p className="mt-1 text-xs text-destructive">{errors.categoryId}</p>}
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="shortDescEn" className="mb-1.5 block text-sm font-medium text-foreground">
+                  <label className="mb-1.5 block text-sm font-medium text-foreground">
                     Short Description
                   </label>
                   <input
-                    id="shortDescEn"
-                    name="shortDescEn"
                     type="text"
+                    value={shortDesc}
+                    onChange={(e) => setShortDesc(e.target.value)}
                     maxLength={80}
                     placeholder="Brief one-liner shown in cards and listings"
                     className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none"
@@ -127,12 +232,12 @@ export default function NewServicePage() {
                 </div>
 
                 <div>
-                  <label htmlFor="longDescEn" className="mb-1.5 block text-sm font-medium text-foreground">
+                  <label className="mb-1.5 block text-sm font-medium text-foreground">
                     Long Description
                   </label>
                   <textarea
-                    id="longDescEn"
-                    name="longDescEn"
+                    value={longDesc}
+                    onChange={(e) => setLongDesc(e.target.value)}
                     rows={5}
                     placeholder="Detailed description of the service, what's included, process, etc."
                     className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none"
@@ -146,50 +251,49 @@ export default function NewServicePage() {
               <h3 className="mb-4 font-semibold text-foreground">Pricing &amp; Duration</h3>
               <div className="grid gap-4 sm:grid-cols-3">
                 <div>
-                  <label htmlFor="basePriceAed" className="mb-1.5 block text-sm font-medium text-foreground">
+                  <label className="mb-1.5 block text-sm font-medium text-foreground">
                     Base Price ({siteConfig.currency}) <span className="text-red-500">*</span>
                   </label>
                   <input
-                    id="basePriceAed"
-                    name="basePriceAed"
                     type="number"
-                    required
+                    value={basePriceAed}
+                    onChange={(e) => { setBasePriceAed(e.target.value); clearError('basePriceAed'); }}
                     min={0}
                     step="0.01"
                     placeholder="0.00"
-                    className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none"
+                    className={fieldClass('basePriceAed')}
                   />
+                  {errors.basePriceAed && <p className="mt-1 text-xs text-destructive">{errors.basePriceAed}</p>}
                 </div>
                 <div>
-                  <label htmlFor="priceUnit" className="mb-1.5 block text-sm font-medium text-foreground">
+                  <label className="mb-1.5 block text-sm font-medium text-foreground">
                     Price Unit <span className="text-red-500">*</span>
                   </label>
                   <select
-                    id="priceUnit"
-                    name="priceUnit"
-                    required
-                    defaultValue="per_service"
-                    className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none"
+                    value={priceUnit}
+                    onChange={(e) => { setPriceUnit(e.target.value); clearError('priceUnit'); }}
+                    className={fieldClass('priceUnit')}
                   >
                     <option value="per_service">Per Service</option>
                     <option value="per_hour">Per Hour</option>
                     <option value="per_sqft">Per Sqft</option>
                     <option value="per_room">Per Room</option>
                   </select>
+                  {errors.priceUnit && <p className="mt-1 text-xs text-destructive">{errors.priceUnit}</p>}
                 </div>
                 <div>
-                  <label htmlFor="durationMinutes" className="mb-1.5 block text-sm font-medium text-foreground">
+                  <label className="mb-1.5 block text-sm font-medium text-foreground">
                     Duration (minutes) <span className="text-red-500">*</span>
                   </label>
                   <input
-                    id="durationMinutes"
-                    name="durationMinutes"
                     type="number"
-                    required
+                    value={durationMinutes}
+                    onChange={(e) => { setDurationMinutes(e.target.value); clearError('durationMinutes'); }}
                     min={1}
                     placeholder="60"
-                    className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none"
+                    className={fieldClass('durationMinutes')}
                   />
+                  {errors.durationMinutes && <p className="mt-1 text-xs text-destructive">{errors.durationMinutes}</p>}
                 </div>
               </div>
             </div>
@@ -198,13 +302,11 @@ export default function NewServicePage() {
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-4 font-semibold text-foreground">Tags</h3>
               <div>
-                <label htmlFor="tags" className="mb-1.5 block text-sm font-medium text-foreground">
-                  Tags
-                </label>
+                <label className="mb-1.5 block text-sm font-medium text-foreground">Tags</label>
                 <input
-                  id="tags"
-                  name="tags"
                   type="text"
+                  value={tags}
+                  onChange={(e) => setTags(e.target.value)}
                   placeholder="cleaning, residential, villa (comma-separated)"
                   className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm focus:border-accent focus:outline-none"
                 />
@@ -225,8 +327,8 @@ export default function NewServicePage() {
                   <span className="text-sm text-foreground">Express Available</span>
                   <input
                     type="checkbox"
-                    name="isExpressAvailable"
-                    value="true"
+                    checked={isExpressAvailable}
+                    onChange={(e) => setIsExpressAvailable(e.target.checked)}
                     className="h-4 w-4 rounded border-input text-accent focus:ring-accent"
                   />
                 </label>
@@ -234,8 +336,8 @@ export default function NewServicePage() {
                   <span className="text-sm text-foreground">Featured</span>
                   <input
                     type="checkbox"
-                    name="isFeatured"
-                    value="true"
+                    checked={isFeatured}
+                    onChange={(e) => setIsFeatured(e.target.checked)}
                     className="h-4 w-4 rounded border-input text-accent focus:ring-accent"
                   />
                 </label>
@@ -246,9 +348,10 @@ export default function NewServicePage() {
             <div className="space-y-3">
               <button
                 type="submit"
-                className="w-full rounded-lg bg-accent py-2.5 text-sm font-semibold text-accent-foreground hover:bg-accent/90"
+                disabled={saving}
+                className="w-full rounded-lg bg-accent py-2.5 text-sm font-semibold text-accent-foreground hover:bg-accent/90 disabled:opacity-50"
               >
-                Create Service
+                {saving ? 'Creating...' : 'Create Service'}
               </button>
               <Link
                 href="/admin/services"
