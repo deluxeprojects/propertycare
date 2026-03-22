@@ -1,9 +1,9 @@
 import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { apiSuccess, apiError, apiPaginated } from '@/lib/api/response';
+import { apiSuccess, apiError } from '@/lib/api/response';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
@@ -14,10 +14,11 @@ export async function GET(request: NextRequest) {
       return apiError('Forbidden', 'FORBIDDEN', 403);
     }
 
-    const { data, error } = await supabase
-      .from('technicians')
-      .select('*, profiles!technicians_profile_id_fkey(full_name, email, phone)')
-      .order('employee_code');
+    const admin = createAdminClient();
+    const { data, error } = await admin
+      .from('pricing_rules')
+      .select('*')
+      .order('priority', { ascending: false });
 
     if (error) return apiError(error.message, 'DB_ERROR', 500);
     return apiSuccess(data);
@@ -38,37 +39,28 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { employeeCode, profileEmail, specializations, workAreas, employmentType, hourlyRate, dailyCapacity, vehicleType } = body;
+    const { name, ruleType, serviceId, categoryId, areaId, modifierType, modifierValue, priority, validFrom, validUntil, isStackable } = body;
 
-    if (!employeeCode || !profileEmail) {
+    if (!name || !modifierValue) {
       return apiError('Missing required fields', 'VALIDATION_ERROR', 400);
     }
 
-    // Find the profile by email
     const admin = createAdminClient();
-    const { data: techProfile } = await admin
-      .from('profiles')
-      .select('id')
-      .eq('email', profileEmail)
-      .single();
-
-    if (!techProfile) {
-      return apiError('No user found with that email', 'NOT_FOUND', 404);
-    }
-
     const { data, error } = await admin
-      .from('technicians')
+      .from('pricing_rules')
       .insert({
-        profile_id: techProfile.id,
-        employee_code: employeeCode,
-        specializations: specializations || [],
-        work_areas: workAreas || [],
-        employment_type: employmentType || 'full_time',
-        hourly_rate: hourlyRate ? parseFloat(hourlyRate) : null,
-        daily_capacity_hours: dailyCapacity ? parseInt(dailyCapacity) : null,
-        vehicle_type: vehicleType || null,
+        name,
+        rule_type: ruleType || 'surcharge',
+        service_id: serviceId || null,
+        category_id: categoryId || null,
+        area_id: areaId || null,
+        modifier_type: modifierType || 'percentage',
+        modifier_value: parseFloat(modifierValue),
+        priority: priority ? parseInt(priority) : 0,
+        valid_from: validFrom || null,
+        valid_until: validUntil || null,
+        is_stackable: isStackable ?? false,
         is_active: true,
-        is_available: true,
       })
       .select()
       .single();

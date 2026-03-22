@@ -1,9 +1,9 @@
 import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { apiSuccess, apiError, apiPaginated } from '@/lib/api/response';
+import { apiSuccess, apiError } from '@/lib/api/response';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
@@ -14,10 +14,11 @@ export async function GET(request: NextRequest) {
       return apiError('Forbidden', 'FORBIDDEN', 403);
     }
 
-    const { data, error } = await supabase
-      .from('technicians')
-      .select('*, profiles!technicians_profile_id_fkey(full_name, email, phone)')
-      .order('employee_code');
+    const admin = createAdminClient();
+    const { data, error } = await admin
+      .from('promo_codes')
+      .select('*')
+      .order('created_at', { ascending: false });
 
     if (error) return apiError(error.message, 'DB_ERROR', 500);
     return apiSuccess(data);
@@ -38,37 +39,30 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { employeeCode, profileEmail, specializations, workAreas, employmentType, hourlyRate, dailyCapacity, vehicleType } = body;
+    const { code, name, description, discountType, discountValue, minOrderAmount, maxDiscount, usageLimitTotal, usageLimitPerUser, validFrom, validUntil, isPublic, isFirstOrderOnly } = body;
 
-    if (!employeeCode || !profileEmail) {
+    if (!code || !name || !discountValue || !validFrom || !validUntil) {
       return apiError('Missing required fields', 'VALIDATION_ERROR', 400);
     }
 
-    // Find the profile by email
     const admin = createAdminClient();
-    const { data: techProfile } = await admin
-      .from('profiles')
-      .select('id')
-      .eq('email', profileEmail)
-      .single();
-
-    if (!techProfile) {
-      return apiError('No user found with that email', 'NOT_FOUND', 404);
-    }
-
     const { data, error } = await admin
-      .from('technicians')
+      .from('promo_codes')
       .insert({
-        profile_id: techProfile.id,
-        employee_code: employeeCode,
-        specializations: specializations || [],
-        work_areas: workAreas || [],
-        employment_type: employmentType || 'full_time',
-        hourly_rate: hourlyRate ? parseFloat(hourlyRate) : null,
-        daily_capacity_hours: dailyCapacity ? parseInt(dailyCapacity) : null,
-        vehicle_type: vehicleType || null,
+        code: code.toUpperCase(),
+        name,
+        description: description || null,
+        discount_type: discountType || 'percentage',
+        discount_value: parseFloat(discountValue),
+        min_order_amount: minOrderAmount ? parseFloat(minOrderAmount) : null,
+        max_discount_amount: maxDiscount ? parseFloat(maxDiscount) : null,
+        usage_limit_total: usageLimitTotal ? parseInt(usageLimitTotal) : null,
+        usage_limit_per_user: usageLimitPerUser ? parseInt(usageLimitPerUser) : null,
+        valid_from: validFrom,
+        valid_until: validUntil,
+        is_public: isPublic ?? false,
+        is_first_order_only: isFirstOrderOnly ?? false,
         is_active: true,
-        is_available: true,
       })
       .select()
       .single();

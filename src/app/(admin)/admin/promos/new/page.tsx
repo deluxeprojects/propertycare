@@ -21,6 +21,7 @@ export default function NewPromoPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [apiError, setApiError] = useState('');
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -49,10 +50,40 @@ export default function NewPromoPage() {
     event.preventDefault();
     if (!validate()) return;
     setSaving(true);
-    // TODO: call server action or API
-    await new Promise(r => setTimeout(r, 500));
-    setSaving(false);
-    setSaved(true);
+    setApiError('');
+    try {
+      const res = await fetch('/api/v1/admin/promos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          code,
+          name,
+          description,
+          discountType,
+          discountValue,
+          minOrderAmount,
+          maxDiscount,
+          usageLimitTotal,
+          usageLimitPerUser,
+          validFrom,
+          validUntil,
+          isPublic,
+          isFirstOrderOnly,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setApiError(data.error || 'Failed to create promo');
+        setSaving(false);
+        return;
+      }
+      setSaved(true);
+      setSaving(false);
+      setTimeout(() => { window.location.href = '/admin/promos'; }, 1000);
+    } catch {
+      setApiError('Network error. Please try again.');
+      setSaving(false);
+    }
   };
 
   const clearError = (field: string) => {
@@ -96,6 +127,11 @@ export default function NewPromoPage() {
         </div>
       </div>
 
+      {apiError && (
+        <div className="rounded-xl border border-red-300 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950">
+          <p className="text-sm font-medium text-red-800 dark:text-red-200">{apiError}</p>
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
         <div className="rounded-xl border border-border bg-card p-6">
           <div className="space-y-6">

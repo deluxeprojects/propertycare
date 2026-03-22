@@ -1,3 +1,5 @@
+import { sendWhatsApp as twilioWhatsApp } from '@/lib/twilio/whatsapp';
+
 interface NotificationPayload {
   to: string; // phone or email
   template: string;
@@ -5,9 +7,17 @@ interface NotificationPayload {
 }
 
 export async function sendWhatsApp(payload: NotificationPayload): Promise<boolean> {
-  // TODO: Integrate with WhatsApp Business API
-  console.log('[WhatsApp]', payload.template, 'to', payload.to);
-  return true;
+  const message = buildWhatsAppMessage(payload.template, payload.variables);
+  return twilioWhatsApp(payload.to, message);
+}
+
+function buildWhatsAppMessage(template: string, vars: Record<string, string>): string {
+  const templates: Record<string, string> = {
+    booking_confirmed: `Hi ${vars['customerName']}, your booking ${vars['orderNumber']} has been confirmed for ${vars['date']} at ${vars['timeSlot']}. Service: ${vars['serviceName']}. Total: AED ${vars['total']}.`,
+    review_request: `Hi ${vars['customerName']}, your ${vars['serviceName']} service (${vars['orderNumber']}) is complete. We'd love your feedback!`,
+    amc_renewal: `Hi ${vars['customerName']}, your ${vars['planName']} plan expires on ${vars['expiryDate']}. Renew now for priority service.`,
+  };
+  return templates[template] ?? JSON.stringify(vars);
 }
 
 export async function sendEmail(payload: NotificationPayload): Promise<boolean> {

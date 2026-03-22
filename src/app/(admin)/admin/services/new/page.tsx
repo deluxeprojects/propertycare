@@ -33,6 +33,7 @@ export default function NewServicePage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [apiError, setApiError] = useState('');
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -98,10 +99,39 @@ export default function NewServicePage() {
     event.preventDefault();
     if (!validate()) return;
     setSaving(true);
-    // TODO: call server action or API
-    await new Promise(r => setTimeout(r, 500));
-    setSaving(false);
-    setSaved(true);
+    setApiError('');
+    try {
+      const res = await fetch('/api/v1/admin/services', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          categoryId,
+          slug,
+          serviceCode,
+          nameEn: name,
+          shortDescEn: shortDesc,
+          longDescEn: longDesc,
+          basePriceAed: parseFloat(basePriceAed),
+          priceUnit,
+          durationMinutes: parseInt(durationMinutes),
+          isActive: true,
+          isFeatured,
+          tags: tags ? tags.split(',').map(t => t.trim()).filter(Boolean) : [],
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setApiError(data.error || 'Failed to create service');
+        setSaving(false);
+        return;
+      }
+      setSaved(true);
+      setSaving(false);
+      setTimeout(() => { window.location.href = '/admin/services'; }, 1000);
+    } catch {
+      setApiError('Network error. Please try again.');
+      setSaving(false);
+    }
   };
 
   const clearError = (field: string) => {
@@ -145,6 +175,11 @@ export default function NewServicePage() {
         </div>
       </div>
 
+      {apiError && (
+        <div className="rounded-xl border border-red-300 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950">
+          <p className="text-sm font-medium text-red-800 dark:text-red-200">{apiError}</p>
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
         <div className="grid gap-6 lg:grid-cols-3">
           {/* Main content */}
