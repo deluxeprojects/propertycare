@@ -68,6 +68,11 @@ export default async function AreaPage({ params }: Props) {
             Home Services in {area.name_en}, Dubai
           </h1>
           <p className="max-w-3xl text-muted-foreground">{area.description_en}</p>
+          {area.image_url && (
+            <div className="mt-6 overflow-hidden rounded-xl">
+              <img src={area.image_url} alt={`Home services in ${area.name_en}, Dubai`} className="h-48 w-full object-cover md:h-64" loading="lazy" />
+            </div>
+          )}
           {area.approximate_units && (
             <p className="mt-2 text-sm text-muted-foreground">
               ~{area.approximate_units.toLocaleString()} residential units

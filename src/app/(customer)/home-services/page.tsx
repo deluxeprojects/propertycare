@@ -1,64 +1,47 @@
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { Sparkles, Wind, Bug, Droplets, Plug, Paintbrush } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 export const metadata = {
   title: 'Home Services in Dubai',
   description: '53+ professional home services in Dubai. Licensed cleaning, AC maintenance, pest control, plumbing, electrical & painting. Book online with ProKeep.',
 };
 
-const categories = [
-  {
-    icon: Sparkles,
-    name: 'Cleaning',
-    slug: 'cleaning',
-    desc: 'Apartment deep cleaning, villa cleaning, move-in/out prep, sofa and carpet shampooing, mattress sanitization, and window cleaning — all with eco-friendly products.',
-    services: 12,
-    startingPrice: 38,
-  },
-  {
-    icon: Wind,
-    name: 'AC Services',
-    slug: 'ac-services',
-    desc: 'Split and central AC servicing, coil deep cleaning, full duct sanitization, refrigerant top-up, and annual maintenance contracts for Dubai apartments and villas.',
-    services: 5,
-    startingPrice: 120,
-  },
-  {
-    icon: Bug,
-    name: 'Pest Control',
-    slug: 'pest-control',
-    desc: 'DM-approved pest treatments for cockroaches, bed bugs, termites, and rodents. Gel baiting, fumigation, and quarterly prevention plans for homes and offices.',
-    services: 10,
-    startingPrice: 220,
-  },
-  {
-    icon: Droplets,
-    name: 'Plumbing',
-    slug: 'plumbing',
-    desc: 'Leak repairs, drain unblocking, water heater installation, toilet and faucet replacement, and 24/7 emergency plumbing across all Dubai communities.',
-    services: 7,
-    startingPrice: 130,
-  },
-  {
-    icon: Plug,
-    name: 'Electrical',
-    slug: 'electrical',
-    desc: 'Light and socket installation, circuit breaker repairs, smart home wiring, CCTV setup, and emergency electrical fault-finding by DEWA-certified technicians.',
-    services: 5,
-    startingPrice: 150,
-  },
-  {
-    icon: Paintbrush,
-    name: 'Painting & Fit-Out',
-    slug: 'painting',
-    desc: 'Professional interior painting, wallpaper hanging, kitchen and bathroom renovations, flooring installation, and custom carpentry — with free color consultations.',
-    services: 11,
-    startingPrice: 700,
-  },
-];
+const categoryIcons: Record<string, LucideIcon> = {
+  cleaning: Sparkles,
+  'ac-services': Wind,
+  'pest-control': Bug,
+  plumbing: Droplets,
+  electrical: Plug,
+  painting: Paintbrush,
+};
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const supabase = createAdminClient();
+  const { data: categories } = await supabase
+    .from('service_categories')
+    .select('slug, name_en, description_en, image_url')
+    .eq('is_active', true)
+    .order('sort_order');
+
+  // Get service count and min price per category
+  const { data: services } = await supabase
+    .from('services')
+    .select('category_id, base_price_aed, service_categories(slug)')
+    .eq('is_active', true)
+    .eq('is_hidden', false);
+
+  const categoryStats: Record<string, { count: number; minPrice: number }> = {};
+  for (const s of services ?? []) {
+    const slug = (s.service_categories as unknown as { slug: string })?.slug;
+    if (!slug) continue;
+    if (!categoryStats[slug]) categoryStats[slug] = { count: 0, minPrice: Infinity };
+    categoryStats[slug].count++;
+    categoryStats[slug].minPrice = Math.min(categoryStats[slug].minPrice, s.base_price_aed);
+  }
+
   return (
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
@@ -74,29 +57,41 @@ export default function ServicesPage() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {categories.map((cat) => (
-            <Link
-              key={cat.slug}
-              href={`/home-services/${cat.slug}`}
-              className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
-            >
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10">
-                <cat.icon className="h-7 w-7 text-accent" />
-              </div>
-              <h2 className="mb-2 text-xl font-semibold text-card-foreground group-hover:text-accent">
-                {cat.name}
-              </h2>
-              <p className="mb-4 text-sm text-muted-foreground">{cat.desc}</p>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">
-                  {cat.services} services
-                </span>
-                <span className="font-semibold text-accent">
-                  From AED {cat.startingPrice}
-                </span>
-              </div>
-            </Link>
-          ))}
+          {(categories ?? []).map((cat) => {
+            const Icon = categoryIcons[cat.slug] ?? Sparkles;
+            const stats = categoryStats[cat.slug];
+            return (
+              <Link
+                key={cat.slug}
+                href={`/home-services/${cat.slug}`}
+                className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
+              >
+                {cat.image_url ? (
+                  <div className="mb-4 -mx-6 -mt-6 overflow-hidden rounded-t-xl">
+                    <img src={cat.image_url} alt={`${cat.name_en} services in Dubai`} className="h-36 w-full object-cover" loading="lazy" />
+                  </div>
+                ) : (
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10">
+                    <Icon className="h-7 w-7 text-accent" />
+                  </div>
+                )}
+                <h2 className="mb-2 text-xl font-semibold text-card-foreground group-hover:text-accent">
+                  {cat.name_en}
+                </h2>
+                <p className="mb-4 text-sm text-muted-foreground">{cat.description_en}</p>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">
+                    {stats?.count ?? 0} services
+                  </span>
+                  {stats?.minPrice && stats.minPrice < Infinity && (
+                    <span className="font-semibold text-accent">
+                      From AED {stats.minPrice}
+                    </span>
+                  )}
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

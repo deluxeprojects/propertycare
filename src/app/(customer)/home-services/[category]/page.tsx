@@ -40,7 +40,7 @@ export default async function CategoryPage({ params }: Props) {
   const { data: services } = await supabase
     .from('services')
     .select(`
-      id, slug, service_code, name_en, short_desc_en, base_price_aed, price_unit,
+      id, slug, service_code, name_en, short_desc_en, image_url, base_price_aed, price_unit,
       duration_minutes, is_express_available, is_featured,
       service_variants(id, variant_label, price_aed, sort_order)
     `)
@@ -58,6 +58,11 @@ export default async function CategoryPage({ params }: Props) {
           </Link>
           <h1 className="mb-2 text-3xl font-bold text-foreground md:text-4xl">{cat.name_en}</h1>
           <p className="max-w-2xl text-muted-foreground">{cat.description_en}</p>
+          {cat.image_url && (
+            <div className="mt-6 overflow-hidden rounded-xl">
+              <img src={cat.image_url} alt={`${cat.name_en} services in Dubai`} className="h-48 w-full object-cover md:h-64" loading="lazy" />
+            </div>
+          )}
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -67,6 +72,11 @@ export default async function CategoryPage({ params }: Props) {
               href={`/home-services/${category}/${service.slug}`}
               className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
             >
+              {service.image_url && (
+                <div className="mb-3 -mx-6 -mt-6 overflow-hidden rounded-t-xl">
+                  <img src={service.image_url} alt={`${service.name_en} in Dubai`} className="h-32 w-full object-cover" loading="lazy" />
+                </div>
+              )}
               <div className="mb-2 flex items-center gap-2">
                 <span className="font-mono text-xs text-muted-foreground">{service.service_code}</span>
                 {service.is_featured && (

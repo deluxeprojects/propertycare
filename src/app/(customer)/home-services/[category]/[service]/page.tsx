@@ -99,6 +99,11 @@ export default async function ServiceDetailPage({ params }: Props) {
                 )}
               </div>
               <h1 className="mb-4 text-3xl font-bold text-foreground">{service.name_en}</h1>
+              {service.image_url && (
+                <div className="mb-6 overflow-hidden rounded-xl">
+                  <img src={service.image_url} alt={`${service.name_en} in Dubai`} className="h-48 w-full object-cover md:h-64" loading="lazy" />
+                </div>
+              )}
               <p className="text-muted-foreground">{service.long_desc_en || service.short_desc_en}</p>
             </div>
 
