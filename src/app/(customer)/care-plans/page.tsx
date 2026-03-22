@@ -3,8 +3,8 @@ import { siteConfig } from '@/config/site';
 import { Check, X, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'Annual Maintenance Contracts',
-  description: `Save up to 40% with ${siteConfig.name} AMC plans. 4 tiers from AED 79/month. Priority service, dedicated support.`,
+  title: 'Care Plans',
+  description: `Save up to 40% with ${siteConfig.name} Care Plans. 4 tiers from AED 79/month. Priority service, dedicated support.`,
 };
 
 const plans = [
@@ -22,7 +22,7 @@ const plans = [
       { label: '24h response SLA', included: true },
       { label: '5% discount on extras', included: true },
     ],
-    cta: 'Get Essential',
+    cta: 'Get Essential Plan',
     popular: false,
   },
   {
@@ -39,7 +39,7 @@ const plans = [
       { label: '8h response SLA', included: true },
       { label: '10% discount on extras', included: true },
     ],
-    cta: 'Get Standard',
+    cta: 'Get Standard Plan',
     popular: true,
   },
   {
@@ -56,7 +56,7 @@ const plans = [
       { label: '4h response SLA', included: true },
       { label: '15% discount on extras', included: true },
     ],
-    cta: 'Get Premium',
+    cta: 'Get Premium Plan',
     popular: false,
   },
   {
@@ -73,22 +73,22 @@ const plans = [
       { label: '2h guaranteed response', included: true },
       { label: '20% discount on extras', included: true },
     ],
-    cta: 'Get VIP',
+    cta: 'Get VIP Plan',
     popular: false,
   },
 ];
 
-export default function AmcPage() {
+export default function CarePlansPage() {
   return (
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <h1 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            Annual Maintenance Contracts
+            Care Plans
           </h1>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            Save up to 40% on your home maintenance with a {siteConfig.name}{' '}
-            AMC. Choose a plan that fits your property and enjoy priority
+            Save up to 40% on your home care with a {siteConfig.name}{' '}
+            Care Plan. Choose a plan that fits your property and enjoy priority
             service year-round.
           </p>
         </div>
@@ -164,10 +164,10 @@ export default function AmcPage() {
 
         <div className="mt-12 rounded-xl bg-muted p-8 text-center">
           <h3 className="mb-2 text-lg font-semibold text-foreground">
-            Not sure which plan is right for you?
+            Not sure which care plan is right for you?
           </h3>
           <p className="mb-4 text-muted-foreground">
-            Our team can help you choose the perfect plan for your property.
+            Our team can help you choose the perfect care plan for your property.
           </p>
           <a
             href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}`}

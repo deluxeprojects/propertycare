@@ -131,7 +131,7 @@ export default async function CustomerDetailPage({ params }: Props) {
 
           {subscriptions && subscriptions.length > 0 && (
             <div className="rounded-xl border border-border bg-card p-5">
-              <h3 className="mb-3 flex items-center gap-2 font-semibold text-foreground"><Shield className="h-4 w-4" /> AMC</h3>
+              <h3 className="mb-3 flex items-center gap-2 font-semibold text-foreground"><Shield className="h-4 w-4" /> Care Plan</h3>
               {subscriptions.map((sub) => (
                 <div key={sub.id} className="text-sm">
                   <p className="font-medium text-foreground">{(sub.amc_plans as unknown as { name_en: string } | null)?.name_en}</p>

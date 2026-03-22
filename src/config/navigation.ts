@@ -11,7 +11,7 @@ export interface NavItem {
 export const customerNav: NavItem[] = [
   { label: 'Services', href: '/services' },
   { label: 'Areas', href: '/areas' },
-  { label: 'AMC Plans', href: '/amc' },
+  { label: 'Care Plans', href: '/care-plans' },
   { label: 'Blog', href: '/blog' },
 ];
 
@@ -23,7 +23,7 @@ export const adminNav: NavItem[] = [
   { label: 'Promotions', href: '/admin/promos', icon: 'Tag' },
   { label: 'Customers', href: '/admin/customers', icon: 'Users' },
   { label: 'Workforce', href: '/admin/workforce', icon: 'HardHat' },
-  { label: 'AMC', href: '/admin/amc', icon: 'Shield' },
+  { label: 'Care Plans', href: '/admin/care-plans', icon: 'Shield' },
   { label: 'Content', href: '/admin/content', icon: 'FileText' },
   { label: 'Financials', href: '/admin/financials', icon: 'BarChart3' },
   { label: 'Settings', href: '/admin/settings', icon: 'Settings', roles: ['super_admin'] },

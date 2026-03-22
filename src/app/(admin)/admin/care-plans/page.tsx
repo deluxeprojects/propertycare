@@ -7,12 +7,12 @@ const plans = [
   { tier: 'VIP', subs: 4, active: 4, expiring: 0, revenue: 21560, responseTime: '2h', discount: '20%' },
 ];
 
-export default function AmcAdminPage() {
+export default function CarePlansAdminPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-foreground">AMC Management</h1>
-        <p className="text-sm text-muted-foreground">Manage plans and subscriptions</p>
+        <h1 className="text-2xl font-bold text-foreground">Care Plans</h1>
+        <p className="text-sm text-muted-foreground">Manage care plans and subscriptions</p>
       </div>
 
       {/* Plan Cards */}

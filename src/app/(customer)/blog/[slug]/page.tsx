@@ -51,9 +51,9 @@ Ignoring AC maintenance can lead to:
 - **Mold growth** in ducts (health hazard + AED 1,500-3,000 for remediation)
 - **Complete system replacement** (AED 5,000-15,000 per unit)
 
-## Save with an AMC Plan
+## Save with a Care Plan
 
-Our Annual Maintenance Contracts include regular AC servicing as part of a comprehensive home maintenance package. Starting from just AED 79/month, you get scheduled maintenance, priority service, and discounts on additional work.`,
+Our Annual Care Plans include regular AC servicing as part of a comprehensive home maintenance package. Starting from just AED 79/month, you get scheduled maintenance, priority service, and discounts on additional work.`,
   },
   'deep-cleaning-checklist-dubai-apartments': {
     title: 'Deep Cleaning Checklist for Dubai Apartments',

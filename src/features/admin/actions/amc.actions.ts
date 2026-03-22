@@ -12,7 +12,7 @@ export async function updatePlanPricing(pricingId: string, data: { annualPriceAe
   }).eq('id', pricingId);
 
   if (error) throw new Error(error.message);
-  revalidatePath('/admin/amc');
+  revalidatePath('/admin/care-plans');
 }
 
 export async function createSubscription(data: {
@@ -37,19 +37,19 @@ export async function createSubscription(data: {
   });
 
   if (error) throw new Error(error.message);
-  revalidatePath('/admin/amc');
+  revalidatePath('/admin/care-plans');
 }
 
 export async function pauseSubscription(subscriptionId: string) {
   const supabase = createAdminClient();
   const { error } = await supabase.from('amc_subscriptions').update({ status: 'paused' }).eq('id', subscriptionId);
   if (error) throw new Error(error.message);
-  revalidatePath('/admin/amc');
+  revalidatePath('/admin/care-plans');
 }
 
 export async function cancelSubscription(subscriptionId: string) {
   const supabase = createAdminClient();
   const { error } = await supabase.from('amc_subscriptions').update({ status: 'cancelled' }).eq('id', subscriptionId);
   if (error) throw new Error(error.message);
-  revalidatePath('/admin/amc');
+  revalidatePath('/admin/care-plans');
 }

@@ -41,7 +41,7 @@ const kpis = [
     icon: Users,
   },
   {
-    label: 'Active AMCs',
+    label: 'Active Care Plans',
     value: '24',
     change: '+3',
     trend: 'up',
@@ -122,7 +122,7 @@ const alerts = [
   },
   {
     type: 'info',
-    message: '3 AMC subscriptions expiring in 14 days',
+    message: '3 Care Plan subscriptions expiring in 14 days',
     icon: Shield,
   },
 ];

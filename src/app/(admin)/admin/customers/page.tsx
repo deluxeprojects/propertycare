@@ -31,7 +31,7 @@ export default function CustomersPage() {
               <th className="px-4 py-3 text-right font-medium text-muted-foreground">Orders</th>
               <th className="px-4 py-3 text-right font-medium text-muted-foreground">Total Spent</th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">Last Order</th>
-              <th className="px-4 py-3 text-left font-medium text-muted-foreground">AMC</th>
+              <th className="px-4 py-3 text-left font-medium text-muted-foreground">Care Plan</th>
               <th className="px-4 py-3 text-right font-medium text-muted-foreground">Wallet</th>
             </tr>
           </thead>

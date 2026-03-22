@@ -146,7 +146,7 @@ const testimonials = [
     name: 'Marina R.',
     area: 'Palm Jumeirah',
     rating: 5,
-    text: 'The AMC plan has been a lifesaver. One call and everything gets handled. The dedicated coordinator really knows our villa.',
+    text: 'The Care Plan has been a lifesaver. One call and everything gets handled. The dedicated coordinator really knows our villa.',
   },
 ];
 
@@ -264,24 +264,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* AMC Teaser */}
+      {/* Care Plan Teaser */}
       <section className="px-4 py-16 md:py-24">
         <div className="container mx-auto max-w-7xl">
           <div className="rounded-2xl bg-primary p-8 text-primary-foreground md:p-12">
             <div className="grid items-center gap-8 md:grid-cols-2">
               <div>
                 <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-                  Save Up to 40% with an Annual Maintenance Contract
+                  Save Up to 40% with a Care Plan
                 </h2>
                 <p className="mb-6 text-primary-foreground/80">
                   Get priority service, dedicated support, and bundled
                   maintenance for your property. 4 plans from AED 79/month.
                 </p>
                 <Link
-                  href="/amc"
+                  href="/care-plans"
                   className="inline-flex items-center rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
                 >
-                  View AMC Plans
+                  View Care Plans
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </div>

@@ -57,7 +57,7 @@ function buildEmailHtml(template: string, vars: Record<string, string>): string 
       <p>We'd love to hear your feedback. Please rate your experience.</p>
     `,
     amc_renewal: `
-      <h2>Your AMC is expiring soon</h2>
+      <h2>Your Care Plan is expiring soon</h2>
       <p>Hi ${vars['customerName']},</p>
       <p>Your ${vars['planName']} plan expires on ${vars['expiryDate']}.</p>
       <p>Renew now to keep enjoying priority service and discounts.</p>

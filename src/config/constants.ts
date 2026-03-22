@@ -68,14 +68,14 @@ export const PROPERTY_SIZES = [
 
 export type PropertySize = (typeof PROPERTY_SIZES)[number];
 
-export const AMC_TIERS = {
+export const CARE_PLAN_TIERS = {
   ESSENTIAL: 'essential',
   STANDARD: 'standard',
   PREMIUM: 'premium',
   VIP: 'vip',
 } as const;
 
-export type AmcTier = (typeof AMC_TIERS)[keyof typeof AMC_TIERS];
+export type CarePlanTier = (typeof CARE_PLAN_TIERS)[keyof typeof CARE_PLAN_TIERS];
 
 export const LANGUAGES = ['en', 'ar', 'ru', 'zh', 'de'] as const;
 export type Language = (typeof LANGUAGES)[number];

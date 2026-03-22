@@ -408,12 +408,12 @@ function StepDone() {
         </button>
       </div>
 
-      {/* AMC Upsell */}
+      {/* Care Plan Upsell */}
       <div className="mt-8 rounded-xl bg-primary p-6 text-primary-foreground">
-        <h3 className="mb-2 font-semibold">Save 40% with an Annual Maintenance Contract</h3>
+        <h3 className="mb-2 font-semibold">Save 40% with a Care Plan</h3>
         <p className="mb-4 text-sm text-primary-foreground/70">Get priority service, dedicated support, and bundled maintenance from AED 79/month.</p>
-        <a href="/amc" className="inline-flex rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
-          View AMC Plans
+        <a href="/care-plans" className="inline-flex rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
+          View Care Plans
         </a>
       </div>
     </div>
