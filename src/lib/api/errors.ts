@@ -1,0 +1,29 @@
+export class AppError extends Error {
+  constructor(
+    message: string,
+    public code: string,
+    public statusCode: number = 400,
+    public details?: Record<string, string>
+  ) {
+    super(message);
+    this.name = 'AppError';
+  }
+}
+
+export const ErrorCodes = {
+  NOT_FOUND: 'NOT_FOUND',
+  UNAUTHORIZED: 'UNAUTHORIZED',
+  FORBIDDEN: 'FORBIDDEN',
+  VALIDATION_ERROR: 'VALIDATION_ERROR',
+  DUPLICATE: 'DUPLICATE',
+  INSUFFICIENT_FUNDS: 'INSUFFICIENT_FUNDS',
+  PROMO_INVALID: 'PROMO_INVALID',
+  PROMO_EXPIRED: 'PROMO_EXPIRED',
+  PROMO_LIMIT_REACHED: 'PROMO_LIMIT_REACHED',
+  SLOT_UNAVAILABLE: 'SLOT_UNAVAILABLE',
+  PAYMENT_FAILED: 'PAYMENT_FAILED',
+  CANCELLATION_TOO_LATE: 'CANCELLATION_TOO_LATE',
+  MAX_RESCHEDULES: 'MAX_RESCHEDULES',
+  SERVICE_UNAVAILABLE: 'SERVICE_UNAVAILABLE',
+  INTERNAL_ERROR: 'INTERNAL_ERROR',
+} as const;
