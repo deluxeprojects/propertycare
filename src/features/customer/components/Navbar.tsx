@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { customerNav } from '@/config/navigation';
 import { ProKeepLogo } from '@/components/shared/ProKeepLogo';
+import { SearchBar } from './SearchBar';
 
 export function Navbar() {
   return (
@@ -9,6 +10,10 @@ export function Navbar() {
         <Link href="/" className="flex items-center">
           <ProKeepLogo size="xs" />
         </Link>
+
+        <div className="hidden md:block">
+          <SearchBar />
+        </div>
 
         <nav className="hidden items-center gap-6 md:flex">
           {customerNav.map((item) => (
@@ -30,6 +35,9 @@ export function Navbar() {
             Book a Service
           </Link>
         </div>
+      </div>
+      <div className="border-t border-border px-4 py-2 md:hidden">
+        <SearchBar />
       </div>
     </header>
   );

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
+import { SearchBar } from '@/features/customer/components/SearchBar';
 import {
   Shield,
   Clock,
@@ -208,6 +209,9 @@ export default function HomePage() {
               AC maintenance, pest control to plumbing &mdash; book vetted
               professionals online in 60 seconds.
             </p>
+            <div className="mb-8">
+              <SearchBar />
+            </div>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/book"
