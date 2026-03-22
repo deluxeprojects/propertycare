@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { CategoryFilter } from '@/features/customer/components/CategoryFilter';
 
 export const metadata = {
   title: 'Blog',
@@ -34,8 +35,15 @@ function formatDate(dateStr: string) {
   });
 }
 
-export default async function BlogPage() {
-  const posts = await getBlogPosts();
+interface Props {
+  searchParams: Promise<{ category?: string }>;
+}
+
+export default async function BlogPage({ searchParams }: Props) {
+  const { category } = await searchParams;
+  const allPosts = await getBlogPosts();
+  const categories = [...new Set(allPosts.map(p => p.category))].sort();
+  const posts = category ? allPosts.filter(p => p.category === category) : allPosts;
 
   return (
     <div className="px-4 py-12 md:py-16">
@@ -47,8 +55,10 @@ export default async function BlogPage() {
         <h1 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">Blog</h1>
         <p className="mb-8 text-muted-foreground">Expert tips, guides, and news about home maintenance in Dubai.</p>
 
+        <CategoryFilter categories={categories} />
+
         {posts.length === 0 ? (
-          <p className="text-muted-foreground">No blog posts yet. Check back soon!</p>
+          <p className="text-muted-foreground">No blog posts found for this category.</p>
         ) : (
           <div className="space-y-6">
             {posts.map((post) => (
@@ -89,6 +99,15 @@ export default async function BlogPage() {
             ))}
           </div>
         )}
+
+        {/* CTA */}
+        <section className="mt-12 rounded-xl bg-accent p-8 text-center text-accent-foreground">
+          <h2 className="mb-2 text-2xl font-bold">Ready to Book?</h2>
+          <p className="mb-4 text-accent-foreground/80">Licensed professionals, transparent pricing, 72-hour guarantee.</p>
+          <Link href="/book" className="inline-flex rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90">
+            Book Now
+          </Link>
+        </section>
       </div>
     </div>
   );

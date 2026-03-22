@@ -97,6 +97,14 @@ export default async function ServicesPage() {
             );
           })}
         </div>
+
+        <section className="mt-12 rounded-xl bg-accent p-8 text-center text-accent-foreground">
+          <h2 className="mb-2 text-2xl font-bold">Ready to Book?</h2>
+          <p className="mb-4 text-accent-foreground/80">Licensed professionals, transparent pricing, 72-hour guarantee.</p>
+          <Link href="/book" className="inline-flex rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90">
+            Book Now
+          </Link>
+        </section>
       </div>
     </div>
   );

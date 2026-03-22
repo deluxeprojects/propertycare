@@ -281,6 +281,14 @@ export default function CarePlansPage() {
                     Get Started
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
+                  <a
+                    href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi, I am interested in the ' + plan.name + ' Care Plan.')}`}
+                    className="mt-2 inline-flex w-full items-center justify-center rounded-lg border border-border px-4 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Or WhatsApp Us
+                  </a>
                 </div>
               </div>
             );
@@ -371,6 +379,14 @@ export default function CarePlansPage() {
                 {plan.cta}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi, I am interested in the ' + plan.tier + ' Care Plan.')}`}
+                className="mt-2 inline-flex w-full items-center justify-center rounded-lg border border-border px-4 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Or WhatsApp Us
+              </a>
             </div>
           ))}
         </div>

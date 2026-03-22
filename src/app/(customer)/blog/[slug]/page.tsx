@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { ArrowLeft } from 'lucide-react';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,6 +22,19 @@ async function getBlogPost(slug: string) {
 
   if (error || !post) return null;
   return post;
+}
+
+async function getRelatedPosts(category: string, slug: string) {
+  const supabase = createAdminClient();
+  const { data: relatedPosts } = await supabase
+    .from('blog_posts')
+    .select('slug, title, excerpt, featured_image, category, published_at')
+    .eq('status', 'published')
+    .eq('category', category)
+    .neq('slug', slug)
+    .limit(3);
+
+  return relatedPosts || [];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -126,12 +138,32 @@ export default async function BlogPostPage({ params }: Props) {
   const post = await getBlogPost(slug);
   if (!post) notFound();
 
+  const relatedPosts = await getRelatedPosts(post.category, slug);
+
   return (
     <div className="px-4 py-12 md:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: post.title,
+            description: post.excerpt,
+            image: post.featured_image,
+            datePublished: post.published_at,
+            dateModified: post.updated_at || post.published_at,
+            author: { '@type': 'Organization', name: siteConfig.name },
+            publisher: { '@type': 'Organization', name: siteConfig.name },
+          }),
+        }}
+      />
       <div className="container mx-auto max-w-3xl">
-        <Link href="/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-accent hover:underline">
-          <ArrowLeft className="h-4 w-4" /> Back to Blog
-        </Link>
+        <nav className="mb-6 text-sm text-muted-foreground">
+          <Link href="/" className="hover:text-accent">Home</Link>{' / '}
+          <Link href="/blog" className="hover:text-accent">Blog</Link>{' / '}
+          <span className="text-foreground">{post.title}</span>
+        </nav>
 
         <article>
           <div className="mb-8">
@@ -179,6 +211,43 @@ export default async function BlogPostPage({ params }: Props) {
             Book Now
           </Link>
         </div>
+
+        {/* Related Articles */}
+        {relatedPosts.length > 0 && (
+          <div className="mt-12">
+            <h2 className="mb-6 text-2xl font-bold text-foreground">Related Articles</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedPosts.map((related) => (
+                <Link
+                  key={related.slug}
+                  href={`/blog/${related.slug}`}
+                  className="group overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-accent hover:shadow-md"
+                >
+                  {related.featured_image && (
+                    <div className="relative h-36 w-full">
+                      <Image
+                        src={related.featured_image}
+                        alt={related.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                      />
+                    </div>
+                  )}
+                  <div className="p-4">
+                    <span className="mb-1 inline-block rounded-full bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">
+                      {related.category}
+                    </span>
+                    <h3 className="mb-1 text-sm font-semibold text-foreground group-hover:text-accent line-clamp-2">
+                      {related.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground line-clamp-2">{related.excerpt}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

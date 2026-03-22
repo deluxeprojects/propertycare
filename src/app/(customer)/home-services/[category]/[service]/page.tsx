@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { ArrowLeft, Clock, Star, Shield, Zap, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Clock, Star, Shield, Zap } from 'lucide-react';
 import { generateServiceSchema, generateBreadcrumbSchema } from '@/lib/utils/seo';
 import { ServiceContent } from '@/features/customer/components/ServiceContent';
 
@@ -20,9 +20,10 @@ export async function generateMetadata({ params }: Props) {
     .single();
 
   if (!data) return { title: 'Service' };
+  const shortDesc = data.short_desc_en?.endsWith('.') ? data.short_desc_en : `${data.short_desc_en}.`;
   return {
     title: `${data.name_en} in Dubai`,
-    description: `${data.short_desc_en} Professional ${data.name_en.toLowerCase()} service in Dubai by ${siteConfig.name}. Book online.`,
+    description: `${shortDesc} Professional ${data.name_en.toLowerCase()} in Dubai by ${siteConfig.name}. Book online.`,
   };
 }
 
@@ -120,19 +121,6 @@ export default async function ServiceDetailPage({ params }: Props) {
                   {b.label}
                 </div>
               ))}
-            </div>
-
-            {/* What's included */}
-            <div>
-              <h2 className="mb-4 text-xl font-semibold text-foreground">What&apos;s Included</h2>
-              <ul className="space-y-2">
-                {['Professional-grade equipment & materials', 'Licensed & background-checked technician', 'Full cleanup after service', '72-hour satisfaction guarantee', 'Digital invoice & receipt'].map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-foreground">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* Add-ons */}
