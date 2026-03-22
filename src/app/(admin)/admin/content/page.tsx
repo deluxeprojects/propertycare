@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { AdminTabs } from '@/features/admin/components/AdminTabs';
 
 export default async function ContentPage() {
   const supabase = createAdminClient();
@@ -33,13 +35,9 @@ export default async function ContentPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 rounded-lg bg-muted p-1">
-        {['Area Pages', 'Building Pages', 'Blog Posts', 'SEO Health', 'AI Pipeline'].map((tab, i) => (
-          <button key={tab} className={`rounded-md px-4 py-2 text-sm font-medium ${i === 0 ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}>
-            {tab}
-          </button>
-        ))}
-      </div>
+      <Suspense>
+        <AdminTabs tabs={['Area Pages', 'Building Pages', 'Blog Posts', 'SEO Health', 'AI Pipeline']} />
+      </Suspense>
 
       <div className="overflow-x-auto rounded-xl border border-border bg-card">
         <table className="w-full text-sm">

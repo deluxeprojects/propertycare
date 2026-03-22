@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
@@ -44,9 +45,9 @@ export default async function PromosPage() {
           <h1 className="text-2xl font-bold text-foreground">Promotions</h1>
           <p className="text-sm text-muted-foreground">Manage discount codes and offers</p>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:bg-accent/90">
+        <Link href="/admin/promos/new" className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:bg-accent/90">
           <Plus className="h-4 w-4" /> Create Promo
-        </button>
+        </Link>
       </div>
 
       <div className="overflow-x-auto rounded-xl border border-border bg-card">
@@ -74,7 +75,7 @@ export default async function PromosPage() {
               <tr key={p.id} className="border-b border-border last:border-0 hover:bg-muted/30">
                 <td className="px-4 py-3"><span className="rounded bg-muted px-2 py-1 font-mono text-xs font-bold text-foreground">{p.code ?? '—'}</span></td>
                 <td className="px-4 py-3 font-medium text-foreground">
-                  {p.name}
+                  <Link href={`/admin/promos/${p.id}`} className="text-accent hover:underline">{p.name}</Link>
                   {p.is_first_order_only && <span className="ml-2 rounded-full bg-blue-100 px-1.5 py-0.5 text-[10px] text-blue-800">1st order</span>}
                 </td>
                 <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs text-muted-foreground">{(p.discount_type ?? '').replace('_', ' ')}</span></td>

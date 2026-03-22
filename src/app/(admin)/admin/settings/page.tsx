@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import { siteConfig } from '@/config/site';
+import { AdminTabs } from '@/features/admin/components/AdminTabs';
 
 export default function SettingsPage() {
   return (
@@ -9,13 +11,9 @@ export default function SettingsPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 rounded-lg bg-muted p-1">
-        {['Business Info', 'Booking Rules', 'Payment', 'Notifications', 'SEO', 'Integrations', 'Audit Log'].map((tab, i) => (
-          <button key={tab} className={`rounded-md px-4 py-2 text-sm font-medium ${i === 0 ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}>
-            {tab}
-          </button>
-        ))}
-      </div>
+      <Suspense>
+        <AdminTabs tabs={['Business Info', 'Booking Rules', 'Payment', 'Notifications', 'SEO', 'Integrations', 'Audit Log']} />
+      </Suspense>
 
       <div className="rounded-xl border border-border bg-card p-6">
         <h3 className="mb-6 font-semibold text-foreground">Business Information</h3>

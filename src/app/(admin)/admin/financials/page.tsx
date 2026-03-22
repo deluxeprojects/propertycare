@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import { DollarSign } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { AdminTabs } from '@/features/admin/components/AdminTabs';
 
 export default async function FinancialsPage() {
   const supabase = createAdminClient();
@@ -75,13 +77,9 @@ export default async function FinancialsPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 rounded-lg bg-muted p-1">
-        {['Revenue', 'Invoices', 'Payments', 'Payroll', 'VAT Report'].map((tab, i) => (
-          <button key={tab} className={`rounded-md px-4 py-2 text-sm font-medium ${i === 0 ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}>
-            {tab}
-          </button>
-        ))}
-      </div>
+      <Suspense>
+        <AdminTabs tabs={['Revenue', 'Invoices', 'Payments', 'Payroll', 'VAT Report']} />
+      </Suspense>
 
       {/* Revenue KPIs */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

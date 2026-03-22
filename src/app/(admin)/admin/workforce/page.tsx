@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
@@ -116,9 +117,9 @@ export default async function WorkforcePage() {
           <h1 className="text-2xl font-bold text-foreground">Workforce</h1>
           <p className="text-sm text-muted-foreground">{techList.length} technicians</p>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:bg-accent/90">
+        <Link href="/admin/workforce/new" className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:bg-accent/90">
           <Plus className="h-4 w-4" /> Add Technician
-        </button>
+        </Link>
       </div>
 
       <div className="overflow-x-auto rounded-xl border border-border bg-card">
@@ -153,7 +154,7 @@ export default async function WorkforcePage() {
               return (
                 <tr key={t.id} className="border-b border-border last:border-0 hover:bg-muted/30">
                   <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{t.employee_code}</td>
-                  <td className="px-4 py-3 font-medium text-foreground">{t.profiles?.full_name ?? '—'}</td>
+                  <td className="px-4 py-3 font-medium text-foreground"><Link href={`/admin/workforce/${t.id}`} className="text-accent hover:underline">{t.profiles?.full_name ?? '—'}</Link></td>
                   <td className="px-4 py-3">
                     <div className="flex flex-wrap gap-1">
                       {specs.length > 0 ? specs.map((s: string) => (

@@ -1,7 +1,9 @@
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { ArrowLeft } from 'lucide-react';
+import { AdminTabs } from '@/features/admin/components/AdminTabs';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -38,13 +40,9 @@ export default async function ServiceEditPage({ params }: Props) {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 rounded-lg bg-muted p-1">
-        {['Basic Info', 'Pricing', 'Add-ons', 'Settings', 'Media', 'SEO', 'Status'].map((tab, i) => (
-          <button key={tab} className={`rounded-md px-4 py-2 text-sm font-medium ${i === 0 ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}>
-            {tab}
-          </button>
-        ))}
-      </div>
+      <Suspense>
+        <AdminTabs tabs={['Basic Info', 'Pricing', 'Add-ons', 'Settings', 'Media', 'SEO', 'Status']} />
+      </Suspense>
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6">

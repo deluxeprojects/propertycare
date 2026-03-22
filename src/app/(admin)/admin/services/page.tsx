@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
@@ -47,9 +48,9 @@ export default async function ServicesPage() {
           <h1 className="text-2xl font-bold text-foreground">Service Catalog</h1>
           <p className="text-sm text-muted-foreground">Manage services, variants, and add-ons</p>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:bg-accent/90">
+        <Link href="/admin/services/new" className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:bg-accent/90">
           <Plus className="h-4 w-4" /> Add Service
-        </button>
+        </Link>
       </div>
 
       <div className="overflow-x-auto rounded-xl border border-border bg-card">
@@ -77,7 +78,7 @@ export default async function ServicesPage() {
             {serviceList.map((s: any) => (
               <tr key={s.id} className="border-b border-border last:border-0 hover:bg-muted/30">
                 <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{s.service_code}</td>
-                <td className="px-4 py-3 font-medium text-foreground">{s.name_en}</td>
+                <td className="px-4 py-3 font-medium text-foreground"><Link href={`/admin/services/${s.id}/edit`} className="text-accent hover:underline">{s.name_en}</Link></td>
                 <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">{s.service_categories?.name_en ?? '—'}</span></td>
                 <td className="px-4 py-3 text-right font-medium">{Number(s.base_price_aed)}{formatUnit(s.price_unit)}</td>
                 <td className="px-4 py-3 text-muted-foreground">{formatDuration(s.duration_minutes)}</td>

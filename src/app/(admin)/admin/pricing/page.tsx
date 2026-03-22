@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { PriceSimulator } from '@/features/admin/components/PriceSimulator';
@@ -49,9 +50,9 @@ export default async function PricingPage() {
           <h1 className="text-2xl font-bold text-foreground">Pricing Rules</h1>
           <p className="text-sm text-muted-foreground">Dynamic pricing modifiers for services</p>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:bg-accent/90">
+        <Link href="/admin/pricing/new" className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:bg-accent/90">
           <Plus className="h-4 w-4" /> Add Rule
-        </button>
+        </Link>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
