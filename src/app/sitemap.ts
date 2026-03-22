@@ -73,6 +73,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  // Guide/listicle pages
+  const guideAngles = ['best-for-families', 'best-for-large-apartments', 'most-affordable', 'premium-packages', 'for-villas', 'for-high-rises', 'top-rated', 'same-day', 'annual-plans'];
+  const guidePages: MetadataRoute.Sitemap = [];
+  for (const area of areas ?? []) {
+    for (const angle of guideAngles) {
+      guidePages.push({
+        url: `${baseUrl}/guides/${area.slug}/${angle}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.5,
+      });
+    }
+  }
+
   // Building pages
   const { data: buildings } = await supabase.from('buildings').select('slug, areas(slug)').eq('is_active', true).eq('noindex', false);
   const buildingPages: MetadataRoute.Sitemap = (buildings ?? []).map((b) => ({
@@ -88,6 +102,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...servicePages,
     ...areaPages,
     ...areaServicePages,
+    ...guidePages,
     ...buildingPages,
   ];
 }

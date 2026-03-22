@@ -134,6 +134,30 @@ export default async function AreaPage({ params }: Props) {
           </section>
         )}
 
+        {/* Guides */}
+        <section className="mb-12">
+          <h2 className="mb-4 text-xl font-semibold text-foreground">Guides for {area.name_en}</h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { angle: 'best-for-families', label: 'Best for Families' },
+              { angle: 'most-affordable', label: 'Most Affordable' },
+              { angle: 'premium-packages', label: 'Premium Packages' },
+              { angle: 'same-day', label: 'Same-Day Services' },
+              { angle: 'for-high-rises', label: 'For High-Rise Residents' },
+              { angle: 'annual-plans', label: 'Annual Care Plans' },
+            ].map((g) => (
+              <Link
+                key={g.angle}
+                href={`/guides/${areaSlug}/${g.angle}`}
+                className="group rounded-lg border border-border p-3 transition-colors hover:border-accent"
+              >
+                <p className="text-sm font-medium text-foreground group-hover:text-accent">{g.label}</p>
+                <p className="text-xs text-muted-foreground">in {area.name_en}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="rounded-xl bg-accent p-8 text-center text-accent-foreground">
           <h2 className="mb-2 text-2xl font-bold">Need a Service in {area.name_en}?</h2>
