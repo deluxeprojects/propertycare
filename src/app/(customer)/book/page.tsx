@@ -321,8 +321,62 @@ function StepAccount() {
 // Step 7: Review & Pay
 function StepReview() {
   const booking = useBooking();
+  const [submitting, setSubmitting] = useState(false);
+  const [orderError, setOrderError] = useState('');
   const vat = Math.round((booking.basePrice + booking.addonsTotal) * 0.05 * 100) / 100;
-  const total = booking.basePrice + booking.addonsTotal + vat;
+  const expressSurcharge = booking.isExpress ? Math.round((booking.basePrice + booking.addonsTotal) * 0.5 * 100) / 100 : 0;
+  const total = booking.basePrice + booking.addonsTotal + expressSurcharge + vat;
+
+  const handleConfirm = async () => {
+    setOrderError('');
+    // Check if user is logged in
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      // Redirect to login with return URL
+      window.location.href = '/login?redirect=/book';
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/v1/customer/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          serviceId: booking.serviceId,
+          variantId: booking.variantId,
+          addonIds: booking.addonIds,
+          scheduledDate: booking.scheduledDate,
+          scheduledTimeSlot: booking.scheduledTimeSlot,
+          areaId: booking.areaId || null,
+          buildingId: booking.buildingId || null,
+          isExpress: booking.isExpress,
+          promoCode: booking.promoCode,
+          notesCustomer: booking.notesCustomer,
+          baseAmount: booking.basePrice,
+          addonsAmount: booking.addonsTotal,
+          expressSurcharge,
+          discount: booking.discount,
+          vat,
+          total,
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        setOrderError(err.error || 'Failed to create order');
+        setSubmitting(false);
+        return;
+      }
+
+      // Order created — advance to confirmation
+      booking.nextStep();
+    } catch {
+      setOrderError('Something went wrong. Please try again.');
+    }
+    setSubmitting(false);
+  };
 
   return (
     <div>
@@ -342,6 +396,7 @@ function StepReview() {
           <div className="border-t border-border pt-3">
             <div className="flex justify-between"><span className="text-muted-foreground">Service</span><span className="text-foreground">AED {booking.basePrice.toFixed(2)}</span></div>
             {booking.addonsTotal > 0 && <div className="flex justify-between"><span className="text-muted-foreground">Add-ons</span><span className="text-foreground">AED {booking.addonsTotal.toFixed(2)}</span></div>}
+            {expressSurcharge > 0 && <div className="flex justify-between"><span className="text-yellow-600">Express surcharge</span><span className="text-yellow-600">AED {expressSurcharge.toFixed(2)}</span></div>}
             <div className="flex justify-between"><span className="text-muted-foreground">VAT (5%)</span><span className="text-foreground">AED {vat.toFixed(2)}</span></div>
           </div>
 
@@ -372,8 +427,12 @@ function StepReview() {
         </div>
       </div>
 
-      <button onClick={booking.nextStep} className="w-full rounded-lg bg-accent py-3 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
-        Confirm & Pay AED {total.toFixed(2)}
+      {orderError && (
+        <p className="mb-4 rounded-lg bg-red-50 px-4 py-2 text-sm text-red-700">{orderError}</p>
+      )}
+
+      <button onClick={handleConfirm} disabled={submitting} className="w-full rounded-lg bg-accent py-3 text-sm font-semibold text-accent-foreground hover:bg-accent/90 disabled:opacity-50">
+        {submitting ? 'Creating order...' : `Confirm & Pay AED ${total.toFixed(2)}`}
       </button>
       <p className="mt-2 text-center text-xs text-muted-foreground">Free cancellation up to 12 hours before service</p>
     </div>

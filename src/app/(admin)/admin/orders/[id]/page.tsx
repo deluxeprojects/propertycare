@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { ArrowLeft, Phone, MapPin, Clock, User, CreditCard } from 'lucide-react';
+import { OrderActions } from '@/features/admin/components/orders/OrderActions';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -190,15 +191,7 @@ export default async function OrderDetailPage({ params }: Props) {
           </div>
 
           {/* Actions */}
-          <div className="rounded-xl border border-border bg-card p-5">
-            <h3 className="mb-3 font-semibold text-foreground">Actions</h3>
-            <div className="space-y-2">
-              <button className="w-full rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted">Assign Technician</button>
-              <button className="w-full rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted">Reschedule</button>
-              <button className="w-full rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted">Generate Invoice</button>
-              <button className="w-full rounded-lg border border-destructive px-4 py-2 text-sm font-medium text-destructive hover:bg-destructive/10">Cancel Order</button>
-            </div>
-          </div>
+          <OrderActions orderId={o.id} currentStatus={o.status} paymentIntentId={o.payment_intent_id} />
         </div>
       </div>
     </div>
