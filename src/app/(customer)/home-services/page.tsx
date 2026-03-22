@@ -3,8 +3,8 @@ import { siteConfig } from '@/config/site';
 import { Sparkles, Wind, Bug, Droplets, Plug, Paintbrush } from 'lucide-react';
 
 export const metadata = {
-  title: 'All Services',
-  description: `Professional home services in Dubai by ${siteConfig.name}. Cleaning, AC, pest control, plumbing, electrical, painting & more.`,
+  title: 'Home Services in Dubai',
+  description: '53+ professional home services in Dubai. Licensed cleaning, AC maintenance, pest control, plumbing, electrical & painting. Book online with ProKeep.',
 };
 
 const categories = [
@@ -12,7 +12,7 @@ const categories = [
     icon: Sparkles,
     name: 'Cleaning',
     slug: 'cleaning',
-    desc: 'Regular cleaning, deep cleaning, move-in/out, sofa, carpet, mattress, window & water tank cleaning.',
+    desc: 'Apartment deep cleaning, villa cleaning, move-in/out prep, sofa and carpet shampooing, mattress sanitization, and window cleaning — all with eco-friendly products.',
     services: 12,
     startingPrice: 38,
   },
@@ -20,7 +20,7 @@ const categories = [
     icon: Wind,
     name: 'AC Services',
     slug: 'ac-services',
-    desc: 'AC servicing, deep clean, duct cleaning, repair, installation & maintenance contracts.',
+    desc: 'Split and central AC servicing, coil deep cleaning, full duct sanitization, refrigerant top-up, and annual maintenance contracts for Dubai apartments and villas.',
     services: 5,
     startingPrice: 120,
   },
@@ -28,7 +28,7 @@ const categories = [
     icon: Bug,
     name: 'Pest Control',
     slug: 'pest-control',
-    desc: 'General pest treatment, bed bugs, cockroach gel, termite, rodent control & commercial pest management.',
+    desc: 'DM-approved pest treatments for cockroaches, bed bugs, termites, and rodents. Gel baiting, fumigation, and quarterly prevention plans for homes and offices.',
     services: 10,
     startingPrice: 220,
   },
@@ -36,7 +36,7 @@ const categories = [
     icon: Droplets,
     name: 'Plumbing',
     slug: 'plumbing',
-    desc: 'Standard & emergency plumbing, water heater installation, appliance repair & handyman services.',
+    desc: 'Leak repairs, drain unblocking, water heater installation, toilet and faucet replacement, and 24/7 emergency plumbing across all Dubai communities.',
     services: 7,
     startingPrice: 130,
   },
@@ -44,7 +44,7 @@ const categories = [
     icon: Plug,
     name: 'Electrical',
     slug: 'electrical',
-    desc: 'Standard & emergency electrical, smart home setup, CCTV installation & appliance repair.',
+    desc: 'Light and socket installation, circuit breaker repairs, smart home wiring, CCTV setup, and emergency electrical fault-finding by DEWA-certified technicians.',
     services: 5,
     startingPrice: 150,
   },
@@ -52,7 +52,7 @@ const categories = [
     icon: Paintbrush,
     name: 'Painting & Fit-Out',
     slug: 'painting',
-    desc: 'Interior painting, wallpaper installation, kitchen & bathroom renovation, flooring & custom carpentry.',
+    desc: 'Professional interior painting, wallpaper hanging, kitchen and bathroom renovations, flooring installation, and custom carpentry — with free color consultations.',
     services: 11,
     startingPrice: 700,
   },
@@ -64,12 +64,12 @@ export default function ServicesPage() {
       <div className="container mx-auto max-w-7xl">
         <div className="mb-12">
           <h1 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            Our Services
+            Home Services in Dubai
           </h1>
           <p className="max-w-2xl text-muted-foreground">
-            53+ professional home services across Dubai. All technicians are
-            licensed, insured, and background-checked. Book online in 60
-            seconds.
+            Licensed professionals, transparent pricing, 72-hour guarantee.
+            From routine apartment cleaning to full villa maintenance — we
+            handle it all across 40+ Dubai neighborhoods.
           </p>
         </div>
 

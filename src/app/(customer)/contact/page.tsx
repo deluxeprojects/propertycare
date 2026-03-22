@@ -13,10 +13,18 @@ export default function ContactPage() {
         <h1 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
           Contact Us
         </h1>
-        <p className="mb-8 text-muted-foreground">
-          Have questions? We&apos;re here to help. Reach out through any of the
-          channels below.
+        <p className="mb-2 text-muted-foreground">
+          Have a question, need a quote, or want to book a service? We&apos;re
+          here to help — reach out through any of the channels below.
         </p>
+        <div className="mb-8 flex flex-wrap gap-4 text-sm">
+          <span className="rounded-full bg-accent/10 px-3 py-1 font-medium text-accent">
+            Open 8 AM – 10 PM, 7 days a week
+          </span>
+          <span className="rounded-full bg-muted px-3 py-1 text-muted-foreground">
+            We typically respond within 30 minutes during business hours
+          </span>
+        </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
           <a

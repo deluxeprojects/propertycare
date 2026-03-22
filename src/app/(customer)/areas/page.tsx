@@ -3,8 +3,8 @@ import { siteConfig } from '@/config/site';
 import { MapPin } from 'lucide-react';
 
 export const metadata = {
-  title: 'Service Areas',
-  description: `${siteConfig.name} serves 40+ areas across Dubai. Find professional home services in your neighborhood.`,
+  title: 'Service Areas in Dubai',
+  description: 'ProKeep serves 40+ areas across Dubai. Find professional cleaning, AC, pest control & maintenance services in your neighborhood. Same-day booking available.',
 };
 
 const zoneGroups = [
@@ -55,8 +55,9 @@ export default function AreasPage() {
             Service Areas in Dubai
           </h1>
           <p className="max-w-2xl text-muted-foreground">
-            {siteConfig.name} serves 40+ areas across Dubai. Select your area
-            to see available services and pricing.
+            We operate across Dubai — from Marina and Downtown to JLT and
+            Arabian Ranches. Select your neighborhood to see available
+            services, pricing, and same-day availability.
           </p>
         </div>
 

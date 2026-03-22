@@ -14,8 +14,8 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Care Plans',
-  description: `Save up to 40% with ${siteConfig.name} Care Plans. AC, cleaning, pest, garden, pool and total-care contracts from AED 79/month.`,
+  title: 'Care Plans — Annual Home Service Contracts',
+  description: 'Save up to 40% on home maintenance with ProKeep Care Plans. AC, cleaning, pest control, housekeeping & pool maintenance contracts for Dubai homes.',
 };
 
 /* ------------------------------------------------------------------ */
@@ -208,9 +208,11 @@ export default function CarePlansPage() {
             Care Plans
           </h1>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            Pick only the services you need with a {siteConfig.name} Care Plan.
-            Combine multiple plans or go all-in with Total Care — and enjoy
-            priority service year-round.
+            Stop overpaying for one-off services. A {siteConfig.name} Care Plan
+            locks in lower rates for AC maintenance, cleaning, pest control,
+            and more — with priority scheduling and a dedicated service team.
+            Pick individual plans or bundle everything with Total Care and save
+            up to 40%.
           </p>
         </div>
 

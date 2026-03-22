@@ -3,14 +3,14 @@ import { Shield, Users, MapPin, Clock, Star, Award } from 'lucide-react';
 
 export const metadata = {
   title: 'About Us',
-  description: `${siteConfig.name} — Professional home services in Dubai. Licensed, insured, and trusted by thousands of homeowners.`,
+  description: `Learn about ${siteConfig.name} — Dubai's trusted home services platform. Licensed, vetted professionals with a 72-hour satisfaction guarantee. Serving 40+ neighborhoods.`,
 };
 
 const stats = [
-  { icon: Users, value: '5,000+', label: 'Happy Customers' },
-  { icon: MapPin, value: '40+', label: 'Areas Covered' },
-  { icon: Star, value: '4.8', label: 'Average Rating' },
-  { icon: Clock, value: '15,000+', label: 'Services Completed' },
+  { icon: Users, value: '5,000+', label: 'Dubai Homes Served' },
+  { icon: MapPin, value: '40+', label: 'Neighborhoods Covered' },
+  { icon: Star, value: '4.8', label: 'Average Customer Rating' },
+  { icon: Clock, value: '15,000+', label: 'Jobs Completed' },
 ];
 
 export default function AboutPage() {
@@ -21,10 +21,12 @@ export default function AboutPage() {
           About {siteConfig.name}
         </h1>
         <p className="mb-8 text-lg text-muted-foreground">
-          {siteConfig.name} is Dubai&apos;s trusted home services platform. We
-          connect homeowners, tenants, and property managers with licensed,
-          vetted professionals for cleaning, maintenance, and renovation
-          services.
+          We started {siteConfig.name} because we were tired of the same
+          problems every Dubai resident faces: overpriced quotes, unreliable
+          technicians, and zero transparency. Founded by a team that has lived
+          in Dubai for over a decade, we built the home services platform we
+          wished existed — one where quality is guaranteed, pricing is upfront,
+          and every professional is properly vetted.
         </p>
 
         <div className="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -41,12 +43,50 @@ export default function AboutPage() {
         </div>
 
         <div className="space-y-6 text-muted-foreground">
-          <h2 className="text-2xl font-bold text-foreground">Our Mission</h2>
+          <h2 className="text-2xl font-bold text-foreground">
+            Why Dubai Needs {siteConfig.name}
+          </h2>
           <p>
-            We believe every home in Dubai deserves professional care. Our
-            mission is to make quality home services accessible, transparent,
-            and hassle-free. From routine cleaning to emergency repairs, we
-            are committed to delivering excellence every time.
+            Anyone who has lived in Dubai knows the frustration. You need an AC
+            service, so you call three companies and get three wildly different
+            prices. A plumber shows up two hours late — or doesn&apos;t show up
+            at all. You pay upfront and the work is subpar, but there&apos;s no
+            recourse. We heard these stories hundreds of times because we lived
+            them ourselves.
+          </p>
+          <p>
+            Dubai&apos;s home services market is fragmented. There are thousands
+            of small operators, many unlicensed, with no standardized pricing
+            and no accountability. {siteConfig.name} fixes that by bringing
+            structure, vetting, and a real guarantee to every job — whether
+            it&apos;s a routine apartment cleaning or a full villa renovation.
+          </p>
+
+          <h2 className="text-2xl font-bold text-foreground">
+            How We Vet Our Professionals
+          </h2>
+          <p>
+            Every technician on {siteConfig.name} goes through a rigorous
+            four-step vetting process before they touch a single job. First,
+            we verify their Dubai Municipality trade license and insurance
+            coverage. Then we run a full background check. Next comes hands-on
+            skills testing — we watch them do the actual work. Finally, they
+            complete a probation period where customer ratings determine
+            whether they stay on the platform. The result: only about 1 in 5
+            applicants make it through.
+          </p>
+
+          <h2 className="text-2xl font-bold text-foreground">
+            The 72-Hour Guarantee
+          </h2>
+          <p>
+            We stand behind every service with our 72-hour satisfaction
+            guarantee. If something isn&apos;t right — a cleaning wasn&apos;t
+            thorough enough, an AC is still making noise, a paint edge
+            isn&apos;t clean — just let us know within 72 hours and we&apos;ll
+            send someone back to fix it at no extra charge. No arguments, no
+            fine print. We can offer this because we trust the professionals on
+            our platform, and because we track quality closely.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground">
@@ -57,22 +97,22 @@ export default function AboutPage() {
               {
                 icon: Shield,
                 title: 'Licensed & Insured',
-                desc: 'All technicians are licensed by Dubai Municipality and fully insured.',
+                desc: 'Every technician holds a valid Dubai Municipality license and carries full liability insurance — so you are always protected.',
               },
               {
                 icon: Award,
                 title: '72-Hour Guarantee',
-                desc: 'Not satisfied? We will redo the service within 72 hours at no extra cost.',
+                desc: 'Not satisfied with the work? We will send someone back within 72 hours to redo it, completely free of charge.',
               },
               {
                 icon: Clock,
-                title: 'Same-Day Service',
-                desc: 'Need it today? Book express service and we will be there within hours.',
+                title: 'Same-Day Availability',
+                desc: 'Book before noon and we can have a professional at your door the same day. Express service available across 40+ Dubai areas.',
               },
               {
                 icon: Star,
-                title: 'Vetted Professionals',
-                desc: 'Every technician goes through background checks and skills verification.',
+                title: 'Transparent Pricing',
+                desc: 'See the price before you book. No hidden fees, no surprise charges. What you see on the screen is what you pay.',
               },
             ].map((item) => (
               <div
