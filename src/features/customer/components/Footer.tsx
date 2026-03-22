@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
+import { ProKeepLogo } from '@/components/shared/ProKeepLogo';
 
 const serviceLinks = [
   { label: 'Cleaning', href: '/services/cleaning' },
@@ -34,7 +35,9 @@ export function Footer() {
       <div className="container mx-auto max-w-7xl px-4 py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="mb-4 text-lg font-bold">{siteConfig.name}</h3>
+            <div className="mb-4">
+              <ProKeepLogo size="xs" dark />
+            </div>
             <p className="mb-4 text-sm text-primary-foreground/70">
               {siteConfig.tagline}. Professional home services across 40+ areas
               in Dubai.

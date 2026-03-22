@@ -1,4 +1,4 @@
-import { siteConfig } from '@/config/site';
+import { ProKeepLogo } from '@/components/shared/ProKeepLogo';
 
 export const metadata = { title: 'Staff Login' };
 
@@ -7,10 +7,10 @@ export default function StaffLoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary">
-            <span className="text-lg font-bold text-primary-foreground">{siteConfig.name.charAt(0)}</span>
+          <div className="mb-2">
+            <ProKeepLogo size="md" />
           </div>
-          <h1 className="text-xl font-bold text-foreground">{siteConfig.name} Staff</h1>
+          <h1 className="text-sm font-medium text-muted-foreground">Staff Portal</h1>
           <p className="text-sm text-muted-foreground">Sign in to view your tasks</p>
         </div>
         <div className="rounded-xl border border-border bg-card p-6">

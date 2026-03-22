@@ -1,28 +1,16 @@
 import Link from 'next/link';
-import { siteConfig } from '@/config/site';
+import { ProKeepLogo } from './ProKeepLogo';
 
 interface LogoProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  dark?: boolean;
   href?: string;
 }
 
-export function Logo({ size = 'md', href = '/' }: LogoProps) {
-  const sizes = {
-    sm: { box: 'h-6 w-6', text: 'text-xs', name: 'text-base' },
-    md: { box: 'h-8 w-8', text: 'text-sm', name: 'text-xl' },
-    lg: { box: 'h-10 w-10', text: 'text-base', name: 'text-2xl' },
-  };
-
-  const s = sizes[size];
-
+export function Logo({ size = 'sm', dark = false, href = '/' }: LogoProps) {
   return (
-    <Link href={href} className="flex items-center gap-2">
-      <div className={`flex ${s.box} items-center justify-center rounded-lg bg-primary`}>
-        <span className={`${s.text} font-bold text-primary-foreground`}>
-          {siteConfig.name.charAt(0)}
-        </span>
-      </div>
-      <span className={`${s.name} font-bold text-primary`}>{siteConfig.name}</span>
+    <Link href={href} className="inline-flex items-center">
+      <ProKeepLogo size={size} dark={dark} />
     </Link>
   );
 }

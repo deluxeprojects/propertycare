@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { siteConfig } from '@/config/site';
 import { adminNav } from '@/config/navigation';
+import { ProKeepLogo } from '@/components/shared/ProKeepLogo';
 import { cn } from '@/lib/utils/cn';
 import {
   LayoutDashboard,
@@ -39,14 +39,9 @@ export function AdminSidebar() {
   return (
     <aside className="hidden w-64 flex-col border-r border-border bg-primary text-primary-foreground lg:flex">
       <div className="flex h-16 items-center gap-2 border-b border-primary-foreground/20 px-6">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent">
-          <span className="text-sm font-bold text-accent-foreground">
-            {siteConfig.name.charAt(0)}
-          </span>
-        </div>
         <div>
-          <p className="text-sm font-bold">{siteConfig.name}</p>
-          <p className="text-xs text-primary-foreground/60">Admin Panel</p>
+          <ProKeepLogo size="xs" dark />
+          <p className="mt-1 text-xs text-primary-foreground/60">Admin Panel</p>
         </div>
       </div>
 

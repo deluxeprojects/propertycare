@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
 import '@/styles/globals.css';
 import { siteConfig } from '@/config/site';
 import { Toaster } from 'sonner';
 import { generateLocalBusinessSchema } from '@/lib/utils/seo';
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-sans',
 });
 
@@ -75,7 +76,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${dmSans.variable} font-sans antialiased`}>
         {gtmId && (
           <noscript>
             <iframe

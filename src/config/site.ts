@@ -1,16 +1,16 @@
 export const siteConfig = {
-  name: process.env.NEXT_PUBLIC_COMPANY_NAME || 'Livio Homes',
-  tagline: process.env.NEXT_PUBLIC_COMPANY_TAGLINE || 'Home Services Done Right',
-  domain: process.env.NEXT_PUBLIC_DOMAIN || 'liviohomes.ae',
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@liviohomes.ae',
+  name: process.env.NEXT_PUBLIC_COMPANY_NAME || 'ProKeep',
+  tagline: process.env.NEXT_PUBLIC_COMPANY_TAGLINE || 'We Handle It.',
+  domain: process.env.NEXT_PUBLIC_DOMAIN || 'prokeep.ae',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@prokeep.ae',
   phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+971-XX-XXX-XXXX',
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || '+971XXXXXXXXX',
   colors: {
-    primary: '#1B3A5C',
-    accent: '#2BA5B5',
+    primary: '#1A1A1A',
+    accent: '#4ECDC4',
   },
   vat: 5,
   currency: 'AED',
-  orderPrefix: 'LH',
+  orderPrefix: 'PK',
   invoicePrefix: 'INV',
 } as const;

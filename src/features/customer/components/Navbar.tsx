@@ -1,20 +1,13 @@
 import Link from 'next/link';
-import { siteConfig } from '@/config/site';
 import { customerNav } from '@/config/navigation';
+import { ProKeepLogo } from '@/components/shared/ProKeepLogo';
 
 export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-            <span className="text-sm font-bold text-primary-foreground">
-              {siteConfig.name.charAt(0)}
-            </span>
-          </div>
-          <span className="text-xl font-bold text-primary">
-            {siteConfig.name}
-          </span>
+        <Link href="/" className="flex items-center">
+          <ProKeepLogo size="xs" />
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">

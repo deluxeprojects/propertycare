@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils/cn';
+import { ProKeepLogo } from '@/components/shared/ProKeepLogo';
 import { CheckSquare, Calendar, User } from 'lucide-react';
 
 const navItems = [
@@ -21,10 +21,8 @@ export function StaffShell({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-border bg-primary px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent">
-              <span className="text-xs font-bold text-accent-foreground">{siteConfig.name.charAt(0)}</span>
-            </div>
-            <span className="text-sm font-bold text-primary-foreground">{siteConfig.name} Staff</span>
+            <ProKeepLogo size="xs" dark />
+            <span className="text-xs font-medium text-primary-foreground/60">Staff</span>
           </div>
         </div>
       </header>

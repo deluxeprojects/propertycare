@@ -1,4 +1,4 @@
-import { siteConfig } from '@/config/site';
+import { ProKeepLogo } from '@/components/shared/ProKeepLogo';
 
 export const metadata = { title: 'Sign In' };
 
@@ -7,7 +7,10 @@ export default function LoginPage() {
     <div className="flex min-h-[60vh] items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
-          <h1 className="mb-2 text-2xl font-bold text-foreground">Welcome to {siteConfig.name}</h1>
+          <div className="mb-4">
+            <ProKeepLogo size="md" />
+          </div>
+          <h1 className="mb-2 text-lg font-medium text-muted-foreground">Sign in to your account</h1>
           <p className="text-muted-foreground">Sign in to manage your bookings</p>
         </div>
 
