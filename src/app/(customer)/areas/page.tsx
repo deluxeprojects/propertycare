@@ -14,7 +14,6 @@ const zoneGroups = [
       { name: 'Dubai Marina', slug: 'dubai-marina', services: 53 },
       { name: 'JBR', slug: 'jbr', services: 53 },
       { name: 'Palm Jumeirah', slug: 'palm-jumeirah', services: 53 },
-      { name: 'Bluewaters Island', slug: 'bluewaters-island', services: 48 },
     ],
   },
   {
@@ -23,7 +22,6 @@ const zoneGroups = [
       { name: 'Downtown Dubai', slug: 'downtown-dubai', services: 53 },
       { name: 'DIFC', slug: 'difc', services: 45 },
       { name: 'Business Bay', slug: 'business-bay', services: 53 },
-      { name: 'City Walk', slug: 'city-walk', services: 45 },
     ],
   },
   {
@@ -31,8 +29,6 @@ const zoneGroups = [
     areas: [
       { name: 'JLT', slug: 'jlt', services: 53 },
       { name: 'Dubai Hills', slug: 'dubai-hills', services: 53 },
-      { name: 'Dubai Creek Harbour', slug: 'dubai-creek-harbour', services: 48 },
-      { name: 'MBR City', slug: 'mbr-city', services: 45 },
     ],
   },
   {
