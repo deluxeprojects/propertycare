@@ -25,49 +25,92 @@ const services = [
     icon: Sparkles,
     name: 'Cleaning',
     slug: 'cleaning',
-    desc: 'Deep cleaning, regular cleaning, move-in/out & specialty services',
+    desc: 'Professional cleaning for homes, offices, and move-in/out',
     price: 38,
     unit: '/hr',
+    subs: [
+      { name: 'Regular Cleaning', slug: 'regular-home-cleaning' },
+      { name: 'Deep Cleaning', slug: 'deep-cleaning' },
+      { name: 'Move-In/Out', slug: 'move-in-out-cleaning' },
+      { name: 'Sofa Cleaning', slug: 'sofa-upholstery-cleaning' },
+      { name: 'Carpet Cleaning', slug: 'carpet-cleaning' },
+      { name: 'Window Cleaning', slug: 'window-cleaning' },
+    ],
   },
   {
     icon: Wind,
     name: 'AC Services',
     slug: 'ac-services',
-    desc: 'AC servicing, deep clean, duct cleaning, repair & installation',
+    desc: 'Complete AC care from routine servicing to full installation',
     price: 120,
     unit: '/unit',
+    subs: [
+      { name: 'AC Service', slug: 'ac-service' },
+      { name: 'AC Deep Clean', slug: 'ac-deep-clean' },
+      { name: 'Duct Cleaning', slug: 'ac-duct-cleaning' },
+      { name: 'AC Repair', slug: 'ac-repair' },
+      { name: 'AC Installation', slug: 'ac-installation' },
+    ],
   },
   {
     icon: Bug,
     name: 'Pest Control',
     slug: 'pest-control',
-    desc: 'General pest, bed bugs, cockroach, termite & rodent control',
+    desc: 'Municipality-approved pest management for all property types',
     price: 220,
     unit: '',
+    subs: [
+      { name: 'General Pest', slug: 'general-pest-control' },
+      { name: 'Bed Bugs', slug: 'bed-bug-treatment' },
+      { name: 'Cockroach Gel', slug: 'cockroach-gel-treatment' },
+      { name: 'Termite', slug: 'termite-treatment' },
+      { name: 'Rodent Control', slug: 'rodent-control' },
+    ],
   },
   {
     icon: Droplets,
     name: 'Plumbing',
     slug: 'plumbing',
-    desc: 'Standard & emergency plumbing, water heater, tank cleaning',
+    desc: 'Standard and emergency plumbing for any issue',
     price: 150,
     unit: '/hr',
+    subs: [
+      { name: 'Standard Plumbing', slug: 'plumbing-standard' },
+      { name: 'Emergency Plumbing', slug: 'plumbing-emergency' },
+      { name: 'Water Heater', slug: 'water-heater-install' },
+      { name: 'Water Tank', slug: 'water-tank-cleaning' },
+      { name: 'Handyman', slug: 'handyman-general' },
+    ],
   },
   {
     icon: Plug,
     name: 'Electrical',
     slug: 'electrical',
-    desc: 'Standard & emergency electrical, appliance repair, smart home',
+    desc: 'Electrical repair, installation, and smart home setup',
     price: 150,
     unit: '/hr',
+    subs: [
+      { name: 'Standard Electrical', slug: 'electrical-standard' },
+      { name: 'Emergency Electrical', slug: 'electrical-emergency' },
+      { name: 'Appliance Repair', slug: 'appliance-repair' },
+      { name: 'Smart Home', slug: 'smart-home-setup' },
+      { name: 'CCTV Install', slug: 'cctv-installation' },
+    ],
   },
   {
     icon: Paintbrush,
     name: 'Painting & Fit-Out',
     slug: 'painting',
-    desc: 'Interior painting, wallpaper, kitchen & bathroom renovation',
+    desc: 'Interior painting, renovation, and custom fit-out',
     price: 700,
     unit: '',
+    subs: [
+      { name: 'Painting', slug: 'painting-studio' },
+      { name: 'Wallpaper', slug: 'wallpaper-install' },
+      { name: 'Kitchen Reno', slug: 'kitchen-renovation' },
+      { name: 'Bathroom Reno', slug: 'bathroom-renovation' },
+      { name: 'Flooring', slug: 'flooring-install' },
+    ],
   },
 ];
 
@@ -213,25 +256,39 @@ export default function HomePage() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <Link
+              <div
                 key={service.slug}
-                href={`/services/${service.slug}`}
-                className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
+                className="rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
-                  <service.icon className="h-6 w-6 text-accent" />
+                <Link href={`/services/${service.slug}`}>
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
+                    <service.icon className="h-6 w-6 text-accent" />
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold text-card-foreground hover:text-accent">
+                    {service.name}
+                  </h3>
+                  <p className="mb-3 text-sm text-muted-foreground">
+                    {service.desc}
+                  </p>
+                  <p className="mb-4 text-sm font-semibold text-accent">
+                    From AED {service.price}
+                    {service.unit}
+                  </p>
+                </Link>
+                <div className="border-t border-border pt-3">
+                  <div className="flex flex-wrap gap-x-3 gap-y-1">
+                    {service.subs.map((sub) => (
+                      <Link
+                        key={sub.slug}
+                        href={`/services/${service.slug}/${sub.slug}`}
+                        className="text-xs text-muted-foreground transition-colors hover:text-accent"
+                      >
+                        {sub.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="mb-2 text-xl font-semibold text-card-foreground group-hover:text-accent">
-                  {service.name}
-                </h3>
-                <p className="mb-4 text-sm text-muted-foreground">
-                  {service.desc}
-                </p>
-                <p className="text-sm font-semibold text-accent">
-                  From AED {service.price}
-                  {service.unit}
-                </p>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
