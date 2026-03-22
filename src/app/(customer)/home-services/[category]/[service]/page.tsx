@@ -68,18 +68,18 @@ export default async function ServiceDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateBreadcrumbSchema([
             { name: 'Home', url: '/' },
-            { name: 'Services', url: '/services' },
-            { name: service.service_categories?.name_en ?? 'Category', url: `/services/${category}` },
-            { name: service.name_en, url: `/services/${category}/${serviceSlug}` },
+            { name: 'Services', url: '/home-services' },
+            { name: service.service_categories?.name_en ?? 'Category', url: `/home-services/${category}` },
+            { name: service.name_en, url: `/home-services/${category}/${serviceSlug}` },
           ])),
         }}
       />
       <div className="container mx-auto max-w-7xl">
         {/* Breadcrumb */}
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/services" className="hover:text-accent">Services</Link>
+          <Link href="/home-services" className="hover:text-accent">Services</Link>
           {' / '}
-          <Link href={`/services/${category}`} className="hover:text-accent">
+          <Link href={`/home-services/${category}`} className="hover:text-accent">
             {service.service_categories?.name_en}
           </Link>
           {' / '}

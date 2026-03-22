@@ -77,7 +77,7 @@ export default function ServicesPage() {
           {categories.map((cat) => (
             <Link
               key={cat.slug}
-              href={`/services/${cat.slug}`}
+              href={`/home-services/${cat.slug}`}
               className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
             >
               <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10">

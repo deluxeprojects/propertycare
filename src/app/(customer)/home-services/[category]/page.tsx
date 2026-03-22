@@ -53,7 +53,7 @@ export default async function CategoryPage({ params }: Props) {
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
         <div className="mb-8">
-          <Link href="/services" className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+          <Link href="/home-services" className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
             <ArrowLeft className="h-4 w-4" /> All Services
           </Link>
           <h1 className="mb-2 text-3xl font-bold text-foreground md:text-4xl">{cat.name_en}</h1>
@@ -64,7 +64,7 @@ export default async function CategoryPage({ params }: Props) {
           {(services ?? []).map((service) => (
             <Link
               key={service.slug}
-              href={`/services/${category}/${service.slug}`}
+              href={`/home-services/${category}/${service.slug}`}
               className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
             >
               <div className="mb-2 flex items-center gap-2">

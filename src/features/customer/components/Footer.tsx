@@ -3,12 +3,12 @@ import { siteConfig } from '@/config/site';
 import { ProKeepLogo } from '@/components/shared/ProKeepLogo';
 
 const serviceLinks = [
-  { label: 'Cleaning', href: '/services/cleaning' },
-  { label: 'AC Services', href: '/services/ac-services' },
-  { label: 'Pest Control', href: '/services/pest-control' },
-  { label: 'Plumbing', href: '/services/plumbing' },
-  { label: 'Electrical', href: '/services/electrical' },
-  { label: 'Painting', href: '/services/painting' },
+  { label: 'Cleaning', href: '/home-services/cleaning' },
+  { label: 'AC Services', href: '/home-services/ac-services' },
+  { label: 'Pest Control', href: '/home-services/pest-control' },
+  { label: 'Plumbing', href: '/home-services/plumbing' },
+  { label: 'Electrical', href: '/home-services/electrical' },
+  { label: 'Painting', href: '/home-services/painting' },
 ];
 
 const areaLinks = [

@@ -216,7 +216,7 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
-                href="/services"
+                href="/home-services"
                 className="inline-flex items-center justify-center rounded-lg border border-primary-foreground/30 px-8 py-3 text-lg font-semibold transition-colors hover:bg-primary-foreground/10"
               >
                 View All Services
@@ -260,7 +260,7 @@ export default function HomePage() {
                 key={service.slug}
                 className="rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
               >
-                <Link href={`/services/${service.slug}`}>
+                <Link href={`/home-services/${service.slug}`}>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
                     <service.icon className="h-6 w-6 text-accent" />
                   </div>
@@ -280,7 +280,7 @@ export default function HomePage() {
                     {service.subs.map((sub) => (
                       <Link
                         key={sub.slug}
-                        href={`/services/${service.slug}/${sub.slug}`}
+                        href={`/home-services/${service.slug}/${sub.slug}`}
                         className="text-xs text-muted-foreground transition-colors hover:text-accent"
                       >
                         {sub.name}
