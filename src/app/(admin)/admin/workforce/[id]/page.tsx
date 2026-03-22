@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { ArrowLeft, Star, Briefcase, MapPin, Phone, Mail, Calendar } from 'lucide-react';
+import { TechnicianEditForm } from './TechnicianEditForm';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -37,6 +38,17 @@ export default async function TechnicianDetailPage({ params }: Props) {
     .from('areas')
     .select('id, name_en')
     .in('id', tech.work_areas ?? []);
+
+  // Fetch all categories and all areas for edit dropdowns
+  const { data: allCategories } = await supabase
+    .from('service_categories')
+    .select('id, name_en')
+    .order('name_en');
+
+  const { data: allAreas } = await supabase
+    .from('areas')
+    .select('id, name_en')
+    .order('name_en');
 
   return (
     <div className="space-y-6">
@@ -80,6 +92,18 @@ export default async function TechnicianDetailPage({ params }: Props) {
               </div>
             </div>
           </div>
+
+          {/* Edit Form */}
+          <TechnicianEditForm
+            technicianId={tech.id}
+            initialSpecializations={tech.specializations ?? []}
+            initialWorkAreas={tech.work_areas ?? []}
+            initialDailyCapacity={tech.daily_capacity ?? 6}
+            initialHourlyRate={tech.hourly_rate_aed ?? 0}
+            initialIsAvailable={tech.is_available ?? true}
+            allCategories={(allCategories ?? []).map(c => ({ id: c.id, name: c.name_en }))}
+            allAreas={(allAreas ?? []).map(a => ({ id: a.id, name: a.name_en }))}
+          />
 
           {/* Recent jobs */}
           <div className="rounded-xl border border-border bg-card">

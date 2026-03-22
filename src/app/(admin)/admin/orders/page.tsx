@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { Plus, Download } from 'lucide-react';
+import { Plus, Download, Pencil } from 'lucide-react';
 import { OrderFilters } from '@/features/admin/components/orders/OrderFilters';
 
 function StatusBadge({ status }: { status: string }) {
@@ -117,12 +117,13 @@ export default async function OrdersPage({ searchParams }: Props) {
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">Status</th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">Payment</th>
               <th className="px-4 py-3 text-right font-medium text-muted-foreground">Total</th>
+              <th className="px-4 py-3 text-right font-medium text-muted-foreground">Actions</th>
             </tr>
           </thead>
           <tbody>
             {orderList.length === 0 && (
               <tr>
-                <td colSpan={9} className="px-4 py-8 text-center text-muted-foreground">
+                <td colSpan={10} className="px-4 py-8 text-center text-muted-foreground">
                   No orders found{statusFilter ? ` with status "${statusFilter}"` : ''}
                 </td>
               </tr>
@@ -163,6 +164,11 @@ export default async function OrdersPage({ searchParams }: Props) {
                   <td className="px-4 py-3"><PaymentBadge status={(o.payment_status as string) ?? 'pending'} /></td>
                   <td className="px-4 py-3 text-right font-medium text-foreground">
                     AED {Number(o.total_amount_aed).toLocaleString()}
+                  </td>
+                  <td className="px-4 py-3 text-right">
+                    <Link href={`/admin/orders/${o.id}`} className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-accent hover:bg-muted">
+                      <Pencil className="h-3 w-3" /> Edit
+                    </Link>
                   </td>
                 </tr>
               );

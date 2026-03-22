@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { ArrowLeft, Mail, Phone, MapPin, ShoppingCart, Wallet, Shield } from 'lucide-react';
+import { CustomerEditForm } from './CustomerEditForm';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -69,6 +70,14 @@ export default async function CustomerDetailPage({ params }: Props) {
               <p className="text-muted-foreground">Language: {customer.preferred_language?.toUpperCase() ?? 'EN'}</p>
             </div>
           </div>
+
+          {/* Edit Section */}
+          <CustomerEditForm
+            customerId={id}
+            initialName={customer.full_name ?? ''}
+            initialPhone={customer.phone ?? ''}
+            initialLanguage={customer.preferred_language ?? 'en'}
+          />
 
           {/* Orders */}
           <div className="rounded-xl border border-border bg-card">

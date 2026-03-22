@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Download, Plus } from 'lucide-react';
+import { Download, Plus, Pencil } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
 export default async function CustomersPage() {
@@ -77,12 +77,13 @@ export default async function CustomersPage() {
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">Last Order</th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">Care Plan</th>
               <th className="px-4 py-3 text-right font-medium text-muted-foreground">Wallet</th>
+              <th className="px-4 py-3 text-right font-medium text-muted-foreground">Actions</th>
             </tr>
           </thead>
           <tbody>
             {customerList.length === 0 && (
               <tr>
-                <td colSpan={7} className="px-4 py-8 text-center text-muted-foreground">
+                <td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">
                   No customers found
                 </td>
               </tr>
@@ -124,6 +125,11 @@ export default async function CustomersPage() {
                     )}
                   </td>
                   <td className="px-4 py-3 text-right text-foreground">AED {Number(walletBalance)}</td>
+                  <td className="px-4 py-3 text-right">
+                    <Link href={`/admin/customers/${c.id}`} className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-accent hover:bg-muted">
+                      <Pencil className="h-3 w-3" /> Edit
+                    </Link>
+                  </td>
                 </tr>
               );
             })}

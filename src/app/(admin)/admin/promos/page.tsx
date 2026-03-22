@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Plus } from 'lucide-react';
+import { Plus, Pencil } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
 export default async function PromosPage() {
@@ -61,12 +61,13 @@ export default async function PromosPage() {
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">Usage</th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">Valid Until</th>
               <th className="px-4 py-3 text-center font-medium text-muted-foreground">Status</th>
+              <th className="px-4 py-3 text-right font-medium text-muted-foreground">Actions</th>
             </tr>
           </thead>
           <tbody>
             {promoList.length === 0 && (
               <tr>
-                <td colSpan={7} className="px-4 py-8 text-center text-muted-foreground">
+                <td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">
                   No promotions found
                 </td>
               </tr>
@@ -86,6 +87,11 @@ export default async function PromosPage() {
                   <span className={`rounded-full px-2 py-1 text-xs font-medium ${p.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
                     {p.is_active ? 'active' : 'inactive'}
                   </span>
+                </td>
+                <td className="px-4 py-3 text-right">
+                  <Link href={`/admin/promos/${p.id}`} className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-accent hover:bg-muted">
+                    <Pencil className="h-3 w-3" /> Edit
+                  </Link>
                 </td>
               </tr>
             ))}

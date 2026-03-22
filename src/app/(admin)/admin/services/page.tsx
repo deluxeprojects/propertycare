@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Plus } from 'lucide-react';
+import { Plus, Pencil } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
 export default async function ServicesPage() {
@@ -65,12 +65,13 @@ export default async function ServicesPage() {
               <th className="px-4 py-3 text-center font-medium text-muted-foreground">Express</th>
               <th className="px-4 py-3 text-center font-medium text-muted-foreground">Featured</th>
               <th className="px-4 py-3 text-center font-medium text-muted-foreground">Active</th>
+              <th className="px-4 py-3 text-right font-medium text-muted-foreground">Actions</th>
             </tr>
           </thead>
           <tbody>
             {serviceList.length === 0 && (
               <tr>
-                <td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">
+                <td colSpan={9} className="px-4 py-8 text-center text-muted-foreground">
                   No services found
                 </td>
               </tr>
@@ -86,6 +87,11 @@ export default async function ServicesPage() {
                 <td className="px-4 py-3 text-center">{s.is_featured ? <span className="text-green-600">Yes</span> : <span className="text-muted-foreground">—</span>}</td>
                 <td className="px-4 py-3 text-center">
                   <div className={`mx-auto h-3 w-6 rounded-full ${s.is_active ? 'bg-green-500' : 'bg-gray-300'}`} />
+                </td>
+                <td className="px-4 py-3 text-right">
+                  <Link href={`/admin/services/${s.id}/edit`} className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-accent hover:bg-muted">
+                    <Pencil className="h-3 w-3" /> Edit
+                  </Link>
                 </td>
               </tr>
             ))}
