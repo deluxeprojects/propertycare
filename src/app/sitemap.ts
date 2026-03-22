@@ -1,9 +1,21 @@
 import type { MetadataRoute } from 'next';
-import { createAdminClient } from '@/lib/supabase/admin';
 import { siteConfig } from '@/config/site';
+
+export const dynamic = 'force-dynamic';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = `https://${siteConfig.domain}`;
+
+  // Guard: if Supabase isn't configured, return static pages only
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    return [
+      { url: baseUrl, lastModified: new Date(), changeFrequency: 'daily', priority: 1.0 },
+      { url: `${baseUrl}/services`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+      { url: `${baseUrl}/areas`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    ];
+  }
+
+  const { createAdminClient } = await import('@/lib/supabase/admin');
   const supabase = createAdminClient();
 
   // Static pages
