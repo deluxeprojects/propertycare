@@ -1,14 +1,42 @@
-import { Plus, Tag } from 'lucide-react';
+import { Plus } from 'lucide-react';
+import { createAdminClient } from '@/lib/supabase/admin';
 
-const promos = [
-  { code: 'WELCOME20', name: 'Welcome Discount', type: 'percentage', value: '20%', maxDiscount: 'AED 200', usage: '45/∞', validUntil: '2027-12-31', status: 'active', firstOnly: true },
-  { code: 'SUMMER2026', name: 'Summer Special', type: 'percentage', value: '15%', maxDiscount: 'AED 150', usage: '12/500', validUntil: '2026-08-31', status: 'active', firstOnly: false },
-  { code: 'MARINA10', name: 'Marina Area Discount', type: 'fixed', value: 'AED 50', maxDiscount: '-', usage: '8/100', validUntil: '2026-12-31', status: 'active', firstOnly: false },
-  { code: 'FIRSTORDER', name: 'Free Balcony Clean', type: 'free_addon', value: 'Balcony cleaning', maxDiscount: '-', usage: '23/∞', validUntil: '2027-12-31', status: 'active', firstOnly: true },
-  { code: 'REFER50', name: 'Referral Reward', type: 'fixed', value: 'AED 50', maxDiscount: '-', usage: '15/∞', validUntil: '2027-12-31', status: 'active', firstOnly: false },
-];
+export default async function PromosPage() {
+  const supabase = createAdminClient();
 
-export default function PromosPage() {
+  const { data: promos } = await supabase
+    .from('promotions')
+    .select(`
+      id,
+      code,
+      name,
+      discount_type,
+      discount_value,
+      max_discount_aed,
+      usage_count,
+      usage_limit_total,
+      valid_until,
+      is_active,
+      is_first_order_only
+    `)
+    .order('created_at', { ascending: false });
+
+  const promoList = promos ?? [];
+
+  function formatValue(p: any) {
+    if (p.discount_type === 'percentage') return `${Number(p.discount_value)}%`;
+    if (p.discount_type === 'fixed_amount') return `AED ${Number(p.discount_value)}`;
+    if (p.discount_type === 'free_addon') return 'Free add-on';
+    if (p.discount_type === 'free_service') return 'Free service';
+    return String(p.discount_value);
+  }
+
+  function formatUsage(p: any) {
+    const used = p.usage_count ?? 0;
+    const limit = p.usage_limit_total;
+    return `${used}/${limit != null ? limit : '\u221e'}`;
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -35,18 +63,29 @@ export default function PromosPage() {
             </tr>
           </thead>
           <tbody>
-            {promos.map((p) => (
-              <tr key={p.code} className="border-b border-border last:border-0 hover:bg-muted/30">
-                <td className="px-4 py-3"><span className="rounded bg-muted px-2 py-1 font-mono text-xs font-bold text-foreground">{p.code}</span></td>
+            {promoList.length === 0 && (
+              <tr>
+                <td colSpan={7} className="px-4 py-8 text-center text-muted-foreground">
+                  No promotions found
+                </td>
+              </tr>
+            )}
+            {promoList.map((p: any) => (
+              <tr key={p.id} className="border-b border-border last:border-0 hover:bg-muted/30">
+                <td className="px-4 py-3"><span className="rounded bg-muted px-2 py-1 font-mono text-xs font-bold text-foreground">{p.code ?? '—'}</span></td>
                 <td className="px-4 py-3 font-medium text-foreground">
                   {p.name}
-                  {p.firstOnly && <span className="ml-2 rounded-full bg-blue-100 px-1.5 py-0.5 text-[10px] text-blue-800">1st order</span>}
+                  {p.is_first_order_only && <span className="ml-2 rounded-full bg-blue-100 px-1.5 py-0.5 text-[10px] text-blue-800">1st order</span>}
                 </td>
-                <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs text-muted-foreground">{p.type.replace('_', ' ')}</span></td>
-                <td className="px-4 py-3 font-medium text-foreground">{p.value}</td>
-                <td className="px-4 py-3 text-muted-foreground">{p.usage}</td>
-                <td className="px-4 py-3 text-muted-foreground">{p.validUntil}</td>
-                <td className="px-4 py-3 text-center"><span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">{p.status}</span></td>
+                <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs text-muted-foreground">{(p.discount_type ?? '').replace('_', ' ')}</span></td>
+                <td className="px-4 py-3 font-medium text-foreground">{formatValue(p)}</td>
+                <td className="px-4 py-3 text-muted-foreground">{formatUsage(p)}</td>
+                <td className="px-4 py-3 text-muted-foreground">{p.valid_until ? new Date(p.valid_until).toISOString().slice(0, 10) : '—'}</td>
+                <td className="px-4 py-3 text-center">
+                  <span className={`rounded-full px-2 py-1 text-xs font-medium ${p.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
+                    {p.is_active ? 'active' : 'inactive'}
+                  </span>
+                </td>
               </tr>
             ))}
           </tbody>

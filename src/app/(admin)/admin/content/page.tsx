@@ -1,12 +1,29 @@
-export default function ContentPage() {
-  const areaPages = [
-    { area: 'Dubai Marina', words: 385, status: 'published', traffic: 245 },
-    { area: 'Downtown Dubai', words: 410, status: 'published', traffic: 198 },
-    { area: 'JBR', words: 352, status: 'published', traffic: 156 },
-    { area: 'Palm Jumeirah', words: 425, status: 'published', traffic: 312 },
-    { area: 'Business Bay', words: 368, status: 'draft', traffic: 0 },
-    { area: 'JLT', words: 290, status: 'draft', traffic: 0 },
-  ];
+import { createAdminClient } from '@/lib/supabase/admin';
+
+export default async function ContentPage() {
+  const supabase = createAdminClient();
+
+  const { data: areas } = await supabase
+    .from('areas')
+    .select(`
+      id,
+      name_en,
+      description_en,
+      is_active
+    `)
+    .is('deleted_at', null)
+    .order('name_en', { ascending: true });
+
+  const areaList = (areas ?? []).map((a: any) => {
+    const desc = a.description_en ?? '';
+    const wordCount = desc.trim() ? Math.round(desc.trim().length / 5) : 0;
+    return {
+      id: a.id,
+      area: a.name_en,
+      words: wordCount,
+      status: a.is_active ? 'published' : 'draft',
+    };
+  });
 
   return (
     <div className="space-y-6">
@@ -35,8 +52,15 @@ export default function ContentPage() {
             </tr>
           </thead>
           <tbody>
-            {areaPages.map((p) => (
-              <tr key={p.area} className="border-b border-border last:border-0 hover:bg-muted/30">
+            {areaList.length === 0 && (
+              <tr>
+                <td colSpan={4} className="px-4 py-8 text-center text-muted-foreground">
+                  No area pages found
+                </td>
+              </tr>
+            )}
+            {areaList.map((p) => (
+              <tr key={p.id} className="border-b border-border last:border-0 hover:bg-muted/30">
                 <td className="px-4 py-3 font-medium text-foreground">{p.area}</td>
                 <td className="px-4 py-3 text-right text-muted-foreground">{p.words}</td>
                 <td className="px-4 py-3 text-center">
@@ -44,7 +68,7 @@ export default function ContentPage() {
                     {p.status}
                   </span>
                 </td>
-                <td className="px-4 py-3 text-right text-foreground">{p.traffic}</td>
+                <td className="px-4 py-3 text-right text-foreground">—</td>
               </tr>
             ))}
           </tbody>

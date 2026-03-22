@@ -1,15 +1,6 @@
 import Link from 'next/link';
-import { Plus, Download, Filter } from 'lucide-react';
-
-const orders = [
-  { id: 'LH-2026-00042', customer: 'Sarah M.', phone: '+971501234567', service: 'Deep Cleaning - 2BR', area: 'Dubai Marina', date: '2026-03-22', time: '10:00-12:00', technician: 'Ali H.', status: 'confirmed', payment: 'captured', total: 850 },
-  { id: 'LH-2026-00041', customer: 'Ahmed K.', phone: '+971502345678', service: 'AC Service (x3)', area: 'Downtown Dubai', date: '2026-03-22', time: '14:00-16:00', technician: 'Omar M.', status: 'assigned', payment: 'captured', total: 360 },
-  { id: 'LH-2026-00040', customer: 'Marina R.', phone: '+971503456789', service: 'Pest Control - 3BR', area: 'Palm Jumeirah', date: '2026-03-22', time: '08:00-10:00', technician: 'Raj P.', status: 'in_progress', payment: 'captured', total: 380 },
-  { id: 'LH-2026-00039', customer: 'John D.', phone: '+971504567890', service: 'Plumbing - Standard', area: 'JBR', date: '2026-03-21', time: '16:00-18:00', technician: 'Hassan S.', status: 'completed', payment: 'captured', total: 300 },
-  { id: 'LH-2026-00038', customer: 'Fatima A.', phone: '+971505678901', service: 'Regular Cleaning', area: 'Business Bay', date: '2026-03-21', time: '10:00-12:00', technician: 'Priya K.', status: 'completed', payment: 'captured', total: 152 },
-  { id: 'LH-2026-00037', customer: 'Wei Z.', phone: '+971506789012', service: 'AC Deep Clean', area: 'JLT', date: '2026-03-21', time: '14:00-16:00', technician: 'Ali H.', status: 'pending', payment: 'pending', total: 280 },
-  { id: 'LH-2026-00036', customer: 'Elena V.', phone: '+971507890123', service: 'Painting - 1BR', area: 'Dubai Marina', date: '2026-03-23', time: '08:00-10:00', technician: null, status: 'pending', payment: 'pending', total: 1200 },
-];
+import { createAdminClient } from '@/lib/supabase/admin';
+import { Plus, Download } from 'lucide-react';
 
 function StatusBadge({ status }: { status: string }) {
   const colors: Record<string, string> = {
@@ -30,8 +21,10 @@ function StatusBadge({ status }: { status: string }) {
 function PaymentBadge({ status }: { status: string }) {
   const colors: Record<string, string> = {
     pending: 'bg-yellow-100 text-yellow-800',
+    authorized: 'bg-blue-100 text-blue-800',
     captured: 'bg-green-100 text-green-800',
     failed: 'bg-red-100 text-red-800',
+    refunded: 'bg-gray-100 text-gray-800',
   };
   return (
     <span className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${colors[status] || 'bg-gray-100 text-gray-800'}`}>
@@ -40,7 +33,32 @@ function PaymentBadge({ status }: { status: string }) {
   );
 }
 
-export default function OrdersPage() {
+export default async function OrdersPage() {
+  const supabase = createAdminClient();
+
+  const { data: orders } = await supabase
+    .from('orders')
+    .select(`
+      id,
+      order_number,
+      status,
+      payment_status,
+      total_amount_aed,
+      scheduled_date,
+      scheduled_time_slot,
+      assigned_technician_id,
+      created_at,
+      profiles!orders_customer_id_fkey(full_name, phone),
+      services(name_en),
+      areas(name_en),
+      technician_profile:profiles!orders_assigned_technician_id_fkey(full_name)
+    `)
+    .is('deleted_at', null)
+    .order('created_at', { ascending: false })
+    .limit(50);
+
+  const orderList = orders ?? [];
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -87,29 +105,40 @@ export default function OrdersPage() {
             </tr>
           </thead>
           <tbody>
-            {orders.map((o) => (
+            {orderList.length === 0 && (
+              <tr>
+                <td colSpan={9} className="px-4 py-8 text-center text-muted-foreground">
+                  No orders found
+                </td>
+              </tr>
+            )}
+            {orderList.map((o: any) => (
               <tr key={o.id} className="border-b border-border last:border-0 hover:bg-muted/30">
                 <td className="px-4 py-3">
-                  <Link href={`/admin/orders/${o.id}`} className="font-medium text-accent hover:underline">{o.id}</Link>
+                  <Link href={`/admin/orders/${o.id}`} className="font-medium text-accent hover:underline">{o.order_number}</Link>
                 </td>
                 <td className="px-4 py-3">
                   <div>
-                    <p className="font-medium text-foreground">{o.customer}</p>
-                    <p className="text-xs text-muted-foreground">{o.phone}</p>
+                    <p className="font-medium text-foreground">{o.profiles?.full_name ?? 'Unknown'}</p>
+                    <p className="text-xs text-muted-foreground">{o.profiles?.phone ?? ''}</p>
                   </div>
                 </td>
-                <td className="px-4 py-3 text-foreground">{o.service}</td>
-                <td className="px-4 py-3 text-muted-foreground">{o.area}</td>
+                <td className="px-4 py-3 text-foreground">{o.services?.name_en ?? 'Unknown'}</td>
+                <td className="px-4 py-3 text-muted-foreground">{o.areas?.name_en ?? '-'}</td>
                 <td className="px-4 py-3 text-muted-foreground">
                   <div>
-                    <p>{o.date}</p>
-                    <p className="text-xs">{o.time}</p>
+                    <p>{o.scheduled_date}</p>
+                    <p className="text-xs">{o.scheduled_time_slot}</p>
                   </div>
                 </td>
-                <td className="px-4 py-3 text-foreground">{o.technician || <span className="text-destructive font-medium">Unassigned</span>}</td>
+                <td className="px-4 py-3 text-foreground">
+                  {o.technician_profile?.full_name ?? (
+                    <span className="font-medium text-destructive">Unassigned</span>
+                  )}
+                </td>
                 <td className="px-4 py-3"><StatusBadge status={o.status} /></td>
-                <td className="px-4 py-3"><PaymentBadge status={o.payment} /></td>
-                <td className="px-4 py-3 text-right font-medium text-foreground">AED {o.total}</td>
+                <td className="px-4 py-3"><PaymentBadge status={o.payment_status ?? 'pending'} /></td>
+                <td className="px-4 py-3 text-right font-medium text-foreground">AED {Number(o.total_amount_aed).toLocaleString()}</td>
               </tr>
             ))}
           </tbody>

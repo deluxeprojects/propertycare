@@ -1,17 +1,45 @@
-import { Wrench, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
+import { createAdminClient } from '@/lib/supabase/admin';
 
-const services = [
-  { code: 'CLN-001', name: 'Regular Cleaning', category: 'Cleaning', price: 38, unit: '/hr', duration: '2-4 hrs', express: true, featured: true, active: true },
-  { code: 'CLN-002', name: 'Deep Cleaning – Studio', category: 'Cleaning', price: 450, unit: '', duration: '3-4 hrs', express: false, featured: true, active: true },
-  { code: 'CLN-003', name: 'Deep Cleaning – 1BR', category: 'Cleaning', price: 600, unit: '', duration: '4-5 hrs', express: false, featured: false, active: true },
-  { code: 'TEC-001', name: 'AC Service (split unit)', category: 'AC Services', price: 120, unit: '/unit', duration: '45 min', express: true, featured: true, active: true },
-  { code: 'TEC-002', name: 'AC Deep Clean', category: 'AC Services', price: 280, unit: '/unit', duration: '1.5 hrs', express: false, featured: false, active: true },
-  { code: 'PST-001', name: 'General Pest – Studio', category: 'Pest Control', price: 220, unit: '', duration: '1 hr', express: false, featured: true, active: true },
-  { code: 'TEC-006', name: 'Plumbing – Standard', category: 'Plumbing', price: 150, unit: '/hr', duration: '1-2 hrs', express: false, featured: false, active: true },
-  { code: 'PNT-001', name: 'Painting – Studio', category: 'Painting', price: 700, unit: '', duration: '1 day', express: false, featured: false, active: true },
-];
+export default async function ServicesPage() {
+  const supabase = createAdminClient();
 
-export default function ServicesPage() {
+  const { data: services } = await supabase
+    .from('services')
+    .select(`
+      id,
+      service_code,
+      name_en,
+      base_price_aed,
+      price_unit,
+      duration_minutes,
+      is_express_available,
+      is_featured,
+      is_active,
+      service_categories(name_en)
+    `)
+    .is('deleted_at', null)
+    .order('sort_order', { ascending: true });
+
+  const serviceList = services ?? [];
+
+  function formatDuration(minutes: number) {
+    if (minutes < 60) return `${minutes} min`;
+    const hrs = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return mins > 0 ? `${hrs}h ${mins}m` : `${hrs} hr${hrs > 1 ? 's' : ''}`;
+  }
+
+  function formatUnit(unit: string) {
+    const map: Record<string, string> = {
+      per_hour: '/hr',
+      per_sqft: '/sqft',
+      per_room: '/room',
+      per_service: '',
+    };
+    return map[unit] ?? '';
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -39,17 +67,24 @@ export default function ServicesPage() {
             </tr>
           </thead>
           <tbody>
-            {services.map((s) => (
-              <tr key={s.code} className="border-b border-border last:border-0 hover:bg-muted/30">
-                <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{s.code}</td>
-                <td className="px-4 py-3 font-medium text-foreground">{s.name}</td>
-                <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">{s.category}</span></td>
-                <td className="px-4 py-3 text-right font-medium">{s.price}{s.unit}</td>
-                <td className="px-4 py-3 text-muted-foreground">{s.duration}</td>
-                <td className="px-4 py-3 text-center">{s.express ? <span className="text-green-600">Yes</span> : <span className="text-muted-foreground">—</span>}</td>
-                <td className="px-4 py-3 text-center">{s.featured ? <span className="text-green-600">Yes</span> : <span className="text-muted-foreground">—</span>}</td>
+            {serviceList.length === 0 && (
+              <tr>
+                <td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">
+                  No services found
+                </td>
+              </tr>
+            )}
+            {serviceList.map((s: any) => (
+              <tr key={s.id} className="border-b border-border last:border-0 hover:bg-muted/30">
+                <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{s.service_code}</td>
+                <td className="px-4 py-3 font-medium text-foreground">{s.name_en}</td>
+                <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">{s.service_categories?.name_en ?? '—'}</span></td>
+                <td className="px-4 py-3 text-right font-medium">{Number(s.base_price_aed)}{formatUnit(s.price_unit)}</td>
+                <td className="px-4 py-3 text-muted-foreground">{formatDuration(s.duration_minutes)}</td>
+                <td className="px-4 py-3 text-center">{s.is_express_available ? <span className="text-green-600">Yes</span> : <span className="text-muted-foreground">—</span>}</td>
+                <td className="px-4 py-3 text-center">{s.is_featured ? <span className="text-green-600">Yes</span> : <span className="text-muted-foreground">—</span>}</td>
                 <td className="px-4 py-3 text-center">
-                  <div className={`mx-auto h-3 w-6 rounded-full ${s.active ? 'bg-green-500' : 'bg-gray-300'}`} />
+                  <div className={`mx-auto h-3 w-6 rounded-full ${s.is_active ? 'bg-green-500' : 'bg-gray-300'}`} />
                 </td>
               </tr>
             ))}

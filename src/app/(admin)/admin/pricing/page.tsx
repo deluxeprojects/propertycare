@@ -1,16 +1,47 @@
 import { Plus } from 'lucide-react';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { PriceSimulator } from '@/features/admin/components/PriceSimulator';
 
-const rules = [
-  { name: 'Weekend Surcharge', type: 'time_surcharge', applies: 'All services', modifier: '+15%', priority: 10, stackable: false, active: true },
-  { name: 'Evening Surcharge (6-10 PM)', type: 'time_surcharge', applies: 'All services', modifier: '+10%', priority: 5, stackable: true, active: true },
-  { name: 'Marina Premium', type: 'area_multiplier', applies: 'Dubai Marina', modifier: '+10%', priority: 3, stackable: true, active: true },
-  { name: 'Palm Jumeirah Premium', type: 'area_multiplier', applies: 'Palm Jumeirah', modifier: '+15%', priority: 3, stackable: true, active: true },
-  { name: 'Summer Surge (Jun-Aug)', type: 'seasonal', applies: 'AC Services', modifier: '+20%', priority: 8, stackable: false, active: false },
-  { name: 'High-Rise Tower Tier', type: 'building_tier', applies: 'Towers 40+ floors', modifier: '+AED 30', priority: 2, stackable: true, active: true },
-];
+export default async function PricingPage() {
+  const supabase = createAdminClient();
 
-export default function PricingPage() {
+  const { data: rules } = await supabase
+    .from('pricing_rules')
+    .select(`
+      id,
+      name,
+      rule_type,
+      modifier_type,
+      modifier_value,
+      priority,
+      is_stackable,
+      is_active,
+      service_id,
+      category_id,
+      area_id,
+      conditions,
+      services(name_en),
+      service_categories(name_en),
+      areas(name_en)
+    `)
+    .order('priority', { ascending: false });
+
+  const ruleList = rules ?? [];
+
+  function formatModifier(r: any) {
+    if (r.modifier_type === 'percentage') {
+      return `+${Number(r.modifier_value)}%`;
+    }
+    return `+AED ${Number(r.modifier_value)}`;
+  }
+
+  function formatAppliesTo(r: any) {
+    if (r.services?.name_en) return r.services.name_en;
+    if (r.service_categories?.name_en) return r.service_categories.name_en;
+    if (r.areas?.name_en) return r.areas.name_en;
+    return 'All services';
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -39,15 +70,22 @@ export default function PricingPage() {
                 </tr>
               </thead>
               <tbody>
-                {rules.map((r) => (
-                  <tr key={r.name} className="border-b border-border last:border-0 hover:bg-muted/30">
+                {ruleList.length === 0 && (
+                  <tr>
+                    <td colSpan={7} className="px-4 py-8 text-center text-muted-foreground">
+                      No pricing rules found
+                    </td>
+                  </tr>
+                )}
+                {ruleList.map((r: any) => (
+                  <tr key={r.id} className="border-b border-border last:border-0 hover:bg-muted/30">
                     <td className="px-4 py-3 font-medium text-foreground">{r.name}</td>
-                    <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">{r.type.replace('_', ' ')}</span></td>
-                    <td className="px-4 py-3 text-muted-foreground">{r.applies}</td>
-                    <td className="px-4 py-3 font-medium text-foreground">{r.modifier}</td>
+                    <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">{(r.rule_type ?? '').replace('_', ' ')}</span></td>
+                    <td className="px-4 py-3 text-muted-foreground">{formatAppliesTo(r)}</td>
+                    <td className="px-4 py-3 font-medium text-foreground">{formatModifier(r)}</td>
                     <td className="px-4 py-3 text-center text-foreground">{r.priority}</td>
-                    <td className="px-4 py-3 text-center">{r.stackable ? <span className="text-green-600">Yes</span> : <span className="text-muted-foreground">No</span>}</td>
-                    <td className="px-4 py-3 text-center"><div className={`mx-auto h-3 w-6 rounded-full ${r.active ? 'bg-green-500' : 'bg-gray-300'}`} /></td>
+                    <td className="px-4 py-3 text-center">{r.is_stackable ? <span className="text-green-600">Yes</span> : <span className="text-muted-foreground">No</span>}</td>
+                    <td className="px-4 py-3 text-center"><div className={`mx-auto h-3 w-6 rounded-full ${r.is_active ? 'bg-green-500' : 'bg-gray-300'}`} /></td>
                   </tr>
                 ))}
               </tbody>

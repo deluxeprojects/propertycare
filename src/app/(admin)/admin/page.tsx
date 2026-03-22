@@ -1,4 +1,5 @@
 import { siteConfig } from '@/config/site';
+import { createAdminClient } from '@/lib/supabase/admin';
 import {
   DollarSign,
   ShoppingCart,
@@ -6,126 +7,8 @@ import {
   Users,
   Shield,
   Star,
-  TrendingUp,
-  TrendingDown,
   AlertTriangle,
 } from 'lucide-react';
-
-const kpis = [
-  {
-    label: 'Today Revenue',
-    value: 'AED 12,450',
-    change: '+12%',
-    trend: 'up',
-    icon: DollarSign,
-  },
-  {
-    label: 'Today Orders',
-    value: '18',
-    change: '+5%',
-    trend: 'up',
-    icon: ShoppingCart,
-  },
-  {
-    label: 'Pending Orders',
-    value: '6',
-    change: '-2',
-    trend: 'down',
-    icon: Clock,
-  },
-  {
-    label: 'Active Technicians',
-    value: '7',
-    change: '0',
-    trend: 'neutral',
-    icon: Users,
-  },
-  {
-    label: 'Active Care Plans',
-    value: '24',
-    change: '+3',
-    trend: 'up',
-    icon: Shield,
-  },
-  {
-    label: 'Avg Rating',
-    value: '4.8',
-    change: '+0.1',
-    trend: 'up',
-    icon: Star,
-  },
-];
-
-const recentOrders = [
-  {
-    id: 'LH-2026-00042',
-    customer: 'Sarah M.',
-    service: 'Deep Cleaning - 2BR',
-    area: 'Dubai Marina',
-    date: '2026-03-22',
-    time: '10:00-12:00',
-    status: 'confirmed',
-    total: 'AED 850',
-  },
-  {
-    id: 'LH-2026-00041',
-    customer: 'Ahmed K.',
-    service: 'AC Service (x3)',
-    area: 'Downtown Dubai',
-    date: '2026-03-22',
-    time: '14:00-16:00',
-    status: 'assigned',
-    total: 'AED 360',
-  },
-  {
-    id: 'LH-2026-00040',
-    customer: 'Marina R.',
-    service: 'Pest Control - 3BR',
-    area: 'Palm Jumeirah',
-    date: '2026-03-22',
-    time: '08:00-10:00',
-    status: 'in_progress',
-    total: 'AED 380',
-  },
-  {
-    id: 'LH-2026-00039',
-    customer: 'John D.',
-    service: 'Plumbing - Standard',
-    area: 'JBR',
-    date: '2026-03-21',
-    time: '16:00-18:00',
-    status: 'completed',
-    total: 'AED 300',
-  },
-  {
-    id: 'LH-2026-00038',
-    customer: 'Fatima A.',
-    service: 'Regular Cleaning',
-    area: 'Business Bay',
-    date: '2026-03-21',
-    time: '10:00-12:00',
-    status: 'completed',
-    total: 'AED 152',
-  },
-];
-
-const alerts = [
-  {
-    type: 'error',
-    message: 'Order LH-2026-00036 unassigned for 3 hours',
-    icon: AlertTriangle,
-  },
-  {
-    type: 'warning',
-    message: 'Order LH-2026-00035 rated 2/5 — review needed',
-    icon: Star,
-  },
-  {
-    type: 'info',
-    message: '3 Care Plan subscriptions expiring in 14 days',
-    icon: Shield,
-  },
-];
 
 function StatusBadge({ status }: { status: string }) {
   const colors: Record<string, string> = {
@@ -147,7 +30,177 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
-export default function AdminDashboard() {
+function formatAED(amount: number): string {
+  return `AED ${amount.toLocaleString('en-AE', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+}
+
+export default async function AdminDashboard() {
+  const supabase = createAdminClient();
+
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+  const todayISO = todayStart.toISOString();
+
+  const twoHoursAgo = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString();
+
+  // Run all queries in parallel
+  const [
+    todayOrdersRes,
+    pendingOrdersRes,
+    activeTechniciansRes,
+    activeCarePlansRes,
+    avgRatingRes,
+    recentOrdersRes,
+    unassignedAlertsRes,
+    lowRatingAlertsRes,
+  ] = await Promise.all([
+    // Today's orders + revenue
+    supabase
+      .from('orders')
+      .select('total_amount_aed')
+      .gte('created_at', todayISO)
+      .is('deleted_at', null)
+      .not('status', 'in', '("cancelled","refunded")'),
+
+    // Pending orders count
+    supabase
+      .from('orders')
+      .select('id', { count: 'exact', head: true })
+      .eq('status', 'pending')
+      .is('deleted_at', null),
+
+    // Active technicians
+    supabase
+      .from('technicians')
+      .select('id', { count: 'exact', head: true })
+      .eq('is_available', true),
+
+    // Active care plan subscriptions
+    supabase
+      .from('amc_subscriptions')
+      .select('id', { count: 'exact', head: true })
+      .eq('status', 'active'),
+
+    // Average rating from completed orders
+    supabase
+      .from('orders')
+      .select('rating')
+      .eq('status', 'completed')
+      .not('rating', 'is', null)
+      .is('deleted_at', null),
+
+    // Recent 10 orders
+    supabase
+      .from('orders')
+      .select(`
+        id,
+        order_number,
+        total_amount_aed,
+        status,
+        created_at,
+        profiles!orders_customer_id_fkey(full_name),
+        services(name_en)
+      `)
+      .is('deleted_at', null)
+      .order('created_at', { ascending: false })
+      .limit(10),
+
+    // Unassigned orders older than 2 hours
+    supabase
+      .from('orders')
+      .select('order_number, created_at')
+      .is('assigned_technician_id', null)
+      .in('status', ['pending', 'confirmed'])
+      .is('deleted_at', null)
+      .lt('created_at', twoHoursAgo)
+      .order('created_at', { ascending: true })
+      .limit(5),
+
+    // Low-rated orders (rating <= 2)
+    supabase
+      .from('orders')
+      .select('order_number, rating')
+      .lte('rating', 2)
+      .is('deleted_at', null)
+      .order('updated_at', { ascending: false })
+      .limit(5),
+  ]);
+
+  // Calculate KPIs
+  const todayOrders = todayOrdersRes.data ?? [];
+  const todayOrderCount = todayOrders.length;
+  const todayRevenue = todayOrders.reduce(
+    (sum, o) => sum + Number(o.total_amount_aed ?? 0),
+    0
+  );
+  const pendingCount = pendingOrdersRes.count ?? 0;
+  const activeTechCount = activeTechniciansRes.count ?? 0;
+  const activeCarePlanCount = activeCarePlansRes.count ?? 0;
+
+  const ratedOrders = avgRatingRes.data ?? [];
+  const avgRating =
+    ratedOrders.length > 0
+      ? (
+          ratedOrders.reduce((sum, o) => sum + Number(o.rating), 0) /
+          ratedOrders.length
+        ).toFixed(1)
+      : 'N/A';
+
+  const recentOrders = recentOrdersRes.data ?? [];
+
+  // Build alerts
+  const alerts: { type: string; message: string }[] = [];
+  const unassigned = unassignedAlertsRes.data ?? [];
+  for (const o of unassigned) {
+    const hoursAgo = Math.round(
+      (Date.now() - new Date(o.created_at).getTime()) / (1000 * 60 * 60)
+    );
+    alerts.push({
+      type: 'error',
+      message: `Order ${o.order_number} unassigned for ${hoursAgo} hours`,
+    });
+  }
+  const lowRated = lowRatingAlertsRes.data ?? [];
+  for (const o of lowRated) {
+    alerts.push({
+      type: 'warning',
+      message: `Order ${o.order_number} rated ${o.rating}/5 -- review needed`,
+    });
+  }
+
+  const kpis = [
+    {
+      label: 'Today Revenue',
+      value: formatAED(todayRevenue),
+      icon: DollarSign,
+    },
+    {
+      label: 'Today Orders',
+      value: String(todayOrderCount),
+      icon: ShoppingCart,
+    },
+    {
+      label: 'Pending Orders',
+      value: String(pendingCount),
+      icon: Clock,
+    },
+    {
+      label: 'Active Technicians',
+      value: String(activeTechCount),
+      icon: Users,
+    },
+    {
+      label: 'Active Care Plans',
+      value: String(activeCarePlanCount),
+      icon: Shield,
+    },
+    {
+      label: 'Avg Rating',
+      value: avgRating,
+      icon: Star,
+    },
+  ];
+
   return (
     <div className="space-y-6">
       <div>
@@ -166,23 +219,6 @@ export default function AdminDashboard() {
           >
             <div className="flex items-center justify-between">
               <kpi.icon className="h-5 w-5 text-muted-foreground" />
-              <span
-                className={`flex items-center text-xs font-medium ${
-                  kpi.trend === 'up'
-                    ? 'text-green-600'
-                    : kpi.trend === 'down'
-                      ? 'text-red-600'
-                      : 'text-muted-foreground'
-                }`}
-              >
-                {kpi.trend === 'up' && (
-                  <TrendingUp className="mr-1 h-3 w-3" />
-                )}
-                {kpi.trend === 'down' && (
-                  <TrendingDown className="mr-1 h-3 w-3" />
-                )}
-                {kpi.change}
-              </span>
             </div>
             <p className="mt-2 text-2xl font-bold text-foreground">
               {kpi.value}
@@ -226,25 +262,32 @@ export default function AdminDashboard() {
                 </tr>
               </thead>
               <tbody>
-                {recentOrders.map((order) => (
+                {recentOrders.length === 0 && (
+                  <tr>
+                    <td colSpan={5} className="px-6 py-8 text-center text-muted-foreground">
+                      No orders yet
+                    </td>
+                  </tr>
+                )}
+                {recentOrders.map((order: any) => (
                   <tr
                     key={order.id}
                     className="border-b border-border last:border-0"
                   >
                     <td className="px-6 py-3 font-medium text-foreground">
-                      {order.id}
+                      {order.order_number}
                     </td>
                     <td className="px-6 py-3 text-foreground">
-                      {order.customer}
+                      {order.profiles?.full_name ?? 'Unknown'}
                     </td>
                     <td className="px-6 py-3 text-muted-foreground">
-                      {order.service}
+                      {order.services?.name_en ?? 'Unknown'}
                     </td>
                     <td className="px-6 py-3">
                       <StatusBadge status={order.status} />
                     </td>
                     <td className="px-6 py-3 text-right font-medium text-foreground">
-                      {order.total}
+                      {formatAED(Number(order.total_amount_aed))}
                     </td>
                   </tr>
                 ))}
@@ -259,6 +302,11 @@ export default function AdminDashboard() {
             <h2 className="font-semibold text-foreground">Alerts</h2>
           </div>
           <div className="space-y-1 p-3">
+            {alerts.length === 0 && (
+              <p className="px-3 py-4 text-center text-sm text-muted-foreground">
+                No alerts right now
+              </p>
+            )}
             {alerts.map((alert, i) => (
               <div
                 key={i}
@@ -270,15 +318,11 @@ export default function AdminDashboard() {
                       : 'bg-blue-50'
                 }`}
               >
-                <alert.icon
-                  className={`mt-0.5 h-4 w-4 ${
-                    alert.type === 'error'
-                      ? 'text-red-600'
-                      : alert.type === 'warning'
-                        ? 'text-yellow-600'
-                        : 'text-blue-600'
-                  }`}
-                />
+                {alert.type === 'error' ? (
+                  <AlertTriangle className="mt-0.5 h-4 w-4 text-red-600" />
+                ) : (
+                  <Star className="mt-0.5 h-4 w-4 text-yellow-600" />
+                )}
                 <p className="text-sm text-foreground">{alert.message}</p>
               </div>
             ))}

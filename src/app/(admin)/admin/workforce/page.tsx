@@ -1,23 +1,120 @@
-import { HardHat, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
+import { createAdminClient } from '@/lib/supabase/admin';
 
-const technicians = [
-  { code: 'TECH-001', name: 'Ali H.', specializations: ['Cleaning', 'Deep Clean'], areas: ['Dubai Marina', 'JBR'], rating: 4.9, jobs: 245, todayJobs: 4, capacity: 6, status: 'active' },
-  { code: 'TECH-002', name: 'Omar M.', specializations: ['AC Services'], areas: ['Downtown Dubai', 'DIFC', 'Business Bay'], rating: 4.8, jobs: 312, todayJobs: 5, capacity: 6, status: 'active' },
-  { code: 'TECH-003', name: 'Raj P.', specializations: ['Pest Control'], areas: ['Palm Jumeirah', 'Dubai Marina'], rating: 4.7, jobs: 189, todayJobs: 3, capacity: 6, status: 'active' },
-  { code: 'TECH-004', name: 'Hassan S.', specializations: ['Plumbing', 'Electrical'], areas: ['JBR', 'JLT', 'Dubai Marina'], rating: 4.8, jobs: 275, todayJobs: 2, capacity: 6, status: 'active' },
-  { code: 'TECH-005', name: 'Priya K.', specializations: ['Cleaning'], areas: ['Business Bay', 'Downtown Dubai'], rating: 4.9, jobs: 198, todayJobs: 4, capacity: 6, status: 'active' },
-  { code: 'TECH-006', name: 'Mohammed A.', specializations: ['Painting', 'Fit-Out'], areas: ['All areas'], rating: 4.6, jobs: 87, todayJobs: 1, capacity: 3, status: 'active' },
-  { code: 'TECH-007', name: 'David L.', specializations: ['AC Services', 'Electrical'], areas: ['JLT', 'Discovery Gardens'], rating: 4.5, jobs: 156, todayJobs: 0, capacity: 6, status: 'day_off' },
-  { code: 'TECH-008', name: 'Aisha N.', specializations: ['Cleaning', 'Pest Control'], areas: ['Dubai Hills', 'Arabian Ranches'], rating: 4.8, jobs: 142, todayJobs: 3, capacity: 6, status: 'active' },
-];
+export default async function WorkforcePage() {
+  const supabase = createAdminClient();
 
-export default function WorkforcePage() {
+  const { data: technicians } = await supabase
+    .from('technicians')
+    .select(`
+      id,
+      employee_code,
+      specializations,
+      work_areas,
+      avg_rating,
+      total_jobs,
+      daily_capacity,
+      is_available,
+      profiles!technicians_profile_id_fkey(full_name)
+    `)
+    .order('employee_code', { ascending: true });
+
+  // Resolve specialization UUIDs to category names
+  const allSpecIds = new Set<string>();
+  for (const t of technicians ?? []) {
+    for (const sid of t.specializations ?? []) {
+      allSpecIds.add(sid);
+    }
+  }
+  let specMap: Record<string, string> = {};
+  if (allSpecIds.size > 0) {
+    const { data: cats } = await supabase
+      .from('service_categories')
+      .select('id, name_en')
+      .in('id', Array.from(allSpecIds));
+    for (const c of cats ?? []) {
+      specMap[c.id] = c.name_en;
+    }
+  }
+
+  // Resolve work_area UUIDs to area names
+  const allAreaIds = new Set<string>();
+  for (const t of technicians ?? []) {
+    for (const aid of t.work_areas ?? []) {
+      allAreaIds.add(aid);
+    }
+  }
+  let areaMap: Record<string, string> = {};
+  if (allAreaIds.size > 0) {
+    const { data: areas } = await supabase
+      .from('areas')
+      .select('id, name_en')
+      .in('id', Array.from(allAreaIds));
+    for (const a of areas ?? []) {
+      areaMap[a.id] = a.name_en;
+    }
+  }
+
+  // Count today's orders per technician (by assigned_technician_id which references profiles)
+  const today = new Date().toISOString().slice(0, 10);
+  const techProfileIds = (technicians ?? []).map((t: any) => t.profiles?.id).filter(Boolean);
+  // We need to map technician profile_id. The orders table references profiles via assigned_technician_id.
+  // We need to get profile_ids from the technicians join.
+  // Actually, let's re-fetch technician profile_ids.
+  const { data: techWithProfiles } = await supabase
+    .from('technicians')
+    .select('id, profile_id');
+
+  const techIdToProfileId: Record<string, string> = {};
+  const profileIdToTechId: Record<string, string> = {};
+  for (const t of techWithProfiles ?? []) {
+    techIdToProfileId[t.id] = t.profile_id;
+    profileIdToTechId[t.profile_id] = t.id;
+  }
+
+  let todayOrderCounts: Record<string, number> = {};
+  const profileIds = Object.values(techIdToProfileId);
+  if (profileIds.length > 0) {
+    const { data: todayOrders } = await supabase
+      .from('orders')
+      .select('assigned_technician_id')
+      .eq('scheduled_date', today)
+      .in('assigned_technician_id', profileIds)
+      .is('deleted_at', null);
+
+    for (const o of todayOrders ?? []) {
+      const techId = profileIdToTechId[o.assigned_technician_id];
+      if (techId) {
+        todayOrderCounts[techId] = (todayOrderCounts[techId] ?? 0) + 1;
+      }
+    }
+  }
+
+  // Check day off status from technician_schedules
+  let dayOffSet = new Set<string>();
+  {
+    const techIds = (technicians ?? []).map((t: any) => t.id);
+    if (techIds.length > 0) {
+      const { data: schedules } = await supabase
+        .from('technician_schedules')
+        .select('technician_id, is_day_off')
+        .eq('date', today)
+        .eq('is_day_off', true)
+        .in('technician_id', techIds);
+      for (const s of schedules ?? []) {
+        dayOffSet.add(s.technician_id);
+      }
+    }
+  }
+
+  const techList = technicians ?? [];
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-foreground">Workforce</h1>
-          <p className="text-sm text-muted-foreground">{technicians.length} technicians</p>
+          <p className="text-sm text-muted-foreground">{techList.length} technicians</p>
         </div>
         <button className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:bg-accent/90">
           <Plus className="h-4 w-4" /> Add Technician
@@ -38,33 +135,49 @@ export default function WorkforcePage() {
             </tr>
           </thead>
           <tbody>
-            {technicians.map((t) => (
-              <tr key={t.code} className="border-b border-border last:border-0 hover:bg-muted/30">
-                <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{t.code}</td>
-                <td className="px-4 py-3 font-medium text-foreground">{t.name}</td>
-                <td className="px-4 py-3">
-                  <div className="flex flex-wrap gap-1">
-                    {t.specializations.map((s) => (
-                      <span key={s} className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">{s}</span>
-                    ))}
-                  </div>
-                </td>
-                <td className="px-4 py-3 text-xs text-muted-foreground">{t.areas.join(', ')}</td>
-                <td className="px-4 py-3 text-center font-medium text-foreground">{t.rating}</td>
-                <td className="px-4 py-3 text-center">
-                  <span className={t.todayJobs >= t.capacity ? 'text-red-600 font-medium' : 'text-foreground'}>
-                    {t.todayJobs}/{t.capacity}
-                  </span>
-                </td>
-                <td className="px-4 py-3 text-center">
-                  <span className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${
-                    t.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
-                  }`}>
-                    {t.status === 'active' ? 'Active' : 'Day Off'}
-                  </span>
+            {techList.length === 0 && (
+              <tr>
+                <td colSpan={7} className="px-4 py-8 text-center text-muted-foreground">
+                  No technicians found
                 </td>
               </tr>
-            ))}
+            )}
+            {techList.map((t: any) => {
+              const specs = (t.specializations ?? []).map((sid: string) => specMap[sid] ?? sid).filter(Boolean);
+              const areas = (t.work_areas ?? []).map((aid: string) => areaMap[aid] ?? aid).filter(Boolean);
+              const todayJobs = todayOrderCounts[t.id] ?? 0;
+              const capacity = t.daily_capacity ?? 6;
+              const isDayOff = dayOffSet.has(t.id);
+              const status = isDayOff ? 'day_off' : (t.is_available ? 'active' : 'day_off');
+
+              return (
+                <tr key={t.id} className="border-b border-border last:border-0 hover:bg-muted/30">
+                  <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{t.employee_code}</td>
+                  <td className="px-4 py-3 font-medium text-foreground">{t.profiles?.full_name ?? '—'}</td>
+                  <td className="px-4 py-3">
+                    <div className="flex flex-wrap gap-1">
+                      {specs.length > 0 ? specs.map((s: string) => (
+                        <span key={s} className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">{s}</span>
+                      )) : <span className="text-muted-foreground">—</span>}
+                    </div>
+                  </td>
+                  <td className="px-4 py-3 text-xs text-muted-foreground">{areas.length > 0 ? areas.join(', ') : '—'}</td>
+                  <td className="px-4 py-3 text-center font-medium text-foreground">{Number(t.avg_rating).toFixed(1)}</td>
+                  <td className="px-4 py-3 text-center">
+                    <span className={todayJobs >= capacity ? 'text-red-600 font-medium' : 'text-foreground'}>
+                      {todayJobs}/{capacity}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-center">
+                    <span className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${
+                      status === 'active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                    }`}>
+                      {status === 'active' ? 'Active' : 'Day Off'}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
