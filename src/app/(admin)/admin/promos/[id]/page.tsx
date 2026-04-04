@@ -80,7 +80,7 @@ export default function PromoDetailPage({ params }: Props) {
   async function handleDelete() {
     if (!confirm('Are you sure you want to delete this promotion? This cannot be undone.')) return;
     setDeleting(true);
-    const { error } = await supabase.from('promotions').delete().eq('id', id);
+    const { error } = await supabase.from('promotions').update({ is_active: false, deleted_at: new Date().toISOString() }).eq('id', id);
     if (error) {
       setMessage({ type: 'error', text: `Failed to delete: ${error.message}` });
       setDeleting(false);

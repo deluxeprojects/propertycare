@@ -1,0 +1,292 @@
+{
+  "generatedAt": "2026-04-04T13:10:58.894Z",
+  "totalScreenshots": 42,
+  "totalRoutes": 14,
+  "breakpoints": [
+    375,
+    768,
+    1440
+  ],
+  "pages": [
+    {
+      "route": "/",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 840,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 254,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 272,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/home-services",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 1424,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 246,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 276,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/home-services/guardian",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 694,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 533,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 270,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/areas",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 955,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 416,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 442,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/care-plans",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 731,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 437,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 364,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/blog",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 429,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 325,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 361,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/book",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 982,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 502,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 394,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/about",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 237,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 214,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 215,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/contact",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 230,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 213,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 230,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/login",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 207,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 208,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 211,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/privacy",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 210,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 201,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 228,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/terms",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 260,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 199,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 219,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/staff/login",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 463,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 237,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 196,
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "route": "/admin/login",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "breakpoints": {
+        "375": {
+          "loadTimeMs": 517,
+          "status": "ok"
+        },
+        "768": {
+          "loadTimeMs": 191,
+          "status": "ok"
+        },
+        "1440": {
+          "loadTimeMs": 208,
+          "status": "ok"
+        }
+      }
+    }
+  ]
+}

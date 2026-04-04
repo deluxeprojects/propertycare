@@ -14,8 +14,8 @@ export function ExpandableText({ text, maxLines = 3, className = '' }: Expandabl
   return (
     <div className={className}>
       <p
-        className={`text-muted-foreground leading-relaxed ${expanded ? '' : 'line-clamp-3'}`}
-        style={!expanded ? { WebkitLineClamp: maxLines, display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden' } : {}}
+        className="text-muted-foreground leading-relaxed"
+        style={!expanded ? { WebkitLineClamp: maxLines, display: '-webkit-box', WebkitBoxOrient: 'vertical' as const, overflow: 'hidden' } : {}}
       >
         {text}
       </p>

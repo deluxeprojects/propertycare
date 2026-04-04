@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
+import Script from 'next/script';
 import '@/styles/globals.css';
 import { siteConfig } from '@/config/site';
 import { Toaster } from 'sonner';
@@ -67,7 +68,9 @@ export default function RootLayout({
           }}
         />
         {gtmId && (
-          <script
+          <Script
+            id="gtm"
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -79,8 +82,13 @@ export default function RootLayout({
         )}
         {ga4Id && (
           <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} />
-            <script
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
+              strategy="afterInteractive"
+            />
+            <Script
+              id="ga4"
+              strategy="afterInteractive"
               dangerouslySetInnerHTML={{
                 __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ga4Id}');`,
               }}

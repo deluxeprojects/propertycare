@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `${service.name_en} in ${area.name_en}, Dubai`,
     description: `Professional ${service.name_en.toLowerCase()} in ${area.name_en}, Dubai. Starting AED ${service.base_price_aed}. Licensed technicians, 72-hr guarantee. Book online with ${siteConfig.name}.`,
+    alternates: {
+      canonical: `https://${siteConfig.domain}/areas/${areaSlug}/${serviceSlug}`,
+    },
   };
 }
 

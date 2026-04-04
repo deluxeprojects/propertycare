@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
 import { Calculator } from 'lucide-react';
 
 interface PriceBreakdown {
@@ -19,25 +18,34 @@ interface PriceBreakdown {
 
 export function PriceSimulator() {
   const [serviceId, setServiceId] = useState('');
-  const [areaSlug, setAreaSlug] = useState('');
   const [isExpress, setIsExpress] = useState(false);
   const [promoCode, setPromoCode] = useState('');
   const [result, setResult] = useState<PriceBreakdown | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const simulate = async () => {
     if (!serviceId) return;
     setLoading(true);
+    setError('');
     try {
       const res = await fetch('/api/v1/public/pricing/calculate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ serviceId, isExpress, promoCode: promoCode || undefined }),
       });
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        setError(errData.error || 'Calculation failed');
+        setResult(null);
+        setLoading(false);
+        return;
+      }
       const data = await res.json();
       setResult(data);
-    } catch (e) {
-      console.error(e);
+    } catch {
+      setError('Network error. Please try again.');
+      setResult(null);
     }
     setLoading(false);
   };
@@ -84,6 +92,10 @@ export function PriceSimulator() {
           {loading ? 'Calculating...' : 'Calculate Price'}
         </button>
       </div>
+
+      {error && (
+        <p className="mt-3 rounded-lg bg-red-50 px-3 py-2 text-xs text-red-700">{error}</p>
+      )}
 
       {result && (
         <div className="mt-4 space-y-2 border-t border-border pt-4 text-sm">

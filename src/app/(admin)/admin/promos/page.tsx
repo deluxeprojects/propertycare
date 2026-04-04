@@ -2,6 +2,20 @@ import Link from 'next/link';
 import { Plus, Pencil } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
+interface Promotion {
+  id: string;
+  code: string | null;
+  name: string;
+  discount_type: string | null;
+  discount_value: number | null;
+  max_discount_aed: number | null;
+  usage_count: number | null;
+  usage_limit_total: number | null;
+  valid_until: string | null;
+  is_active: boolean;
+  is_first_order_only: boolean;
+}
+
 export default async function PromosPage() {
   const supabase = createAdminClient();
 
@@ -24,7 +38,7 @@ export default async function PromosPage() {
 
   const promoList = promos ?? [];
 
-  function formatValue(p: any) {
+  function formatValue(p: Promotion) {
     if (p.discount_type === 'percentage') return `${Number(p.discount_value)}%`;
     if (p.discount_type === 'fixed_amount') return `AED ${Number(p.discount_value)}`;
     if (p.discount_type === 'free_addon') return 'Free add-on';
@@ -32,7 +46,7 @@ export default async function PromosPage() {
     return String(p.discount_value);
   }
 
-  function formatUsage(p: any) {
+  function formatUsage(p: Promotion) {
     const used = p.usage_count ?? 0;
     const limit = p.usage_limit_total;
     return `${used}/${limit != null ? limit : '\u221e'}`;
@@ -72,14 +86,14 @@ export default async function PromosPage() {
                 </td>
               </tr>
             )}
-            {promoList.map((p: any) => (
+            {promoList.map((p: Promotion) => (
               <tr key={p.id} className="border-b border-border last:border-0 hover:bg-muted/30">
                 <td className="px-4 py-3"><span className="rounded bg-muted px-2 py-1 font-mono text-xs font-bold text-foreground">{p.code ?? '—'}</span></td>
                 <td className="px-4 py-3 font-medium text-foreground">
                   <Link href={`/admin/promos/${p.id}`} className="text-accent hover:underline">{p.name}</Link>
                   {p.is_first_order_only && <span className="ml-2 rounded-full bg-blue-100 px-1.5 py-0.5 text-[10px] text-blue-800">1st order</span>}
                 </td>
-                <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs text-muted-foreground">{(p.discount_type ?? '').replace('_', ' ')}</span></td>
+                <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs text-muted-foreground">{(p.discount_type ?? '').replace(/_/g, ' ')}</span></td>
                 <td className="px-4 py-3 font-medium text-foreground">{formatValue(p)}</td>
                 <td className="px-4 py-3 text-muted-foreground">{formatUsage(p)}</td>
                 <td className="px-4 py-3 text-muted-foreground">{p.valid_until ? new Date(p.valid_until).toISOString().slice(0, 10) : '—'}</td>

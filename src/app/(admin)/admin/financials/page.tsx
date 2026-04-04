@@ -2,6 +2,33 @@ import { DollarSign } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { AdminTabs } from '@/features/admin/components/AdminTabs';
 
+interface InvoiceRow {
+  id: string;
+  invoice_number: string;
+  total_aed: number;
+  status: string;
+  created_at: string | null;
+  due_date: string | null;
+  profiles: { full_name: string }[];
+}
+
+interface PaymentRow {
+  id: string;
+  amount_aed: number;
+  method: string | null;
+  status: string;
+  created_at: string | null;
+  reference: string | null;
+  profiles: { full_name: string }[];
+}
+
+interface TechnicianEarningRow {
+  id: string;
+  employee_code: string;
+  hourly_rate: number | null;
+  profiles: { full_name: string }[];
+}
+
 export default async function FinancialsPage() {
   const supabase = createAdminClient();
 
@@ -130,10 +157,10 @@ export default async function FinancialsPage() {
                   <td colSpan={4} className="px-6 py-8 text-center text-muted-foreground">No invoices found</td>
                 </tr>
               )}
-              {invoiceList.slice(0, 10).map((inv: any) => (
+              {invoiceList.slice(0, 10).map((inv: InvoiceRow) => (
                 <tr key={inv.id} className="border-b border-border last:border-0">
                   <td className="px-6 py-3 font-medium text-accent">{inv.invoice_number}</td>
-                  <td className="px-6 py-3 text-foreground">{inv.profiles?.full_name ?? 'Unknown'}</td>
+                  <td className="px-6 py-3 text-foreground">{inv.profiles?.[0]?.full_name ?? 'Unknown'}</td>
                   <td className="px-6 py-3 text-right font-medium text-foreground">AED {Number(inv.total_aed).toFixed(2)}</td>
                   <td className="px-6 py-3 text-center">
                     <span className={`rounded-full px-2 py-1 text-xs font-medium ${
@@ -174,10 +201,10 @@ export default async function FinancialsPage() {
                 <td colSpan={6} className="px-6 py-8 text-center text-muted-foreground">No invoices found</td>
               </tr>
             )}
-            {invoiceList.map((inv: any) => (
+            {invoiceList.map((inv: InvoiceRow) => (
               <tr key={inv.id} className="border-b border-border last:border-0">
                 <td className="px-6 py-3 font-medium text-accent">{inv.invoice_number}</td>
-                <td className="px-6 py-3 text-foreground">{inv.profiles?.full_name ?? 'Unknown'}</td>
+                <td className="px-6 py-3 text-foreground">{inv.profiles?.[0]?.full_name ?? 'Unknown'}</td>
                 <td className="px-6 py-3 text-muted-foreground">{inv.created_at ? new Date(inv.created_at).toLocaleDateString() : '—'}</td>
                 <td className="px-6 py-3 text-muted-foreground">{inv.due_date ?? '—'}</td>
                 <td className="px-6 py-3 text-right font-medium text-foreground">AED {Number(inv.total_aed).toFixed(2)}</td>
@@ -219,10 +246,10 @@ export default async function FinancialsPage() {
                 <td colSpan={6} className="px-6 py-8 text-center text-muted-foreground">No payments found</td>
               </tr>
             )}
-            {paymentList.map((p: any) => (
+            {paymentList.map((p: PaymentRow) => (
               <tr key={p.id} className="border-b border-border last:border-0">
                 <td className="px-6 py-3 font-medium text-accent">{p.reference ?? p.id.slice(0, 8)}</td>
-                <td className="px-6 py-3 text-foreground">{p.profiles?.full_name ?? 'Unknown'}</td>
+                <td className="px-6 py-3 text-foreground">{p.profiles?.[0]?.full_name ?? 'Unknown'}</td>
                 <td className="px-6 py-3 text-foreground capitalize">{p.method ?? '—'}</td>
                 <td className="px-6 py-3 text-muted-foreground">{p.created_at ? new Date(p.created_at).toLocaleDateString() : '—'}</td>
                 <td className="px-6 py-3 text-right font-medium text-foreground">AED {Number(p.amount_aed).toFixed(2)}</td>
@@ -266,10 +293,10 @@ export default async function FinancialsPage() {
                   <td colSpan={3} className="px-6 py-8 text-center text-muted-foreground">No technicians found</td>
                 </tr>
               )}
-              {technicianEarnings.map((t: any) => (
+              {technicianEarnings.map((t: TechnicianEarningRow) => (
                 <tr key={t.id} className="border-b border-border last:border-0">
                   <td className="px-6 py-3 font-medium text-accent">{t.employee_code}</td>
-                  <td className="px-6 py-3 text-foreground">{t.profiles?.full_name ?? 'Unknown'}</td>
+                  <td className="px-6 py-3 text-foreground">{t.profiles?.[0]?.full_name ?? 'Unknown'}</td>
                   <td className="px-6 py-3 text-right font-medium text-foreground">AED {Number(t.hourly_rate ?? 0).toFixed(2)}</td>
                 </tr>
               ))}

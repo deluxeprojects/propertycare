@@ -10,6 +10,16 @@ import {
   AlertTriangle,
 } from 'lucide-react';
 
+interface RecentOrder {
+  id: string;
+  order_number: string;
+  total_amount_aed: number;
+  status: string;
+  created_at: string;
+  profiles: { full_name: string }[];
+  services: { name_en: string }[];
+}
+
 function StatusBadge({ status }: { status: string }) {
   const colors: Record<string, string> = {
     pending: 'bg-yellow-100 text-yellow-800',
@@ -25,7 +35,7 @@ function StatusBadge({ status }: { status: string }) {
     <span
       className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${colors[status] || 'bg-gray-100 text-gray-800'}`}
     >
-      {status.replace('_', ' ')}
+      {status.replace(/_/g, ' ')}
     </span>
   );
 }
@@ -269,7 +279,7 @@ export default async function AdminDashboard() {
                     </td>
                   </tr>
                 )}
-                {recentOrders.map((order: any) => (
+                {recentOrders.map((order: RecentOrder) => (
                   <tr
                     key={order.id}
                     className="border-b border-border last:border-0"
@@ -278,10 +288,10 @@ export default async function AdminDashboard() {
                       {order.order_number}
                     </td>
                     <td className="px-6 py-3 text-foreground">
-                      {order.profiles?.full_name ?? 'Unknown'}
+                      {order.profiles?.[0]?.full_name ?? 'Unknown'}
                     </td>
                     <td className="px-6 py-3 text-muted-foreground">
-                      {order.services?.name_en ?? 'Unknown'}
+                      {order.services?.[0]?.name_en ?? 'Unknown'}
                     </td>
                     <td className="px-6 py-3">
                       <StatusBadge status={order.status} />

@@ -3,11 +3,14 @@ import { getTwilioClient } from './client';
 export async function sendWhatsApp(to: string, message: string): Promise<boolean> {
   try {
     const client = getTwilioClient();
-    const from = process.env.TWILIO_WHATSAPP_FROM ?? 'whatsapp:+14155238886';
+    const rawFrom = process.env.TWILIO_WHATSAPP_FROM ?? '+14155238886';
+    // Ensure we don't double-prefix with 'whatsapp:'
+    const from = rawFrom.startsWith('whatsapp:') ? rawFrom : `whatsapp:${rawFrom}`;
+    const toFormatted = to.startsWith('whatsapp:') ? to : `whatsapp:${to}`;
 
     await client.messages.create({
-      from: `whatsapp:${from}`,
-      to: `whatsapp:${to}`,
+      from,
+      to: toFormatted,
       body: message,
     });
     return true;

@@ -8,6 +8,11 @@ export async function GET(request: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return apiError('Unauthorized', 'UNAUTHORIZED', 401);
 
+    const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
+    if (!profile || !['super_admin', 'admin', 'manager'].includes(profile.role)) {
+      return apiError('Forbidden', 'FORBIDDEN', 403);
+    }
+
     const url = new URL(request.url);
     const period = url.searchParams.get('period') ?? '30d';
 

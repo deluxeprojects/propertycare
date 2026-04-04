@@ -2,6 +2,19 @@ import Link from 'next/link';
 import { Plus, Pencil } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
+interface ServiceRow {
+  id: string;
+  service_code: string;
+  name_en: string;
+  base_price_aed: number;
+  price_unit: string;
+  duration_minutes: number;
+  is_express_available: boolean;
+  is_featured: boolean;
+  is_active: boolean;
+  service_categories: { name_en: string }[];
+}
+
 export default async function ServicesPage() {
   const supabase = createAdminClient();
 
@@ -76,11 +89,11 @@ export default async function ServicesPage() {
                 </td>
               </tr>
             )}
-            {serviceList.map((s: any) => (
+            {serviceList.map((s: ServiceRow) => (
               <tr key={s.id} className="border-b border-border last:border-0 hover:bg-muted/30">
                 <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{s.service_code}</td>
                 <td className="px-4 py-3 font-medium text-foreground"><Link href={`/admin/services/${s.id}/edit`} className="text-accent hover:underline">{s.name_en}</Link></td>
-                <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">{s.service_categories?.name_en ?? '—'}</span></td>
+                <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">{s.service_categories?.[0]?.name_en ?? '—'}</span></td>
                 <td className="px-4 py-3 text-right font-medium">{Number(s.base_price_aed)}{formatUnit(s.price_unit)}</td>
                 <td className="px-4 py-3 text-muted-foreground">{formatDuration(s.duration_minutes)}</td>
                 <td className="px-4 py-3 text-center">{s.is_express_available ? <span className="text-green-600">Yes</span> : <span className="text-muted-foreground">—</span>}</td>

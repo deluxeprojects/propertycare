@@ -28,7 +28,11 @@ export async function GET(request: NextRequest) {
       .eq('is_active', true);
 
     if (search) {
-      query = query.or(`full_name.ilike.%${search}%,email.ilike.%${search}%,phone.ilike.%${search}%`);
+      // Sanitize search input: strip characters that could break PostgREST filter syntax
+      const sanitizedSearch = search.replace(/[%_(),."'\\]/g, '');
+      if (sanitizedSearch.length > 0) {
+        query = query.or(`full_name.ilike.%${sanitizedSearch}%,email.ilike.%${sanitizedSearch}%,phone.ilike.%${sanitizedSearch}%`);
+      }
     }
 
     const { data, error, count } = await query

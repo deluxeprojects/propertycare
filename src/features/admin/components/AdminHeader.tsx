@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Bell, Search, User, LogOut, ChevronDown, Menu } from 'lucide-react';
+import { Bell, Search, LogOut, ChevronDown, Menu } from 'lucide-react';
 import { DarkModeToggle } from './DarkModeToggle';
 import { createClient } from '@/lib/supabase/client';
 

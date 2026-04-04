@@ -60,7 +60,7 @@ export default async function TechnicianDetailPage({ params }: Props) {
           </div>
           <div>
             <h1 className="text-2xl font-bold text-foreground">{profile?.full_name}</h1>
-            <p className="text-sm text-muted-foreground">{tech.employee_code} · {tech.employment_type?.replace('_', ' ')}</p>
+            <p className="text-sm text-muted-foreground">{tech.employee_code} · {tech.employment_type?.replace(/_/g, ' ')}</p>
           </div>
         </div>
       </div>

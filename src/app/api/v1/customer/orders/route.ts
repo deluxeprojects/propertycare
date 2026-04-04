@@ -13,6 +13,15 @@ export async function POST(request: NextRequest) {
             areaId, buildingId, isExpress, promoCode, notesCustomer,
             baseAmount, addonsAmount, expressSurcharge, discount, vat, total } = body;
 
+    if (!serviceId || !scheduledDate || !scheduledTimeSlot) {
+      return apiError('serviceId, scheduledDate, and scheduledTimeSlot are required', 'VALIDATION_ERROR', 400);
+    }
+
+    // TODO-REVIEW: Pricing is currently supplied by the client. For production,
+    // re-calculate server-side via calculatePrice() to prevent price tampering.
+    // The client values are used here to avoid blocking the booking flow until
+    // the pricing service integration is fully wired in.
+
     // Create order
     const { data: order, error } = await supabase
       .from('orders')

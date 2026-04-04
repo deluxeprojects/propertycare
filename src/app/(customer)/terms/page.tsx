@@ -1,6 +1,9 @@
 import { siteConfig } from '@/config/site';
 
-export const metadata = { title: 'Terms of Service' };
+export const metadata = {
+  title: 'Terms of Service',
+  description: `${siteConfig.name} terms of service. Booking, payment, cancellation policy, 72-hour guarantee, and liability for home services in Dubai, UAE.`,
+};
 
 export default function TermsPage() {
   return (

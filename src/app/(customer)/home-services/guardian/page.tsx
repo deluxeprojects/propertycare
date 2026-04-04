@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
-import { Shield, Camera, Droplets, Wind, Flower2, Key, Bell, ClipboardCheck, ArrowRight, Check } from 'lucide-react';
+import { Shield, Camera, Key, Bell, ArrowRight, Check } from 'lucide-react';
 
 export const metadata = {
   title: 'Property Guardian — Home Watch for Absentee Owners',

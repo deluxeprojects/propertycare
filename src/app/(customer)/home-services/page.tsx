@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { Sparkles, Wind, Bug, Droplets, Plug, Paintbrush } from 'lucide-react';
@@ -84,7 +85,7 @@ export default async function ServicesPage() {
               >
                 {cat.image_url ? (
                   <div className="mb-4 -mx-6 -mt-6 overflow-hidden rounded-t-xl">
-                    <img src={cat.image_url} alt={`${cat.name_en} services in Dubai`} className="h-36 w-full object-cover" loading="lazy" />
+                    <Image src={cat.image_url} alt={`${cat.name_en} services in Dubai`} className="h-36 w-full object-cover" width={400} height={144} />
                   </div>
                 ) : (
                   <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10">

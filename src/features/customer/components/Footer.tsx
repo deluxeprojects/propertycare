@@ -107,7 +107,9 @@ export function Footer() {
         <div className="mt-8 border-t border-primary-foreground/20 pt-8">
           <div className="flex items-center justify-center gap-4">
             <a
-              href="#"
+              href={siteConfig.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Follow us on Instagram"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-primary-foreground/20 text-primary-foreground/60 transition-colors hover:border-primary-foreground/50 hover:text-primary-foreground"
             >
@@ -116,7 +118,9 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="#"
+              href={siteConfig.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Follow us on Facebook"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-primary-foreground/20 text-primary-foreground/60 transition-colors hover:border-primary-foreground/50 hover:text-primary-foreground"
             >
@@ -125,7 +129,9 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="#"
+              href={siteConfig.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Follow us on LinkedIn"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-primary-foreground/20 text-primary-foreground/60 transition-colors hover:border-primary-foreground/50 hover:text-primary-foreground"
             >
@@ -134,7 +140,9 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="#"
+              href={siteConfig.social.x}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Follow us on X"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-primary-foreground/20 text-primary-foreground/60 transition-colors hover:border-primary-foreground/50 hover:text-primary-foreground"
             >

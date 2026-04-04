@@ -7,19 +7,23 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const supabase = createAdminClient();
-  const thirtyDaysFromNow = new Date();
-  thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
+  try {
+    const supabase = createAdminClient();
+    const thirtyDaysFromNow = new Date();
+    thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
 
-  const { data: expiring } = await supabase
-    .from('amc_subscriptions')
-    .select('id, customer_id, plan_id, end_date, profiles!amc_subscriptions_customer_id_fkey(full_name, phone, email)')
-    .eq('status', 'active')
-    .lte('end_date', thirtyDaysFromNow.toISOString().split('T')[0])
-    .gte('end_date', new Date().toISOString().split('T')[0]);
+    const { data: expiring } = await supabase
+      .from('amc_subscriptions')
+      .select('id, customer_id, plan_id, end_date, profiles!amc_subscriptions_customer_id_fkey(full_name, phone, email)')
+      .eq('status', 'active')
+      .lte('end_date', thirtyDaysFromNow.toISOString().split('T')[0])
+      .gte('end_date', new Date().toISOString().split('T')[0]);
 
-  // TODO: Send renewal reminders
-  return NextResponse.json({
-    expiring_subscriptions: expiring?.length ?? 0,
-  });
+    // TODO: Send renewal reminders
+    return NextResponse.json({
+      expiring_subscriptions: expiring?.length ?? 0,
+    });
+  } catch {
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
 }

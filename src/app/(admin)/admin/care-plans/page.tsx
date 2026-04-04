@@ -1,7 +1,30 @@
 import Link from 'next/link';
-import { Shield, Sparkles, Package, Users } from 'lucide-react';
+import { Shield } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { AdminTabs } from '@/features/admin/components/AdminTabs';
+
+interface AmcPlan {
+  id: string;
+  name_en: string;
+  tier: string;
+  response_time_hours: number;
+  discount_on_extras_pct: number;
+  is_active: boolean;
+  priority_level: number;
+}
+
+interface AmcSubscription {
+  id: string;
+  plan_id: string;
+  customer_id: string;
+  status: string;
+  start_date: string | null;
+  end_date: string | null;
+  billing_cycle: string | null;
+  total_paid_aed: number | null;
+  profiles: { full_name: string; email: string }[];
+  amc_plans: { name_en: string; tier: string }[];
+}
 
 const planTypes = [
   {
@@ -129,8 +152,8 @@ export default async function CarePlansAdminPage() {
     planStats[pid].revenue += Number(sub.total_paid_aed ?? 0);
   }
 
-  const totalActive = subList.filter((s: any) => s.status === 'active').length;
-  const totalRevenue = subList.reduce((s: number, sub: any) => s + Number(sub.total_paid_aed ?? 0), 0);
+  const totalActive = subList.filter((s: AmcSubscription) => s.status === 'active').length;
+  const totalRevenue = subList.reduce((s: number, sub: AmcSubscription) => s + Number(sub.total_paid_aed ?? 0), 0);
 
   function formatResponseTime(hours: number) {
     if (hours < 1) return `${hours * 60}m`;
@@ -195,7 +218,7 @@ export default async function CarePlansAdminPage() {
             No bundled tiers found in database
           </div>
         )}
-        {planList.map((p: any) => {
+        {planList.map((p: AmcPlan) => {
           const stats = planStats[p.id] ?? { subs: 0, active: 0, expiring: 0, revenue: 0 };
           return (
             <div key={p.id} className="rounded-xl border border-border bg-card p-5">
@@ -290,7 +313,7 @@ export default async function CarePlansAdminPage() {
                 </td>
               </tr>
             )}
-            {subList.map((sub: any) => {
+            {subList.map((sub: AmcSubscription) => {
               const statusColors: Record<string, string> = {
                 active: 'bg-green-100 text-green-700',
                 expired: 'bg-red-100 text-red-700',
@@ -307,13 +330,13 @@ export default async function CarePlansAdminPage() {
                         href={`/admin/customers/${sub.customer_id}`}
                         className="font-medium text-accent hover:underline"
                       >
-                        {sub.profiles?.full_name ?? 'Unknown'}
+                        {sub.profiles?.[0]?.full_name ?? 'Unknown'}
                       </Link>
-                      <p className="text-xs text-muted-foreground">{sub.profiles?.email ?? ''}</p>
+                      <p className="text-xs text-muted-foreground">{sub.profiles?.[0]?.email ?? ''}</p>
                     </div>
                   </td>
                   <td className="px-4 py-3 text-foreground">
-                    {sub.amc_plans?.name_en ?? sub.amc_plans?.tier ?? '—'}
+                    {sub.amc_plans?.[0]?.name_en ?? sub.amc_plans?.[0]?.tier ?? '—'}
                   </td>
                   <td className="px-4 py-3">
                     <span className={`rounded-full px-2 py-1 text-xs font-medium ${statusClass}`}>

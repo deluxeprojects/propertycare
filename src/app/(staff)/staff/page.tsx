@@ -1,4 +1,4 @@
-import { MapPin, Phone, Clock, ChevronRight } from 'lucide-react';
+import { MapPin, Phone, Clock } from 'lucide-react';
 
 const tasks = [
   { id: '1', time: '08:00-10:00', customer: 'Sarah M.', phone: '+971501234567', service: 'Deep Cleaning - 2BR', area: 'Dubai Marina', building: 'Marina Gate 1', unit: '2304', status: 'completed', notes: 'Ring doorbell twice' },

@@ -56,6 +56,10 @@ export function SearchBar() {
       setLoading(true);
       try {
         const res = await fetch(`/api/v1/public/search?q=${encodeURIComponent(query)}`);
+        if (!res.ok) {
+          setResults(null);
+          return;
+        }
         const data = await res.json();
         setResults(data);
         setOpen(true);

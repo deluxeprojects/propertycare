@@ -8,6 +8,11 @@ export async function GET() {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return apiError('Unauthorized', 'UNAUTHORIZED', 401);
 
+    const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
+    if (!profile || !['super_admin', 'admin', 'manager', 'operator'].includes(profile.role)) {
+      return apiError('Forbidden', 'FORBIDDEN', 403);
+    }
+
     const { data, error } = await supabase
       .from('services')
       .select(`
@@ -31,7 +36,16 @@ export async function POST(request: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return apiError('Unauthorized', 'UNAUTHORIZED', 401);
 
+    const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
+    if (!profile || !['super_admin', 'admin', 'manager'].includes(profile.role)) {
+      return apiError('Forbidden', 'FORBIDDEN', 403);
+    }
+
     const body = await request.json();
+    if (!body.categoryId || !body.slug || !body.serviceCode || !body.nameEn || !body.basePriceAed || !body.priceUnit || !body.durationMinutes) {
+      return apiError('Missing required fields: categoryId, slug, serviceCode, nameEn, basePriceAed, priceUnit, durationMinutes', 'VALIDATION_ERROR', 400);
+    }
+
     const { data, error } = await supabase
       .from('services')
       .insert({

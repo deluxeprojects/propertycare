@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
@@ -74,14 +75,14 @@ export default async function AreaPage({ params }: Props) {
         <div className="mb-12">
           <div className="mb-2 flex items-center gap-2 text-muted-foreground">
             <MapPin className="h-4 w-4" />
-            <span className="text-sm">{area.zone_group.replace('_', ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())}</span>
+            <span className="text-sm">{area.zone_group.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())}</span>
           </div>
           <h1 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
             Home Services in {area.name_en}, Dubai
           </h1>
           {area.image_url && (
             <div className="mt-4 overflow-hidden rounded-xl">
-              <img src={area.image_url} alt={`Home services in ${area.name_en}, Dubai`} className="h-48 w-full object-cover md:h-72" loading="lazy" />
+              <Image src={area.image_url} alt={`Home services in ${area.name_en}, Dubai`} className="h-48 w-full object-cover md:h-72" width={1200} height={288} priority />
             </div>
           )}
 

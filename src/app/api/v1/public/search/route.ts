@@ -12,6 +12,12 @@ export async function GET(request: NextRequest) {
       return apiSuccess({ services: [], areas: [] });
     }
 
+    // Sanitize query for use in ilike filters
+    const sanitizedQuery = query.replace(/[%_(),."'\\]/g, '');
+    if (sanitizedQuery.length < 2) {
+      return apiSuccess({ services: [], areas: [] });
+    }
+
     const supabase = createAdminClient();
 
     // 1. Search services by keyword synonyms
@@ -23,7 +29,7 @@ export async function GET(request: NextRequest) {
       .select('id, slug, name_en, short_desc_en, base_price_aed, price_unit, service_categories(slug, name_en)')
       .eq('is_active', true)
       .eq('is_hidden', false)
-      .ilike('name_en', `%${query}%`)
+      .ilike('name_en', `%${sanitizedQuery}%`)
       .limit(10);
 
     // 3. Get services by synonym-matched slugs
@@ -54,7 +60,7 @@ export async function GET(request: NextRequest) {
       .from('areas')
       .select('id, slug, name_en, zone_group')
       .eq('is_active', true)
-      .ilike('name_en', `%${query}%`)
+      .ilike('name_en', `%${sanitizedQuery}%`)
       .limit(5);
 
     // 6. Static page matches

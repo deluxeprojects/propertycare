@@ -23,48 +23,56 @@ export async function POST(request: NextRequest) {
 
   const supabase = createAdminClient();
 
-  switch (event.type) {
-    case 'checkout.session.completed': {
-      const session = event.data.object;
-      const orderId = session.metadata?.order_id;
-      if (orderId) {
-        await supabase
-          .from('orders')
-          .update({
-            payment_status: 'captured',
-            payment_intent_id: session.payment_intent as string,
-            stripe_checkout_session_id: session.id,
-            status: 'confirmed',
-          })
-          .eq('id', orderId);
+  try {
+    switch (event.type) {
+      case 'checkout.session.completed': {
+        const session = event.data.object;
+        const orderId = session.metadata?.order_id;
+        if (orderId) {
+          const { error } = await supabase
+            .from('orders')
+            .update({
+              payment_status: 'captured',
+              payment_intent_id: session.payment_intent as string,
+              stripe_checkout_session_id: session.id,
+              status: 'confirmed',
+            })
+            .eq('id', orderId);
+          if (error) console.error('[Stripe Webhook] checkout.session.completed update failed:', error.message);
+        }
+        break;
       }
-      break;
-    }
-    case 'payment_intent.payment_failed': {
-      const intent = event.data.object;
-      const orderId = intent.metadata?.order_id;
-      if (orderId) {
-        await supabase
-          .from('orders')
-          .update({ payment_status: 'failed' })
-          .eq('id', orderId);
+      case 'payment_intent.payment_failed': {
+        const intent = event.data.object;
+        const orderId = intent.metadata?.order_id;
+        if (orderId) {
+          const { error } = await supabase
+            .from('orders')
+            .update({ payment_status: 'failed' })
+            .eq('id', orderId);
+          if (error) console.error('[Stripe Webhook] payment_intent.payment_failed update failed:', error.message);
+        }
+        break;
       }
-      break;
-    }
-    case 'charge.refunded': {
-      const charge = event.data.object;
-      const orderId = charge.metadata?.order_id;
-      if (orderId) {
-        await supabase
-          .from('orders')
-          .update({
-            payment_status: 'refunded',
-            status: 'refunded',
-          })
-          .eq('id', orderId);
+      case 'charge.refunded': {
+        const charge = event.data.object;
+        const orderId = charge.metadata?.order_id;
+        if (orderId) {
+          const { error } = await supabase
+            .from('orders')
+            .update({
+              payment_status: 'refunded',
+              status: 'refunded',
+            })
+            .eq('id', orderId);
+          if (error) console.error('[Stripe Webhook] charge.refunded update failed:', error.message);
+        }
+        break;
       }
-      break;
     }
+  } catch (e) {
+    // Log but still return 200 to Stripe so it doesn't retry indefinitely
+    console.error('[Stripe Webhook] Processing error:', e);
   }
 
   return NextResponse.json({ received: true });

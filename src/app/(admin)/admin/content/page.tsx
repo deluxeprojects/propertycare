@@ -2,6 +2,31 @@ import Link from 'next/link';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { AdminTabs } from '@/features/admin/components/AdminTabs';
 
+interface AreaRow {
+  id: string;
+  name_en: string;
+  description_en: string | null;
+  is_active: boolean;
+}
+
+interface BuildingRow {
+  id: string;
+  name_en: string;
+  slug: string;
+  is_active: boolean;
+  area_id: string;
+  areas: { name_en: string }[];
+}
+
+interface BlogPostRow {
+  id: string;
+  title: string;
+  slug: string;
+  status: string;
+  published_at: string | null;
+  created_at: string;
+}
+
 export default async function ContentPage() {
   const supabase = createAdminClient();
 
@@ -12,7 +37,7 @@ export default async function ContentPage() {
     .is('deleted_at', null)
     .order('name_en', { ascending: true });
 
-  const areaList = (areas ?? []).map((a: any) => {
+  const areaList = (areas ?? []).map((a: AreaRow) => {
     const desc = a.description_en ?? '';
     const wordCount = desc.trim() ? Math.round(desc.trim().length / 5) : 0;
     return {
@@ -111,11 +136,11 @@ export default async function ContentPage() {
               <td colSpan={4} className="px-4 py-8 text-center text-muted-foreground">No building pages found</td>
             </tr>
           )}
-          {buildingList.map((b: any) => (
+          {buildingList.map((b: BuildingRow) => (
             <tr key={b.id} className="border-b border-border last:border-0 hover:bg-muted/30">
               <td className="px-4 py-3 font-medium text-foreground">{b.name_en}</td>
               <td className="px-4 py-3 text-muted-foreground">{b.slug}</td>
-              <td className="px-4 py-3 text-foreground">{b.areas?.name_en ?? '—'}</td>
+              <td className="px-4 py-3 text-foreground">{b.areas?.[0]?.name_en ?? '—'}</td>
               <td className="px-4 py-3 text-center">
                 <span className={`rounded-full px-2 py-1 text-xs font-medium ${b.is_active ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
                   {b.is_active ? 'published' : 'draft'}
@@ -155,9 +180,11 @@ export default async function ContentPage() {
                 <td colSpan={4} className="px-4 py-8 text-center text-muted-foreground">No blog posts found</td>
               </tr>
             )}
-            {blogPosts.map((post: any) => (
+            {blogPosts.map((post: BlogPostRow) => (
               <tr key={post.id} className="border-b border-border last:border-0 hover:bg-muted/30">
-                <td className="px-4 py-3 font-medium text-foreground">{post.title}</td>
+                <td className="px-4 py-3 font-medium text-foreground">
+                  <Link href={`/admin/content/blog/${post.id}/edit`} className="text-accent hover:underline">{post.title}</Link>
+                </td>
                 <td className="px-4 py-3 text-muted-foreground">{post.slug}</td>
                 <td className="px-4 py-3 text-center">
                   <span className={`rounded-full px-2 py-1 text-xs font-medium ${

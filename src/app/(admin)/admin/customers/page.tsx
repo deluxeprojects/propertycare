@@ -2,6 +2,21 @@ import Link from 'next/link';
 import { Download, Plus, Pencil } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
+interface AmcSubscription {
+  status: string;
+  amc_plans: { name_en: string; tier: string }[];
+}
+
+interface CustomerRow {
+  id: string;
+  full_name: string;
+  email: string;
+  phone: string | null;
+  created_at: string;
+  customer_wallets: { balance_aed: number }[];
+  amc_subscriptions: AmcSubscription[];
+}
+
 export default async function CustomersPage() {
   const supabase = createAdminClient();
 
@@ -24,7 +39,7 @@ export default async function CustomersPage() {
     .order('created_at', { ascending: false });
 
   // Get order stats per customer
-  const customerIds = (customers ?? []).map((c: any) => c.id);
+  const customerIds = (customers ?? []).map((c: CustomerRow) => c.id);
   let orderStats: Record<string, { count: number; total: number; last_date: string | null }> = {};
 
   if (customerIds.length > 0) {
@@ -88,10 +103,10 @@ export default async function CustomersPage() {
                 </td>
               </tr>
             )}
-            {customerList.map((c: any) => {
+            {customerList.map((c: CustomerRow) => {
               const stats = orderStats[c.id] ?? { count: 0, total: 0, last_date: null };
-              const activeSub = (c.amc_subscriptions ?? []).find((s: any) => s.status === 'active');
-              const walletBalance = c.customer_wallets?.[0]?.balance_aed ?? c.customer_wallets?.balance_aed ?? 0;
+              const activeSub = (c.amc_subscriptions ?? []).find((s: AmcSubscription) => s.status === 'active');
+              const walletBalance = c.customer_wallets?.[0]?.balance_aed ?? 0;
               const initials = (c.full_name ?? '')
                 .split(' ')
                 .map((n: string) => n[0])
@@ -118,7 +133,7 @@ export default async function CustomersPage() {
                   <td className="px-4 py-3">
                     {activeSub ? (
                       <span className="rounded-full bg-accent/10 px-2 py-1 text-xs font-medium text-accent">
-                        {activeSub.amc_plans?.name_en ?? activeSub.amc_plans?.tier ?? '—'}
+                        {activeSub.amc_plans?.[0]?.name_en ?? activeSub.amc_plans?.[0]?.tier ?? '—'}
                       </span>
                     ) : (
                       <span className="text-muted-foreground">—</span>

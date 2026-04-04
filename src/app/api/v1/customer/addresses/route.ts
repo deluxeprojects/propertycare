@@ -28,9 +28,20 @@ export async function POST(request: NextRequest) {
     if (!user) return apiError('Unauthorized', 'UNAUTHORIZED', 401);
 
     const body = await request.json();
+    // Whitelist allowed address fields to prevent mass-assignment
+    const allowedFields = [
+      'label', 'area_id', 'building_id', 'building_name', 'unit_number',
+      'floor', 'street_address', 'lat', 'lng', 'google_place_id',
+      'special_instructions', 'is_default',
+    ];
+    const sanitized: Record<string, unknown> = { customer_id: user.id };
+    for (const key of allowedFields) {
+      if (key in body) sanitized[key] = body[key];
+    }
+
     const { data, error } = await supabase
       .from('customer_addresses')
-      .insert({ ...body, customer_id: user.id })
+      .insert(sanitized)
       .select()
       .single();
 

@@ -9,6 +9,12 @@ export const siteConfig = {
     primary: '#1A1A1A',
     accent: '#4ECDC4',
   },
+  social: {
+    instagram: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM || 'https://instagram.com/prokeep.ae',
+    facebook: process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK || 'https://facebook.com/prokeep.ae',
+    linkedin: process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN || 'https://linkedin.com/company/prokeep-ae',
+    x: process.env.NEXT_PUBLIC_SOCIAL_X || 'https://x.com/prokeep_ae',
+  },
   vat: 5,
   currency: 'AED',
   orderPrefix: 'PK',

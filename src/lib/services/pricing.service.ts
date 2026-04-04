@@ -105,6 +105,8 @@ export async function calculatePrice(
   }
 
   // 8. Express surcharge
+  // TODO-REVIEW: This re-fetches the service row that was already fetched in step 1
+  // when no variantId is provided. Refactor to reuse the earlier query result.
   let expressSurcharge = 0;
   if (input.isExpress) {
     const { data: service } = await supabase

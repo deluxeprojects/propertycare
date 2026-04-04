@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
@@ -133,7 +134,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               <h1 className="mb-4 text-3xl font-bold text-foreground">{service.name_en}</h1>
               {service.image_url && (
                 <div className="mb-6 overflow-hidden rounded-xl">
-                  <img src={service.image_url} alt={`${service.name_en} in Dubai`} className="h-48 w-full object-cover md:h-64" loading="lazy" />
+                  <Image src={service.image_url} alt={`${service.name_en} in Dubai`} className="h-48 w-full object-cover md:h-64" width={800} height={256} priority />
                 </div>
               )}
               <ServiceContent content={service.long_desc_en || service.short_desc_en || ''} />

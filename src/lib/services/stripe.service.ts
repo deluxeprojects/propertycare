@@ -73,6 +73,8 @@ export async function createCheckoutSession(params: {
   return session;
 }
 
+// TODO-REVIEW: Add try-catch with AppError wrapping when this is wired to a route.
+// Currently unused — callers must handle Stripe errors at the route level.
 export async function processRefund(paymentIntentId: string, amount?: number) {
   const refundParams: { payment_intent: string; amount?: number } = {
     payment_intent: paymentIntentId,

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
@@ -21,7 +22,19 @@ export async function generateMetadata({ params }: Props) {
   const description = data.seo_desc_en || (data.name_en.toLowerCase().includes('service')
     ? `Professional ${data.name_en.toLowerCase()} in Dubai by ${siteConfig.name}`
     : `Professional ${data.name_en.toLowerCase()} services in Dubai by ${siteConfig.name}`);
-  return { title, description };
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://${siteConfig.domain}/home-services/${category}`,
+    },
+    openGraph: {
+      title: `${title} | ${siteConfig.name}`,
+      description,
+      url: `https://${siteConfig.domain}/home-services/${category}`,
+      images: [{ url: `https://${siteConfig.domain}/og-image.png`, width: 1200, height: 630 }],
+    },
+  };
 }
 
 export const revalidate = 3600; // Revalidate every hour
@@ -64,7 +77,7 @@ export default async function CategoryPage({ params }: Props) {
           <p className="max-w-2xl text-muted-foreground">{cat.description_en}</p>
           {cat.image_url && (
             <div className="mt-6 overflow-hidden rounded-xl">
-              <img src={cat.image_url} alt={`${cat.name_en} services in Dubai`} className="h-48 w-full object-cover md:h-64" loading="lazy" />
+              <Image src={cat.image_url} alt={`${cat.name_en} services in Dubai`} className="h-48 w-full object-cover md:h-64" width={1200} height={256} priority />
             </div>
           )}
         </div>
@@ -78,7 +91,7 @@ export default async function CategoryPage({ params }: Props) {
             >
               {service.image_url ? (
                 <div className="mb-3 -mx-6 -mt-6 overflow-hidden rounded-t-xl">
-                  <img src={service.image_url} alt={`${service.name_en} in Dubai`} className="h-32 w-full object-cover" loading="lazy" />
+                  <Image src={service.image_url} alt={`${service.name_en} in Dubai`} className="h-32 w-full object-cover" width={400} height={128} />
                 </div>
               ) : (
                 <div className="mb-3 -mx-6 -mt-6 flex h-32 items-center justify-center rounded-t-xl bg-gradient-to-br from-accent/5 to-accent/10">

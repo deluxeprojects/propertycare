@@ -3,6 +3,24 @@ import { Plus } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { PriceSimulator } from '@/features/admin/components/PriceSimulator';
 
+interface PricingRule {
+  id: string;
+  name: string;
+  rule_type: string | null;
+  modifier_type: string;
+  modifier_value: number;
+  priority: number;
+  is_stackable: boolean;
+  is_active: boolean;
+  service_id: string | null;
+  category_id: string | null;
+  area_id: string | null;
+  conditions: unknown;
+  services: { name_en: string }[];
+  service_categories: { name_en: string }[];
+  areas: { name_en: string }[];
+}
+
 export default async function PricingPage() {
   const supabase = createAdminClient();
 
@@ -29,17 +47,17 @@ export default async function PricingPage() {
 
   const ruleList = rules ?? [];
 
-  function formatModifier(r: any) {
+  function formatModifier(r: PricingRule) {
     if (r.modifier_type === 'percentage') {
       return `+${Number(r.modifier_value)}%`;
     }
     return `+AED ${Number(r.modifier_value)}`;
   }
 
-  function formatAppliesTo(r: any) {
-    if (r.services?.name_en) return r.services.name_en;
-    if (r.service_categories?.name_en) return r.service_categories.name_en;
-    if (r.areas?.name_en) return r.areas.name_en;
+  function formatAppliesTo(r: PricingRule) {
+    if (r.services?.[0]?.name_en) return r.services[0].name_en;
+    if (r.service_categories?.[0]?.name_en) return r.service_categories[0].name_en;
+    if (r.areas?.[0]?.name_en) return r.areas[0].name_en;
     return 'All services';
   }
 
@@ -78,10 +96,10 @@ export default async function PricingPage() {
                     </td>
                   </tr>
                 )}
-                {ruleList.map((r: any) => (
+                {ruleList.map((r: PricingRule) => (
                   <tr key={r.id} className="border-b border-border last:border-0 hover:bg-muted/30">
                     <td className="px-4 py-3 font-medium text-foreground">{r.name}</td>
-                    <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">{(r.rule_type ?? '').replace('_', ' ')}</span></td>
+                    <td className="px-4 py-3"><span className="rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">{(r.rule_type ?? '').replace(/_/g, ' ')}</span></td>
                     <td className="px-4 py-3 text-muted-foreground">{formatAppliesTo(r)}</td>
                     <td className="px-4 py-3 font-medium text-foreground">{formatModifier(r)}</td>
                     <td className="px-4 py-3 text-center text-foreground">{r.priority}</td>

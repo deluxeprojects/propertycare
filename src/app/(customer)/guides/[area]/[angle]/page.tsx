@@ -64,6 +64,9 @@ export async function generateMetadata({ params }: Props) {
   return {
     title,
     description: `${title}. Expert-curated guide with pricing, ratings, and booking links. By ${siteConfig.name}.`,
+    alternates: {
+      canonical: `https://${siteConfig.domain}/guides/${areaSlug}/${angle}`,
+    },
   };
 }
 
@@ -101,7 +104,7 @@ export default async function GuidePage({ params }: Props) {
           <div className="mb-2 flex items-center gap-3 text-sm text-muted-foreground">
             <span>By {siteConfig.name} Team</span>
             <span>·</span>
-            <span>Updated March 2026</span>
+            <span>Updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
           </div>
 
           <p className="mb-8 text-lg text-muted-foreground leading-relaxed">{intro}</p>

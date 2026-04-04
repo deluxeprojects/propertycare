@@ -13,14 +13,18 @@ export async function GET() {
       .eq('customer_id', user.id)
       .single();
 
-    const { data: transactions } = await supabase
-      .from('wallet_transactions')
-      .select('*')
-      .eq('wallet_id', wallet?.id)
-      .order('created_at', { ascending: false })
-      .limit(50);
+    let transactions: unknown[] = [];
+    if (wallet?.id) {
+      const { data: txns } = await supabase
+        .from('wallet_transactions')
+        .select('*')
+        .eq('wallet_id', wallet.id)
+        .order('created_at', { ascending: false })
+        .limit(50);
+      transactions = txns ?? [];
+    }
 
-    return apiSuccess({ wallet, transactions: transactions ?? [] });
+    return apiSuccess({ wallet, transactions });
   } catch {
     return apiError('Internal server error', 'INTERNAL_ERROR', 500);
   }

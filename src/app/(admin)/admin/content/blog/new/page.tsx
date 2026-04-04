@@ -4,7 +4,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Check } from 'lucide-react';
-import { RichTextEditor } from '@/features/admin/components/RichTextEditor';
+import dynamic from 'next/dynamic';
+
+const RichTextEditor = dynamic(
+  () => import('@/features/admin/components/RichTextEditor').then((mod) => mod.RichTextEditor),
+  {
+    loading: () => <div className="h-[500px] w-full animate-pulse rounded-lg bg-muted" />,
+    ssr: false,
+  }
+);
 import { siteConfig } from '@/config/site';
 
 export default function NewBlogPostPage() {

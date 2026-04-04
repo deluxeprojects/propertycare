@@ -45,7 +45,7 @@ export default function NewPricingRulePage() {
       .then(res => res.json())
       .then(json => {
         if (json.data && Array.isArray(json.data)) {
-          setServices(json.data.map((s: any) => ({ id: s.id, name_en: s.name_en })));
+          setServices(json.data.map((s: { id: string; name_en: string }) => ({ id: s.id, name_en: s.name_en })));
           const catMap = new Map<string, Category>();
           for (const svc of json.data) {
             if (svc.service_categories) {
@@ -68,7 +68,7 @@ export default function NewPricingRulePage() {
       .then(res => res.json())
       .then(json => {
         if (json.data && Array.isArray(json.data)) {
-          setAreas(json.data.map((a: any) => ({ id: a.id, name_en: a.name_en })));
+          setAreas(json.data.map((a: { id: string; name_en: string }) => ({ id: a.id, name_en: a.name_en })));
         }
       })
       .catch(() => setAreas([]));

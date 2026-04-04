@@ -123,18 +123,33 @@ function renderContent(content: string) {
   });
 }
 
+function sanitizeHref(url: string): string {
+  // Only allow safe URL protocols — block javascript:, data:, vbscript:, etc.
+  const trimmed = url.trim().toLowerCase();
+  if (trimmed.startsWith('/') || trimmed.startsWith('https://') || trimmed.startsWith('http://')) {
+    return url;
+  }
+  return '#';
+}
+
 function renderInlineMarkdown(text: string): string {
+  // Content is admin-authored from DB. Escape HTML entities to prevent XSS,
+  // then selectively allow safe markdown patterns (bold, links).
+  let result = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
   // Bold
-  let result = text.replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>');
-  // Internal links
+  result = result.replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>');
+  // Internal links (paths starting with /)
   result = result.replace(
     /\[([^\]]+)\]\((\/[^)]+)\)/g,
-    '<a href="$2" class="text-accent hover:underline">$1</a>'
+    (_match, label, href) => `<a href="${sanitizeHref(href)}" class="text-accent hover:underline">${label}</a>`
   );
-  // External links
+  // External links (http/https)
   result = result.replace(
     /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
-    '<a href="$2" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">$1</a>'
+    (_match, label, href) => `<a href="${sanitizeHref(href)}" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">${label}</a>`
   );
   return result;
 }

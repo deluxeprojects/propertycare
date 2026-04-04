@@ -2,6 +2,16 @@ import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { AdminTabs } from '@/features/admin/components/AdminTabs';
 
+interface AuditLogRow {
+  id: string;
+  action: string;
+  entity_type: string;
+  entity_id: string | null;
+  actor_id: string | null;
+  created_at: string;
+  metadata: unknown;
+}
+
 export default async function SettingsPage() {
   const supabase = createAdminClient();
 
@@ -248,7 +258,7 @@ export default async function SettingsPage() {
                 </td>
               </tr>
             )}
-            {auditLogs.map((log: any) => (
+            {auditLogs.map((log: AuditLogRow) => (
               <tr key={log.id} className="border-b border-border last:border-0">
                 <td className="px-6 py-3 text-muted-foreground">{new Date(log.created_at).toLocaleString()}</td>
                 <td className="px-6 py-3 font-medium text-foreground">{log.action}</td>

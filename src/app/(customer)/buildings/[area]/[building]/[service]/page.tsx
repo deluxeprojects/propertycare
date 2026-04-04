@@ -10,7 +10,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { building: buildingSlug, service: serviceSlug } = await params;
+  const { area: areaSlug, building: buildingSlug, service: serviceSlug } = await params;
   const supabase = createAdminClient();
   const { data: building } = await supabase.from('buildings').select('name_en, areas(name_en)').eq('slug', buildingSlug).single();
   const { data: service } = await supabase.from('services').select('name_en').eq('slug', serviceSlug).single();
@@ -18,7 +18,10 @@ export async function generateMetadata({ params }: Props) {
   const areaName = (building.areas as unknown as { name_en: string } | null)?.name_en ?? '';
   return {
     title: `${service.name_en} at ${building.name_en}, ${areaName}`,
-    description: `${service.name_en} at ${building.name_en} in ${areaName}, Dubai. From AED. Book with ${siteConfig.name}.`,
+    description: `Professional ${service.name_en.toLowerCase()} at ${building.name_en} in ${areaName}, Dubai. Licensed technicians, 72-hr guarantee. Book with ${siteConfig.name}.`,
+    alternates: {
+      canonical: `https://${siteConfig.domain}/buildings/${areaSlug}/${buildingSlug}/${serviceSlug}`,
+    },
   };
 }
 

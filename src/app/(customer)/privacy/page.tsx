@@ -1,6 +1,9 @@
 import { siteConfig } from '@/config/site';
 
-export const metadata = { title: 'Privacy Policy' };
+export const metadata = {
+  title: 'Privacy Policy',
+  description: `Read the ${siteConfig.name} privacy policy. Learn how we collect, use, and protect your personal data in accordance with UAE Data Protection Law.`,
+};
 
 export default function PrivacyPage() {
   return (

@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { useBooking } from '@/features/customer/hooks/useBooking';
 import { siteConfig } from '@/config/site';
 import { createClient } from '@/lib/supabase/client';
@@ -66,9 +65,9 @@ function StepService() {
   useEffect(() => {
     const supabase = createClient();
     Promise.all([
-      supabase.from('service_categories').select('id, slug, name_en, description_en').eq('is_active', true).order('sort_order').then(({ data }) => setCategories(data ?? [])),
-      supabase.from('services').select('id, slug, name_en, short_desc_en, base_price_aed, category_id').eq('is_active', true).eq('is_hidden', false).order('sort_order').then(({ data }) => setServices(data ?? [])),
-    ]).finally(() => setLoaded(true));
+      Promise.resolve(supabase.from('service_categories').select('id, slug, name_en, description_en').eq('is_active', true).order('sort_order')).then(({ data }) => setCategories(data ?? [])),
+      Promise.resolve(supabase.from('services').select('id, slug, name_en, short_desc_en, base_price_aed, category_id').eq('is_active', true).eq('is_hidden', false).order('sort_order')).then(({ data }) => setServices(data ?? [])),
+    ]).catch(() => { /* data load failed */ }).finally(() => setLoaded(true));
   }, []);
 
   const filteredServices = selectedCat ? services.filter(s => s.category_id === selectedCat) : [];
@@ -139,15 +138,15 @@ function StepSize() {
   useEffect(() => {
     if (!serviceId) return;
     const supabase = createClient();
-    supabase.from('service_variants').select('id, variant_label, price_aed, duration_minutes').eq('service_id', serviceId).eq('is_active', true).order('sort_order').then(({ data }) => {
+    Promise.resolve(supabase.from('service_variants').select('id, variant_label, price_aed, duration_minutes').eq('service_id', serviceId).eq('is_active', true).order('sort_order')).then(({ data }) => {
       if (data && data.length > 0) setVariants(data);
       else {
         // No variants — get base price and auto-advance
-        supabase.from('services').select('base_price_aed, duration_minutes').eq('id', serviceId).single().then(({ data: svc }) => {
+        Promise.resolve(supabase.from('services').select('base_price_aed, duration_minutes').eq('id', serviceId).single()).then(({ data: svc }) => {
           if (svc) setVariant('', 'Standard', svc.base_price_aed);
-        });
+        }).catch(() => { /* service lookup failed silently */ });
       }
-    });
+    }).catch(() => { /* variant lookup failed silently */ });
   }, [serviceId, setVariant]);
 
   if (variants.length === 0) return <div className="py-8 text-center text-muted-foreground">Loading...</div>;
@@ -180,7 +179,7 @@ function StepAddons() {
   useEffect(() => {
     if (!serviceId) return;
     const supabase = createClient();
-    supabase.from('service_addons').select('id, name_en, price_aed, duration_minutes').eq('service_id', serviceId).eq('is_active', true).order('sort_order').then(({ data }) => setAddons(data ?? []));
+    Promise.resolve(supabase.from('service_addons').select('id, name_en, price_aed, duration_minutes').eq('service_id', serviceId).eq('is_active', true).order('sort_order')).then(({ data }) => setAddons(data ?? [])).catch(() => setAddons([]));
   }, [serviceId]);
 
   return (
@@ -220,6 +219,9 @@ function StepAddons() {
   );
 }
 
+// TODO-REVIEW: The location step builds a free-text address string but does not
+// validate whether the selected area is actually serviced. Consider adding
+// service-area validation before allowing the user to proceed.
 // Step 4: Location
 function StepLocation() {
   const { setAddress, prevStep } = useBooking();
@@ -358,6 +360,9 @@ function StepSchedule() {
   );
 }
 
+// TODO-REVIEW: StepAccount collects name/phone/email but does not persist them
+// to the order payload — only notes are forwarded. Wire these fields into the
+// booking context or the order API call so they are actually stored.
 // Step 6: Account (simplified)
 function StepAccount() {
   const { nextStep, prevStep, setNotes, notesCustomer } = useBooking();
@@ -375,7 +380,7 @@ function StepAccount() {
         setFullName(user.user_metadata?.full_name ?? '');
         setPhone(user.user_metadata?.phone ?? '');
       }
-    });
+    }).catch(() => { /* auth check failed, user will fill in manually */ });
   }, []);
 
   const handleContinue = () => {

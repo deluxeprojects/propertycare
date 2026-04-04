@@ -10,7 +10,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { building: buildingSlug } = await params;
+  const { area: areaSlug, building: buildingSlug } = await params;
   const supabase = createAdminClient();
   const { data } = await supabase.from('buildings').select('name_en, areas(name_en)').eq('slug', buildingSlug).single();
   if (!data) return { title: 'Building' };
@@ -18,6 +18,9 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `Home Services at ${data.name_en}, ${areaName}`,
     description: `Professional home services at ${data.name_en} in ${areaName}, Dubai. Cleaning, AC, pest control & more by ${siteConfig.name}.`,
+    alternates: {
+      canonical: `https://${siteConfig.domain}/buildings/${areaSlug}/${buildingSlug}`,
+    },
   };
 }
 

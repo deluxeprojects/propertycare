@@ -2,6 +2,18 @@ import Link from 'next/link';
 import { Plus, Pencil } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/admin';
 
+interface Technician {
+  id: string;
+  employee_code: string;
+  specializations: string[] | null;
+  work_areas: string[] | null;
+  avg_rating: number;
+  total_jobs: number;
+  daily_capacity: number | null;
+  is_available: boolean;
+  profiles: { full_name: string }[];
+}
+
 export default async function WorkforcePage() {
   const supabase = createAdminClient();
 
@@ -58,7 +70,7 @@ export default async function WorkforcePage() {
 
   // Count today's orders per technician (by assigned_technician_id which references profiles)
   const today = new Date().toISOString().slice(0, 10);
-  const techProfileIds = (technicians ?? []).map((t: any) => t.profiles?.id).filter(Boolean);
+  const techProfileIds = (technicians ?? []).map((t: Technician) => t.profiles).filter(Boolean);
   // We need to map technician profile_id. The orders table references profiles via assigned_technician_id.
   // We need to get profile_ids from the technicians join.
   // Actually, let's re-fetch technician profile_ids.
@@ -94,7 +106,7 @@ export default async function WorkforcePage() {
   // Check day off status from technician_schedules
   let dayOffSet = new Set<string>();
   {
-    const techIds = (technicians ?? []).map((t: any) => t.id);
+    const techIds = (technicians ?? []).map((t: Technician) => t.id);
     if (techIds.length > 0) {
       const { data: schedules } = await supabase
         .from('technician_schedules')
@@ -144,7 +156,7 @@ export default async function WorkforcePage() {
                 </td>
               </tr>
             )}
-            {techList.map((t: any) => {
+            {techList.map((t: Technician) => {
               const specs = (t.specializations ?? []).map((sid: string) => specMap[sid] ?? sid).filter(Boolean);
               const areas = (t.work_areas ?? []).map((aid: string) => areaMap[aid] ?? aid).filter(Boolean);
               const todayJobs = todayOrderCounts[t.id] ?? 0;
@@ -155,7 +167,7 @@ export default async function WorkforcePage() {
               return (
                 <tr key={t.id} className="border-b border-border last:border-0 hover:bg-muted/30">
                   <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{t.employee_code}</td>
-                  <td className="px-4 py-3 font-medium text-foreground"><Link href={`/admin/workforce/${t.id}`} className="text-accent hover:underline">{t.profiles?.full_name ?? '—'}</Link></td>
+                  <td className="px-4 py-3 font-medium text-foreground"><Link href={`/admin/workforce/${t.id}`} className="text-accent hover:underline">{t.profiles?.[0]?.full_name ?? '—'}</Link></td>
                   <td className="px-4 py-3">
                     <div className="flex flex-wrap gap-1">
                       {specs.length > 0 ? specs.map((s: string) => (

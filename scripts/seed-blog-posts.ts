@@ -10,8 +10,13 @@
  * Or alternatively, it uses the REST API directly via fetch.
  */
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://nbzehukxfzmfzoedbdey.supabase.co';
-const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5iemVodWt4ZnptZnpvZWRiZGV5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NDE3MjAyMywiZXhwIjoyMDg5NzQ4MDIzfQ.efCP_a8lS2mU4mvmC_0UqGGsmEBBZqVMAi_mN4-Xc_w';
+if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  console.error('Missing required env vars: NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY');
+  process.exit(1);
+}
+
+const SUPABASE_URL: string = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const SERVICE_KEY: string = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 interface BlogPost {
   slug: string;
@@ -3674,7 +3679,7 @@ async function main() {
   if (verifyResponse.ok) {
     const posts = await verifyResponse.json();
     console.log(`\nVerification: ${posts.length} blog posts in database:`);
-    posts.forEach((p: any, i: number) => {
+    posts.forEach((p: { title: string }, i: number) => {
       console.log(`  ${i + 1}. ${p.title}`);
     });
   }

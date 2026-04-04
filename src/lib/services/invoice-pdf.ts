@@ -27,6 +27,9 @@ export interface InvoiceData {
   notes?: string;
 }
 
+// TODO-REVIEW: All user-supplied fields (customerName, customerEmail, etc.) are
+// interpolated into HTML without escaping. Add an HTML-escape utility before
+// production use to prevent XSS when this HTML is rendered in browser previews.
 export function generateInvoiceHtml(invoice: InvoiceData): string {
   const lineItemsHtml = invoice.lineItems.map(item => `
     <tr>

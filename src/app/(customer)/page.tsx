@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 import { SearchBar } from '@/features/customer/components/SearchBar';
@@ -21,6 +22,16 @@ import {
   Phone,
 } from 'lucide-react';
 
+export const metadata: Metadata = {
+  title: `${siteConfig.name} — ${siteConfig.tagline} | Professional Home Services in Dubai`,
+  description: `${siteConfig.name} — Dubai's trusted home services platform. 53+ services including cleaning, AC maintenance, pest control, plumbing, electrical & painting. Book online in 60 seconds. Licensed professionals, transparent pricing, 72-hour guarantee.`,
+  alternates: {
+    canonical: `https://${siteConfig.domain}`,
+  },
+};
+
+// TODO-REVIEW: Homepage service data is hardcoded and may drift from the database.
+// Consider fetching from Supabase (with ISR caching) to stay in sync with the admin panel.
 const services = [
   {
     icon: Sparkles,
@@ -115,6 +126,8 @@ const services = [
   },
 ];
 
+// TODO-REVIEW: Trust badge stats (review count, area count) are hardcoded.
+// Consider fetching these from the database or a config to keep them accurate.
 const trustBadges = [
   { icon: Shield, label: 'DM Licensed & Insured' },
   { icon: Clock, label: '72-Hour Redo Guarantee' },

@@ -1,5 +1,3 @@
-import { siteConfig } from './site';
-
 export interface NavItem {
   label: string;
   href: string;

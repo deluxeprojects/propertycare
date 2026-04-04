@@ -25,7 +25,9 @@ export default async function OrderDetailPage({ params }: Props) {
     .eq('id', id)
     .single();
 
-  if (!order) {
+  let resolvedOrder = order;
+
+  if (!resolvedOrder) {
     // Try by order_number
     const { data: orderByNum } = await supabase
       .from('orders')
@@ -41,10 +43,10 @@ export default async function OrderDetailPage({ params }: Props) {
       .single();
 
     if (!orderByNum) notFound();
-    // Use orderByNum below
+    resolvedOrder = orderByNum;
   }
 
-  const o = order!;
+  const o = resolvedOrder!;
   const customer = o.profiles as unknown as { full_name: string; phone: string; email: string } | null;
   const service = o.services as unknown as { name_en: string; service_code: string; duration_minutes: number } | null;
   const variant = o.service_variants as unknown as { variant_label: string } | null;
@@ -81,7 +83,7 @@ export default async function OrderDetailPage({ params }: Props) {
           </p>
         </div>
         <span className={`ml-auto rounded-full px-3 py-1 text-sm font-medium ${statusColors[o.status] ?? 'bg-gray-100 text-gray-800'}`}>
-          {o.status.replace('_', ' ')}
+          {o.status.replace(/_/g, ' ')}
         </span>
       </div>
 

@@ -55,7 +55,7 @@ export default function NewTechnicianPage() {
       .then(res => res.json())
       .then(json => {
         if (json.data && Array.isArray(json.data)) {
-          setAreas(json.data.map((a: any) => ({ id: a.id, name_en: a.name_en })));
+          setAreas(json.data.map((a: { id: string; name_en: string }) => ({ id: a.id, name_en: a.name_en })));
         }
       })
       .catch(() => setAreas([]));

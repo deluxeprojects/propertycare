@@ -65,6 +65,7 @@ export function ContactForm() {
             onChange={(e) => setName(e.target.value)}
             placeholder="Your name"
             required
+            maxLength={200}
             className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
           />
         </div>
@@ -87,6 +88,7 @@ export function ContactForm() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="+971 50 XXX XXXX"
+              maxLength={30}
               className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
             />
           </div>
@@ -99,6 +101,7 @@ export function ContactForm() {
             placeholder="Tell us how we can help..."
             required
             rows={4}
+            maxLength={5000}
             className="w-full rounded-lg border border-input bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
           />
         </div>
