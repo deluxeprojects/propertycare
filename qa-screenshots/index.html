@@ -1,243 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QA Audit Screenshot Gallery - ProKeep</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #f1f5f9; padding: 2rem; }
-    h1 { text-align: center; margin-bottom: 0.5rem; font-size: 2rem; }
-    .subtitle { text-align: center; color: #94a3b8; margin-bottom: 2rem; }
-    .page-group { margin-bottom: 3rem; }
-    .page-group h2 { font-size: 1.3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #334155; color: #4ECDC4; }
-    .screenshots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .screenshot { background: #1e293b; border-radius: 8px; overflow: hidden; }
-    .screenshot img { width: 100%; height: auto; display: block; cursor: pointer; transition: transform 0.2s; }
-    .screenshot img:hover { transform: scale(1.02); }
-    .screenshot .caption { padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #94a3b8; display: flex; justify-content: space-between; }
-    .screenshot .caption .bp { color: #4ECDC4; font-weight: 600; }
-    .filter-bar { display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; }
-    .filter-bar button { padding: 0.4rem 1rem; border: 1px solid #334155; border-radius: 6px; background: transparent; color: #94a3b8; cursor: pointer; font-size: 0.85rem; }
-    .filter-bar button.active, .filter-bar button:hover { background: #4ECDC4; color: #0f172a; border-color: #4ECDC4; }
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100; justify-content: center; align-items: center; }
-    .modal.open { display: flex; }
-    .modal img { max-width: 95vw; max-height: 95vh; object-fit: contain; }
-    .modal .close { position: absolute; top: 1rem; right: 1rem; color: white; font-size: 2rem; cursor: pointer; background: none; border: none; }
-    @media (max-width: 768px) { .screenshots { grid-template-columns: 1fr; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QA Audit R2 — Screenshot Gallery — ProKeep</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#f1f5f9;padding:2rem}
+h1{text-align:center;margin-bottom:.5rem;font-size:2rem}
+.sub{text-align:center;color:#94a3b8;margin-bottom:2rem}
+.group{margin-bottom:3rem}
+.group h2{font-size:1.3rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid #334155;color:#4ECDC4}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.card{background:#1e293b;border-radius:8px;overflow:hidden}
+.card img{width:100%;height:auto;display:block;cursor:pointer;transition:transform .2s}
+.card img:hover{transform:scale(1.02)}
+.cap{padding:.5rem .75rem;font-size:.8rem;color:#94a3b8;display:flex;justify-content:space-between}
+.cap .bp{color:#4ECDC4;font-weight:600}
+.bar{display:flex;gap:.5rem;justify-content:center;margin-bottom:2rem;flex-wrap:wrap}
+.bar button{padding:.4rem 1rem;border:1px solid #334155;border-radius:6px;background:0 0;color:#94a3b8;cursor:pointer;font-size:.85rem}
+.bar button.on,.bar button:hover{background:#4ECDC4;color:#0f172a;border-color:#4ECDC4}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);z-index:100;justify-content:center;align-items:center}
+.modal.open{display:flex}
+.modal img{max-width:95vw;max-height:95vh;object-fit:contain}
+.modal .x{position:absolute;top:1rem;right:1rem;color:#fff;font-size:2rem;cursor:pointer;background:0 0;border:0}
+.section-title{text-align:center;font-size:1.6rem;margin:3rem 0 1rem;color:#fff}
+@media(max-width:768px){.grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-  <h1>QA Audit Screenshot Gallery</h1>
-  <p class="subtitle">ProKeep - 2026-04-04 | Localhost: 42 screenshots | Production: 48 screenshots | Staging: 15 screenshots</p>
-
-  <div class="filter-bar">
-    <button class="active" onclick="filterBp('all')">All</button>
-    <button onclick="filterBp('375')">Mobile (375)</button>
-    <button onclick="filterBp('768')">Tablet (768)</button>
-    <button onclick="filterBp('1440')">Desktop (1440)</button>
-  </div>
-
-  <div id="gallery">
-    <div class="page-group">
-      <h2>Homepage</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="home-375.png" alt="Homepage - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>home-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="home-768.png" alt="Homepage - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>home-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="home-1440.png" alt="Homepage - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>home-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Home Services</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="home-services-375.png" alt="Home Services - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>home-services-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="home-services-768.png" alt="Home Services - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>home-services-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="home-services-1440.png" alt="Home Services - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>home-services-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Guardian Plan</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="home-services-guardian-375.png" alt="Guardian - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>home-services-guardian-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="home-services-guardian-768.png" alt="Guardian - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>home-services-guardian-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="home-services-guardian-1440.png" alt="Guardian - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>home-services-guardian-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Areas</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="areas-375.png" alt="Areas - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>areas-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="areas-768.png" alt="Areas - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>areas-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="areas-1440.png" alt="Areas - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>areas-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Care Plans</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="care-plans-375.png" alt="Care Plans - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>care-plans-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="care-plans-768.png" alt="Care Plans - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>care-plans-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="care-plans-1440.png" alt="Care Plans - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>care-plans-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Blog</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="blog-375.png" alt="Blog - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>blog-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="blog-768.png" alt="Blog - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>blog-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="blog-1440.png" alt="Blog - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>blog-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Booking</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="book-375.png" alt="Book - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>book-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="book-768.png" alt="Book - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>book-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="book-1440.png" alt="Book - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>book-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>About</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="about-375.png" alt="About - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>about-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="about-768.png" alt="About - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>about-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="about-1440.png" alt="About - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>about-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Contact</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="contact-375.png" alt="Contact - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>contact-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="contact-768.png" alt="Contact - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>contact-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="contact-1440.png" alt="Contact - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>contact-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Login</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="login-375.png" alt="Login - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>login-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="login-768.png" alt="Login - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>login-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="login-1440.png" alt="Login - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>login-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Staff Login</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="staff-login-375.png" alt="Staff Login - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>staff-login-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="staff-login-768.png" alt="Staff Login - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>staff-login-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="staff-login-1440.png" alt="Staff Login - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>staff-login-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Admin Login</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="admin-login-375.png" alt="Admin Login - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>admin-login-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="admin-login-768.png" alt="Admin Login - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>admin-login-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="admin-login-1440.png" alt="Admin Login - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>admin-login-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Privacy Policy</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="privacy-375.png" alt="Privacy - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>privacy-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="privacy-768.png" alt="Privacy - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>privacy-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="privacy-1440.png" alt="Privacy - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>privacy-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-
-    <div class="page-group">
-      <h2>Terms of Service</h2>
-      <div class="screenshots">
-        <div class="screenshot" data-bp="375"><img src="terms-375.png" alt="Terms - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>terms-375.png</span><span class="bp">375px</span></div></div>
-        <div class="screenshot" data-bp="768"><img src="terms-768.png" alt="Terms - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>terms-768.png</span><span class="bp">768px</span></div></div>
-        <div class="screenshot" data-bp="1440"><img src="terms-1440.png" alt="Terms - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>terms-1440.png</span><span class="bp">1440px</span></div></div>
-      </div>
-    </div>
-  </div>
-
-  <h1 style="margin-top:3rem">Production Screenshots (www.prokeep.ae)</h1>
-  <p class="subtitle">Live site with real data - 16 routes x 3 breakpoints</p>
-
-  <div class="page-group">
-    <h2>Production - Homepage</h2>
-    <div class="screenshots">
-      <div class="screenshot" data-bp="375"><img src="prod-home-375.png" alt="Prod Home - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-home-375.png</span><span class="bp">375px</span></div></div>
-      <div class="screenshot" data-bp="768"><img src="prod-home-768.png" alt="Prod Home - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-home-768.png</span><span class="bp">768px</span></div></div>
-      <div class="screenshot" data-bp="1440"><img src="prod-home-1440.png" alt="Prod Home - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-home-1440.png</span><span class="bp">1440px</span></div></div>
-    </div>
-  </div>
-
-  <div class="page-group">
-    <h2>Production - Dubai Marina (Dynamic Page)</h2>
-    <div class="screenshots">
-      <div class="screenshot" data-bp="375"><img src="prod-areas-dubai-marina-375.png" alt="Dubai Marina - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-areas-dubai-marina-375.png</span><span class="bp">375px</span></div></div>
-      <div class="screenshot" data-bp="768"><img src="prod-areas-dubai-marina-768.png" alt="Dubai Marina - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-areas-dubai-marina-768.png</span><span class="bp">768px</span></div></div>
-      <div class="screenshot" data-bp="1440"><img src="prod-areas-dubai-marina-1440.png" alt="Dubai Marina - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-areas-dubai-marina-1440.png</span><span class="bp">1440px</span></div></div>
-    </div>
-  </div>
-
-  <div class="page-group">
-    <h2>Production - Cleaning Services (Dynamic)</h2>
-    <div class="screenshots">
-      <div class="screenshot" data-bp="375"><img src="prod-home-services-cleaning-375.png" alt="Cleaning - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-home-services-cleaning-375.png</span><span class="bp">375px</span></div></div>
-      <div class="screenshot" data-bp="768"><img src="prod-home-services-cleaning-768.png" alt="Cleaning - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-home-services-cleaning-768.png</span><span class="bp">768px</span></div></div>
-      <div class="screenshot" data-bp="1440"><img src="prod-home-services-cleaning-1440.png" alt="Cleaning - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-home-services-cleaning-1440.png</span><span class="bp">1440px</span></div></div>
-    </div>
-  </div>
-
-  <div class="page-group">
-    <h2>Production - Blog (with real posts)</h2>
-    <div class="screenshots">
-      <div class="screenshot" data-bp="375"><img src="prod-blog-375.png" alt="Blog - Mobile" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-blog-375.png</span><span class="bp">375px</span></div></div>
-      <div class="screenshot" data-bp="768"><img src="prod-blog-768.png" alt="Blog - Tablet" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-blog-768.png</span><span class="bp">768px</span></div></div>
-      <div class="screenshot" data-bp="1440"><img src="prod-blog-1440.png" alt="Blog - Desktop" loading="lazy" onclick="openModal(this)"><div class="caption"><span>prod-blog-1440.png</span><span class="bp">1440px</span></div></div>
-    </div>
-  </div>
-
-  <h1 style="margin-top:3rem">Staging Screenshots</h1>
-  <p class="subtitle">Vercel preview deployment - 15 routes at 1440px</p>
-
-  <div class="page-group">
-    <h2>Staging - Key Pages</h2>
-    <div class="screenshots">
-      <div class="screenshot" data-bp="1440"><img src="staging-home-1440.png" alt="Staging Home" loading="lazy" onclick="openModal(this)"><div class="caption"><span>staging-home-1440.png</span><span class="bp">1440px</span></div></div>
-      <div class="screenshot" data-bp="1440"><img src="staging-home-services-1440.png" alt="Staging Services" loading="lazy" onclick="openModal(this)"><div class="caption"><span>staging-home-services-1440.png</span><span class="bp">1440px</span></div></div>
-      <div class="screenshot" data-bp="1440"><img src="staging-areas-dubai-marina-1440.png" alt="Staging Dubai Marina" loading="lazy" onclick="openModal(this)"><div class="caption"><span>staging-areas-dubai-marina-1440.png</span><span class="bp">1440px</span></div></div>
-    </div>
-  </div>
-
-  <div class="modal" id="modal" onclick="closeModal()">
-    <button class="close" onclick="closeModal()">&times;</button>
-    <img id="modal-img" src="" alt="Full size screenshot">
-  </div>
-
-  <script>
-    function filterBp(bp) {
-      document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      document.querySelectorAll('.screenshot').forEach(s => {
-        s.style.display = (bp === 'all' || s.dataset.bp === bp) ? '' : 'none';
-      });
-    }
-    function openModal(img) {
-      document.getElementById('modal-img').src = img.src;
-      document.getElementById('modal').classList.add('open');
-    }
-    function closeModal() {
-      document.getElementById('modal').classList.remove('open');
-    }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-  </script>
+<h1>QA Audit R2 — Screenshot Gallery</h1>
+<p class="sub">ProKeep | 2026-04-04 | 105 total screenshots (42 localhost + 48 production + 15 staging)</p>
+<div class="bar">
+<button class="on" onclick="filter('all')">All</button>
+<button onclick="filter('375')">Mobile</button>
+<button onclick="filter('768')">Tablet</button>
+<button onclick="filter('1440')">Desktop</button>
+</div>
+<div id="g"></div>
+<div class="modal" id="m" onclick="closeModal()">
+<button class="x">&times;</button>
+<img id="mi" src="" alt="">
+</div>
+<script>
+const L=['home','home-services','home-services-guardian','areas','care-plans','blog','book','about','contact','login','privacy','terms','staff-login','admin-login'];
+const P=['prod-home','prod-home-services','prod-home-services-guardian','prod-home-services-cleaning','prod-home-services-cleaning-deep-cleaning','prod-home-services-ac-services','prod-areas','prod-areas-dubai-marina','prod-areas-palm-jumeirah','prod-care-plans','prod-blog','prod-about','prod-contact','prod-login','prod-privacy','prod-terms'];
+const S=['staging-home','staging-home-services','staging-home-services-cleaning','staging-home-services-guardian','staging-areas','staging-areas-dubai-marina','staging-care-plans','staging-blog','staging-about','staging-contact','staging-login','staging-privacy','staging-terms','staging-staff-login','staging-admin-login'];
+function fmt(s){return s.replace(/^(prod-|staging-)/,'').replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}
+function grp(slug,bps){let h='<div class="group"><h2>'+fmt(slug)+'</h2><div class="grid">';bps.forEach(b=>{h+='<div class="card" data-bp="'+b+'"><img src="'+slug+'-'+b+'.png" alt="'+fmt(slug)+' '+b+'px" loading="lazy" onclick="openModal(this)"><div class="cap"><span>'+slug+'-'+b+'.png</span><span class="bp">'+b+'px</span></div></div>'});return h+'</div></div>'}
+let html='<p class="section-title">Localhost (dev server)</p>';
+L.forEach(r=>{html+=grp(r,[375,768,1440])});
+html+='<p class="section-title">Production (www.prokeep.ae)</p>';
+P.forEach(r=>{html+=grp(r,[375,768,1440])});
+html+='<p class="section-title">Staging (Vercel preview)</p>';
+S.forEach(r=>{html+=grp(r,[1440])});
+document.getElementById('g').innerHTML=html;
+function filter(bp){document.querySelectorAll('.bar button').forEach(b=>b.classList.remove('on'));event.target.classList.add('on');document.querySelectorAll('.card').forEach(s=>{s.style.display=(bp==='all'||s.dataset.bp===bp)?'':'none'})}
+function openModal(img){document.getElementById('mi').src=img.src;document.getElementById('m').classList.add('open')}
+function closeModal(){document.getElementById('m').classList.remove('open')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
 </body>
 </html>
