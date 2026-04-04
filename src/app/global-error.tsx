@@ -1,6 +1,6 @@
 'use client';
 
-export default function GlobalError({ error, reset }: { error: Error; reset: () => void }) {
+export default function GlobalError({ error: _error, reset }: { error: Error; reset: () => void }) {
   return (
     <html lang="en">
       <body className="flex min-h-screen items-center justify-center bg-white px-4">

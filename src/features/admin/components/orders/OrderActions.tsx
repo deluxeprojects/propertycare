@@ -10,7 +10,7 @@ interface OrderActionsProps {
   paymentIntentId?: string | null;
 }
 
-export function OrderActions({ orderId, currentStatus, paymentIntentId }: OrderActionsProps) {
+export function OrderActions({ orderId, currentStatus, paymentIntentId: _paymentIntentId }: OrderActionsProps) {
   const router = useRouter();
   const [loading, setLoading] = useState('');
   const [error, setError] = useState('');

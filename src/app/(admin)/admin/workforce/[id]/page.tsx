@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { ArrowLeft, Star, Briefcase, MapPin, Phone, Mail, Calendar } from 'lucide-react';
+import { ArrowLeft, Star, Phone, Mail } from 'lucide-react';
 import { TechnicianEditForm } from './TechnicianEditForm';
 
 interface Props {

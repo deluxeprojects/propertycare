@@ -5,7 +5,7 @@ import { apiSuccess, apiError } from '@/lib/api/response';
 
 interface Props { params: Promise<{ id: string }> }
 
-export async function POST(request: NextRequest, { params }: Props) {
+export async function POST(_request: NextRequest, { params }: Props) {
   try {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();

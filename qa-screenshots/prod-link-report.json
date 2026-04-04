@@ -1,624 +1,2556 @@
 {
-  "generated": "2026-04-04T14:12:19.223Z",
-  "internalLinks": [
+  "generatedAt": "2026-04-04T14:47:31.368Z",
+  "pagesVisited": 150,
+  "pages": [
     {
-      "url": "/",
-      "status": 200
+      "route": "/",
+      "status": 200,
+      "linksFound": 92,
+      "newInternal": 59
     },
     {
-      "url": "/home-services",
-      "status": 200
+      "route": "/home-services",
+      "status": 200,
+      "linksFound": 46,
+      "newInternal": 0
     },
     {
-      "url": "/areas",
-      "status": 200
+      "route": "/areas",
+      "status": 200,
+      "linksFound": 50,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/guardian",
-      "status": 200
+      "route": "/home-services/guardian",
+      "status": 200,
+      "linksFound": 46,
+      "newInternal": 0
     },
     {
-      "url": "/care-plans",
-      "status": 200
+      "route": "/care-plans",
+      "status": 200,
+      "linksFound": 62,
+      "newInternal": 0
     },
     {
-      "url": "/blog",
-      "status": 200
+      "route": "/blog",
+      "status": 200,
+      "linksFound": 70,
+      "newInternal": 30
     },
     {
-      "url": "/book",
-      "status": 200
+      "route": "/book",
+      "status": 200,
+      "linksFound": 38,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/cleaning",
-      "status": 200
+      "route": "/home-services/cleaning",
+      "status": 200,
+      "linksFound": 50,
+      "newInternal": 4
     },
     {
-      "url": "/home-services/cleaning/regular-home-cleaning",
-      "status": 200
+      "route": "/home-services/cleaning/regular-home-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/cleaning/deep-cleaning",
-      "status": 200
+      "route": "/home-services/cleaning/deep-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/cleaning/move-in-out-cleaning",
-      "status": 200
+      "route": "/home-services/cleaning/move-in-out-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/cleaning/sofa-cleaning",
-      "status": 200
+      "route": "/home-services/cleaning/sofa-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/cleaning/carpet-cleaning",
-      "status": 200
+      "route": "/home-services/cleaning/carpet-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/cleaning/mattress-cleaning",
-      "status": 200
+      "route": "/home-services/cleaning/mattress-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/ac-services",
-      "status": 200
+      "route": "/home-services/ac-services",
+      "status": 200,
+      "linksFound": 48,
+      "newInternal": 3
     },
     {
-      "url": "/home-services/ac-services/ac-general-service",
-      "status": 200
+      "route": "/home-services/ac-services/ac-general-service",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/ac-services/ac-deep-cleaning",
-      "status": 200
+      "route": "/home-services/ac-services/ac-deep-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/ac-services/ac-duct-cleaning",
-      "status": 200
+      "route": "/home-services/ac-services/ac-duct-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/ac-services/ac-repair",
-      "status": 200
+      "route": "/home-services/ac-services/ac-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/ac-services/ac-installation",
-      "status": 200
+      "route": "/home-services/ac-services/ac-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/pest-control",
-      "status": 200
+      "route": "/home-services/pest-control",
+      "status": 200,
+      "linksFound": 48,
+      "newInternal": 3
     },
     {
-      "url": "/home-services/pest-control/general-pest-control",
-      "status": 200
+      "route": "/home-services/pest-control/general-pest-control",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/pest-control/bed-bug-treatment",
-      "status": 200
+      "route": "/home-services/pest-control/bed-bug-treatment",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/pest-control/cockroach-treatment",
-      "status": 200
+      "route": "/home-services/pest-control/cockroach-treatment",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/pest-control/termite-treatment",
-      "status": 200
+      "route": "/home-services/pest-control/termite-treatment",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/pest-control/rodent-control",
-      "status": 200
+      "route": "/home-services/pest-control/rodent-control",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing",
-      "status": 200
+      "route": "/home-services/plumbing",
+      "status": 200,
+      "linksFound": 50,
+      "newInternal": 6
     },
     {
-      "url": "/home-services/plumbing/plumbing-repair",
-      "status": 200
+      "route": "/home-services/plumbing/plumbing-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/drain-unblocking",
-      "status": 200
+      "route": "/home-services/plumbing/drain-unblocking",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/water-heater-installation",
-      "status": 200
+      "route": "/home-services/plumbing/water-heater-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/water-tank-cleaning",
-      "status": 200
+      "route": "/home-services/plumbing/water-tank-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/tv-mounting",
-      "status": 200
+      "route": "/home-services/plumbing/tv-mounting",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 4
     },
     {
-      "url": "/home-services/electrical",
-      "status": 200
+      "route": "/home-services/electrical",
+      "status": 200,
+      "linksFound": 49,
+      "newInternal": 5
     },
     {
-      "url": "/home-services/electrical/electrical-repair",
-      "status": 200
+      "route": "/home-services/electrical/electrical-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/circuit-breaker-repair",
-      "status": 200
+      "route": "/home-services/electrical/circuit-breaker-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/water-heater-repair",
-      "status": 200
+      "route": "/home-services/electrical/water-heater-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 4
     },
     {
-      "url": "/home-services/electrical/smart-home-setup",
-      "status": 200
+      "route": "/home-services/electrical/smart-home-setup",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/cctv-installation",
-      "status": 200
+      "route": "/home-services/electrical/cctv-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting",
-      "status": 200
+      "route": "/home-services/painting",
+      "status": 200,
+      "linksFound": 48,
+      "newInternal": 4
     },
     {
-      "url": "/home-services/painting/interior-painting",
-      "status": 200
+      "route": "/home-services/painting/interior-painting",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting/villa-exterior-painting",
-      "status": 200
+      "route": "/home-services/painting/villa-exterior-painting",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting/wallpaper-installation",
-      "status": 200
+      "route": "/home-services/painting/wallpaper-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting/bathroom-renovation",
-      "status": 200
+      "route": "/home-services/painting/bathroom-renovation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 4
     },
     {
-      "url": "/home-services/painting/flooring-installation",
-      "status": 200
+      "route": "/home-services/painting/flooring-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/areas/dubai-marina",
-      "status": 200
+      "route": "/areas/dubai-marina",
+      "status": 200,
+      "linksFound": 60,
+      "newInternal": 18
     },
     {
-      "url": "/areas/jbr",
-      "status": 200
+      "route": "/areas/jbr",
+      "status": 200,
+      "linksFound": 60,
+      "newInternal": 18
     },
     {
-      "url": "/areas/palm-jumeirah",
-      "status": 200
+      "route": "/areas/palm-jumeirah",
+      "status": 200,
+      "linksFound": 60,
+      "newInternal": 18
     },
     {
-      "url": "/areas/downtown-dubai",
-      "status": 200
+      "route": "/areas/downtown-dubai",
+      "status": 200,
+      "linksFound": 60,
+      "newInternal": 18
     },
     {
-      "url": "/areas/business-bay",
-      "status": 200
+      "route": "/areas/business-bay",
+      "status": 200,
+      "linksFound": 60,
+      "newInternal": 18
     },
     {
-      "url": "/areas/difc",
-      "status": 200
+      "route": "/areas/difc",
+      "status": 200,
+      "linksFound": 60,
+      "newInternal": 18
     },
     {
-      "url": "/areas/jlt",
-      "status": 200
+      "route": "/areas/jlt",
+      "status": 200,
+      "linksFound": 59,
+      "newInternal": 18
     },
     {
-      "url": "/areas/dubai-hills",
-      "status": 200
+      "route": "/areas/dubai-hills",
+      "status": 200,
+      "linksFound": 59,
+      "newInternal": 18
     },
     {
-      "url": "/areas/arabian-ranches",
-      "status": 200
+      "route": "/areas/arabian-ranches",
+      "status": 200,
+      "linksFound": 61,
+      "newInternal": 18
     },
     {
-      "url": "/areas/jumeirah",
-      "status": 200
+      "route": "/areas/jumeirah",
+      "status": 200,
+      "linksFound": 61,
+      "newInternal": 18
     },
     {
-      "url": "/areas/al-barsha",
-      "status": 200
+      "route": "/areas/al-barsha",
+      "status": 200,
+      "linksFound": 61,
+      "newInternal": 18
     },
     {
-      "url": "/areas/mirdif",
-      "status": 200
+      "route": "/areas/mirdif",
+      "status": 200,
+      "linksFound": 61,
+      "newInternal": 18
     },
     {
-      "url": "/about",
-      "status": 200
+      "route": "/about",
+      "status": 200,
+      "linksFound": 40,
+      "newInternal": 0
     },
     {
-      "url": "/contact",
-      "status": 200
+      "route": "/contact",
+      "status": 200,
+      "linksFound": 42,
+      "newInternal": 0
     },
     {
-      "url": "/terms",
-      "status": 200
+      "route": "/terms",
+      "status": 200,
+      "linksFound": 38,
+      "newInternal": 0
     },
     {
-      "url": "/privacy",
-      "status": 200
+      "route": "/privacy",
+      "status": 200,
+      "linksFound": 38,
+      "newInternal": 0
     },
     {
-      "url": "/blog/how-often-should-you-service-your-ac-in-dubai",
-      "status": 200
+      "route": "/blog/how-often-should-you-service-your-ac-in-dubai",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 2
     },
     {
-      "url": "/blog/dubai-apartment-deep-cleaning-checklist",
-      "status": 200
+      "route": "/blog/dubai-apartment-deep-cleaning-checklist",
+      "status": 200,
+      "linksFound": 46,
+      "newInternal": 0
     },
     {
-      "url": "/blog/pest-control-in-dubai-what-every-resident-needs-to-know",
-      "status": 200
+      "route": "/blog/pest-control-in-dubai-what-every-resident-needs-to-know",
+      "status": 200,
+      "linksFound": 47,
+      "newInternal": 0
     },
     {
-      "url": "/blog/move-out-cleaning-guide-getting-your-security-deposit-back",
-      "status": 200
+      "route": "/blog/move-out-cleaning-guide-getting-your-security-deposit-back",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 1
     },
     {
-      "url": "/blog/why-your-dewa-bill-is-so-high-and-how-to-fix-it",
-      "status": 200
+      "route": "/blog/why-your-dewa-bill-is-so-high-and-how-to-fix-it",
+      "status": 200,
+      "linksFound": 43,
+      "newInternal": 0
     },
     {
-      "url": "/blog/best-time-to-paint-your-dubai-apartment",
-      "status": 200
+      "route": "/blog/best-time-to-paint-your-dubai-apartment",
+      "status": 200,
+      "linksFound": 43,
+      "newInternal": 0
     },
     {
-      "url": "/blog/emergency-plumbing-in-dubai-what-to-do-before-the-plumber-arrives",
-      "status": 200
+      "route": "/blog/emergency-plumbing-in-dubai-what-to-do-before-the-plumber-arrives",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/blog/smart-home-setup-guide-for-dubai-apartments",
-      "status": 200
+      "route": "/blog/smart-home-setup-guide-for-dubai-apartments",
+      "status": 200,
+      "linksFound": 43,
+      "newInternal": 1
     },
     {
-      "url": "/blog/how-to-choose-the-right-pest-control-company-in-dubai",
-      "status": 200
+      "route": "/blog/how-to-choose-the-right-pest-control-company-in-dubai",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/blog/ac-duct-cleaning-is-it-really-necessary",
-      "status": 200
+      "route": "/blog/ac-duct-cleaning-is-it-really-necessary",
+      "status": 200,
+      "linksFound": 43,
+      "newInternal": 0
     },
     {
-      "url": "/blog/water-tank-cleaning-in-dubai-rules-and-regulations",
-      "status": 200
+      "route": "/blog/water-tank-cleaning-in-dubai-rules-and-regulations",
+      "status": 200,
+      "linksFound": 44,
+      "newInternal": 0
     },
     {
-      "url": "/blog/bed-bug-prevention-tips-for-dubai-residents",
-      "status": 200
+      "route": "/blog/bed-bug-prevention-tips-for-dubai-residents",
+      "status": 200,
+      "linksFound": 46,
+      "newInternal": 0
     },
     {
-      "url": "/blog/kitchen-renovation-costs-in-dubai-a-realistic-guide",
-      "status": 200
+      "route": "/blog/kitchen-renovation-costs-in-dubai-a-realistic-guide",
+      "status": 200,
+      "linksFound": 44,
+      "newInternal": 0
     },
     {
-      "url": "/blog/electrical-safety-tips-for-dubai-homeowners",
-      "status": 200
+      "route": "/blog/electrical-safety-tips-for-dubai-homeowners",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/blog/pool-maintenance-101-for-dubai-villa-owners",
-      "status": 200
+      "route": "/blog/pool-maintenance-101-for-dubai-villa-owners",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/blog/how-to-prepare-your-home-for-dubai-summer",
-      "status": 200
+      "route": "/blog/how-to-prepare-your-home-for-dubai-summer",
+      "status": 200,
+      "linksFound": 48,
+      "newInternal": 0
     },
     {
-      "url": "/blog/carpet-vs-hard-flooring-in-dubai-maintenance-comparison",
-      "status": 200
+      "route": "/blog/carpet-vs-hard-flooring-in-dubai-maintenance-comparison",
+      "status": 200,
+      "linksFound": 46,
+      "newInternal": 0
     },
     {
-      "url": "/blog/what-to-look-for-in-a-dubai-home-maintenance-company",
-      "status": 200
+      "route": "/blog/what-to-look-for-in-a-dubai-home-maintenance-company",
+      "status": 200,
+      "linksFound": 47,
+      "newInternal": 0
     },
     {
-      "url": "/blog/bathroom-waterproofing-why-it-matters-in-dubai",
-      "status": 200
+      "route": "/blog/bathroom-waterproofing-why-it-matters-in-dubai",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/blog/garden-maintenance-tips-for-dubai-villas",
-      "status": 200
+      "route": "/blog/garden-maintenance-tips-for-dubai-villas",
+      "status": 200,
+      "linksFound": 46,
+      "newInternal": 0
     },
     {
-      "url": "/blog/how-to-deal-with-cockroaches-in-your-dubai-kitchen",
-      "status": 200
+      "route": "/blog/how-to-deal-with-cockroaches-in-your-dubai-kitchen",
+      "status": 200,
+      "linksFound": 46,
+      "newInternal": 0
     },
     {
-      "url": "/blog/cctv-installation-guide-for-dubai-properties",
-      "status": 200
+      "route": "/blog/cctv-installation-guide-for-dubai-properties",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/blog/wallpaper-vs-paint-which-is-better-for-dubai-apartments",
-      "status": 200
+      "route": "/blog/wallpaper-vs-paint-which-is-better-for-dubai-apartments",
+      "status": 200,
+      "linksFound": 43,
+      "newInternal": 0
     },
     {
-      "url": "/blog/annual-maintenance-contract-is-it-worth-it",
-      "status": 200
+      "route": "/blog/annual-maintenance-contract-is-it-worth-it",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/blog/sofa-cleaning-when-to-clean-vs-when-to-replace",
-      "status": 200
+      "route": "/blog/sofa-cleaning-when-to-clean-vs-when-to-replace",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/blog/ev-charger-installation-in-dubai-what-you-need-to-know",
-      "status": 200
+      "route": "/blog/ev-charger-installation-in-dubai-what-you-need-to-know",
+      "status": 200,
+      "linksFound": 44,
+      "newInternal": 0
     },
     {
-      "url": "/blog/termite-prevention-for-dubai-villas",
-      "status": 200
+      "route": "/blog/termite-prevention-for-dubai-villas",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/blog/how-to-reduce-indoor-allergens-in-your-dubai-home",
-      "status": 200
+      "route": "/blog/how-to-reduce-indoor-allergens-in-your-dubai-home",
+      "status": 200,
+      "linksFound": 46,
+      "newInternal": 0
     },
     {
-      "url": "/blog/handyman-services-small-fixes-that-save-big-money",
-      "status": 200
+      "route": "/blog/handyman-services-small-fixes-that-save-big-money",
+      "status": 200,
+      "linksFound": 47,
+      "newInternal": 0
     },
     {
-      "url": "/blog/holiday-home-maintenance-in-dubai-a-complete-guide",
-      "status": 200
+      "route": "/blog/holiday-home-maintenance-in-dubai-a-complete-guide",
+      "status": 200,
+      "linksFound": 47,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/cleaning/post-construction-cleaning",
-      "status": 200
+      "route": "/home-services/cleaning/post-construction-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/cleaning/curtain-cleaning",
-      "status": 200
+      "route": "/home-services/cleaning/curtain-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/cleaning/kitchen-deep-cleaning",
-      "status": 200
+      "route": "/home-services/cleaning/kitchen-deep-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/cleaning/bathroom-deep-cleaning",
-      "status": 200
+      "route": "/home-services/cleaning/bathroom-deep-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/ac-services/ac-gas-refill",
-      "status": 200
+      "route": "/home-services/ac-services/ac-gas-refill",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/ac-services/ac-thermostat-install",
-      "status": 200
+      "route": "/home-services/ac-services/ac-thermostat-install",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/ac-services/ac-amc",
-      "status": 200
+      "route": "/home-services/ac-services/ac-amc",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/pest-control/mosquito-control",
-      "status": 200
+      "route": "/home-services/pest-control/mosquito-control",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/pest-control/disinfection-service",
-      "status": 200
+      "route": "/home-services/pest-control/disinfection-service",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/pest-control/snake-scorpion-control",
-      "status": 200
+      "route": "/home-services/pest-control/snake-scorpion-control",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/water-heater-repair",
-      "status": 200
+      "route": "/home-services/plumbing/water-heater-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/toilet-repair",
-      "status": 200
+      "route": "/home-services/plumbing/toilet-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/tap-mixer-install",
-      "status": 200
+      "route": "/home-services/plumbing/tap-mixer-install",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/water-pump-repair",
-      "status": 200
+      "route": "/home-services/plumbing/water-pump-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/bathroom-renovation",
-      "status": 200
+      "route": "/home-services/plumbing/bathroom-renovation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/kitchen-plumbing",
-      "status": 200
+      "route": "/home-services/plumbing/kitchen-plumbing",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/electrical-repair",
-      "status": 200
+      "route": "/home-services/plumbing/electrical-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/light-installation",
-      "status": 200
+      "route": "/home-services/plumbing/light-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/circuit-breaker-repair",
-      "status": 200
+      "route": "/home-services/plumbing/circuit-breaker-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/plumbing/doorbell-intercom",
-      "status": 200
+      "route": "/home-services/plumbing/doorbell-intercom",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/light-installation",
-      "status": 200
+      "route": "/home-services/electrical/light-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/doorbell-intercom",
-      "status": 200
+      "route": "/home-services/electrical/doorbell-intercom",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/tv-mounting",
-      "status": 200
+      "route": "/home-services/electrical/tv-mounting",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/ev-charger-installation",
-      "status": 200
+      "route": "/home-services/electrical/ev-charger-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/full-rewiring",
-      "status": 200
+      "route": "/home-services/electrical/full-rewiring",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/plumbing-repair",
-      "status": 200
+      "route": "/home-services/electrical/plumbing-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/drain-unblocking",
-      "status": 200
+      "route": "/home-services/electrical/drain-unblocking",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/water-heater-installation",
-      "status": 200
+      "route": "/home-services/electrical/water-heater-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/electrical/toilet-repair",
-      "status": 200
+      "route": "/home-services/electrical/toilet-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting/accent-wall",
-      "status": 200
+      "route": "/home-services/painting/accent-wall",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting/wood-varnishing",
-      "status": 200
+      "route": "/home-services/painting/wood-varnishing",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting/false-ceiling",
-      "status": 200
+      "route": "/home-services/painting/false-ceiling",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting/partition-wall",
-      "status": 200
+      "route": "/home-services/painting/partition-wall",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting/plumbing-repair",
-      "status": 200
+      "route": "/home-services/painting/plumbing-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 1
     },
     {
-      "url": "/home-services/painting/drain-unblocking",
-      "status": 200
+      "route": "/home-services/painting/drain-unblocking",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting/water-heater-repair",
-      "status": 200
+      "route": "/home-services/painting/water-heater-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/home-services/painting/water-heater-installation",
-      "status": 200
+      "route": "/home-services/painting/water-heater-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/areas/dubai-marina/plumbing-repair",
-      "status": 200
+      "route": "/areas/dubai-marina/plumbing-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     },
     {
-      "url": "/areas/dubai-marina/general-pest-control",
-      "status": 200
+      "route": "/areas/dubai-marina/general-pest-control",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     },
     {
-      "url": "/areas/dubai-marina/ac-general-service",
-      "status": 200
+      "route": "/areas/dubai-marina/ac-general-service",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     },
     {
-      "url": "/areas/dubai-marina/electrical-repair",
-      "status": 200
+      "route": "/areas/dubai-marina/electrical-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     },
     {
-      "url": "/areas/dubai-marina/interior-painting",
-      "status": 200
+      "route": "/areas/dubai-marina/interior-painting",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     },
     {
-      "url": "/areas/dubai-marina/regular-home-cleaning",
-      "status": 200
+      "route": "/areas/dubai-marina/regular-home-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     },
     {
-      "url": "/areas/dubai-marina/deep-cleaning",
-      "status": 200
+      "route": "/areas/dubai-marina/deep-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/areas/dubai-marina/ac-deep-cleaning",
-      "status": 200
+      "route": "/areas/dubai-marina/ac-deep-cleaning",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/areas/dubai-marina/light-installation",
-      "status": 200
+      "route": "/areas/dubai-marina/light-installation",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/areas/dubai-marina/accent-wall",
-      "status": 200
+      "route": "/areas/dubai-marina/accent-wall",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/areas/dubai-marina/cockroach-treatment",
-      "status": 200
+      "route": "/areas/dubai-marina/cockroach-treatment",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/areas/dubai-marina/drain-unblocking",
-      "status": 200
+      "route": "/areas/dubai-marina/drain-unblocking",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 0
     },
     {
-      "url": "/guides/dubai-marina/best-for-families",
-      "status": 200
+      "route": "/guides/dubai-marina/best-for-families",
+      "status": 200,
+      "linksFound": 59,
+      "newInternal": 3
     },
     {
-      "url": "/guides/dubai-marina/most-affordable",
-      "status": 200
+      "route": "/guides/dubai-marina/most-affordable",
+      "status": 200,
+      "linksFound": 59,
+      "newInternal": 0
     },
     {
-      "url": "/guides/dubai-marina/premium-packages",
-      "status": 200
+      "route": "/guides/dubai-marina/premium-packages",
+      "status": 200,
+      "linksFound": 59,
+      "newInternal": 0
     },
     {
-      "url": "/guides/dubai-marina/same-day",
-      "status": 200
+      "route": "/guides/dubai-marina/same-day",
+      "status": 200,
+      "linksFound": 59,
+      "newInternal": 0
     },
     {
-      "url": "/guides/dubai-marina/for-high-rises",
-      "status": 200
+      "route": "/guides/dubai-marina/for-high-rises",
+      "status": 200,
+      "linksFound": 59,
+      "newInternal": 0
     },
     {
-      "url": "/guides/dubai-marina/annual-plans",
-      "status": 200
+      "route": "/guides/dubai-marina/annual-plans",
+      "status": 200,
+      "linksFound": 59,
+      "newInternal": 0
     },
     {
-      "url": "/areas/jbr/plumbing-repair",
-      "status": 200
+      "route": "/areas/jbr/plumbing-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     },
     {
-      "url": "/areas/jbr/general-pest-control",
-      "status": 200
+      "route": "/areas/jbr/general-pest-control",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     },
     {
-      "url": "/areas/jbr/ac-general-service",
-      "status": 200
+      "route": "/areas/jbr/ac-general-service",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     },
     {
-      "url": "/areas/jbr/electrical-repair",
-      "status": 200
+      "route": "/areas/jbr/electrical-repair",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     },
     {
-      "url": "/areas/jbr/interior-painting",
-      "status": 200
+      "route": "/areas/jbr/interior-painting",
+      "status": 200,
+      "linksFound": 45,
+      "newInternal": 3
     }
   ],
   "brokenLinks": [],
-  "externalLinksWithoutRel": [
+  "externalLinks": 165,
+  "externalLinkDetails": [
     {
-      "from": "/home-services/guardian",
       "href": "https://wa.me/971",
-      "rel": ""
+      "rel": "noopener noreferrer",
+      "foundOn": "/",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "WhatsApp Us"
     },
     {
-      "from": "/care-plans",
-      "href": "https://wa.me/971",
-      "rel": ""
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
     },
     {
-      "from": "/contact",
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
       "href": "https://wa.me/971",
-      "rel": ""
+      "rel": "",
+      "foundOn": "/home-services/guardian",
+      "hasNoopener": false,
+      "hasNoreferrer": false,
+      "hasNofollow": false,
+      "text": "WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/guardian",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20AC%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Cleaning%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Pest%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Housekeeping%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Garden%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Pool%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Total%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Essential%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Standard%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Premium%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20VIP%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971",
+      "rel": "",
+      "foundOn": "/care-plans",
+      "hasNoopener": false,
+      "hasNoreferrer": false,
+      "hasNofollow": false,
+      "text": "Talk to Us on WhatsApp"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/book",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning/regular-home-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning/deep-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning/move-in-out-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning/sofa-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning/carpet-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning/mattress-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/ac-services",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/ac-services/ac-general-service",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/ac-services/ac-deep-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/ac-services/ac-duct-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/ac-services/ac-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/ac-services/ac-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/pest-control",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/pest-control/general-pest-control",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/pest-control/bed-bug-treatment",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/pest-control/cockroach-treatment",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/pest-control/termite-treatment",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/pest-control/rodent-control",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/plumbing-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/drain-unblocking",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/water-heater-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/water-tank-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/tv-mounting",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/electrical-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/circuit-breaker-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/water-heater-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/smart-home-setup",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/cctv-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/interior-painting",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/villa-exterior-painting",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/wallpaper-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/bathroom-renovation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/flooring-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/jbr",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/palm-jumeirah",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/downtown-dubai",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/business-bay",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/difc",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/jlt",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-hills",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/arabian-ranches",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/jumeirah",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/al-barsha",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/mirdif",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/about",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971",
+      "rel": "",
+      "foundOn": "/contact",
+      "hasNoopener": false,
+      "hasNoreferrer": false,
+      "hasNofollow": false,
+      "text": "WhatsApp+971XXXXXXXXX\nQuick replies, send photos"
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/contact",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/terms",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/privacy",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/how-often-should-you-service-your-ac-in-dubai",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/dubai-apartment-deep-cleaning-checklist",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/pest-control-in-dubai-what-every-resident-needs-to-know",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/move-out-cleaning-guide-getting-your-security-deposit-back",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/why-your-dewa-bill-is-so-high-and-how-to-fix-it",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/best-time-to-paint-your-dubai-apartment",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/emergency-plumbing-in-dubai-what-to-do-before-the-plumber-arrives",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/smart-home-setup-guide-for-dubai-apartments",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/how-to-choose-the-right-pest-control-company-in-dubai",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/ac-duct-cleaning-is-it-really-necessary",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/water-tank-cleaning-in-dubai-rules-and-regulations",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/bed-bug-prevention-tips-for-dubai-residents",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/kitchen-renovation-costs-in-dubai-a-realistic-guide",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/electrical-safety-tips-for-dubai-homeowners",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/pool-maintenance-101-for-dubai-villa-owners",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/how-to-prepare-your-home-for-dubai-summer",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/carpet-vs-hard-flooring-in-dubai-maintenance-comparison",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/what-to-look-for-in-a-dubai-home-maintenance-company",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/bathroom-waterproofing-why-it-matters-in-dubai",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/garden-maintenance-tips-for-dubai-villas",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/how-to-deal-with-cockroaches-in-your-dubai-kitchen",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/cctv-installation-guide-for-dubai-properties",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/wallpaper-vs-paint-which-is-better-for-dubai-apartments",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/annual-maintenance-contract-is-it-worth-it",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/sofa-cleaning-when-to-clean-vs-when-to-replace",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/ev-charger-installation-in-dubai-what-you-need-to-know",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/termite-prevention-for-dubai-villas",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/how-to-reduce-indoor-allergens-in-your-dubai-home",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/handyman-services-small-fixes-that-save-big-money",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/blog/holiday-home-maintenance-in-dubai-a-complete-guide",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning/post-construction-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning/curtain-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning/kitchen-deep-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/cleaning/bathroom-deep-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/ac-services/ac-gas-refill",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/ac-services/ac-thermostat-install",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/ac-services/ac-amc",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/pest-control/mosquito-control",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/pest-control/disinfection-service",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/pest-control/snake-scorpion-control",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/water-heater-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/toilet-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/tap-mixer-install",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/water-pump-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/bathroom-renovation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/kitchen-plumbing",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/electrical-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/light-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/circuit-breaker-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/plumbing/doorbell-intercom",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/light-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/doorbell-intercom",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/tv-mounting",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/ev-charger-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/full-rewiring",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/plumbing-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/drain-unblocking",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/water-heater-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/electrical/toilet-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/accent-wall",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/wood-varnishing",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/false-ceiling",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/partition-wall",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/plumbing-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/drain-unblocking",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/water-heater-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/home-services/painting/water-heater-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/plumbing-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/general-pest-control",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/ac-general-service",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/electrical-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/interior-painting",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/regular-home-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/deep-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/ac-deep-cleaning",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/light-installation",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/accent-wall",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/cockroach-treatment",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/dubai-marina/drain-unblocking",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/guides/dubai-marina/best-for-families",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/guides/dubai-marina/most-affordable",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/guides/dubai-marina/premium-packages",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/guides/dubai-marina/same-day",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/guides/dubai-marina/for-high-rises",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/guides/dubai-marina/annual-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/jbr/plumbing-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/jbr/general-pest-control",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/jbr/ac-general-service",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/jbr/electrical-repair",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/jbr/interior-painting",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": ""
     }
   ],
-  "totalCrawled": 150
+  "checkedExternal": [
+    {
+      "href": "https://wa.me/971",
+      "rel": "",
+      "foundOn": "/contact",
+      "hasNoopener": false,
+      "hasNoreferrer": false,
+      "hasNofollow": false,
+      "text": "WhatsApp+971XXXXXXXXX\nQuick replies, send photos",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi!%20I%20need%20help%20with%20a%20home%20service%20booking.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/areas/jbr/interior-painting",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20AC%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Cleaning%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Pest%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Housekeeping%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Garden%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Pool%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Total%20Care%20Plan%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Essential%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Standard%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20Premium%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    },
+    {
+      "href": "https://wa.me/971?text=Hi%2C%20I%20am%20interested%20in%20the%20VIP%20Care%20Plan.",
+      "rel": "noopener noreferrer",
+      "foundOn": "/care-plans",
+      "hasNoopener": true,
+      "hasNoreferrer": true,
+      "hasNofollow": false,
+      "text": "Or WhatsApp Us",
+      "status": 200
+    }
+  ],
+  "missingRelAttributes": [
+    {
+      "href": "https://wa.me/971",
+      "rel": "",
+      "foundOn": "/home-services/guardian",
+      "hasNoopener": false,
+      "hasNoreferrer": false,
+      "hasNofollow": false,
+      "text": "WhatsApp Us"
+    },
+    {
+      "href": "https://wa.me/971",
+      "rel": "",
+      "foundOn": "/care-plans",
+      "hasNoopener": false,
+      "hasNoreferrer": false,
+      "hasNofollow": false,
+      "text": "Talk to Us on WhatsApp"
+    },
+    {
+      "href": "https://wa.me/971",
+      "rel": "",
+      "foundOn": "/contact",
+      "hasNoopener": false,
+      "hasNoreferrer": false,
+      "hasNofollow": false,
+      "text": "WhatsApp+971XXXXXXXXX\nQuick replies, send photos"
+    }
+  ]
 }

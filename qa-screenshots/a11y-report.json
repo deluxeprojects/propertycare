@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-04-04T13:10:02.413Z",
+  "timestamp": "2026-04-04T14:45:32.111Z",
   "baseUrl": "http://localhost:3099",
   "pages": [
     {
       "route": "/",
       "url": "http://localhost:3099/",
-      "violationCount": 3,
+      "violationCount": 2,
       "violations": [
         {
           "id": "color-contrast",
@@ -13,24 +13,13 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 20,
+          "nodes": 11,
           "targets": [
-            ".md\\:inline-flex",
-            "a[href$=\"cleaning\"] > .text-accent.font-semibold.mb-4",
-            "a[href$=\"ac-services\"] > .text-accent.font-semibold.mb-4",
-            "a[href$=\"pest-control\"] > .text-accent.font-semibold.mb-4",
-            "a[href$=\"plumbing\"] > .text-accent.font-semibold.mb-4"
-          ]
-        },
-        {
-          "id": "heading-order",
-          "impact": "moderate",
-          "description": "Ensure the order of headings is semantically correct",
-          "help": "Heading levels should only increase by one",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
-          "nodes": 1,
-          "targets": [
-            "div:nth-child(2) > h4"
+            "a[href$=\"cleaning\"] > .text-accent-text.font-semibold.mb-4",
+            "a[href$=\"ac-services\"] > .text-accent-text.font-semibold.mb-4",
+            "a[href$=\"pest-control\"] > .text-accent-text.font-semibold.mb-4",
+            "a[href$=\"plumbing\"] > .text-accent-text.font-semibold.mb-4",
+            "a[href$=\"electrical\"] > .text-accent-text.font-semibold.mb-4"
           ]
         },
         {
@@ -49,7 +38,7 @@
     {
       "route": "/home-services",
       "url": "http://localhost:3099/home-services",
-      "violationCount": 4,
+      "violationCount": 2,
       "violations": [
         {
           "id": "color-contrast",
@@ -57,35 +46,13 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 9,
+          "nodes": 6,
           "targets": [
-            ".md\\:inline-flex",
-            ".group.p-6[href$=\"cleaning\"] > .justify-between.flex.items-center > .text-accent",
-            ".group.p-6[href$=\"ac-services\"] > .justify-between.flex.items-center > .text-accent",
-            ".group.p-6[href$=\"pest-control\"] > .justify-between.flex.items-center > .text-accent",
-            ".group.p-6[href$=\"plumbing\"] > .justify-between.flex.items-center > .text-accent"
-          ]
-        },
-        {
-          "id": "heading-order",
-          "impact": "moderate",
-          "description": "Ensure the order of headings is semantically correct",
-          "help": "Heading levels should only increase by one",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
-          "nodes": 1,
-          "targets": [
-            "div:nth-child(2) > h4"
-          ]
-        },
-        {
-          "id": "landmark-unique",
-          "impact": "moderate",
-          "description": "Ensure landmarks are unique",
-          "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
-          "nodes": 1,
-          "targets": [
-            ".md\\:flex"
+            ".group.p-6[href$=\"cleaning\"] > .justify-between.flex.items-center > .text-accent-text",
+            ".group.p-6[href$=\"ac-services\"] > .justify-between.flex.items-center > .text-accent-text",
+            ".group.p-6[href$=\"pest-control\"] > .justify-between.flex.items-center > .text-accent-text",
+            ".group.p-6[href$=\"plumbing\"] > .justify-between.flex.items-center > .text-accent-text",
+            ".group.p-6[href$=\"electrical\"] > .justify-between.flex.items-center > .text-accent-text"
           ]
         },
         {
@@ -104,7 +71,7 @@
     {
       "route": "/home-services/guardian",
       "url": "http://localhost:3099/home-services/guardian",
-      "violationCount": 4,
+      "violationCount": 2,
       "violations": [
         {
           "id": "color-contrast",
@@ -112,35 +79,13 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 12,
+          "nodes": 5,
           "targets": [
-            ".md\\:inline-flex",
             ".bg-accent\\/10",
-            ".p-6.relative.rounded-xl:nth-child(1) > .text-xs.text-accent.font-medium",
-            ".-top-3",
-            ".border-accent > .text-xs.text-accent.font-medium"
-          ]
-        },
-        {
-          "id": "heading-order",
-          "impact": "moderate",
-          "description": "Ensure the order of headings is semantically correct",
-          "help": "Heading levels should only increase by one",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
-          "nodes": 1,
-          "targets": [
-            "div:nth-child(2) > h4"
-          ]
-        },
-        {
-          "id": "landmark-unique",
-          "impact": "moderate",
-          "description": "Ensure landmarks are unique",
-          "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
-          "nodes": 1,
-          "targets": [
-            ".md\\:flex"
+            ".p-6.relative.rounded-xl:nth-child(1) > .text-xs.text-accent-text.font-medium",
+            ".border-accent > .text-xs.text-accent-text.font-medium",
+            ".p-6.relative.rounded-xl:nth-child(3) > .text-xs.text-accent-text.font-medium",
+            ".p-6.relative.rounded-xl:nth-child(4) > .text-xs.text-accent-text.font-medium"
           ]
         },
         {
@@ -159,19 +104,8 @@
     {
       "route": "/areas",
       "url": "http://localhost:3099/areas",
-      "violationCount": 2,
+      "violationCount": 1,
       "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 1,
-          "targets": [
-            ".md\\:inline-flex"
-          ]
-        },
         {
           "id": "region",
           "impact": "moderate",
@@ -188,7 +122,7 @@
     {
       "route": "/care-plans",
       "url": "http://localhost:3099/care-plans",
-      "violationCount": 3,
+      "violationCount": 2,
       "violations": [
         {
           "id": "color-contrast",
@@ -196,24 +130,12 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 9,
+          "nodes": 4,
           "targets": [
-            ".md\\:inline-flex",
-            ".lg\\:grid-cols-3 > .border-accent.shadow-accent\\/10.shadow-lg > .-top-3.left-1\\/2.-translate-x-1\\/2",
-            ".mt-6 > .hover\\:bg-accent\\/90.bg-accent.text-accent-foreground",
             ".items-start.gap-2:nth-child(5) > .text-muted-foreground\\/40:nth-child(2)",
-            ".p-6.rounded-xl.relative:nth-child(1) > .space-y-3.mb-6 > .items-start.gap-2:nth-child(6) > .text-muted-foreground\\/40:nth-child(2)"
-          ]
-        },
-        {
-          "id": "landmark-unique",
-          "impact": "moderate",
-          "description": "Ensure landmarks are unique",
-          "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
-          "nodes": 1,
-          "targets": [
-            ".md\\:flex"
+            ".p-6.rounded-xl.relative:nth-child(1) > .space-y-3.mb-6 > .items-start.gap-2:nth-child(6) > .text-muted-foreground\\/40:nth-child(2)",
+            ".border-accent.shadow-accent\\/10.shadow-lg > .space-y-3.mb-6 > .items-start.gap-2:nth-child(6) > .text-muted-foreground\\/40:nth-child(2)",
+            ".mt-12 > .mb-4"
           ]
         },
         {
@@ -232,7 +154,7 @@
     {
       "route": "/blog",
       "url": "http://localhost:3099/blog",
-      "violationCount": 4,
+      "violationCount": 2,
       "violations": [
         {
           "id": "color-contrast",
@@ -240,35 +162,13 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 46,
+          "nodes": 42,
           "targets": [
-            ".md\\:inline-flex",
-            ".bg-accent.text-accent-foreground.py-1\\.5",
             ".bg-muted.hover\\:bg-muted\\/80.py-1\\.5:nth-child(2)",
             ".bg-muted.hover\\:bg-muted\\/80.py-1\\.5:nth-child(3)",
-            ".bg-muted.hover\\:bg-muted\\/80.py-1\\.5:nth-child(4)"
-          ]
-        },
-        {
-          "id": "heading-order",
-          "impact": "moderate",
-          "description": "Ensure the order of headings is semantically correct",
-          "help": "Heading levels should only increase by one",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
-          "nodes": 1,
-          "targets": [
-            "div:nth-child(2) > h4"
-          ]
-        },
-        {
-          "id": "landmark-unique",
-          "impact": "moderate",
-          "description": "Ensure landmarks are unique",
-          "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
-          "nodes": 1,
-          "targets": [
-            ".gap-6"
+            ".bg-muted.hover\\:bg-muted\\/80.py-1\\.5:nth-child(4)",
+            ".bg-muted.hover\\:bg-muted\\/80.py-1\\.5:nth-child(5)",
+            ".bg-muted.hover\\:bg-muted\\/80.py-1\\.5:nth-child(6)"
           ]
         },
         {
@@ -287,43 +187,8 @@
     {
       "route": "/about",
       "url": "http://localhost:3099/about",
-      "violationCount": 4,
+      "violationCount": 1,
       "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 3,
-          "targets": [
-            ".md\\:inline-flex",
-            ".mt-12 > h2",
-            ".text-accent-foreground\\/80"
-          ]
-        },
-        {
-          "id": "heading-order",
-          "impact": "moderate",
-          "description": "Ensure the order of headings is semantically correct",
-          "help": "Heading levels should only increase by one",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
-          "nodes": 1,
-          "targets": [
-            "div:nth-child(2) > h4"
-          ]
-        },
-        {
-          "id": "landmark-unique",
-          "impact": "moderate",
-          "description": "Ensure landmarks are unique",
-          "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
-          "nodes": 1,
-          "targets": [
-            ".md\\:flex"
-          ]
-        },
         {
           "id": "region",
           "impact": "moderate",
@@ -340,7 +205,7 @@
     {
       "route": "/contact",
       "url": "http://localhost:3099/contact",
-      "violationCount": 4,
+      "violationCount": 3,
       "violations": [
         {
           "id": "color-contrast",
@@ -348,12 +213,10 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 4,
+          "nodes": 2,
           "targets": [
-            ".md\\:inline-flex",
             ".bg-accent\\/10",
-            ".bg-muted",
-            ".px-6"
+            ".bg-muted"
           ]
         },
         {
@@ -362,21 +225,9 @@
           "description": "Ensure the order of headings is semantically correct",
           "help": "Heading levels should only increase by one",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
-          "nodes": 2,
-          "targets": [
-            "a[href$=\"tel:+971-XX-XXX-XXXX\"] > div > h3",
-            "div:nth-child(2) > h4"
-          ]
-        },
-        {
-          "id": "landmark-unique",
-          "impact": "moderate",
-          "description": "Ensure landmarks are unique",
-          "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
           "nodes": 1,
           "targets": [
-            ".md\\:flex"
+            "a[href$=\"tel:+971-XX-XXX-XXXX\"] > div > h3"
           ]
         },
         {
@@ -395,7 +246,7 @@
     {
       "route": "/login",
       "url": "http://localhost:3099/login",
-      "violationCount": 3,
+      "violationCount": 2,
       "violations": [
         {
           "id": "color-contrast",
@@ -403,23 +254,10 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 4,
+          "nodes": 2,
           "targets": [
-            ".md\\:inline-flex",
-            ".text-xs.text-accent.hover\\:underline",
-            ".disabled\\:opacity-50",
-            ".mt-4.text-center > .text-accent.hover\\:underline[type=\"button\"]"
-          ]
-        },
-        {
-          "id": "heading-order",
-          "impact": "moderate",
-          "description": "Ensure the order of headings is semantically correct",
-          "help": "Heading levels should only increase by one",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
-          "nodes": 1,
-          "targets": [
-            "div:nth-child(2) > h4"
+            ".text-xs.text-accent-text.hover\\:underline",
+            ".mt-4.text-center > .text-accent-text.hover\\:underline[type=\"button\"]"
           ]
         },
         {
@@ -438,30 +276,8 @@
     {
       "route": "/privacy",
       "url": "http://localhost:3099/privacy",
-      "violationCount": 3,
+      "violationCount": 1,
       "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 1,
-          "targets": [
-            ".md\\:inline-flex"
-          ]
-        },
-        {
-          "id": "heading-order",
-          "impact": "moderate",
-          "description": "Ensure the order of headings is semantically correct",
-          "help": "Heading levels should only increase by one",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
-          "nodes": 1,
-          "targets": [
-            "div:nth-child(2) > h4"
-          ]
-        },
         {
           "id": "region",
           "impact": "moderate",
@@ -478,30 +294,8 @@
     {
       "route": "/terms",
       "url": "http://localhost:3099/terms",
-      "violationCount": 3,
+      "violationCount": 1,
       "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 1,
-          "targets": [
-            ".md\\:inline-flex"
-          ]
-        },
-        {
-          "id": "heading-order",
-          "impact": "moderate",
-          "description": "Ensure the order of headings is semantically correct",
-          "help": "Heading levels should only increase by one",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
-          "nodes": 1,
-          "targets": [
-            "div:nth-child(2) > h4"
-          ]
-        },
         {
           "id": "region",
           "impact": "moderate",
@@ -518,18 +312,17 @@
   ],
   "summary": {
     "totalPages": 11,
-    "totalViolations": 37,
+    "totalViolations": 19,
     "bySeverity": {
       "critical": 0,
-      "serious": 11,
-      "moderate": 26,
+      "serious": 7,
+      "moderate": 12,
       "minor": 0
     },
     "violationTypes": {
-      "color-contrast": 11,
-      "heading-order": 9,
+      "color-contrast": 7,
       "region": 11,
-      "landmark-unique": 6
+      "heading-order": 1
     }
   }
 }

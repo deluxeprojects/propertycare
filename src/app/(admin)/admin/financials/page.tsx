@@ -274,9 +274,9 @@ export default async function FinancialsPage() {
       <div className="rounded-xl border border-border bg-card p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-semibold text-foreground">Technician Earnings Summary</h3>
-          <button className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
+          <a href="/api/v1/admin/export/payroll" className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
             Export CSV
-          </button>
+          </a>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">

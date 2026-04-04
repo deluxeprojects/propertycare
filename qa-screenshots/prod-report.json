@@ -1453,5 +1453,30 @@
       "screenshot": "prod-terms-1440.png",
       "status": 200
     }
-  ]
+  ],
+  "forms": {
+    "contact": {
+      "formFound": true,
+      "fields": {
+        "name": true,
+        "email": true,
+        "phone": true,
+        "message": true
+      },
+      "ok": true
+    },
+    "login": {
+      "formFound": true,
+      "emailField": true,
+      "passwordField": true,
+      "ok": true
+    },
+    "book": {
+      "pageTitle": "Book a Service | ProKeep",
+      "wizardFound": false,
+      "inputCount": 2,
+      "buttonCount": 8,
+      "ok": true
+    }
+  }
 }

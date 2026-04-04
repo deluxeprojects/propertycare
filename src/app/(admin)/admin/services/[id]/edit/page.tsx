@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { ArrowLeft } from 'lucide-react';
 import { AdminTabs } from '@/features/admin/components/AdminTabs';
+import { ServiceEditActions } from '@/features/admin/components/services/ServiceEditActions';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -84,7 +85,7 @@ export default async function ServiceEditPage({ params }: Props) {
         </div>
       </div>
       <div className="mt-6 flex justify-end">
-        <button className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">Save Changes</button>
+        <button disabled title="Inline editing coming soon" className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground opacity-50 cursor-not-allowed">Save Changes</button>
       </div>
     </div>
   );
@@ -93,7 +94,7 @@ export default async function ServiceEditPage({ params }: Props) {
     <div className="rounded-xl border border-border bg-card p-6">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="font-semibold text-foreground">Size Variants ({variants.length})</h3>
-        <button className="rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-accent-foreground hover:bg-accent/90">+ Add Variant</button>
+        <button disabled title="Coming soon" className="rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-accent-foreground opacity-50 cursor-not-allowed">+ Add Variant</button>
       </div>
       {variants.length > 0 ? (
         <table className="w-full text-sm">
@@ -117,7 +118,7 @@ export default async function ServiceEditPage({ params }: Props) {
     <div className="rounded-xl border border-border bg-card p-6">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="font-semibold text-foreground">Add-ons ({addons.length})</h3>
-        <button className="rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-accent-foreground hover:bg-accent/90">+ Add Add-on</button>
+        <button disabled title="Coming soon" className="rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-accent-foreground opacity-50 cursor-not-allowed">+ Add Add-on</button>
       </div>
       {addons.length > 0 ? (
         <table className="w-full text-sm">
@@ -169,7 +170,7 @@ export default async function ServiceEditPage({ params }: Props) {
       </div>
 
       <div className="flex justify-end">
-        <button className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">Save Changes</button>
+        <button disabled title="Inline editing coming soon" className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground opacity-50 cursor-not-allowed">Save Changes</button>
       </div>
     </div>
   );
@@ -203,7 +204,7 @@ export default async function ServiceEditPage({ params }: Props) {
         </div>
       )}
       <div className="mt-4">
-        <button className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted">
+        <button disabled title="Coming soon" className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground opacity-50 cursor-not-allowed">
           Upload Image
         </button>
       </div>
@@ -232,7 +233,7 @@ export default async function ServiceEditPage({ params }: Props) {
         </div>
       </div>
       <div className="mt-6 flex justify-end">
-        <button className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">Save Changes</button>
+        <button disabled title="Inline editing coming soon" className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground opacity-50 cursor-not-allowed">Save Changes</button>
       </div>
     </div>
   );
@@ -260,13 +261,7 @@ export default async function ServiceEditPage({ params }: Props) {
           </div>
         </div>
       </div>
-      <div className="rounded-xl border border-red-200 bg-red-50 p-6">
-        <h3 className="mb-2 font-semibold text-red-800">Danger Zone</h3>
-        <p className="mb-4 text-sm text-red-600">Deactivating a service will hide it from the booking flow.</p>
-        <button className="rounded-lg border border-red-300 bg-white px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50">
-          {service.is_active ? 'Deactivate Service' : 'Activate Service'}
-        </button>
-      </div>
+      <ServiceEditActions serviceId={id} initialData={{ is_active: service.is_active }} />
     </div>
   );
 

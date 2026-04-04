@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { ArrowLeft, Clock, Star, Shield, Zap } from 'lucide-react';
+import { Clock, Star, Shield, Zap } from 'lucide-react';
 import { generateServiceSchema, generateBreadcrumbSchema } from '@/lib/utils/seo';
 import { ServiceContent } from '@/features/customer/components/ServiceContent';
 

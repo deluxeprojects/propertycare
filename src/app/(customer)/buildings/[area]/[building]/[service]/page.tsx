@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { MapPin, ArrowRight, CheckCircle2, Shield, Star, Clock } from 'lucide-react';
+import { MapPin, CheckCircle2, Shield, Star, Clock } from 'lucide-react';
 import { ServiceContent } from '@/features/customer/components/ServiceContent';
 
 interface Props {

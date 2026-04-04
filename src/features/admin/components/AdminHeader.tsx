@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Bell, Search, LogOut, ChevronDown, Menu } from 'lucide-react';
 import { DarkModeToggle } from './DarkModeToggle';
 import { createClient } from '@/lib/supabase/client';
@@ -13,7 +12,6 @@ interface AdminHeaderProps {
 export function AdminHeader({ onMenuToggle }: AdminHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
-  const router = useRouter();
 
   const handleLogout = async () => {
     setLoggingOut(true);

@@ -12,7 +12,7 @@ const ALLOWED_UPDATE_FIELDS = new Set([
   'assigned_technician_id',
   'scheduled_date',
   'scheduled_time_slot',
-  'notes_admin',
+  'notes_internal',
   'notes_customer',
   'actual_start_at',
   'actual_end_at',
@@ -59,7 +59,7 @@ export async function PATCH(request: NextRequest, { params }: Props) {
   }
 }
 
-export async function GET(request: NextRequest, { params }: Props) {
+export async function GET(_request: NextRequest, { params }: Props) {
   try {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();

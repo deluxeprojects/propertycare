@@ -48,9 +48,18 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Staff routes
+  // Staff routes — require technician or admin role
   if (path.startsWith('/staff')) {
     if (!user) {
+      return NextResponse.redirect(new URL('/staff/login', request.url));
+    }
+    const { data: staffProfile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    if (!staffProfile || staffProfile.role === 'customer') {
       return NextResponse.redirect(new URL('/staff/login', request.url));
     }
   }

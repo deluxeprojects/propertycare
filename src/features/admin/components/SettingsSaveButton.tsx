@@ -6,7 +6,7 @@ interface SettingsSaveButtonProps {
   settings: Record<string, unknown>;
 }
 
-export function SettingsSaveButton({ settings }: SettingsSaveButtonProps) {
+export function SettingsSaveButton({ settings: _settings }: SettingsSaveButtonProps) {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 

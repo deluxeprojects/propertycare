@@ -22,8 +22,9 @@ const ALLOWED_UPDATE_FIELDS = new Set([
   'is_featured',
   'is_hidden',
   'tags',
-  'hero_image',
-  'gallery_images',
+  'icon_url',
+  'image_url',
+  'gallery_urls',
   'sort_order',
 ]);
 

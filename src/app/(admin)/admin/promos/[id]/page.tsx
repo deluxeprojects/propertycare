@@ -6,6 +6,25 @@ import { useEffect, useState } from 'react';
 import { ArrowLeft, Tag, Calendar, Users, TrendingUp, Shield, Loader2 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
+interface Promotion {
+  code: string;
+  name: string;
+  description_en: string | null;
+  discount_type: string;
+  discount_value: number;
+  min_order_aed: number;
+  max_discount_aed: number | null;
+  usage_limit_per_user: number;
+  usage_limit_total: number | null;
+  usage_count: number | null;
+  valid_from: string | null;
+  valid_until: string | null;
+  is_active: boolean;
+  is_public: boolean;
+  is_first_order_only: boolean;
+  created_at: string | null;
+}
+
 interface Props {
   params: Promise<{ id: string }>;
 }
@@ -13,7 +32,7 @@ interface Props {
 export default function PromoDetailPage({ params }: Props) {
   const router = useRouter();
   const [id, setId] = useState<string>('');
-  const [promo, setPromo] = useState<any>(null);
+  const [promo, setPromo] = useState<Promotion | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);

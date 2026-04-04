@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Check } from 'lucide-react';
 import dynamic from 'next/dynamic';
@@ -16,7 +15,6 @@ const RichTextEditor = dynamic(
 import { siteConfig } from '@/config/site';
 
 export default function NewBlogPostPage() {
-  const router = useRouter();
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
   const [content, setContent] = useState('');

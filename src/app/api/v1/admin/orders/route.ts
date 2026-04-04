@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { apiSuccess, apiError, apiPaginated } from '@/lib/api/response';
+import { apiError, apiPaginated } from '@/lib/api/response';
 
 export async function GET(request: NextRequest) {
   try {

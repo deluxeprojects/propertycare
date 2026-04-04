@@ -83,7 +83,7 @@ export async function updateOrderStatus(
   supabase: SupabaseClient,
   orderId: string,
   status: string,
-  notes?: string
+  _notes?: string
 ) {
   const { data, error } = await supabase
     .from('orders')

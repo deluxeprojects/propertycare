@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { ArrowLeft, Mail, Phone, MapPin, ShoppingCart, Wallet, Shield } from 'lucide-react';
+import { ArrowLeft, Mail, Phone, MapPin, Wallet, Shield } from 'lucide-react';
 import { CustomerEditForm } from './CustomerEditForm';
 
 interface Props {
@@ -135,7 +135,7 @@ export default async function CustomerDetailPage({ params }: Props) {
           <div className="rounded-xl border border-border bg-card p-5">
             <h3 className="mb-3 flex items-center gap-2 font-semibold text-foreground"><Wallet className="h-4 w-4" /> Wallet</h3>
             <p className="text-2xl font-bold text-foreground">AED {wallet?.balance_aed?.toFixed(2) ?? '0.00'}</p>
-            <button className="mt-3 w-full rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted">Add Credit</button>
+            <button disabled title="Wallet credit management coming soon" className="mt-3 w-full rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground opacity-50 cursor-not-allowed">Add Credit</button>
           </div>
 
           {subscriptions && subscriptions.length > 0 && (

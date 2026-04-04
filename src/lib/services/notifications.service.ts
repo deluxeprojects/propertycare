@@ -22,7 +22,7 @@ function buildWhatsAppMessage(template: string, vars: Record<string, string>): s
 
 export async function sendEmail(payload: NotificationPayload): Promise<boolean> {
   if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 're_placeholder') {
-    console.log('[Email]', payload.template, 'to', payload.to);
+    // Email service not configured — silently skip in development
     return true;
   }
 

@@ -3,7 +3,7 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { revalidatePath } from 'next/cache';
 
-export async function updateOrderStatus(orderId: string, status: string, notes?: string) {
+export async function updateOrderStatus(orderId: string, status: string, _notes?: string) {
   const supabase = createAdminClient();
   const { error } = await supabase
     .from('orders')

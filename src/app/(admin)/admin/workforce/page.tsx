@@ -70,10 +70,7 @@ export default async function WorkforcePage() {
 
   // Count today's orders per technician (by assigned_technician_id which references profiles)
   const today = new Date().toISOString().slice(0, 10);
-  const techProfileIds = (technicians ?? []).map((t: Technician) => t.profiles).filter(Boolean);
-  // We need to map technician profile_id. The orders table references profiles via assigned_technician_id.
-  // We need to get profile_ids from the technicians join.
-  // Actually, let's re-fetch technician profile_ids.
+  // Re-fetch technician profile_ids for order count mapping
   const { data: techWithProfiles } = await supabase
     .from('technicians')
     .select('id, profile_id');

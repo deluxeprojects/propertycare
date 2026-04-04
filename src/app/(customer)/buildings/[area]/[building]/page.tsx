@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { MapPin, Building2, Calendar, ArrowLeft, ArrowRight, Users } from 'lucide-react';
+import { MapPin, Building2, Calendar, ArrowRight, Users } from 'lucide-react';
 import { AreaMap } from '@/features/customer/components/AreaMap';
 
 interface Props {
@@ -103,7 +103,6 @@ export default async function BuildingPage({ params }: Props) {
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {(services ?? []).map((s) => {
-              const catSlug = (s.service_categories as unknown as { slug: string } | null)?.slug ?? '';
               return (
                 <Link
                   key={s.id}

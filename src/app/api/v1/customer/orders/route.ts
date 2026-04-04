@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
     const { serviceId, variantId, addonIds, scheduledDate, scheduledTimeSlot,
-            areaId, buildingId, isExpress, promoCode, notesCustomer,
+            areaId, buildingId, isExpress, notesCustomer,
             baseAmount, addonsAmount, expressSurcharge, discount, vat, total } = body;
 
     if (!serviceId || !scheduledDate || !scheduledTimeSlot) {

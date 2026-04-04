@@ -72,7 +72,7 @@ export default async function SettingsPage() {
         </div>
       </div>
       <div className="mt-6 flex justify-end">
-        <button className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
+        <button disabled title="Settings save coming soon" className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground opacity-50 cursor-not-allowed">
           Save Changes
         </button>
       </div>
@@ -106,7 +106,7 @@ export default async function SettingsPage() {
         </div>
       </div>
       <div className="mt-6 flex justify-end">
-        <button className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
+        <button disabled title="Settings save coming soon" className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground opacity-50 cursor-not-allowed">
           Save Changes
         </button>
       </div>
@@ -151,7 +151,7 @@ export default async function SettingsPage() {
         </div>
       </div>
       <div className="mt-6 flex justify-end">
-        <button className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
+        <button disabled title="Settings save coming soon" className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground opacity-50 cursor-not-allowed">
           Save Changes
         </button>
       </div>
@@ -176,7 +176,7 @@ export default async function SettingsPage() {
         </div>
       </div>
       <div className="mt-6 flex justify-end">
-        <button className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
+        <button disabled title="Settings save coming soon" className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground opacity-50 cursor-not-allowed">
           Save Changes
         </button>
       </div>
@@ -201,7 +201,7 @@ export default async function SettingsPage() {
         </div>
       </div>
       <div className="mt-6 flex justify-end">
-        <button className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
+        <button disabled title="Settings save coming soon" className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground opacity-50 cursor-not-allowed">
           Save Changes
         </button>
       </div>
@@ -227,7 +227,7 @@ export default async function SettingsPage() {
         </div>
       </div>
       <div className="mt-6 flex justify-end">
-        <button className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90">
+        <button disabled title="Settings save coming soon" className="rounded-lg bg-accent px-6 py-2 text-sm font-semibold text-accent-foreground opacity-50 cursor-not-allowed">
           Save Changes
         </button>
       </div>

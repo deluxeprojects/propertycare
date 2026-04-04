@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { Plus, Download, Pencil } from 'lucide-react';
+import { Download, Pencil } from 'lucide-react';
 import { OrderFilters } from '@/features/admin/components/orders/OrderFilters';
 
 function StatusBadge({ status }: { status: string }) {

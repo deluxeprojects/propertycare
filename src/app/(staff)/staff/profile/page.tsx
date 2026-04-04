@@ -1,4 +1,4 @@
-import { User, Phone, Mail, Star, Briefcase, MapPin } from 'lucide-react';
+import { Phone, Mail, Star, MapPin } from 'lucide-react';
 
 export default function StaffProfilePage() {
   return (

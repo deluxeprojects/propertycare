@@ -178,12 +178,12 @@ export default async function CarePlansAdminPage() {
                   <p className="text-xs text-muted-foreground">{pt.description}</p>
                 </div>
               </div>
-              <Link
-                href={`/admin/care-plans/${pt.slug}`}
-                className="rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground hover:bg-muted"
+              <span
+                title="Plan type editing coming soon"
+                className="rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground opacity-50 cursor-not-allowed"
               >
                 Edit
-              </Link>
+              </span>
             </div>
             <div className="mb-3 space-y-1">
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Includes</p>

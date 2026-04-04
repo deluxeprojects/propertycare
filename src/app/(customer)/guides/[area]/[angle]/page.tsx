@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { createAdminClient } from '@/lib/supabase/admin';
-import { ArrowLeft, ArrowRight, Star, Shield, Clock, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Star, Shield, Clock, CheckCircle2 } from 'lucide-react';
 
 interface Props {
   params: Promise<{ area: string; angle: string }>;
@@ -128,7 +128,6 @@ export default async function GuidePage({ params }: Props) {
           <h2 className="mb-4 text-2xl font-semibold text-foreground">Recommended Services in {area.name_en}</h2>
           <div className="mb-8 space-y-4">
             {(services ?? []).map((s, i) => {
-              const catSlug = (s.service_categories as unknown as { slug: string } | null)?.slug ?? '';
               const catName = (s.service_categories as unknown as { name_en: string } | null)?.name_en ?? '';
               return (
                 <div key={s.id} className="rounded-xl border border-border bg-card p-5">

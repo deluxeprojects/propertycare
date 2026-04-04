@@ -37,7 +37,7 @@ export function PhotoCapture({ orderId, onUploadComplete }: PhotoCaptureProps) {
 
     for (const photo of photos) {
       const fileName = `orders/${orderId}/${Date.now()}-${photo.file.name}`;
-      const { data, error } = await supabase.storage
+      const { data, error: _uploadError } = await supabase.storage
         .from('order-photos')
         .upload(fileName, photo.file);
 
