@@ -117,7 +117,7 @@ const contractPlans = [
       'Priority support & response',
     ],
     price: 449,
-    color: 'text-accent',
+    color: 'text-accent-text',
     bgColor: 'bg-accent/10',
     highlighted: true,
   },
@@ -207,7 +207,7 @@ export default function CarePlansPage() {
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-accent">Home</Link>{' / '}
+          <Link href="/" className="hover:text-accent-text">Home</Link>{' / '}
           <span className="text-foreground">Care Plans</span>
         </nav>
         {/* Hero */}

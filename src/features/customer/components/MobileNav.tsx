@@ -46,13 +46,13 @@ export function MobileNav() {
             <X className="h-5 w-5" />
           </button>
         </div>
-        <nav className="flex flex-col p-4">
+        <nav aria-label="Mobile navigation" className="flex flex-col p-4">
           {customerNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-accent"
+              className="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-accent-text"
             >
               {item.label}
             </Link>

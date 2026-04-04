@@ -60,9 +60,9 @@ export default async function BuildingPage({ params }: Props) {
       <div className="container mx-auto max-w-7xl">
         {/* Breadcrumb */}
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/areas" className="hover:text-accent">Areas</Link>
+          <Link href="/areas" className="hover:text-accent-text">Areas</Link>
           {' / '}
-          <Link href={`/areas/${areaSlug}`} className="hover:text-accent">{area?.name_en}</Link>
+          <Link href={`/areas/${areaSlug}`} className="hover:text-accent-text">{area?.name_en}</Link>
           {' / '}
           <span className="text-foreground">{building.name_en}</span>
         </nav>
@@ -110,8 +110,8 @@ export default async function BuildingPage({ params }: Props) {
                   href={`/buildings/${areaSlug}/${buildingSlug}/${s.slug}`}
                   className="group flex items-center justify-between rounded-lg border border-border bg-card p-4 transition-colors hover:border-accent"
                 >
-                  <p className="font-medium text-foreground group-hover:text-accent">{s.name_en}</p>
-                  <span className="shrink-0 text-sm font-semibold text-accent">AED {s.base_price_aed}</span>
+                  <p className="font-medium text-foreground group-hover:text-accent-text">{s.name_en}</p>
+                  <span className="shrink-0 text-sm font-semibold text-accent-text">AED {s.base_price_aed}</span>
                 </Link>
               );
             })}
@@ -129,7 +129,7 @@ export default async function BuildingPage({ params }: Props) {
                 <Link
                   key={b.slug}
                   href={`/buildings/${areaSlug}/${b.slug}`}
-                  className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                  className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent-text"
                 >
                   {b.name_en}
                 </Link>

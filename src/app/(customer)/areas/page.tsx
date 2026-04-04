@@ -66,8 +66,8 @@ export default async function AreasPage() {
                     className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
                   >
                     <div className="mb-3 flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-accent" />
-                      <h3 className="font-semibold text-card-foreground group-hover:text-accent">
+                      <MapPin className="h-4 w-4 text-accent-text" />
+                      <h3 className="font-semibold text-card-foreground group-hover:text-accent-text">
                         {area.name_en}
                       </h3>
                     </div>

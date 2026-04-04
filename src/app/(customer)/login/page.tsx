@@ -147,7 +147,7 @@ function LoginForm() {
                   {resetSent ? (
                     <p className="text-xs text-green-600">Password reset email sent! Check your inbox.</p>
                   ) : (
-                    <button type="button" onClick={handleForgotPassword} className="text-xs text-accent hover:underline">
+                    <button type="button" onClick={handleForgotPassword} className="text-xs text-accent-text hover:underline">
                       Forgot your password?
                     </button>
                   )}
@@ -178,9 +178,9 @@ function LoginForm() {
 
           <p className="mt-4 text-center text-sm text-muted-foreground">
             {mode === 'login' ? (
-              <>Don&apos;t have an account? <button type="button" onClick={() => setMode('signup')} className="text-accent hover:underline">Sign up</button></>
+              <>Don&apos;t have an account? <button type="button" onClick={() => setMode('signup')} className="text-accent-text hover:underline">Sign up</button></>
             ) : (
-              <>Already have an account? <button type="button" onClick={() => setMode('login')} className="text-accent hover:underline">Sign in</button></>
+              <>Already have an account? <button type="button" onClick={() => setMode('login')} className="text-accent-text hover:underline">Sign in</button></>
             )}
           </p>
         </form>

@@ -13,7 +13,7 @@ export default function ContactPage() {
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-4xl">
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-accent">Home</Link>{' / '}
+          <Link href="/" className="hover:text-accent-text">Home</Link>{' / '}
           <span className="text-foreground">Contact</span>
         </nav>
         <h1 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
@@ -24,7 +24,7 @@ export default function ContactPage() {
           here to help — reach out through any of the channels below.
         </p>
         <div className="mb-8 flex flex-wrap gap-4 text-sm">
-          <span className="rounded-full bg-accent/10 px-3 py-1 font-medium text-accent">
+          <span className="rounded-full bg-accent/10 px-3 py-1 font-medium text-accent-text">
             Open 8 AM – 10 PM, 7 days a week (Dubai time, GST+4)
           </span>
           <span className="rounded-full bg-muted px-3 py-1 text-muted-foreground">
@@ -37,7 +37,7 @@ export default function ContactPage() {
             href={`tel:${siteConfig.phone}`}
             className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent"
           >
-            <Phone className="h-6 w-6 text-accent" />
+            <Phone className="h-6 w-6 text-accent-text" />
             <div>
               <h3 className="font-semibold text-foreground">Call Us</h3>
               <p className="text-sm text-muted-foreground">{siteConfig.phone}</p>
@@ -51,7 +51,7 @@ export default function ContactPage() {
             href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}`}
             className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent"
           >
-            <MessageCircle className="h-6 w-6 text-accent" />
+            <MessageCircle className="h-6 w-6 text-accent-text" />
             <div>
               <h3 className="font-semibold text-foreground">WhatsApp</h3>
               <p className="text-sm text-muted-foreground">{siteConfig.whatsapp}</p>
@@ -65,7 +65,7 @@ export default function ContactPage() {
             href={`mailto:${siteConfig.email}`}
             className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent"
           >
-            <Mail className="h-6 w-6 text-accent" />
+            <Mail className="h-6 w-6 text-accent-text" />
             <div>
               <h3 className="font-semibold text-foreground">Email</h3>
               <p className="text-sm text-muted-foreground">{siteConfig.email}</p>
@@ -76,7 +76,7 @@ export default function ContactPage() {
           </a>
 
           <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-6">
-            <MapPin className="h-6 w-6 text-accent" />
+            <MapPin className="h-6 w-6 text-accent-text" />
             <div>
               <h3 className="font-semibold text-foreground">Office</h3>
               <p className="text-sm text-muted-foreground">Dubai, UAE</p>

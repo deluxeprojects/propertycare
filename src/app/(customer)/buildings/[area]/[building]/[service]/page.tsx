@@ -46,9 +46,9 @@ export default async function BuildingServicePage({ params }: Props) {
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/areas" className="hover:text-accent">Areas</Link>{' / '}
-          <Link href={`/areas/${areaSlug}`} className="hover:text-accent">{area?.name_en}</Link>{' / '}
-          <Link href={`/buildings/${areaSlug}/${buildingSlug}`} className="hover:text-accent">{building.name_en}</Link>{' / '}
+          <Link href="/areas" className="hover:text-accent-text">Areas</Link>{' / '}
+          <Link href={`/areas/${areaSlug}`} className="hover:text-accent-text">{area?.name_en}</Link>{' / '}
+          <Link href={`/buildings/${areaSlug}/${buildingSlug}`} className="hover:text-accent-text">{building.name_en}</Link>{' / '}
           <span className="text-foreground">{service.name_en}</span>
         </nav>
 
@@ -73,7 +73,7 @@ export default async function BuildingServicePage({ params }: Props) {
                 { icon: Clock, label: `${service.duration_minutes} min est.` },
               ].map((b) => (
                 <div key={b.label} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <b.icon className="h-4 w-4 text-accent" /> {b.label}
+                  <b.icon className="h-4 w-4 text-accent-text" /> {b.label}
                 </div>
               ))}
             </div>
@@ -96,7 +96,7 @@ export default async function BuildingServicePage({ params }: Props) {
                   {addons.map((addon: { id: string; name_en: string; price_aed: number }) => (
                     <div key={addon.id} className="flex items-center justify-between rounded-lg border border-border p-3">
                       <span className="text-sm font-medium text-foreground">{addon.name_en}</span>
-                      <span className="text-sm font-semibold text-accent">+AED {addon.price_aed}</span>
+                      <span className="text-sm font-semibold text-accent-text">+AED {addon.price_aed}</span>
                     </div>
                   ))}
                 </div>

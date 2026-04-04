@@ -16,7 +16,7 @@ export function Navbar() {
           <SearchBar />
         </div>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-6 md:flex">
           {customerNav.map((item) => (
             <Link
               key={item.href}

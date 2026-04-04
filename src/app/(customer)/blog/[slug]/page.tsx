@@ -144,12 +144,12 @@ function renderInlineMarkdown(text: string): string {
   // Internal links (paths starting with /)
   result = result.replace(
     /\[([^\]]+)\]\((\/[^)]+)\)/g,
-    (_match, label, href) => `<a href="${sanitizeHref(href)}" class="text-accent hover:underline">${label}</a>`
+    (_match, label, href) => `<a href="${sanitizeHref(href)}" class="text-accent-text hover:underline">${label}</a>`
   );
   // External links (http/https)
   result = result.replace(
     /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
-    (_match, label, href) => `<a href="${sanitizeHref(href)}" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">${label}</a>`
+    (_match, label, href) => `<a href="${sanitizeHref(href)}" class="text-accent-text hover:underline" target="_blank" rel="noopener noreferrer">${label}</a>`
   );
   return result;
 }
@@ -181,15 +181,15 @@ export default async function BlogPostPage({ params }: Props) {
       />
       <div className="container mx-auto max-w-3xl">
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-accent">Home</Link>{' / '}
-          <Link href="/blog" className="hover:text-accent">Blog</Link>{' / '}
+          <Link href="/" className="hover:text-accent-text">Home</Link>{' / '}
+          <Link href="/blog" className="hover:text-accent-text">Blog</Link>{' / '}
           <span className="text-foreground">{post.title}</span>
         </nav>
 
         <article>
           <div className="mb-8">
             <div className="mb-3 flex items-center gap-3">
-              <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+              <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent-text">
                 {post.category}
               </span>
               <span className="text-xs text-muted-foreground">{formatDate(post.published_at)}</span>
@@ -256,10 +256,10 @@ export default async function BlogPostPage({ params }: Props) {
                     </div>
                   )}
                   <div className="p-4">
-                    <span className="mb-1 inline-block rounded-full bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">
+                    <span className="mb-1 inline-block rounded-full bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent-text">
                       {related.category}
                     </span>
-                    <h3 className="mb-1 text-sm font-semibold text-foreground group-hover:text-accent line-clamp-2">
+                    <h3 className="mb-1 text-sm font-semibold text-foreground group-hover:text-accent-text line-clamp-2">
                       {related.title}
                     </h3>
                     <p className="text-xs text-muted-foreground line-clamp-2">{related.excerpt}</p>

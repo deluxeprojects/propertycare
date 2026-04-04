@@ -59,8 +59,8 @@ export default async function AreaServicePage({ params }: Props) {
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/areas" className="hover:text-accent">Areas</Link>{' / '}
-          <Link href={`/areas/${areaSlug}`} className="hover:text-accent">{area.name_en}</Link>{' / '}
+          <Link href="/areas" className="hover:text-accent-text">Areas</Link>{' / '}
+          <Link href={`/areas/${areaSlug}`} className="hover:text-accent-text">{area.name_en}</Link>{' / '}
           <span className="text-foreground">{service.name_en}</span>
         </nav>
 
@@ -83,7 +83,7 @@ export default async function AreaServicePage({ params }: Props) {
                 { icon: Clock, label: `${service.duration_minutes} min est.` },
               ].map((b) => (
                 <div key={b.label} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <b.icon className="h-4 w-4 text-accent" /> {b.label}
+                  <b.icon className="h-4 w-4 text-accent-text" /> {b.label}
                 </div>
               ))}
             </div>
@@ -126,7 +126,7 @@ export default async function AreaServicePage({ params }: Props) {
                       href={`/buildings/${areaSlug}/${b.slug}/${serviceSlug}`}
                       className="group rounded-lg border border-border p-3 transition-colors hover:border-accent"
                     >
-                      <p className="font-medium text-foreground group-hover:text-accent">{b.name_en}</p>
+                      <p className="font-medium text-foreground group-hover:text-accent-text">{b.name_en}</p>
                       {b.developer && <p className="text-xs text-muted-foreground">by {b.developer}</p>}
                     </Link>
                   ))}
@@ -145,8 +145,8 @@ export default async function AreaServicePage({ params }: Props) {
                   {relatedServices.map((s) => {
                     return (
                       <Link key={s.slug} href={`/areas/${areaSlug}/${s.slug}`} className="group rounded-lg border border-border p-3 transition-colors hover:border-accent">
-                        <p className="font-medium text-foreground group-hover:text-accent">{s.name_en}</p>
-                        <p className="text-xs text-accent">From AED {s.base_price_aed}</p>
+                        <p className="font-medium text-foreground group-hover:text-accent-text">{s.name_en}</p>
+                        <p className="text-xs text-accent-text">From AED {s.base_price_aed}</p>
                       </Link>
                     );
                   })}

@@ -19,7 +19,7 @@ export default function AboutPage() {
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-4xl">
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-accent">Home</Link>{' / '}
+          <Link href="/" className="hover:text-accent-text">Home</Link>{' / '}
           <span className="text-foreground">About</span>
         </nav>
         <h1 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">
@@ -40,7 +40,7 @@ export default function AboutPage() {
               key={s.label}
               className="rounded-xl border border-border bg-card p-6 text-center"
             >
-              <s.icon className="mx-auto mb-3 h-8 w-8 text-accent" />
+              <s.icon className="mx-auto mb-3 h-8 w-8 text-accent-text" />
               <p className="text-2xl font-bold text-foreground">{s.value}</p>
               <p className="text-sm text-muted-foreground">{s.label}</p>
             </div>
@@ -125,7 +125,7 @@ export default function AboutPage() {
                 className="rounded-lg border border-border bg-card p-4"
               >
                 <div className="mb-2 flex items-center gap-2">
-                  <item.icon className="h-5 w-5 text-accent" />
+                  <item.icon className="h-5 w-5 text-accent-text" />
                   <h3 className="font-semibold text-foreground">
                     {item.title}
                   </h3>

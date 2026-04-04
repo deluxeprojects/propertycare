@@ -94,8 +94,8 @@ export default async function GuidePage({ params }: Props) {
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-4xl">
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/areas" className="hover:text-accent">Areas</Link>{' / '}
-          <Link href={`/areas/${areaSlug}`} className="hover:text-accent">{area.name_en}</Link>{' / '}
+          <Link href="/areas" className="hover:text-accent-text">Areas</Link>{' / '}
+          <Link href={`/areas/${areaSlug}`} className="hover:text-accent-text">{area.name_en}</Link>{' / '}
           <span className="text-foreground">Guide</span>
         </nav>
 
@@ -117,7 +117,7 @@ export default async function GuidePage({ params }: Props) {
               { icon: Clock, value: 'Same day', label: 'Express booking' },
             ].map((stat) => (
               <div key={stat.label} className="rounded-lg border border-border bg-card p-4 text-center">
-                <stat.icon className="mx-auto mb-2 h-5 w-5 text-accent" />
+                <stat.icon className="mx-auto mb-2 h-5 w-5 text-accent-text" />
                 <p className="text-lg font-bold text-foreground">{stat.value}</p>
                 <p className="text-xs text-muted-foreground">{stat.label}</p>
               </div>
@@ -146,7 +146,7 @@ export default async function GuidePage({ params }: Props) {
                     </div>
                     <div className="text-right">
                       <p className="text-lg font-bold text-foreground">AED {s.base_price_aed}</p>
-                      <Link href={`/areas/${areaSlug}/${s.slug}`} className="mt-1 inline-flex items-center text-xs font-medium text-accent hover:underline">
+                      <Link href={`/areas/${areaSlug}/${s.slug}`} className="mt-1 inline-flex items-center text-xs font-medium text-accent-text hover:underline">
                         Book now <ArrowRight className="ml-1 h-3 w-3" />
                       </Link>
                     </div>
@@ -180,7 +180,7 @@ export default async function GuidePage({ params }: Props) {
               <Link
                 key={a}
                 href={`/guides/${areaSlug}/${a}`}
-                className="rounded-full border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                className="rounded-full border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-accent hover:text-accent-text"
               >
                 {angleTemplates[a]?.title(area.name_en).replace(` in ${area.name_en}`, '')}
               </Link>

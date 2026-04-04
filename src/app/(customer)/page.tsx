@@ -245,7 +245,7 @@ export default function HomePage() {
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
             {trustBadges.map((badge) => (
               <div key={badge.label} className="flex items-center gap-2">
-                <badge.icon className="h-5 w-5 text-accent" />
+                <badge.icon className="h-5 w-5 text-accent-text" />
                 <span className="text-sm font-medium text-foreground">
                   {badge.label}
                 </span>
@@ -276,15 +276,15 @@ export default function HomePage() {
               >
                 <Link href={`/home-services/${service.slug}`}>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
-                    <service.icon className="h-6 w-6 text-accent" />
+                    <service.icon className="h-6 w-6 text-accent-text" />
                   </div>
-                  <h3 className="mb-2 text-xl font-semibold text-card-foreground hover:text-accent">
+                  <h3 className="mb-2 text-xl font-semibold text-card-foreground hover:text-accent-text">
                     {service.name}
                   </h3>
                   <p className="mb-3 text-sm text-muted-foreground">
                     {service.desc}
                   </p>
-                  <p className="mb-4 text-sm font-semibold text-accent">
+                  <p className="mb-4 text-sm font-semibold text-accent-text">
                     From AED {service.price}
                     {service.unit}
                   </p>
@@ -295,7 +295,7 @@ export default function HomePage() {
                       <Link
                         key={sub.slug}
                         href={`/home-services/${service.slug}/${sub.slug}`}
-                        className="text-xs text-muted-foreground transition-colors hover:text-accent"
+                        className="text-xs text-muted-foreground transition-colors hover:text-accent-text"
                       >
                         {sub.name}
                       </Link>
@@ -430,7 +430,7 @@ export default function HomePage() {
               <Link
                 key={area}
                 href={`/areas/${area.toLowerCase().replace(/\s+/g, '-')}`}
-                className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:bg-accent/10 hover:text-accent"
+                className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:bg-accent/10 hover:text-accent-text"
               >
                 {area}
               </Link>

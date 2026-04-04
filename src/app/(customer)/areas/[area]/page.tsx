@@ -67,7 +67,7 @@ export default async function AreaPage({ params }: Props) {
   return (
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
-        <Link href="/areas" className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+        <Link href="/areas" className="mb-4 inline-flex items-center gap-1 text-sm text-accent-text hover:underline">
           <ArrowLeft className="h-4 w-4" /> All Areas
         </Link>
 
@@ -112,10 +112,10 @@ export default async function AreaPage({ params }: Props) {
                 className="group flex items-center justify-between rounded-lg border border-border bg-card p-4 transition-colors hover:border-accent"
               >
                 <div>
-                  <p className="font-medium text-foreground group-hover:text-accent">{s.name_en}</p>
+                  <p className="font-medium text-foreground group-hover:text-accent-text">{s.name_en}</p>
                   <p className="text-xs text-muted-foreground">{s.short_desc_en}</p>
                 </div>
-                <span className="shrink-0 text-sm font-semibold text-accent">
+                <span className="shrink-0 text-sm font-semibold text-accent-text">
                   AED {s.base_price_aed}
                 </span>
               </Link>
@@ -134,7 +134,7 @@ export default async function AreaPage({ params }: Props) {
                   href={`/buildings/${areaSlug}/${b.slug}`}
                   className="group rounded-lg border border-border bg-card p-4 transition-colors hover:border-accent"
                 >
-                  <p className="font-medium text-foreground group-hover:text-accent">{b.name_en}</p>
+                  <p className="font-medium text-foreground group-hover:text-accent-text">{b.name_en}</p>
                   {b.developer && <p className="text-xs text-muted-foreground">by {b.developer}</p>}
                   {b.unit_count_approx && <p className="text-xs text-muted-foreground">~{b.unit_count_approx} units</p>}
                 </Link>
@@ -152,7 +152,7 @@ export default async function AreaPage({ params }: Props) {
                 <Link
                   key={a.slug}
                   href={`/areas/${a.slug}`}
-                  className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                  className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent-text"
                 >
                   {a.name_en}
                 </Link>
@@ -178,7 +178,7 @@ export default async function AreaPage({ params }: Props) {
                 href={`/guides/${areaSlug}/${g.angle}`}
                 className="group rounded-lg border border-border p-3 transition-colors hover:border-accent"
               >
-                <p className="text-sm font-medium text-foreground group-hover:text-accent">{g.label}</p>
+                <p className="text-sm font-medium text-foreground group-hover:text-accent-text">{g.label}</p>
                 <p className="text-xs text-muted-foreground">in {area.name_en}</p>
               </Link>
             ))}

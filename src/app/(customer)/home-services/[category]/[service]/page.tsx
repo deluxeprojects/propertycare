@@ -110,9 +110,9 @@ export default async function ServiceDetailPage({ params }: Props) {
       <div className="container mx-auto max-w-7xl">
         {/* Breadcrumb */}
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/home-services" className="hover:text-accent">Services</Link>
+          <Link href="/home-services" className="hover:text-accent-text">Services</Link>
           {' / '}
-          <Link href={`/home-services/${category}`} className="hover:text-accent">
+          <Link href={`/home-services/${category}`} className="hover:text-accent-text">
             {service.service_categories?.name_en}
           </Link>
           {' / '}
@@ -148,7 +148,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 { icon: Clock, label: `${service.duration_minutes} min est.` },
               ].map((b) => (
                 <div key={b.label} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <b.icon className="h-4 w-4 text-accent" />
+                  <b.icon className="h-4 w-4 text-accent-text" />
                   {b.label}
                 </div>
               ))}
@@ -167,7 +167,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                           <p className="text-xs text-muted-foreground">+{addon.duration_minutes} min</p>
                         )}
                       </div>
-                      <span className="text-sm font-semibold text-accent">+AED {addon.price_aed}</span>
+                      <span className="text-sm font-semibold text-accent-text">+AED {addon.price_aed}</span>
                     </div>
                   ))}
                 </div>
@@ -229,13 +229,13 @@ export default async function ServiceDetailPage({ params }: Props) {
                   href={`/home-services/${category}/${rs.slug}`}
                   className="rounded-xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-lg"
                 >
-                  <h3 className="mb-2 font-semibold text-card-foreground hover:text-accent">
+                  <h3 className="mb-2 font-semibold text-card-foreground hover:text-accent-text">
                     {rs.name_en}
                   </h3>
                   <p className="mb-3 text-sm text-muted-foreground line-clamp-2">
                     {rs.short_desc_en}
                   </p>
-                  <p className="text-sm font-semibold text-accent">
+                  <p className="text-sm font-semibold text-accent-text">
                     From AED {rs.base_price_aed}
                     {rs.price_unit === 'per_hour' ? '/hr' : rs.price_unit === 'per_sqft' ? '/sqft' : ''}
                   </p>

@@ -14,12 +14,14 @@ export function BackToTop() {
   if (!show) return null;
 
   return (
-    <button
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-20 right-6 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-primary/80 text-primary-foreground shadow-lg transition-all hover:bg-primary md:bottom-6"
-      aria-label="Back to top"
-    >
-      <ArrowUp className="h-4 w-4" />
-    </button>
+    <aside aria-label="Back to top" className="fixed bottom-20 right-6 z-40 md:bottom-6">
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/80 text-primary-foreground shadow-lg transition-all hover:bg-primary"
+        aria-label="Back to top"
+      >
+        <ArrowUp className="h-4 w-4" />
+      </button>
+    </aside>
   );
 }

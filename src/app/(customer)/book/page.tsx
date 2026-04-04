@@ -79,7 +79,7 @@ function StepService() {
       <h2 className="mb-4 text-xl font-semibold text-foreground">Select a Service</h2>
       {isLoading ? (
         <div className="py-12 text-center">
-          <svg className="mx-auto mb-3 h-6 w-6 animate-spin text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <svg className="mx-auto mb-3 h-6 w-6 animate-spin text-accent-text" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
           </svg>
@@ -104,13 +104,13 @@ function StepService() {
         </div>
       ) : (
         <div>
-          <button onClick={() => setSelectedCat(null)} className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+          <button onClick={() => setSelectedCat(null)} className="mb-4 inline-flex items-center gap-1 text-sm text-accent-text hover:underline">
             <ArrowLeft className="h-4 w-4" /> Back to categories
           </button>
           {filteredServices.length === 0 ? (
             <div className="py-8 text-center">
               <p className="text-sm text-muted-foreground">No services found in this category.</p>
-              <button onClick={() => setSelectedCat(null)} className="mt-2 text-sm text-accent hover:underline">Browse other categories</button>
+              <button onClick={() => setSelectedCat(null)} className="mt-2 text-sm text-accent-text hover:underline">Browse other categories</button>
             </div>
           ) : (
             <div className="grid gap-3 sm:grid-cols-2">
@@ -119,7 +119,7 @@ function StepService() {
                   className="rounded-lg border border-border p-4 text-left transition-colors hover:border-accent hover:bg-accent/5">
                   <h3 className="font-medium text-foreground">{s.name_en}</h3>
                   <p className="text-xs text-muted-foreground">{s.short_desc_en}</p>
-                  <p className="mt-2 text-sm font-semibold text-accent">From AED {s.base_price_aed}</p>
+                  <p className="mt-2 text-sm font-semibold text-accent-text">From AED {s.base_price_aed}</p>
                 </button>
               ))}
             </div>
@@ -153,7 +153,7 @@ function StepSize() {
 
   return (
     <div>
-      <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+      <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent-text hover:underline">
         <ArrowLeft className="h-4 w-4" /> Back
       </button>
       <h2 className="mb-4 text-xl font-semibold text-foreground">Select Property Size</h2>
@@ -184,7 +184,7 @@ function StepAddons() {
 
   return (
     <div>
-      <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+      <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent-text hover:underline">
         <ArrowLeft className="h-4 w-4" /> Back
       </button>
       <h2 className="mb-4 text-xl font-semibold text-foreground">Add Extras (Optional)</h2>
@@ -202,7 +202,7 @@ function StepAddons() {
                   {a.duration_minutes > 0 && <p className="text-xs text-muted-foreground">+{a.duration_minutes} min</p>}
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold text-accent">+AED {a.price_aed}</span>
+                  <span className="text-sm font-semibold text-accent-text">+AED {a.price_aed}</span>
                   <div className={`flex h-5 w-5 items-center justify-center rounded border ${selected ? 'border-accent bg-accent' : 'border-border'}`}>
                     {selected && <Check className="h-3 w-3 text-white" />}
                   </div>
@@ -246,7 +246,7 @@ function StepLocation() {
 
   return (
     <div>
-      <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+      <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent-text hover:underline">
         <ArrowLeft className="h-4 w-4" /> Back
       </button>
       <h2 className="mb-4 text-xl font-semibold text-foreground">Service Location</h2>
@@ -255,7 +255,7 @@ function StepLocation() {
       <div className="mb-6 relative h-40 w-full overflow-hidden rounded-xl bg-muted">
         <div className="flex h-full items-center justify-center">
           <div className="text-center">
-            <MapPin className="mx-auto mb-2 h-8 w-8 text-accent" />
+            <MapPin className="mx-auto mb-2 h-8 w-8 text-accent-text" />
             <p className="text-sm font-medium text-foreground">Dubai, UAE</p>
             <p className="text-xs text-muted-foreground">Select your area below</p>
           </div>
@@ -304,7 +304,7 @@ function StepSchedule() {
 
   return (
     <div>
-      <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+      <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent-text hover:underline">
         <ArrowLeft className="h-4 w-4" /> Back
       </button>
       <h2 className="mb-4 text-xl font-semibold text-foreground">Pick Date & Time</h2>
@@ -390,7 +390,7 @@ function StepAccount() {
 
   return (
     <div>
-      <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+      <button onClick={prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent-text hover:underline">
         <ArrowLeft className="h-4 w-4" /> Back
       </button>
       <h2 className="mb-4 text-xl font-semibold text-foreground">Your Details</h2>
@@ -527,7 +527,7 @@ function StepReview() {
 
   return (
     <div>
-      <button onClick={booking.prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+      <button onClick={booking.prevStep} className="mb-4 inline-flex items-center gap-1 text-sm text-accent-text hover:underline">
         <ArrowLeft className="h-4 w-4" /> Back
       </button>
       <h2 className="mb-4 text-xl font-semibold text-foreground">Review Your Booking</h2>

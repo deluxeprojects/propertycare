@@ -59,7 +59,7 @@ export default async function ServicesPage() {
     <div className="px-4 py-12 md:py-16">
       <div className="container mx-auto max-w-7xl">
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-accent">Home</Link>{' / '}
+          <Link href="/" className="hover:text-accent-text">Home</Link>{' / '}
           <span className="text-foreground">Home Services</span>
         </nav>
         <div className="mb-12">
@@ -89,10 +89,10 @@ export default async function ServicesPage() {
                   </div>
                 ) : (
                   <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10">
-                    <Icon className="h-7 w-7 text-accent" />
+                    <Icon className="h-7 w-7 text-accent-text" />
                   </div>
                 )}
-                <h2 className="mb-2 text-xl font-semibold text-card-foreground group-hover:text-accent">
+                <h2 className="mb-2 text-xl font-semibold text-card-foreground group-hover:text-accent-text">
                   {cat.name_en}
                 </h2>
                 <p className="mb-4 text-sm text-muted-foreground">{cat.description_en}</p>
@@ -101,7 +101,7 @@ export default async function ServicesPage() {
                     {stats?.count ?? 0} services
                   </span>
                   {stats?.minPrice && stats.minPrice < Infinity && (
-                    <span className="font-semibold text-accent">
+                    <span className="font-semibold text-accent-text">
                       From AED {stats.minPrice}
                     </span>
                   )}

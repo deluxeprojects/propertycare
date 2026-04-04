@@ -21,7 +21,7 @@ export function ExpandableText({ text, maxLines = 3, className = '' }: Expandabl
       </p>
       <button
         onClick={() => setExpanded(!expanded)}
-        className="mt-2 text-sm font-medium text-accent hover:underline"
+        className="mt-2 text-sm font-medium text-accent-text hover:underline"
       >
         {expanded ? 'View less' : 'View more'}
       </button>

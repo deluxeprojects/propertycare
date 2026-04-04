@@ -88,14 +88,14 @@ export default function GuardianPage() {
       <div className="container mx-auto max-w-7xl">
         {/* Breadcrumbs */}
         <nav className="mb-6 text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-accent">Home</Link>{' / '}
-          <Link href="/home-services" className="hover:text-accent">Home Services</Link>{' / '}
+          <Link href="/" className="hover:text-accent-text">Home</Link>{' / '}
+          <Link href="/home-services" className="hover:text-accent-text">Home Services</Link>{' / '}
           <span className="text-foreground">Property Guardian</span>
         </nav>
 
         {/* Hero */}
         <div className="mb-16 text-center">
-          <div className="mb-4 inline-flex items-center rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
+          <div className="mb-4 inline-flex items-center rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent-text">
             <Shield className="mr-2 h-4 w-4" /> Property Guardian
           </div>
           <h1 className="mb-4 text-3xl font-bold text-foreground md:text-5xl">
@@ -112,7 +112,7 @@ export default function GuardianPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {useCases.map((uc) => (
               <div key={uc.title} className="rounded-xl border border-border bg-card p-5">
-                <uc.icon className="mb-3 h-8 w-8 text-accent" />
+                <uc.icon className="mb-3 h-8 w-8 text-accent-text" />
                 <h3 className="mb-2 font-semibold text-foreground">{uc.title}</h3>
                 <p className="text-sm text-muted-foreground">{uc.desc}</p>
               </div>
@@ -137,7 +137,7 @@ export default function GuardianPage() {
                   <span className="text-3xl font-bold text-foreground">AED {plan.price}</span>
                   <span className="text-muted-foreground">/month</span>
                 </div>
-                <p className="mb-4 text-xs font-medium text-accent">{plan.visits}</p>
+                <p className="mb-4 text-xs font-medium text-accent-text">{plan.visits}</p>
                 <ul className="mb-6 space-y-2">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-foreground">
