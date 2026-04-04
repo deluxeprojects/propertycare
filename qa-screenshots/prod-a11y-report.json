@@ -1,0 +1,422 @@
+{
+  "generated": "2026-04-04T14:11:53.888Z",
+  "pages": [
+    {
+      "route": "/",
+      "url": "https://www.prokeep.ae/",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 20,
+          "targets": [
+            ".md\\:inline-flex",
+            "a[href$=\"cleaning\"] > .text-accent.font-semibold.mb-4",
+            "a[href$=\"ac-services\"] > .text-accent.font-semibold.mb-4"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "description": "Ensure the order of headings is semantically correct",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
+          "nodes": 1,
+          "targets": [
+            "div:nth-child(2) > h4"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".bottom-6"
+          ]
+        }
+      ],
+      "passes": 39,
+      "incomplete": 1,
+      "inapplicable": 50,
+      "error": null
+    },
+    {
+      "route": "/home-services",
+      "url": "https://www.prokeep.ae/home-services",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 9,
+          "targets": [
+            ".md\\:inline-flex",
+            ".group.p-6[href$=\"cleaning\"] > .justify-between.flex.items-center > .text-accent",
+            ".group.p-6[href$=\"ac-services\"] > .justify-between.flex.items-center > .text-accent"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "description": "Ensure the order of headings is semantically correct",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
+          "nodes": 1,
+          "targets": [
+            "div:nth-child(2) > h4"
+          ]
+        },
+        {
+          "id": "landmark-unique",
+          "impact": "moderate",
+          "description": "Ensure landmarks are unique",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".md\\:flex"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".bottom-6"
+          ]
+        }
+      ],
+      "passes": 42,
+      "incomplete": 0,
+      "inapplicable": 47,
+      "error": null
+    },
+    {
+      "route": "/home-services/cleaning",
+      "url": "https://www.prokeep.ae/home-services/cleaning",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 13,
+          "targets": [
+            ".md\\:inline-flex",
+            ".group.p-6.transition-all:nth-child(1) > .gap-2.mb-2.items-center > .bg-accent\\/10.px-2.py-0\\.5",
+            ".group.p-6.transition-all:nth-child(1) > .space-y-1 > .text-accent.text-xs"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "description": "Ensure the order of headings is semantically correct",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".group.p-6.transition-all:nth-child(1) > h3"
+          ]
+        },
+        {
+          "id": "landmark-unique",
+          "impact": "moderate",
+          "description": "Ensure landmarks are unique",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".md\\:flex"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".bottom-6"
+          ]
+        }
+      ],
+      "passes": 41,
+      "incomplete": 0,
+      "inapplicable": 48,
+      "error": null
+    },
+    {
+      "route": "/areas",
+      "url": "https://www.prokeep.ae/areas",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".md\\:inline-flex"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".bottom-6"
+          ]
+        }
+      ],
+      "passes": 38,
+      "incomplete": 0,
+      "inapplicable": 51,
+      "error": null
+    },
+    {
+      "route": "/areas/dubai-marina",
+      "url": "https://www.prokeep.ae/areas/dubai-marina",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 17,
+          "targets": [
+            ".md\\:inline-flex",
+            ".gap-1",
+            ".mt-2"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "description": "Ensure the order of headings is semantically correct",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
+          "nodes": 1,
+          "targets": [
+            "div:nth-child(2) > h4"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".bottom-6"
+          ]
+        }
+      ],
+      "passes": 43,
+      "incomplete": 0,
+      "inapplicable": 46,
+      "error": null
+    },
+    {
+      "route": "/care-plans",
+      "url": "https://www.prokeep.ae/care-plans",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 9,
+          "targets": [
+            ".md\\:inline-flex",
+            ".lg\\:grid-cols-3 > .border-accent.shadow-accent\\/10.shadow-lg > .-top-3.left-1\\/2.-translate-x-1\\/2",
+            ".mt-6 > .hover\\:bg-accent\\/90.bg-accent.text-accent-foreground"
+          ]
+        },
+        {
+          "id": "landmark-unique",
+          "impact": "moderate",
+          "description": "Ensure landmarks are unique",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".md\\:flex"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".bottom-6"
+          ]
+        }
+      ],
+      "passes": 39,
+      "incomplete": 0,
+      "inapplicable": 50,
+      "error": null
+    },
+    {
+      "route": "/blog",
+      "url": "https://www.prokeep.ae/blog",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 46,
+          "targets": [
+            ".md\\:inline-flex",
+            ".bg-accent.text-accent-foreground.py-1\\.5",
+            ".bg-muted.hover\\:bg-muted\\/80.py-1\\.5:nth-child(2)"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "description": "Ensure the order of headings is semantically correct",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
+          "nodes": 1,
+          "targets": [
+            "div:nth-child(2) > h4"
+          ]
+        },
+        {
+          "id": "landmark-unique",
+          "impact": "moderate",
+          "description": "Ensure landmarks are unique",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".gap-6"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".bottom-6"
+          ]
+        }
+      ],
+      "passes": 43,
+      "incomplete": 0,
+      "inapplicable": 46,
+      "error": null
+    },
+    {
+      "route": "/about",
+      "url": "https://www.prokeep.ae/about",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 3,
+          "targets": [
+            ".md\\:inline-flex",
+            ".mt-12 > h2",
+            ".text-accent-foreground\\/80"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "description": "Ensure the order of headings is semantically correct",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
+          "nodes": 1,
+          "targets": [
+            "div:nth-child(2) > h4"
+          ]
+        },
+        {
+          "id": "landmark-unique",
+          "impact": "moderate",
+          "description": "Ensure landmarks are unique",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".md\\:flex"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".bottom-6"
+          ]
+        }
+      ],
+      "passes": 39,
+      "incomplete": 0,
+      "inapplicable": 50,
+      "error": null
+    },
+    {
+      "route": "/contact",
+      "url": "https://www.prokeep.ae/contact",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 4,
+          "targets": [
+            ".md\\:inline-flex",
+            ".bg-accent\\/10",
+            ".bg-muted"
+          ]
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "description": "Ensure the order of headings is semantically correct",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
+          "nodes": 2,
+          "targets": [
+            ":root > div > h3",
+            "div:nth-child(2) > h4"
+          ]
+        },
+        {
+          "id": "landmark-unique",
+          "impact": "moderate",
+          "description": "Ensure landmarks are unique",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".md\\:flex"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+          "nodes": 1,
+          "targets": [
+            ".bottom-6"
+          ]
+        }
+      ],
+      "passes": 41,
+      "incomplete": 0,
+      "inapplicable": 48,
+      "error": null
+    }
+  ]
+}

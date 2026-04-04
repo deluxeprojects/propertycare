@@ -1,0 +1,738 @@
+{
+  "generatedAt": "2026-04-04T14:12:37.475Z",
+  "baseUrl": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "totalRoutes": 15,
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "loadTimeMs": 7435,
+      "title": "ProKeep — We Handle It. | Professional Home Services in Dubai | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/ac-services?_rsc=1r34m",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning?_rsc=1r34m",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/pest-control?_rsc=1r34m",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=1r34m",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/pest-control?_rsc=1h5yz",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/ac-services?_rsc=5rqgk",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning?_rsc=1vpph",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=1uuph",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": null
+    },
+    {
+      "route": "/home-services",
+      "status": 200,
+      "loadTimeMs": 3793,
+      "title": "Home Services in Dubai | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/electrical?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/pest-control?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/painting?_rsc=za70s",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/electrical?_rsc=cetxe",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/plumbing?_rsc=1lerf",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/pest-control?_rsc=1erun",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/ac-services?_rsc=11ost",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=1ty2k",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning?_rsc=6uuih",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": null
+    },
+    {
+      "route": "/home-services/guardian",
+      "status": 200,
+      "loadTimeMs": 1882,
+      "title": "Property Guardian — Home Watch for Absentee Owners | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "interactionTest": null
+    },
+    {
+      "route": "/home-services/cleaning",
+      "status": 200,
+      "loadTimeMs": 3546,
+      "title": "Cleaning Services | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=1ixih",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning/sofa-cleaning?_rsc=15hcx",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning/carpet-cleaning?_rsc=1xop4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning/post-construction-cleaning?_rsc=v94o0",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning/move-in-out-cleaning?_rsc=1ces1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning/deep-cleaning?_rsc=mrete",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning/regular-home-cleaning?_rsc=1uql7",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": null
+    },
+    {
+      "route": "/areas",
+      "status": 200,
+      "loadTimeMs": 4953,
+      "title": "Service Areas in Dubai | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jumeirah?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/mirdif?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/business-bay?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jumeirah?_rsc=1hqaf",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/mirdif?_rsc=1klv6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/arabian-ranches?_rsc=hm7gd",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/al-barsha?_rsc=189ky",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/dubai-hills?_rsc=1bm8m",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jlt?_rsc=mitvc",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/palm-jumeirah?_rsc=11h2e",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jbr?_rsc=1okhw",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/dubai-marina?_rsc=u7mg7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/downtown-dubai?_rsc=hbdj8",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=10s0a",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/business-bay?_rsc=8aaxj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/difc?_rsc=ngtze",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": null
+    },
+    {
+      "route": "/areas/dubai-marina",
+      "status": 200,
+      "loadTimeMs": 4079,
+      "title": "Home Services in Dubai Marina | PropertyCare | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=1m15u",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/dubai-marina/ac-general-service?_rsc=g0hmd",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/dubai-marina/general-pest-control?_rsc=1xu3w",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/dubai-marina/plumbing-repair?_rsc=dno3s",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": null
+    },
+    {
+      "route": "/care-plans",
+      "status": 200,
+      "loadTimeMs": 1749,
+      "title": "Care Plans — Annual Home Service Contracts | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "interactionTest": null
+    },
+    {
+      "route": "/blog",
+      "status": 200,
+      "loadTimeMs": 3325,
+      "title": "Blog | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/palm-jumeirah?_rsc=3h8go",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog/move-out-cleaning-guide-getting-your-security-deposit-back?_rsc=3h8go",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog/dubai-apartment-deep-cleaning-checklist?_rsc=3h8go",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog/how-often-should-you-service-your-ac-in-dubai?_rsc=3h8go",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog/pest-control-in-dubai-what-every-resident-needs-to-know?_rsc=1mqou",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog/move-out-cleaning-guide-getting-your-security-deposit-back?_rsc=1sdor",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog/dubai-apartment-deep-cleaning-checklist?_rsc=1vyp8",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog/how-often-should-you-service-your-ac-in-dubai?_rsc=18irk",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": {
+        "blogPostsRendered": true,
+        "articleCount": 32,
+        "blogLinkCount": 30
+      }
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "loadTimeMs": 1743,
+      "title": "About Us | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=17qq4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=10ro7",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": null
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "loadTimeMs": 1927,
+      "title": "Contact Us | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=us4tm",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": {
+        "contactFormRendered": true
+      }
+    },
+    {
+      "route": "/login",
+      "status": 200,
+      "loadTimeMs": 6204,
+      "title": "Sign In | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/plumbing?_rsc=17yrj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/ac-services?_rsc=17yrj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning?_rsc=17yrj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=10zpn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jlt?_rsc=gmmpi",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/business-bay?_rsc=1o3h5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jbr?_rsc=1j19q",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/palm-jumeirah?_rsc=uaeh0",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/downtown-dubai?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/dubai-marina?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/painting?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/plumbing?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/electrical?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/pest-control?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/ac-services?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": {
+        "loginFormRendered": true,
+        "hasEmailInput": true,
+        "hasPasswordInput": true
+      }
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "loadTimeMs": 4219,
+      "title": "Privacy Policy | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jlt?_rsc=k7op6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/dubai-marina?_rsc=k7op6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/electrical?_rsc=k7op6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/palm-jumeirah?_rsc=16pmm",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/business-bay?_rsc=16318",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jbr?_rsc=1yrbd",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jlt?_rsc=c3bg1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/downtown-dubai?_rsc=1qm18",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/dubai-marina?_rsc=1om9r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/painting?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/electrical?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/plumbing?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/pest-control?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/ac-services?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": null
+    },
+    {
+      "route": "/terms",
+      "status": 200,
+      "loadTimeMs": 4187,
+      "title": "Terms of Service | ProKeep",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/ac-services?_rsc=1847g",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/blog?_rsc=1155j",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jlt?_rsc=gs2m2",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/business-bay?_rsc=1o8x1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/jbr?_rsc=1j6pm",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/palm-jumeirah?_rsc=ufudk",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/downtown-dubai?_rsc=ttpeu",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/areas/dubai-marina?_rsc=ttpeu",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/electrical?_rsc=iw9q8",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/painting?_rsc=wu5hm",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/plumbing?_rsc=1df0v",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/pest-control?_rsc=kl16s",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/ac-services?_rsc=10no2",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app/home-services/cleaning?_rsc=ttpeu",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "interactionTest": null
+    },
+    {
+      "route": "/staff/login",
+      "status": 200,
+      "loadTimeMs": 1742,
+      "title": "ProKeep — We Handle It.",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "interactionTest": null
+    },
+    {
+      "route": "/admin/login",
+      "status": 200,
+      "loadTimeMs": 1584,
+      "title": "ProKeep — We Handle It.",
+      "titleEmpty": false,
+      "has500Text": true,
+      "hasAppError": false,
+      "navigationError": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "interactionTest": null
+    }
+  ],
+  "interactionTests": {
+    "/book": {
+      "status": 200,
+      "bookingWizardRendered": false,
+      "buttonCount": 8,
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "/blog": {
+      "blogPostsRendered": true,
+      "articleCount": 32,
+      "blogLinkCount": 30
+    },
+    "/contact": {
+      "contactFormRendered": true
+    },
+    "/login": {
+      "loginFormRendered": true,
+      "hasEmailInput": true,
+      "hasPasswordInput": true
+    }
+  },
+  "summary": {
+    "routesWithErrors": [],
+    "routesWithConsoleErrors": [],
+    "routesWithPageErrors": [],
+    "routesWithFailedRequests": [
+      {
+        "route": "/",
+        "count": 8
+      },
+      {
+        "route": "/home-services",
+        "count": 10
+      },
+      {
+        "route": "/home-services/cleaning",
+        "count": 7
+      },
+      {
+        "route": "/areas",
+        "count": 16
+      },
+      {
+        "route": "/areas/dubai-marina",
+        "count": 4
+      },
+      {
+        "route": "/blog",
+        "count": 8
+      },
+      {
+        "route": "/about",
+        "count": 2
+      },
+      {
+        "route": "/contact",
+        "count": 1
+      },
+      {
+        "route": "/login",
+        "count": 16
+      },
+      {
+        "route": "/privacy",
+        "count": 15
+      },
+      {
+        "route": "/terms",
+        "count": 14
+      }
+    ],
+    "routesWithEmptyTitle": [],
+    "routesWith500Text": [
+      "/",
+      "/home-services",
+      "/home-services/guardian",
+      "/home-services/cleaning",
+      "/areas",
+      "/areas/dubai-marina",
+      "/care-plans",
+      "/blog",
+      "/about",
+      "/contact",
+      "/login",
+      "/privacy",
+      "/terms",
+      "/staff/login",
+      "/admin/login"
+    ],
+    "routesWithAppError": []
+  }
+}

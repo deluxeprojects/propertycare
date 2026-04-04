@@ -270,21 +270,120 @@ All screenshots are in `qa-screenshots/` directory (42 files):
 - `privacy-375.png` / `privacy-768.png` / `privacy-1440.png`
 - `terms-375.png` / `terms-768.png` / `terms-1440.png`
 
+---
+
+## Live Deployment & Testing Results
+
+### Deployment
+- **Staging URL:** https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app
+- **Production URL:** https://www.prokeep.ae (HTTP 200)
+- **Deployment method:** Vercel CLI (`vercel --yes`)
+- **Build time:** 22 seconds
+
+### Lighthouse Scores (Production - https://www.prokeep.ae)
+
+| Page | Performance | Accessibility | Best Practices | SEO |
+|------|------------|---------------|----------------|-----|
+| **Homepage** | 87 | 91 | 96 | 100 |
+| **Home Services** | 97 | 95 | 96 | 100 |
+| **Areas** | 99 | 96 | 96 | 100 |
+| **Blog** | 96 | 95 | 96 | 100 |
+| **Contact** | 99 | 95 | 96 | 100 |
+
+### Core Web Vitals (Production)
+
+| Page | LCP | CLS | FCP | TBT |
+|------|-----|-----|-----|-----|
+| Homepage | 4.1s | 0 | 1.0s | 80ms |
+| Home Services | 2.6s | 0 | 0.9s | 20ms |
+| Areas | 2.0s | 0 | 0.9s | 40ms |
+| Blog | 2.8s | 0 | 0.9s | 40ms |
+| Contact | 2.0s | 0 | 0.9s | 20ms |
+
+**Notes:**
+- Homepage LCP (4.1s) is the only metric in "needs improvement" range - driven by the hero image. Consider adding `priority` to the hero image and using a smaller initial image size or blur placeholder.
+- CLS is 0 across all pages (excellent - no layout shift)
+- FCP is ~0.9-1.0s across all pages (good)
+- TBT is under 100ms on all pages (excellent)
+
+### Production Playwright Test Results
+
+| Metric | Value |
+|--------|-------|
+| Pages tested | 16 routes x 3 breakpoints = 48 screenshots |
+| All pages HTTP 200 | Yes |
+| Console errors | 0 |
+| Page errors | 0 |
+| Failed requests | 232 (all RSC prefetch cancellations - normal Next.js behavior) |
+| Non-RSC failures | 0 |
+| Broken links | 0 (150 links crawled, all 200) |
+
+### Staging Playwright Test Results
+
+| Metric | Value |
+|--------|-------|
+| Pages tested | 15 routes at 1440px |
+| All pages HTTP 200 | Yes |
+| Console errors | 0 |
+| Page errors | 0 |
+| Navigation errors | 0 |
+| All pages have titles | Yes |
+| Application errors | 0 |
+
+**Staging cold-start load times** (first-hit Vercel preview, no edge cache):
+- Slowest: Homepage 7.4s, Login 6.2s, Areas 5.0s (expected for cold starts)
+- Fastest: Admin Login 1.6s, Care Plans 1.7s, About 1.7s
+- Note: These are cold-start times; subsequent requests are much faster
+
+### Production Accessibility (axe-core) - Pre-Fix Baseline
+
+The production site still has the accessibility issues we fixed in the staging branch:
+- **color-contrast (serious):** 20 nodes on homepage, present across all pages
+- **heading-order (moderate):** Footer h4 headings
+- **region (moderate):** Back-to-top button outside landmark
+
+These will be resolved once staging is deployed to production.
+
+### Visual Comparison: Production vs Staging
+
+Production and staging screenshots were visually compared at 1440px:
+- **Layouts identical** across all pages
+- **No visual regressions** introduced by the audit changes
+- **Content renders correctly** with real Supabase data (services, areas, blog posts)
+- **Dynamic pages work** (Dubai Marina area page, blog posts, service categories)
+
+### Production Screenshots (48 files)
+
+Saved as `qa-screenshots/prod-[route]-[width].png`:
+- Homepage, Home Services, Guardian, Cleaning, Deep Cleaning, AC Services
+- Areas, Dubai Marina, Palm Jumeirah
+- Care Plans, Blog, About, Contact, Login, Privacy, Terms
+
+### Staging Screenshots (15 files)
+
+Saved as `qa-screenshots/staging-[route]-1440.png`:
+- All 15 tested routes at desktop width
+
+---
+
 ## Recommendations (Product Manager Perspective)
 
-1. **Add DOMPurify** for blog content rendering to protect against XSS from CMS content
-2. **Consider adding i18n** - Dubai has a multilingual population; Arabic support would expand market reach
-3. **Add rate limiting** to public API endpoints (contact form, search) to prevent abuse
-4. **Monitor Core Web Vitals** in production - dev server metrics are good but production should be tracked via GA4/CrUX
-5. **Add E2E tests** - The Playwright infrastructure is now in place; extend with proper test suites for critical flows (booking, checkout, admin CRUD)
-6. **Consider WebP/AVIF** fallback images for browsers that don't support modern formats (Next.js Image handles this automatically)
+1. **Optimize homepage LCP** - Hero image drives 4.1s LCP; add blur placeholder or optimize image delivery
+2. **Deploy staging to production** to get the security and accessibility fixes live (`vercel --prod`)
+3. **Add DOMPurify** for blog content rendering to protect against XSS from CMS content
+4. **Consider adding i18n** - Dubai has a multilingual population; Arabic support would expand market reach
+5. **Add rate limiting** to public API endpoints (contact form, search) to prevent abuse
+6. **Add E2E tests** - The Playwright infrastructure is now in place; extend with proper test suites for critical flows (booking, checkout, admin CRUD)
 7. **Add structured data testing** - Use Google's Rich Results Test on production pages
+8. **Rotate the Supabase service role key** - the hardcoded key in seed script is in git history
 
 ## Commits Made
 
 1. `55b2b74` - [QA-AUDIT] Phase 0: Discovery and setup
 2. `af2df91` - [QA-AUDIT] Phase 1: Static analysis fixes
 3. `f28f005` - [QA-AUDIT] Phases 2-11: Visual, functional, SEO, a11y, perf, security, API fixes
+4. `93178a4` - [QA-AUDIT] Phase 12: Final report, summary, and screenshot gallery
+5. `2bcbb0d` - [QA-AUDIT] Phase 12: Updated summary with precise counts
 
 ## Files Changed
 - **157 files changed**

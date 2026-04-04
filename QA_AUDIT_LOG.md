@@ -205,3 +205,33 @@
 - **QA_AUDIT_SUMMARY.md:** Generated
 - **Screenshot gallery:** qa-screenshots/index.html created
 - **Final build:** PASS (zero errors)
+
+### Phase 13: Live Deployment & Testing (Extended)
+- **Status:** COMPLETE
+- **Staging deployed:** https://propertycare-q9r7i7vph-deluxeprojects-projects.vercel.app
+- **Production tested:** https://www.prokeep.ae
+
+#### Lighthouse Scores (Production)
+| Page | Perf | A11y | Best Practices | SEO |
+|------|------|------|----------------|-----|
+| Homepage | 87 | 91 | 96 | 100 |
+| Home Services | 97 | 95 | 96 | 100 |
+| Areas | 99 | 96 | 96 | 100 |
+| Blog | 96 | 95 | 96 | 100 |
+| Contact | 99 | 95 | 96 | 100 |
+
+#### Production Playwright Results
+- **48 screenshots** taken (16 routes x 3 breakpoints)
+- **150 links crawled** - all HTTP 200
+- **0 console errors**, 0 page errors
+- **232 failed requests** - all RSC prefetch cancellations (normal Next.js)
+
+#### Staging Playwright Results
+- **15 screenshots** taken at 1440px
+- All pages HTTP 200, all have titles, no application errors
+- Visual comparison with production: no regressions
+
+#### Key Finding: Homepage LCP
+- Homepage LCP is 4.1s (needs improvement)
+- All other pages under 3s
+- CLS is 0 across all pages (excellent)

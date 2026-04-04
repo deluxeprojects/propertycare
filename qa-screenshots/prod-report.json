@@ -1,0 +1,1457 @@
+{
+  "generated": "2026-04-04T14:09:40.051Z",
+  "pages": [
+    {
+      "route": "/",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1uuph",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1061,
+      "screenshot": "prod-home-375.png",
+      "status": 200
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=1r34m",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=1sql5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=1vpph",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 203,
+      "screenshot": "prod-home-768.png",
+      "status": 200
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1r34m",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=1h5yz",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=1vpph",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=5rqgk",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 110,
+      "screenshot": "prod-home-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=1erun",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=6uuih",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=11ost",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1ty2k",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 367,
+      "screenshot": "prod-home-services-375.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/painting?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/painting?_rsc=za70s",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=1lerf",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=1erun",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=11ost",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/electrical?_rsc=cetxe",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=6uuih",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 102,
+      "screenshot": "prod-home-services-768.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/electrical?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=ktzxo",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/painting?_rsc=za70s",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/electrical?_rsc=cetxe",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=1lerf",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=1erun",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=11ost",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=6uuih",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 172,
+      "screenshot": "prod-home-services-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/guardian",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "loadTimeMs": 880,
+      "screenshot": "prod-home-services-guardian-375.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/guardian",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=9w3mo",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 163,
+      "screenshot": "prod-home-services-guardian-768.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/guardian",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=9w3mo",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 256,
+      "screenshot": "prod-home-services-guardian-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/cleaning",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1ixih",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/deep-cleaning?_rsc=eqsri",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/regular-home-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/deep-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1281,
+      "screenshot": "prod-home-services-cleaning-375.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/cleaning",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=eqsri",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1ixih",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/post-construction-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/deep-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/move-in-out-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/regular-home-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 938,
+      "screenshot": "prod-home-services-cleaning-768.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/cleaning",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/post-construction-cleaning?_rsc=eqsri",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/sofa-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/post-construction-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/carpet-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/deep-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/move-in-out-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning/regular-home-cleaning?_rsc=pgob3",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 804,
+      "screenshot": "prod-home-services-cleaning-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/cleaning/deep-cleaning",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=cyl1r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=1ws2y",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1952,
+      "screenshot": "prod-home-services-cleaning-deep-cleaning-375.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/cleaning/deep-cleaning",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=cyl1r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=cyl1r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=1ws2y",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1393,
+      "screenshot": "prod-home-services-cleaning-deep-cleaning-768.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/cleaning/deep-cleaning",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=juwnf",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=1ws2y",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1453,
+      "screenshot": "prod-home-services-cleaning-deep-cleaning-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/ac-services",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1k2oy",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-deep-cleaning?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-general-service?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 788,
+      "screenshot": "prod-home-services-ac-services-375.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/ac-services",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-repair?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-gas-refill?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-general-service?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1k2oy",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-deep-cleaning?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 804,
+      "screenshot": "prod-home-services-ac-services-768.png",
+      "status": 200
+    },
+    {
+      "route": "/home-services/ac-services",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1k2oy",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-duct-cleaning?_rsc=2le3f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-deep-cleaning?_rsc=2le3f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-general-service?_rsc=2le3f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-duct-cleaning?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-installation?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-gas-refill?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-deep-cleaning?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-general-service?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services/ac-repair?_rsc=2xr8f",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 837,
+      "screenshot": "prod-home-services-ac-services-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/areas",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/business-bay?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah?_rsc=11h2e",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina?_rsc=u7mg7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jbr?_rsc=1okhw",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/downtown-dubai?_rsc=hbdj8",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=10s0a",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/business-bay?_rsc=8aaxj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/difc?_rsc=ngtze",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 395,
+      "screenshot": "prod-areas-375.png",
+      "status": 200
+    },
+    {
+      "route": "/areas",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jlt?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/downtown-dubai?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/difc?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/business-bay?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-hills?_rsc=1bm8m",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jlt?_rsc=mitvc",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah?_rsc=11h2e",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jbr?_rsc=1okhw",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina?_rsc=u7mg7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/downtown-dubai?_rsc=hbdj8",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/business-bay?_rsc=8aaxj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=10s0a",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/difc?_rsc=ngtze",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 90,
+      "screenshot": "prod-areas-768.png",
+      "status": 200
+    },
+    {
+      "route": "/areas",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/jlt?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jbr?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/business-bay?_rsc=17r27",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/mirdif?_rsc=1klv6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jumeirah?_rsc=1hqaf",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/arabian-ranches?_rsc=hm7gd",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/al-barsha?_rsc=189ky",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jlt?_rsc=mitvc",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-hills?_rsc=1bm8m",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah?_rsc=11h2e",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina?_rsc=u7mg7",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/downtown-dubai?_rsc=hbdj8",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/difc?_rsc=ngtze",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jbr?_rsc=1okhw",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/business-bay?_rsc=8aaxj",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 142,
+      "screenshot": "prod-areas-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/areas/dubai-marina",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina/plumbing-repair?_rsc=11q8j",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1865,
+      "screenshot": "prod-areas-dubai-marina-375.png",
+      "status": 200
+    },
+    {
+      "route": "/areas/dubai-marina",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina/plumbing-repair?_rsc=mri2v",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina/plumbing-repair?_rsc=11q8j",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina/general-pest-control?_rsc=11q8j",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1310,
+      "screenshot": "prod-areas-dubai-marina-768.png",
+      "status": 200
+    },
+    {
+      "route": "/areas/dubai-marina",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina/plumbing-repair?_rsc=mri2v",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina/ac-general-service?_rsc=mri2v",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina/general-pest-control?_rsc=11q8j",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina/plumbing-repair?_rsc=11q8j",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina/ac-general-service?_rsc=11q8j",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1515,
+      "screenshot": "prod-areas-dubai-marina-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/areas/palm-jumeirah",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah/plumbing-repair?_rsc=nd7zn",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1506,
+      "screenshot": "prod-areas-palm-jumeirah-375.png",
+      "status": 200
+    },
+    {
+      "route": "/areas/palm-jumeirah",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1i3pv",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah/plumbing-repair?_rsc=nd7zn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah/general-pest-control?_rsc=nd7zn",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1426,
+      "screenshot": "prod-areas-palm-jumeirah-768.png",
+      "status": 200
+    },
+    {
+      "route": "/areas/palm-jumeirah",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=qqqt3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1i3pv",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah/general-pest-control?_rsc=qqqt3",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah/ac-general-service?_rsc=nd7zn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah/plumbing-repair?_rsc=nd7zn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah/general-pest-control?_rsc=nd7zn",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1380,
+      "screenshot": "prod-areas-palm-jumeirah-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/care-plans",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1ilzk",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 475,
+      "screenshot": "prod-care-plans-375.png",
+      "status": 200
+    },
+    {
+      "route": "/care-plans",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "loadTimeMs": 106,
+      "screenshot": "prod-care-plans-768.png",
+      "status": 200
+    },
+    {
+      "route": "/care-plans",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1ilzk",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 114,
+      "screenshot": "prod-care-plans-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/blog",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/dubai-apartment-deep-cleaning-checklist?_rsc=3h8go",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/dubai-apartment-deep-cleaning-checklist?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/how-often-should-you-service-your-ac-in-dubai?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 968,
+      "screenshot": "prod-blog-375.png",
+      "status": 200
+    },
+    {
+      "route": "/blog",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog/dubai-apartment-deep-cleaning-checklist?_rsc=3h8go",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/move-out-cleaning-guide-getting-your-security-deposit-back?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/pest-control-in-dubai-what-every-resident-needs-to-know?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/dubai-apartment-deep-cleaning-checklist?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/how-often-should-you-service-your-ac-in-dubai?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 629,
+      "screenshot": "prod-blog-768.png",
+      "status": 200
+    },
+    {
+      "route": "/blog",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/downtown-dubai?_rsc=3h8go",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/pest-control-in-dubai-what-every-resident-needs-to-know?_rsc=3h8go",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/move-out-cleaning-guide-getting-your-security-deposit-back?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/pest-control-in-dubai-what-every-resident-needs-to-know?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/dubai-apartment-deep-cleaning-checklist?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog/how-often-should-you-service-your-ac-in-dubai?_rsc=dt32r",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 543,
+      "screenshot": "prod-blog-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/about",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=17qq4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=10ro7",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 805,
+      "screenshot": "prod-about-375.png",
+      "status": 200
+    },
+    {
+      "route": "/about",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=10ro7",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 92,
+      "screenshot": "prod-about-768.png",
+      "status": 200
+    },
+    {
+      "route": "/about",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=10ro7",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 113,
+      "screenshot": "prod-about-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/contact",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "loadTimeMs": 855,
+      "screenshot": "prod-contact-375.png",
+      "status": 200
+    },
+    {
+      "route": "/contact",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=us4tm",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 117,
+      "screenshot": "prod-contact-768.png",
+      "status": 200
+    },
+    {
+      "route": "/contact",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=us4tm",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 98,
+      "screenshot": "prod-contact-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/login",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=10zpn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=19iba",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=10i85",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=vhl7t",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 1006,
+      "screenshot": "prod-login-375.png",
+      "status": 200
+    },
+    {
+      "route": "/login",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=17yrj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=17yrj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina?_rsc=obfac",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/painting?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/electrical?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=10zpn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 110,
+      "screenshot": "prod-login-768.png",
+      "status": 200
+    },
+    {
+      "route": "/login",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/jlt?_rsc=17yrj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/business-bay?_rsc=17yrj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=17yrj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=17yrj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jlt?_rsc=gmmpi",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/business-bay?_rsc=1o3h5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah?_rsc=uaeh0",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jbr?_rsc=1j19q",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/downtown-dubai?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/electrical?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/painting?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=to9i9",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 108,
+      "screenshot": "prod-login-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/privacy",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "loadTimeMs": 839,
+      "screenshot": "prod-privacy-375.png",
+      "status": 200
+    },
+    {
+      "route": "/privacy",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/home-services/electrical?_rsc=k7op6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/painting?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/electrical?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 90,
+      "screenshot": "prod-privacy-768.png",
+      "status": 200
+    },
+    {
+      "route": "/privacy",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah?_rsc=k7op6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=k7op6",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=q5vsv",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jlt?_rsc=c3bg1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/business-bay?_rsc=16318",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah?_rsc=16pmm",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jbr?_rsc=1yrbd",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/downtown-dubai?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/painting?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/electrical?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=cbggn",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 116,
+      "screenshot": "prod-privacy-1440.png",
+      "status": 200
+    },
+    {
+      "route": "/terms",
+      "width": 375,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1155j",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 824,
+      "screenshot": "prod-terms-375.png",
+      "status": 200
+    },
+    {
+      "route": "/terms",
+      "width": 768,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=1847g",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=1847g",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/electrical?_rsc=l5uxp",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=1df0v",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=kl16s",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=10no2",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=ttpeu",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 100,
+      "screenshot": "prod-terms-768.png",
+      "status": 200
+    },
+    {
+      "route": "/terms",
+      "width": 1440,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.prokeep.ae/areas/jlt?_rsc=1847g",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/blog?_rsc=1155j",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jlt?_rsc=gs2m2",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/business-bay?_rsc=1o8x1",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/palm-jumeirah?_rsc=ufudk",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/jbr?_rsc=1j6pm",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/downtown-dubai?_rsc=ttpeu",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/areas/dubai-marina?_rsc=ttpeu",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/painting?_rsc=wu5hm",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/electrical?_rsc=iw9q8",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/plumbing?_rsc=1df0v",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/pest-control?_rsc=kl16s",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/ac-services?_rsc=ttpeu",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.prokeep.ae/home-services/cleaning?_rsc=ttpeu",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "loadTimeMs": 95,
+      "screenshot": "prod-terms-1440.png",
+      "status": 200
+    }
+  ]
+}
