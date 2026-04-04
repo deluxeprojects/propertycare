@@ -17,9 +17,9 @@
 | Total screenshots taken | 42 |
 | Total Playwright pages crawled | 100 |
 | Total links validated | 4,734 |
-| Total issues found | ~95 |
-| Total issues fixed | ~80 |
-| Total issues deferred (TODO) | ~15 |
+| Total issues found | 112 |
+| Total issues fixed | 97 |
+| Total issues deferred (TODO) | 15 |
 | Build warnings remaining | 0 |
 | TypeScript errors remaining | 0 |
 | Broken links found | 0 |
@@ -30,17 +30,18 @@
 
 | Category | Found | Fixed | Deferred |
 |----------|-------|-------|----------|
-| **Bugs** | 5 | 5 | 0 |
-| **UX/UI** | 12 | 10 | 2 |
-| **Visual/Layout** | 3 | 3 | 0 |
-| **SEO** | 8 | 8 | 0 |
-| **Performance** | 10 | 10 | 0 |
+| **Bugs** | 7 | 7 | 0 |
+| **UX/UI** | 14 | 10 | 4 |
+| **Visual/Layout** | 4 | 4 | 0 |
+| **SEO** | 15 | 15 | 0 |
+| **Performance** | 12 | 12 | 0 |
 | **Accessibility** | 37 | 30 | 7 |
-| **Security** | 6 | 6 | 0 |
+| **Security** | 7 | 7 | 0 |
 | **i18n** | N/A | N/A | N/A |
 | **Content** | 2 | 2 | 0 |
-| **API/Integration** | 12 | 12 | 0 |
-| **TOTAL** | ~95 | ~86 | ~9 |
+| **Dead Code/Types** | 49 | 49 | 0 |
+| **API/Integration** | 21 | 17 | 4 |
+| **TOTAL** | 168 | 153 | 15 |
 
 ## Phase Results
 
@@ -50,22 +51,32 @@
 - Playwright + axe-core installed and verified
 
 ### Phase 1: Code-Level Static Analysis
-**Fixed:**
-- Removed unused imports across 30+ files
-- Replaced ~40 `any` types with proper TypeScript interfaces (e.g., `InvoiceRow`, `PaymentRow`, `RecentOrder`, `BuildingRow`, `BlogPostRow`)
-- Added proper error handling to all 34 API routes
-- Hardened all 4 cron routes with `CRON_SECRET` validation
-- Added input validation to public contact/search API endpoints
-- Fixed Stripe webhook handler with proper error boundaries
-- Removed dead code (unused variables, unreachable code)
+**Dead Code (Phase 1a):**
+- 15 unused imports removed across 11 files
+- 1 unused variable removed (PriceSimulator `areaSlug` state)
+- 0 unreachable code blocks found
 
-**Security findings (all fixed):**
-- Cron endpoints lacked secret verification - FIXED
-- Some API routes missing try-catch - FIXED
-- Contact form API lacked input sanitization - FIXED
-- No hardcoded secrets found in source code
-- .env files properly gitignored
-- Server-only env vars not exposed to client
+**TypeScript Types (Phase 1b):**
+- 33 `any` types found and replaced with proper interfaces across 13 files
+- 0 `@ts-ignore` / `@ts-expect-error` found
+- Added interfaces: `InvoiceRow`, `PaymentRow`, `RecentOrder`, `BuildingRow`, `BlogPostRow`, `Promotion`, `PricingRule`, `Technician`, etc.
+- Fixed Supabase FK join access patterns (`.profiles?.full_name` -> `.profiles?.[0]?.full_name`)
+
+**Security (Phase 1c) - 7 issues fixed:**
+- CRITICAL: Removed hardcoded Supabase service role key from seed script
+- CRITICAL: Added auth+role checks to 3 unprotected admin API routes (orders/[id], invoice, unsplash)
+- HIGH: Fixed mass assignment in orders/[id] PATCH and services/[id] PATCH (added field whitelisting)
+- MEDIUM: Fixed PostgREST filter injection in customer search and public search
+- MEDIUM: Fixed XSS in blog markdown rendering (HTML entity escaping + sanitizeHref)
+- LOW: Added `.env` variants to .gitignore
+- LOW: Added security headers to next.config.mjs (X-Frame-Options, X-Content-Type-Options, etc.)
+
+**Error Handling (Phase 1d) - 14 issues fixed:**
+- 5 API routes wrapped in try-catch (4 cron + export)
+- Stripe webhook handler: added per-case error handling
+- 5 unhandled promise rejections fixed (useAuth, book page)
+- 2 client fetch calls: added res.ok checks and error states
+- Created `global-error.tsx` and `staff/error.tsx`
 
 ### Phase 2: Route-by-Route Functional Testing
 **Fixed:**
@@ -102,12 +113,18 @@
 - Admin/staff routes blocked by robots.txt
 
 ### Phase 6: Admin Panel and Dashboard
-- Auth flow verified (Supabase auth with role-based access)
-- Admin layout checks auth before rendering
-- All CRUD forms use zod validation schemas
-- Added proper TypeScript interfaces for data tables
-- Added loading.tsx files for admin sections (care-plans, content, financials, pricing, promos, settings)
-- Staff login page enhanced with proper error handling
+**Critical bugs fixed:**
+- Order detail page null pointer crash when looking up by order_number
+- Staff login page was completely non-functional (static server component, no auth)
+- Blog post edit page used hardcoded dummy data instead of fetching from DB
+
+**Other fixes:**
+- Promo deletion changed from hard DELETE to soft-delete
+- Blog post titles in content table now link to edit page
+- 5 files fixed: `.replace('_', ' ')` -> `.replace(/_/g, ' ')` for proper status formatting
+- Added loading skeleton for settings page
+- Auth flow verified (middleware + layout checks)
+- All CRUD forms have validation, error states, loading states
 
 ### Phase 7: API and Integration Testing
 **Fixed:**
@@ -167,16 +184,30 @@
 - **Zero non-functional hash links**
 
 ## Critical Issues (Must Fix Before Launch)
-None. All critical issues were fixed during the audit.
+
+1. **ROTATE SUPABASE SERVICE ROLE KEY** - A hardcoded service role JWT was found in `scripts/seed-blog-posts.ts` and is now in git history. The key was removed from code but must be rotated in the Supabase dashboard immediately.
+2. **Server-side price verification** - The booking flow trusts client-supplied pricing (baseAmount, total, VAT). Prices MUST be recalculated server-side before order creation. (TODO-REVIEW added at `src/app/api/v1/customer/orders/route.ts`)
+3. **Invoice PDF XSS** - User-supplied fields in `src/lib/services/invoice-pdf.ts` are interpolated into HTML without escaping. Add HTML-escape utility before production. (TODO-REVIEW added)
 
 ## Deferred Items
 
 | Location | Description | Reason |
 |----------|-------------|--------|
-| Various pages | Heading order (h4 in footer) | Design decision - footer structure consistent |
-| Back-to-top button | Region landmark violation | Minor a11y - button floats outside landmarks by design |
-| Blog content | dangerouslySetInnerHTML for CMS | Trusted source (admin-only content), sanitization would need DOMPurify |
-| Several admin pages | Complex TypeScript types | Some `as unknown as` casts needed for Supabase join types |
+| `api/v1/customer/orders/route.ts` | Client-supplied pricing trusted without server-side verification | Needs pricing recalculation engine integration |
+| `lib/services/invoice-pdf.ts` | User fields in HTML without escaping | Needs HTML-escape utility |
+| `lib/services/pricing.service.ts` | Redundant DB query (service fetched twice) | Performance optimization |
+| `admin/settings/page.tsx` | Save buttons non-functional across all tabs | Awaiting API integration |
+| `admin/services/[id]/edit/page.tsx` | Save buttons non-functional (7 tabs) | Complex form - needs dedicated implementation |
+| `admin/content/blog/new/page.tsx` | Uses setTimeout mock for save | Needs actual DB persist logic |
+| Staff tasks page | Uses hardcoded mock data | Needs DB integration |
+| Admin search bar | Decorative only (no handler) | Needs search implementation |
+| Various admin pages | Tables not sortable | Enhancement for later |
+| Homepage | Service data and trust badges hardcoded | Consider fetching from DB with ISR |
+| Care plans page | Plan pricing/features hardcoded | Consider DB/CMS |
+| Book page StepAccount | Customer info collected but not forwarded to order API | Only notes are passed |
+| Book page StepLocation | No validation that selected area is actually serviced | Edge case |
+| Several admin pages | `as unknown as` Supabase join type casts | Generate Supabase types to fix |
+| Blog content rendering | dangerouslySetInnerHTML for CMS content | Already HTML-escaped; consider DOMPurify |
 
 ## Page Load Performance
 
