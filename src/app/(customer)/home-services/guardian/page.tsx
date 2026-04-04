@@ -190,7 +190,7 @@ export default function GuardianPage() {
             <Link href="/book" className="rounded-lg bg-accent px-8 py-3 font-semibold text-accent-foreground hover:bg-accent/90">
               Get Started <ArrowRight className="ml-2 inline h-4 w-4" />
             </Link>
-            <a href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}`} className="rounded-lg border border-primary-foreground/30 px-8 py-3 font-semibold hover:bg-primary-foreground/10">
+            <a href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-primary-foreground/30 px-8 py-3 font-semibold hover:bg-primary-foreground/10">
               WhatsApp Us
             </a>
           </div>

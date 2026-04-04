@@ -49,6 +49,8 @@ export default function ContactPage() {
 
           <a
             href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent"
           >
             <MessageCircle className="h-6 w-6 text-accent-text" />

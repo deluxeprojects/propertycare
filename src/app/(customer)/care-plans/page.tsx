@@ -406,6 +406,8 @@ export default function CarePlansPage() {
           </p>
           <a
             href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
           >
             Talk to Us on WhatsApp
