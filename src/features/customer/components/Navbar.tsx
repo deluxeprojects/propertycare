@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { User } from 'lucide-react';
 import { customerNav } from '@/config/navigation';
 import { ProKeepLogo } from '@/components/shared/ProKeepLogo';
 import { SearchBar } from './SearchBar';
@@ -29,6 +30,13 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <Link
+            href="/login"
+            className="hidden items-center gap-1.5 rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted md:inline-flex"
+          >
+            <User className="h-4 w-4" />
+            Sign In
+          </Link>
           <Link
             href="/book"
             className="hidden rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90 md:inline-flex"

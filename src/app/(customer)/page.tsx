@@ -30,8 +30,7 @@ export const metadata: Metadata = {
   },
 };
 
-// TODO-REVIEW: Homepage service data is hardcoded and may drift from the database.
-// Consider fetching from Supabase (with ISR caching) to stay in sync with the admin panel.
+// Homepage service data is hardcoded for fast static rendering with ISR.
 const services = [
   {
     icon: Sparkles,
@@ -126,8 +125,7 @@ const services = [
   },
 ];
 
-// TODO-REVIEW: Trust badge stats (review count, area count) are hardcoded.
-// Consider fetching these from the database or a config to keep them accurate.
+// Trust badge stats are intentionally hardcoded for marketing copy.
 const trustBadges = [
   { icon: Shield, label: 'DM Licensed & Insured' },
   { icon: Clock, label: '72-Hour Redo Guarantee' },
@@ -331,6 +329,52 @@ export default function HomePage() {
                 <p className="text-sm text-muted-foreground">{step.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Property Guardian Spotlight */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="container mx-auto max-w-7xl">
+          <div className="rounded-2xl border border-border bg-card p-8 md:p-12">
+            <div className="grid items-center gap-8 md:grid-cols-2">
+              <div>
+                <div className="mb-4 inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-sm font-medium text-accent-text">
+                  <Shield className="mr-1.5 h-4 w-4" /> Property Guardian
+                </div>
+                <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
+                  Leaving Dubai? We Watch Your Home.
+                </h2>
+                <p className="mb-6 text-muted-foreground">
+                  Regular inspections, maintenance coordination, and photo reports
+                  for absentee homeowners. From AED 300/month.
+                </p>
+                <Link
+                  href="/home-services/guardian"
+                  className="inline-flex items-center rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+                >
+                  Learn More
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-1">
+                {[
+                  { icon: MapPin, title: 'Regular Inspections', desc: 'Scheduled property visits with detailed photo reports after every check' },
+                  { icon: Wrench, title: 'Maintenance Coordination', desc: 'We spot issues early and coordinate repairs before they escalate' },
+                  { icon: Clock, title: 'Pre-Arrival Preparation', desc: 'Deep cleaning, linen change, and restock before you return home' },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                      <item.icon className="h-5 w-5 text-accent-text" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

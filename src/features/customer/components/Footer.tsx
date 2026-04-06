@@ -47,9 +47,11 @@ export function Footer() {
             <p className="text-sm text-primary-foreground/70">
               {siteConfig.email}
             </p>
-            <p className="text-sm text-primary-foreground/70">
-              {siteConfig.phone}
-            </p>
+            {!siteConfig.phone.includes('XX') && (
+              <p className="text-sm text-primary-foreground/70">
+                {siteConfig.phone}
+              </p>
+            )}
           </div>
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-wider">

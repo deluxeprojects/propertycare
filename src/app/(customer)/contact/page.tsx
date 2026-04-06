@@ -33,19 +33,21 @@ export default function ContactPage() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
-          <a
-            href={`tel:${siteConfig.phone}`}
-            className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent"
-          >
-            <Phone className="h-6 w-6 text-accent-text" />
-            <div>
-              <h3 className="font-semibold text-foreground">Call Us</h3>
-              <p className="text-sm text-muted-foreground">{siteConfig.phone}</p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                Available 8 AM – 10 PM (Dubai time, GST+4)
-              </p>
-            </div>
-          </a>
+          {!siteConfig.phone.includes('XX') && (
+            <a
+              href={`tel:${siteConfig.phone}`}
+              className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent"
+            >
+              <Phone className="h-6 w-6 text-accent-text" />
+              <div>
+                <h3 className="font-semibold text-foreground">Call Us</h3>
+                <p className="text-sm text-muted-foreground">{siteConfig.phone}</p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Available 8 AM – 10 PM (Dubai time, GST+4)
+                </p>
+              </div>
+            </a>
+          )}
 
           <a
             href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, '')}`}

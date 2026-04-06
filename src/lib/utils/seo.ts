@@ -7,7 +7,7 @@ export function generateLocalBusinessSchema() {
     name: siteConfig.name,
     description: `${siteConfig.name} — ${siteConfig.tagline}. Professional home services in Dubai.`,
     url: `https://${siteConfig.domain}`,
-    telephone: siteConfig.phone,
+    ...(siteConfig.phone.includes('XX') ? {} : { telephone: siteConfig.phone }),
     email: siteConfig.email,
     address: {
       '@type': 'PostalAddress',

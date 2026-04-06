@@ -6,6 +6,16 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
+  async redirects() {
+    return [
+      { source: '/services', destination: '/home-services', permanent: true },
+      { source: '/services/:path*', destination: '/home-services/:path*', permanent: true },
+      { source: '/guardian', destination: '/home-services/guardian', permanent: true },
+      { source: '/property-guardian', destination: '/home-services/guardian', permanent: true },
+      { source: '/signup', destination: '/login', permanent: false },
+      { source: '/register', destination: '/login', permanent: false },
+    ];
+  },
   async headers() {
     return [
       {
@@ -15,6 +25,7 @@ const nextConfig = {
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(self)' },
+          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com https://api.stripe.com; frame-src https://js.stripe.com https://hooks.stripe.com;" },
         ],
       },
       {

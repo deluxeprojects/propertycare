@@ -59,6 +59,13 @@ export function MobileNav() {
           ))}
           <div className="my-3 border-t border-border" />
           <Link
+            href="/login"
+            onClick={() => setOpen(false)}
+            className="rounded-lg border border-border px-4 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            Sign In
+          </Link>
+          <Link
             href="/book"
             onClick={() => setOpen(false)}
             className="rounded-lg bg-accent px-4 py-3 text-center text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
