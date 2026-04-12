@@ -1,9 +1,11 @@
 'use server';
 
 import { createAdminClient } from '@/lib/supabase/admin';
+import { requireAdmin } from '@/lib/auth/require-admin';
 import { revalidatePath } from 'next/cache';
 
 export async function updatePlanPricing(pricingId: string, data: { annualPriceAed: number; monthlyPriceAed: number; quarterlyPriceAed: number }) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('amc_plan_pricing').update({
     annual_price_aed: data.annualPriceAed,
@@ -24,6 +26,7 @@ export async function createSubscription(data: {
   startDate: string;
   endDate: string;
 }) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('amc_subscriptions').insert({
     customer_id: data.customerId,
@@ -41,6 +44,7 @@ export async function createSubscription(data: {
 }
 
 export async function pauseSubscription(subscriptionId: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('amc_subscriptions').update({ status: 'paused' }).eq('id', subscriptionId);
   if (error) throw new Error(error.message);
@@ -48,6 +52,7 @@ export async function pauseSubscription(subscriptionId: string) {
 }
 
 export async function cancelSubscription(subscriptionId: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('amc_subscriptions').update({ status: 'cancelled' }).eq('id', subscriptionId);
   if (error) throw new Error(error.message);

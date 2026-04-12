@@ -1,9 +1,11 @@
 'use server';
 
 import { createAdminClient } from '@/lib/supabase/admin';
+import { requireAdmin } from '@/lib/auth/require-admin';
 import { revalidatePath } from 'next/cache';
 
 export async function generateInvoice(orderId: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
 
   const { data: order } = await supabase
@@ -37,6 +39,7 @@ export async function generateInvoice(orderId: string) {
 }
 
 export async function markInvoicePaid(invoiceId: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase
     .from('invoices')
@@ -48,6 +51,7 @@ export async function markInvoicePaid(invoiceId: string) {
 }
 
 export async function voidInvoice(invoiceId: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('invoices').update({ status: 'void' }).eq('id', invoiceId);
   if (error) throw new Error(error.message);

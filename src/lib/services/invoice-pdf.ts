@@ -3,6 +3,15 @@ import { siteConfig } from '@/config/site';
 // Note: @react-pdf/renderer is client-side only. For server-side PDF generation,
 // we'll use a simpler HTML-to-text approach that can be rendered by the client.
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export interface InvoiceData {
   invoiceNumber: string;
   date: string;
@@ -27,13 +36,10 @@ export interface InvoiceData {
   notes?: string;
 }
 
-// TODO-REVIEW: All user-supplied fields (customerName, customerEmail, etc.) are
-// interpolated into HTML without escaping. Add an HTML-escape utility before
-// production use to prevent XSS when this HTML is rendered in browser previews.
 export function generateInvoiceHtml(invoice: InvoiceData): string {
   const lineItemsHtml = invoice.lineItems.map(item => `
     <tr>
-      <td style="padding: 8px 12px; border-bottom: 1px solid #e5e7eb;">${item.description}</td>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #e5e7eb;">${escapeHtml(item.description)}</td>
       <td style="padding: 8px 12px; border-bottom: 1px solid #e5e7eb; text-align: center;">${item.quantity}</td>
       <td style="padding: 8px 12px; border-bottom: 1px solid #e5e7eb; text-align: right;">AED ${item.unitPrice.toFixed(2)}</td>
       <td style="padding: 8px 12px; border-bottom: 1px solid #e5e7eb; text-align: right;">AED ${item.total.toFixed(2)}</td>
@@ -44,7 +50,7 @@ export function generateInvoiceHtml(invoice: InvoiceData): string {
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Invoice ${invoice.invoiceNumber}</title>
+  <title>Invoice ${escapeHtml(invoice.invoiceNumber)}</title>
   <style>
     body { font-family: 'DM Sans', Arial, sans-serif; color: #1a1a1a; margin: 0; padding: 40px; }
     .header { display: flex; justify-content: space-between; margin-bottom: 40px; }
@@ -77,24 +83,24 @@ export function generateInvoiceHtml(invoice: InvoiceData): string {
     </div>
     <div style="text-align: right;">
       <div class="invoice-title">INVOICE</div>
-      <div class="invoice-number">${invoice.invoiceNumber}</div>
-      <span class="status status-${invoice.paymentStatus}">${invoice.paymentStatus.toUpperCase()}</span>
+      <div class="invoice-number">${escapeHtml(invoice.invoiceNumber)}</div>
+      <span class="status status-${escapeHtml(invoice.paymentStatus)}">${escapeHtml(invoice.paymentStatus).toUpperCase()}</span>
     </div>
   </div>
 
   <div style="display: flex; gap: 40px; margin-bottom: 30px;">
     <div class="section" style="flex: 1;">
       <div class="section-title">Bill To</div>
-      <p style="margin: 0; font-weight: 600;">${invoice.customerName}</p>
-      <p style="margin: 2px 0; color: #666; font-size: 14px;">${invoice.customerEmail}</p>
-      ${invoice.customerPhone ? `<p style="margin: 2px 0; color: #666; font-size: 14px;">${invoice.customerPhone}</p>` : ''}
-      ${invoice.customerAddress ? `<p style="margin: 2px 0; color: #666; font-size: 14px;">${invoice.customerAddress}</p>` : ''}
+      <p style="margin: 0; font-weight: 600;">${escapeHtml(invoice.customerName)}</p>
+      <p style="margin: 2px 0; color: #666; font-size: 14px;">${escapeHtml(invoice.customerEmail)}</p>
+      ${invoice.customerPhone ? `<p style="margin: 2px 0; color: #666; font-size: 14px;">${escapeHtml(invoice.customerPhone)}</p>` : ''}
+      ${invoice.customerAddress ? `<p style="margin: 2px 0; color: #666; font-size: 14px;">${escapeHtml(invoice.customerAddress)}</p>` : ''}
     </div>
     <div class="section" style="text-align: right;">
       <div class="section-title">Details</div>
       <p style="margin: 0; font-size: 14px;"><strong>Date:</strong> ${invoice.date}</p>
       ${invoice.dueDate ? `<p style="margin: 2px 0; font-size: 14px;"><strong>Due:</strong> ${invoice.dueDate}</p>` : ''}
-      ${invoice.orderNumber ? `<p style="margin: 2px 0; font-size: 14px;"><strong>Order:</strong> ${invoice.orderNumber}</p>` : ''}
+      ${invoice.orderNumber ? `<p style="margin: 2px 0; font-size: 14px;"><strong>Order:</strong> ${escapeHtml(invoice.orderNumber)}</p>` : ''}
     </div>
   </div>
 
@@ -119,7 +125,7 @@ export function generateInvoiceHtml(invoice: InvoiceData): string {
     <tr class="total-row"><td>Total</td><td style="text-align: right;">AED ${invoice.total.toFixed(2)}</td></tr>
   </table>
 
-  ${invoice.notes ? `<div style="margin-top: 30px; padding: 16px; background: #f8f9fa; border-radius: 8px; font-size: 13px; color: #666;"><strong>Notes:</strong> ${invoice.notes}</div>` : ''}
+  ${invoice.notes ? `<div style="margin-top: 30px; padding: 16px; background: #f8f9fa; border-radius: 8px; font-size: 13px; color: #666;"><strong>Notes:</strong> ${escapeHtml(invoice.notes)}</div>` : ''}
 
   <div class="footer">
     <p>${siteConfig.name} · Dubai, UAE · TRN: Pending</p>

@@ -1,9 +1,11 @@
 'use server';
 
 import { createAdminClient } from '@/lib/supabase/admin';
+import { requireAdmin } from '@/lib/auth/require-admin';
 import { revalidatePath } from 'next/cache';
 
 export async function updateOrderStatus(orderId: string, status: string, _notes?: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase
     .from('orders')
@@ -15,6 +17,7 @@ export async function updateOrderStatus(orderId: string, status: string, _notes?
 }
 
 export async function assignTechnician(orderId: string, technicianProfileId: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase
     .from('orders')
@@ -26,6 +29,7 @@ export async function assignTechnician(orderId: string, technicianProfileId: str
 }
 
 export async function cancelOrder(orderId: string, reason: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase
     .from('orders')
@@ -37,6 +41,7 @@ export async function cancelOrder(orderId: string, reason: string) {
 }
 
 export async function rescheduleOrder(orderId: string, date: string, timeSlot: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase
     .from('orders')
@@ -48,6 +53,7 @@ export async function rescheduleOrder(orderId: string, date: string, timeSlot: s
 }
 
 export async function addInternalNote(orderId: string, note: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { data: order } = await supabase
     .from('orders')

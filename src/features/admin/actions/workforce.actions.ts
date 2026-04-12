@@ -1,6 +1,7 @@
 'use server';
 
 import { createAdminClient } from '@/lib/supabase/admin';
+import { requireAdmin } from '@/lib/auth/require-admin';
 import { revalidatePath } from 'next/cache';
 
 export async function createTechnician(data: {
@@ -12,6 +13,7 @@ export async function createTechnician(data: {
   hourlyRateAed?: number;
   dailyCapacity?: number;
 }) {
+  await requireAdmin();
   const supabase = createAdminClient();
 
   // Update profile role
@@ -32,6 +34,7 @@ export async function createTechnician(data: {
 }
 
 export async function updateTechnicianAvailability(technicianId: string, isAvailable: boolean) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('technicians').update({ is_available: isAvailable }).eq('id', technicianId);
   if (error) throw new Error(error.message);
@@ -39,6 +42,7 @@ export async function updateTechnicianAvailability(technicianId: string, isAvail
 }
 
 export async function createDayOff(technicianId: string, date: string, reason: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('technician_schedules').upsert({
     technician_id: technicianId,

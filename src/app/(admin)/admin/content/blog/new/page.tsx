@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowLeft, Check } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
@@ -15,6 +16,7 @@ const RichTextEditor = dynamic(
 import { siteConfig } from '@/config/site';
 
 export default function NewBlogPostPage() {
+  const router = useRouter();
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
   const [content, setContent] = useState('');
@@ -27,6 +29,7 @@ export default function NewBlogPostPage() {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [saveError, setSaveError] = useState('');
 
   const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
@@ -49,10 +52,38 @@ export default function NewBlogPostPage() {
   const handleSave = async () => {
     if (!validate()) return;
     setSaving(true);
-    // TODO: Save to Supabase blog table (not yet created)
-    await new Promise(r => setTimeout(r, 500));
-    setSaving(false);
-    setSaved(true);
+    setSaveError('');
+
+    try {
+      const res = await fetch('/api/v1/admin/blog', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title,
+          slug,
+          content,
+          excerpt,
+          category,
+          meta_title: metaTitle,
+          meta_description: metaDesc,
+          status,
+          published_at: publishDate || null,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error?.message ?? 'Failed to save blog post');
+      }
+
+      setSaved(true);
+      router.push('/admin/content');
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to save blog post';
+      setSaveError(message);
+    } finally {
+      setSaving(false);
+    }
   };
 
   if (saved) {
@@ -151,6 +182,7 @@ export default function NewBlogPostPage() {
               >
                 {saving ? 'Saving...' : 'Save Post'}
               </button>
+              {saveError && <p className="mt-2 text-xs text-destructive">{saveError}</p>}
             </div>
           </div>
 

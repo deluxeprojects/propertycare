@@ -1,6 +1,7 @@
 'use server';
 
 import { createAdminClient } from '@/lib/supabase/admin';
+import { requireAdmin } from '@/lib/auth/require-admin';
 import { revalidatePath } from 'next/cache';
 
 export async function createPromo(data: {
@@ -17,6 +18,7 @@ export async function createPromo(data: {
   isPublic?: boolean;
   isFirstOrderOnly?: boolean;
 }) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('promotions').insert({
     code: data.code.toUpperCase(),
@@ -38,6 +40,7 @@ export async function createPromo(data: {
 }
 
 export async function deactivatePromo(promoId: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('promotions').update({ is_active: false }).eq('id', promoId);
   if (error) throw new Error(error.message);

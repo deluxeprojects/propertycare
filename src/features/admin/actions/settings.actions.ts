@@ -1,9 +1,11 @@
 'use server';
 
 import { createAdminClient } from '@/lib/supabase/admin';
+import { requireAdmin } from '@/lib/auth/require-admin';
 import { revalidatePath } from 'next/cache';
 
 export async function updateSetting(key: string, value: unknown) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase
     .from('system_settings')
@@ -15,6 +17,7 @@ export async function updateSetting(key: string, value: unknown) {
 }
 
 export async function seedDefaultSettings() {
+  await requireAdmin();
   const supabase = createAdminClient();
   const defaults = [
     { key: 'business.company_name', value: '"ProKeep"', category: 'business', label: 'Company Name' },

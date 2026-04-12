@@ -20,6 +20,9 @@ interface BookingState {
   isExpress: boolean;
   promoCode: string | null;
   notesCustomer: string;
+  customerName: string;
+  customerPhone: string;
+  customerEmail: string;
 
   // Computed prices
   basePrice: number;
@@ -41,6 +44,7 @@ interface BookingState {
   setExpress: (isExpress: boolean) => void;
   setPromoCode: (code: string | null) => void;
   setNotes: (notes: string) => void;
+  setCustomerDetails: (name: string, phone: string, email: string) => void;
   setPrices: (prices: { basePrice: number; addonsTotal: number; expressSurcharge: number; discount: number; vat: number; total: number }) => void;
   reset: () => void;
 }
@@ -63,6 +67,9 @@ const initialState = {
   isExpress: false,
   promoCode: null,
   notesCustomer: '',
+  customerName: '',
+  customerPhone: '',
+  customerEmail: '',
   basePrice: 0,
   addonsTotal: 0,
   expressSurcharge: 0,
@@ -122,6 +129,7 @@ export const useBooking = create<BookingState>((set) => ({
   setExpress: (isExpress) => set({ isExpress }),
   setPromoCode: (code) => set({ promoCode: code }),
   setNotes: (notes) => set({ notesCustomer: notes }),
+  setCustomerDetails: (name, phone, email) => set({ customerName: name, customerPhone: phone, customerEmail: email }),
 
   setPrices: (prices) => set(prices),
 

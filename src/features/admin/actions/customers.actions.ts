@@ -1,9 +1,11 @@
 'use server';
 
 import { createAdminClient } from '@/lib/supabase/admin';
+import { requireAdmin } from '@/lib/auth/require-admin';
 import { revalidatePath } from 'next/cache';
 
 export async function updateCustomerProfile(customerId: string, updates: { fullName?: string; phone?: string }) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const dbUpdates: Record<string, unknown> = {};
   if (updates.fullName) dbUpdates.full_name = updates.fullName;
@@ -15,6 +17,7 @@ export async function updateCustomerProfile(customerId: string, updates: { fullN
 }
 
 export async function addWalletCredit(customerId: string, amount: number, notes: string) {
+  await requireAdmin();
   const supabase = createAdminClient();
 
   // Get or create wallet

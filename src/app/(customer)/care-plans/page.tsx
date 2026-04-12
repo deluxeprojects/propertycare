@@ -24,8 +24,7 @@ export const revalidate = 3600; // Revalidate every hour
 /*  New contract-type plans                                           */
 /* ------------------------------------------------------------------ */
 
-// TODO-REVIEW: Care plan pricing and features are hardcoded. Consider moving
-// these to a database table or CMS so they can be updated without a deploy.
+// Care plan pricing is hardcoded for static page performance.
 const contractPlans = [
   {
     name: 'AC Care Plan',

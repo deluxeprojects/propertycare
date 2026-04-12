@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { sendWhatsApp } from '@/lib/twilio/whatsapp';
 
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get('authorization');
@@ -19,10 +20,20 @@ export async function GET(request: NextRequest) {
       .eq('scheduled_date', tomorrowStr)
       .in('status', ['confirmed', 'assigned']);
 
-    // TODO: Send WhatsApp reminders via WhatsApp Business API
-    // For now, just return the count
+    let sent = 0;
+    for (const order of orders ?? []) {
+      const profile = order.profiles as unknown as { full_name: string; phone: string } | null;
+      if (!profile?.phone) continue;
+
+      const message = `Hi ${profile.full_name}, this is a reminder that your booking #${order.order_number} is scheduled for tomorrow (${tomorrowStr}) at ${order.scheduled_time_slot}. We look forward to serving you!`;
+      const ok = await sendWhatsApp(profile.phone, message);
+      if (ok) sent++;
+      else console.error(`[BookingReminder] Failed to send reminder for order ${order.id}`);
+    }
+
     return NextResponse.json({
       reminders_due: orders?.length ?? 0,
+      reminders_sent: sent,
       date: tomorrowStr,
     });
   } catch {

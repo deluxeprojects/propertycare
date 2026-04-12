@@ -73,17 +73,23 @@ export async function createCheckoutSession(params: {
   return session;
 }
 
-// TODO-REVIEW: Add try-catch with AppError wrapping when this is wired to a route.
-// Currently unused — callers must handle Stripe errors at the route level.
 export async function processRefund(paymentIntentId: string, amount?: number) {
-  const refundParams: { payment_intent: string; amount?: number } = {
-    payment_intent: paymentIntentId,
-  };
+  try {
+    const refundParams: { payment_intent: string; amount?: number } = {
+      payment_intent: paymentIntentId,
+    };
 
-  if (amount) {
-    refundParams.amount = Math.round(amount * 100);
+    if (amount) {
+      refundParams.amount = Math.round(amount * 100);
+    }
+
+    const refund = await stripe.refunds.create(refundParams);
+    return refund;
+  } catch (error: unknown) {
+    if (error && typeof error === 'object' && 'type' in error) {
+      const stripeError = error as { type: string; message?: string };
+      throw new Error(`Stripe refund failed for payment ${paymentIntentId}: ${stripeError.message ?? stripeError.type}`);
+    }
+    throw new Error(`Refund failed for payment ${paymentIntentId}: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
-
-  const refund = await stripe.refunds.create(refundParams);
-  return refund;
 }

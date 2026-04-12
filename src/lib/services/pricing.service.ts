@@ -31,8 +31,18 @@ export async function calculatePrice(
   supabase: SupabaseClient,
   input: PriceInput
 ): Promise<PriceBreakdown> {
-  // 1. Get base price
+  // 1. Get base price and service data
   let basePrice = 0;
+  let serviceData: { base_price_aed?: number; express_surcharge_pct?: number } | null = null;
+
+  // Always fetch service data for express surcharge info
+  const { data: fetchedService } = await supabase
+    .from('services')
+    .select('base_price_aed, express_surcharge_pct')
+    .eq('id', input.serviceId)
+    .single();
+  serviceData = fetchedService;
+
   if (input.variantId) {
     const { data: variant } = await supabase
       .from('service_variants')
@@ -41,12 +51,7 @@ export async function calculatePrice(
       .single();
     basePrice = variant?.price_aed ?? 0;
   } else {
-    const { data: service } = await supabase
-      .from('services')
-      .select('base_price_aed, express_surcharge_pct')
-      .eq('id', input.serviceId)
-      .single();
-    basePrice = service?.base_price_aed ?? 0;
+    basePrice = serviceData?.base_price_aed ?? 0;
   }
 
   // 2. Add-ons
@@ -104,17 +109,10 @@ export async function calculatePrice(
     appliedRules.push({ name: rule.name, amount: adjustment });
   }
 
-  // 8. Express surcharge
-  // TODO-REVIEW: This re-fetches the service row that was already fetched in step 1
-  // when no variantId is provided. Refactor to reuse the earlier query result.
+  // 8. Express surcharge (reuses service data from step 1)
   let expressSurcharge = 0;
   if (input.isExpress) {
-    const { data: service } = await supabase
-      .from('services')
-      .select('express_surcharge_pct')
-      .eq('id', input.serviceId)
-      .single();
-    const pct = service?.express_surcharge_pct ?? 50;
+    const pct = serviceData?.express_surcharge_pct ?? 50;
     expressSurcharge = (basePrice + addonsTotal) * (pct / 100);
   }
 

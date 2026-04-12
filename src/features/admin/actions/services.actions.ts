@@ -1,6 +1,7 @@
 'use server';
 
 import { createAdminClient } from '@/lib/supabase/admin';
+import { requireAdmin } from '@/lib/auth/require-admin';
 import { revalidatePath } from 'next/cache';
 
 export async function createService(data: {
@@ -15,6 +16,7 @@ export async function createService(data: {
   durationMinutes: number;
   tags?: string[];
 }) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('services').insert({
     category_id: data.categoryId,
@@ -34,6 +36,7 @@ export async function createService(data: {
 }
 
 export async function updateService(serviceId: string, updates: Record<string, unknown>) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('services').update(updates).eq('id', serviceId);
   if (error) throw new Error(error.message);
@@ -41,6 +44,7 @@ export async function updateService(serviceId: string, updates: Record<string, u
 }
 
 export async function toggleServiceActive(serviceId: string, isActive: boolean) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('services').update({ is_active: isActive }).eq('id', serviceId);
   if (error) throw new Error(error.message);
@@ -48,6 +52,7 @@ export async function toggleServiceActive(serviceId: string, isActive: boolean) 
 }
 
 export async function createVariant(data: { serviceId: string; variantLabel: string; priceAed: number; durationMinutes: number; sortOrder?: number }) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('service_variants').insert({
     service_id: data.serviceId,
@@ -61,6 +66,7 @@ export async function createVariant(data: { serviceId: string; variantLabel: str
 }
 
 export async function createAddon(data: { serviceId: string; nameEn: string; priceAed: number; durationMinutes?: number; sortOrder?: number }) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from('service_addons').insert({
     service_id: data.serviceId,

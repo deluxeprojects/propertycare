@@ -1,9 +1,11 @@
 'use server';
 
 import { createAdminClient } from '@/lib/supabase/admin';
+import { requireAdmin } from '@/lib/auth/require-admin';
 import { revalidatePath } from 'next/cache';
 
 export async function updateAreaPage(areaId: string, data: { descriptionEn?: string; metaTitleEn?: string; metaDescEn?: string }) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const updates: Record<string, unknown> = {};
   if (data.descriptionEn) updates.description_en = data.descriptionEn;
@@ -16,6 +18,7 @@ export async function updateAreaPage(areaId: string, data: { descriptionEn?: str
 }
 
 export async function updateBuildingPage(buildingId: string, data: { descriptionEn?: string; noindex?: boolean }) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const updates: Record<string, unknown> = {};
   if (data.descriptionEn !== undefined) updates.description_en = data.descriptionEn;
@@ -27,6 +30,7 @@ export async function updateBuildingPage(buildingId: string, data: { description
 }
 
 export async function togglePageNoindex(entityType: 'area' | 'building', entityId: string, noindex: boolean) {
+  await requireAdmin();
   const supabase = createAdminClient();
   const table = entityType === 'area' ? 'areas' : 'buildings';
   const updates = entityType === 'area' ? { is_active: !noindex } : { noindex };

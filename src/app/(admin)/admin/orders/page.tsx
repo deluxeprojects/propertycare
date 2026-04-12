@@ -37,12 +37,13 @@ function PaymentBadge({ status }: { status: string }) {
 }
 
 interface Props {
-  searchParams: Promise<{ status?: string }>;
+  searchParams: Promise<{ status?: string; search?: string }>;
 }
 
 export default async function OrdersPage({ searchParams }: Props) {
   const params = await searchParams;
   const statusFilter = params.status;
+  const searchQuery = params.search?.trim();
   const supabase = createAdminClient();
 
   let query = supabase
@@ -80,7 +81,18 @@ export default async function OrdersPage({ searchParams }: Props) {
     }
   }
 
-  const orderList = orders ?? [];
+  let orderList = orders ?? [];
+  // Filter by search query across order number, customer name, and phone
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    orderList = orderList.filter((o: Record<string, unknown>) => {
+      if ((o.order_number as string)?.toLowerCase().includes(q)) return true;
+      const customer = o.profiles as Record<string, string> | null;
+      if (customer?.full_name?.toLowerCase().includes(q)) return true;
+      if (customer?.phone?.includes(q)) return true;
+      return false;
+    });
+  }
   const activeFilter = statusFilter ?? 'all';
 
   return (
@@ -124,7 +136,7 @@ export default async function OrdersPage({ searchParams }: Props) {
             {orderList.length === 0 && (
               <tr>
                 <td colSpan={10} className="px-4 py-8 text-center text-muted-foreground">
-                  No orders found{statusFilter ? ` with status "${statusFilter}"` : ''}
+                  No orders found{statusFilter ? ` with status "${statusFilter}"` : ''}{searchQuery ? ` matching "${searchQuery}"` : ''}
                 </td>
               </tr>
             )}

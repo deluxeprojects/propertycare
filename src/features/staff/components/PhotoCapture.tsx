@@ -15,9 +15,23 @@ export function PhotoCapture({ orderId, onUploadComplete }: PhotoCaptureProps) {
   const [uploaded, setUploaded] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+  const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'];
+
   const handleCapture = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files ?? []);
-    const newPhotos = files.map(file => ({
+    const valid = files.filter(file => {
+      if (!ALLOWED_TYPES.includes(file.type)) {
+        alert(`"${file.name}" is not an allowed image type. Use JPEG, PNG, or WebP.`);
+        return false;
+      }
+      if (file.size > MAX_FILE_SIZE) {
+        alert(`"${file.name}" exceeds the 10MB size limit.`);
+        return false;
+      }
+      return true;
+    });
+    const newPhotos = valid.map(file => ({
       file,
       preview: URL.createObjectURL(file),
     }));
@@ -36,7 +50,8 @@ export function PhotoCapture({ orderId, onUploadComplete }: PhotoCaptureProps) {
     const urls: string[] = [];
 
     for (const photo of photos) {
-      const fileName = `orders/${orderId}/${Date.now()}-${photo.file.name}`;
+      const safeName = photo.file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const fileName = `orders/${orderId}/${Date.now()}-${safeName}`;
       const { data, error: _uploadError } = await supabase.storage
         .from('order-photos')
         .upload(fileName, photo.file);

@@ -12,6 +12,13 @@ interface AdminHeaderProps {
 export function AdminHeader({ onMenuToggle }: AdminHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchQuery.trim()) {
+      window.location.href = `/admin/orders?search=${encodeURIComponent(searchQuery.trim())}`;
+    }
+  };
 
   const handleLogout = async () => {
     setLoggingOut(true);
@@ -36,6 +43,9 @@ export function AdminHeader({ onMenuToggle }: AdminHeaderProps) {
           <input
             type="text"
             placeholder="Search orders, customers..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleSearchKeyDown}
             className="h-9 w-48 rounded-lg border border-input bg-background pl-9 pr-4 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent md:w-72"
           />
         </div>
