@@ -4,6 +4,7 @@ import Script from 'next/script';
 import '@/styles/globals.css';
 import { siteConfig } from '@/config/site';
 import { Toaster } from 'sonner';
+import { ReportWidget } from '@/components/shared/report-widget';
 import { generateLocalBusinessSchema } from '@/lib/utils/seo';
 
 const dmSans = DM_Sans({
@@ -108,6 +109,7 @@ export default function RootLayout({
           </noscript>
         )}
         {children}
+        <ReportWidget />
         <Toaster richColors position="top-right" />
       </body>
     </html>
